@@ -2,6 +2,8 @@ import java.util.List;
 
 public class DayTwo {
 
+	//part 1
+
 	public static int getRowSum(int[] sampleRow) {
 		int sum = 0;
 		int lowest = sampleRow[0];

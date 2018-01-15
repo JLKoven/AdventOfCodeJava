@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DayOne {
+	
+	//part 1
 
 	public static int printAnswerGeneric(String input, Character lastChar){//, Character firstChar) {
 		int sum=0;
