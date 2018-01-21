@@ -4,6 +4,7 @@ public class SpiralGridCell {
 	private int xCoord;
 	private int yCoord;
 	private int cellValue;
+	private int cellCumulativeValue;
 	private String nextDirection;
 
 	public int getYCoord() {
@@ -29,6 +30,14 @@ public class SpiralGridCell {
 	public void setValue(int value) {
 		this.cellValue = value;
 	}
+	
+	public int getCellCumulativeValue() {
+		return cellCumulativeValue;
+	}
+
+	public void setCellCumulativeValue(int cellCumulativeValue) {
+		this.cellCumulativeValue = cellCumulativeValue;
+	}
 
 	public String getNextDirection() {
 		return nextDirection;
@@ -37,4 +46,6 @@ public class SpiralGridCell {
 	public void setNextDirection(String input) {
 		this.nextDirection = input;
 	}
+
+
 }

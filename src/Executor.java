@@ -130,8 +130,16 @@ public class Executor {
 		try {
 //			System.out.println("Data from square 1 is carried " + DayThree.getDistanceFromOrigin(1) + " steps!");
 //			System.out.println("Data from square 12 is carried " + DayThree.getDistanceFromOrigin(12) + " steps!");
-			System.out.println("Data from square 23 is carried " + DayThree.getDistanceFromOrigin(23) + " steps!");
-//			System.out.println("Data from square 1024 is carried " + DayThree.getDistanceFromOrigin(1024) + " steps!");
+//			System.out.println("Data from square 23 is carried " + DayThree.getDistanceFromOrigin(23) + " steps!");
+//			System.out.println("Data from square 57 is carried " + DayThree.getDistanceFromOrigin(57) + " steps!");
+//			System.out.println("Data from square 312051 is carried " + DayThree.getDistanceFromOrigin(312051) + " steps!");
+			
+//			System.out.println("Cumulative value from square 1 is " + DayThree.getCumulativeValueOfThisCell(1) + ". Hooray!");
+//			System.out.println("Cumulative value from square 2 is " + DayThree.getCumulativeValueOfThisCell(2) + ". Hooray!");
+//			System.out.println("Cumulative value from square 4 is " + DayThree.getCumulativeValueOfThisCell(4) + ". Hooray!");
+//			System.out.println("Cumulative value from square 8 is " + DayThree.getCumulativeValueOfThisCell(8) + ". Hooray!");
+			
+			System.out.println("Answer first larger than 277678 is "+DayThree.getFirstCumulativeValueLargerThanThisNumber(277678)+ ". Hooray!");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
