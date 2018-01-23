@@ -14,11 +14,10 @@ public class SpiralGrid {
 
 	private List<SpiralGridCell> list = new ArrayList<SpiralGridCell>();
 
-	// private double maxDimension = 1.0;
-	private int maxX=0;//maxDimensionRIGHT = 0;
-	private int maxY=0;//maxDimensionUP = 0;
-	private int minX=0;//maxDimensionLEFT = 0;
-	private int minY=0;//maxDimensionDOWN = 0;
+	private int maxX=0;
+	private int maxY=0;
+	private int minX=0;
+	private int minY=0;
 
 	private Map<HashMap<Integer, Integer>, SpiralGridCell> mapOfExisting = new HashMap<HashMap<Integer, Integer>, SpiralGridCell>();
 
@@ -30,54 +29,6 @@ public class SpiralGrid {
 		this.list = list;
 	}
 
-//	public double getMaxDimensionRIGHT() {
-//		return maxDimensionRIGHT;
-//	}
-//
-//	public void setMaxDimensionRIGHT(int maxDimensionRIGHT) {
-//		this.maxDimensionRIGHT = maxDimensionRIGHT;
-//	}
-//
-//	public double getMaxDimensionUP() {
-//		return maxDimensionUP;
-//	}
-//
-//	public void setMaxDimensionUP(int maxDimensionUP) {
-//		this.maxDimensionUP = maxDimensionUP;
-//	}
-//
-//	public double getMaxDimensionLEFT() {
-//		return maxDimensionLEFT;
-//	}
-//
-//	public void setMaxDimensionLEFT(int maxDimensionLEFT) {
-//		this.maxDimensionLEFT = maxDimensionLEFT;
-//	}
-//
-//	public double getMaxDimensionDOWN() {
-//		return maxDimensionDOWN;
-//	}
-//
-//	public void setMaxDimensionDOWN(int maxDimensionDOWN) {
-//		this.maxDimensionDOWN = maxDimensionDOWN;
-//	}
-
-	// public double getMaxDimension() {
-	// return maxDimension;
-	// }
-	//
-	// public void setMaxDimension(double maxDimension) {
-	// this.maxDimension = maxDimension;
-	// }
-	//
-	// public double getMaxDimensionOneWay() {
-	// return maxDimensionOneWay;
-	// }
-	//
-	//
-	// public void setMaxDimensionOneWay(double maxDimensionOneWay) {
-	// this.maxDimensionOneWay = maxDimensionOneWay;
-	// }
 
 	public int getMaxX() {
 		return maxX;
@@ -123,7 +74,6 @@ public class SpiralGrid {
 		boolean answer = false;
 		int attemptedSquare = (int) Math.sqrt(input);
 		if ((attemptedSquare * attemptedSquare == input)
-		// && (attemptedSquare % 2== 1)
 		) {
 			answer = true;
 		}
@@ -133,8 +83,6 @@ public class SpiralGrid {
 	public void addCellToGridInitial(){
 
 		SpiralGridCell cell = new SpiralGridCell();
-		// figure out whether we are going to a new direction or not?
-		// if (getList()
 
 		if (getList().isEmpty()) {
 			cell.setXCoord(0);
@@ -146,7 +94,6 @@ public class SpiralGrid {
 			if (getMostRecentCell().isPresent()) {
 				SpiralGridCell lastCell = getMostRecentCell().get();
 				cell.setValue(lastCell.getValue() + 1);
-//				int cumulativeValue = calculateCumulativeValue(cell);
 				cell = setDirectionBasedOnPriorDirection(cell, lastCell);
 				cell.setCellCumulativeValue(calculateCumulativeValueBruteForce(cell));
 			} else {
@@ -154,8 +101,6 @@ public class SpiralGrid {
 						"Something went very wrong here! You tried to find a cell, but no previous cell exsted");
 			}
 		}
-//		System.out.println("  The cell we are adding to this grid has value " + cell.getValue() + ", x value "
-//				+ cell.getXCoord() + " and y value " + cell.getYCoord() + ".");
 		
 		mapPlacementNoIntPair(cell);
 
@@ -168,9 +113,6 @@ public class SpiralGrid {
 		Map<HashMap<Integer, Integer>, SpiralGridCell> mapToReturn = getMapOfExisting();
 		HashMap<Integer, Integer> coordinates = new HashMap<Integer, Integer>();
 		coordinates.put(cell.getXCoord(), cell.getYCoord());
-//		IntPair intPairCoordinates = new IntPair();
-//		intPairCoordinates .setIntOne(cell.getXCoord());
-//		intPairCoordinates.setIntTwo(cell.getYCoord());
 		if (!mapToReturn.containsKey(coordinates)){
 			mapToReturn.put(coordinates, cell);
 		} else {
@@ -189,8 +131,6 @@ public class SpiralGrid {
 	private int calculateCumulativeValueBruteForce(SpiralGridCell cell) {
 		int value=0;
 		
-//		Map<HashMap<Integer, Integer>, SpiralGridCell> copyOfMapOfExisting = getMapOfExisting();
-//		Set<Has
 		
 		//-1,-1
 		Map<Integer, Integer> innerMapLeftDown = new HashMap<Integer, Integer>();
@@ -329,34 +269,6 @@ public class SpiralGrid {
 		return newDirection;
 	}
 
-	// private boolean cellOutOfCurrentBounds(SpiralGridCell cell) {
-	// boolean outOfBounds;
-	//
-	//
-	// int greatestXYFromCell = (Math.abs(cell.getXCoord()) >
-	// Math.abs(cell.getYCoord())) ? Math.abs(cell.getXCoord()) :
-	// Math.abs(cell.getYCoord());
-	//
-	// if (cell.getValue()==3){
-	// System.out.println("");
-	// System.out.println("cell's value is "+cell.getValue()+", x-value is
-	// "+cell.getXCoord()+", y-value is "+cell.getYCoord()+".");
-	// System.out.println("maxInOneDirection is "+getMaxDimensionOneWay()+".");
-	// System.out.println("greatestXYFromCell is "+greatestXYFromCell+".");
-	// System.out.println("");
-	// }
-	//
-	//
-	// if (greatestXYFromCell > getMaxDimensionOneWay()){
-	// outOfBounds = true;
-	// setMaxDimension(getMaxDimension()+2);
-	// setMaxDimensionOneWay(getMaxDimensionOneWay()+1);
-	// } else {
-	// //System.out.println("Not out of bounds!");
-	// outOfBounds = false;
-	// }
-	// return outOfBounds;
-	// }
 
 	private boolean cellWouldBeOutOfCurrentBounds(SpiralGridCell cell, SpiralGridCell lastCell) {
 		boolean outOfBounds = false;
@@ -368,8 +280,6 @@ public class SpiralGrid {
 															// RIGHT
 		//not bothering to set values for future cell 
 
-		// outOfBoundsSubfunction();
-//		boolean outOfBounds = true;
 		if (RIGHT.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 1);
 			futureCell.setYCoord(cell.getYCoord() + 0);
@@ -396,41 +306,6 @@ public class SpiralGrid {
 			}
 		}
 
-		// int greatestXYFromFutureCell = (Math.abs(futureCell.getXCoord()) >
-		// Math.abs(futureCell.getYCoord())) ? Math.abs(futureCell.getXCoord())
-		// : Math.abs(futureCell.getYCoord());
-
-		// if (futureCell.getValue()==18){
-		// System.out.println("");
-		// System.out.println("future cell's value is "+futureCell.getValue()+",
-		// x-value is "+futureCell.getXCoord()+", y-value is
-		// "+futureCell.getYCoord()+".");
-		// System.out.println("maxInDirection is "+getMaxDimension()+".");
-		// System.out.println("maxInOneDirection is
-		// "+getMaxDimensionOneWay()+".");
-		// System.out.println("greatestXYFromFutureCell is
-		// "+greatestXYFromFutureCell+".");
-		// System.out.println("");
-		// }
-
-		// it's not turning the corner at 17. what should happen is
-		/*
-		 * //at 16: "I am within the bounds of a 4x4. 'maxDirection' should be 4
-		 * 'maxDirectionOneWay' should be 2 right now I am at (-1, 2) if I go
-		 * sameDirection(further left), next(17) will be at (-2, 2), which will
-		 * put me outside of a 4x4 by 1 if I go nextDirection(down), next(17)
-		 * will be at (-1, 1), which ALREADY EXISTS Going further left would
-		 * mean breaking out of that 4x4. Now we are going to expand into a 5x5.
-		 * Then, my next (17), will go to the left
-		 * 
-		 * //at 17: "I am within the bounds of a 5x5. 'maxDirection' should be 5
-		 * 'maxDirectionOneWay' should be 2 right now I am at (-2, 2) if I go
-		 * sameDirection(further left), next(17) will be at (-2, 2), which will
-		 * put me outside of a 4x4 by 1 if I go nextDirection(down), next(17)
-		 * will be at (-1, 1), which ALREADY EXISTS Going further left would
-		 * mean breaking out of that 5x5. Now we are going to expand into a 5x5.
-		 * Then, my next (18), will go down
-		 */
 
 		return outOfBounds;
 	}
@@ -452,7 +327,6 @@ public class SpiralGrid {
 				booleanToReturn = false;
 			}
 		} else if (LEFT.equals(nextDirection)){
-//			System.out.println("    the future cell would be ");
 			if (futureCell.getXCoord()-0 < getMinX()-1){
 				booleanToReturn = true;
 				setMinX(getMinX()-1);
@@ -475,32 +349,6 @@ public class SpiralGrid {
 				e.printStackTrace();
 			}
 		}
-//		if (nextDirection)
-//		if (greatestXYFromFutureCell > getMaxDimensionOneWay()){
-//			outOfBounds = true;
-//			System.out.println("");
-//			System.out.println("");
-//			System.out.println("cell's value is "+cell.getValue()+", x-value is "+cell.getXCoord()+", y-value is "+cell.getYCoord()+".");
-//			System.out.println("maxInDirection is "+getMaxDimension()+".");
-//			System.out.println("maxInOneDirection is "+getMaxDimensionOneWay()+".");
-//			int result = (Math.abs(cell.getXCoord()) > Math.abs(cell.getYCoord())) ? Math.abs(cell.getXCoord()) : Math.abs(cell.getYCoord());
-//			System.out.println("greatestXYFromCell is "+result +".");
-//			System.out.println("");
-//			System.out.println("future cell's value is "+futureCell.getValue()+", x-value is "+futureCell.getXCoord()+", y-value is "+futureCell.getYCoord()+".");
-//			System.out.println("maxInDirection is going to be "+(getMaxDimension()+1)+".");
-//			System.out.println("maxInOneDirection is going to be "+(getMaxDimensionOneWay()+0.5)+".");
-//			System.out.println("greatestXYFromFutureCell is "+greatestXYFromFutureCell+".");
-//			System.out.println("");
-//			System.out.println("");
-//
-//			setMaxDimension(getMaxDimension()+1); 
-//			setMaxDimensionOneWay(getMaxDimensionOneWay()+0.5); 
-//			
-//			
-//		} else {
-//			//System.out.println("Not out of bounds!");
-//			outOfBounds = false;
-//		}
 		return booleanToReturn;
 
 	}

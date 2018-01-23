@@ -88,7 +88,6 @@ public class DayTwo {
 		int lowest = sampleRow[0];
 		int highest = sampleRow[0];
 		for (int i = 0; i < sampleRow.length; i++) {
-			// highest = (sampleRow[i] > highest) ? sampleRow[i] : highest;
 			if (sampleRow[i] > highest) {
 				highest = sampleRow[i];
 			}
