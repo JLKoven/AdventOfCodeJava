@@ -5,14 +5,16 @@ public class Executor {
 
 	public static void main(String[] args) {
 
-		DayOne.executeStandardDay1();
-		DayOne.executeStandardDay2();
+		DayOne.executeStandardPart1();
+		DayOne.executeStandardPart2();
 
-		DayTwo.executeStandardDay1();
-		DayTwo.executeStandardDay2();
+		DayTwo.executeStandardPart1();
+		DayTwo.executeStandardPart2();
 
-		DayThree.executeStandardDay1();
-		DayThree.executeStandardDay2();
+		DayThree.executeStandardPart1();
+		DayThree.executeStandardPart2();
+		
+		DayFour.executeStandardPart1();
 	}
 
 }

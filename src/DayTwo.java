@@ -182,12 +182,12 @@ public class DayTwo {
 		return sum;
 	}
 
-	public static void executeStandardDay1() {
+	public static void executeStandardPart1() {
 		System.out.println("Day Two Part 1");
 		System.out.println("Checksum of listOfArrays is" + getStandardInputDayTwoPartOneAndTwo() + ".");
 	}
 
-	public static void executeStandardDay2() {
+	public static void executeStandardPart2() {
 		System.out.println("Day Two Part 2");
 		System.out.print("Sum of even divisions between listOfArrays is ");
 		System.out.print(getStandardInputDayTwoPartOneAndTwo());

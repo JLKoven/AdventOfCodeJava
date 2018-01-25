@@ -64,7 +64,7 @@ public class DayThree {
 		return answer;
 	}
 
-	public static void executeStandardDay1() {
+	public static void executeStandardPart1() {
 		System.out.println("Day Three Part 1");
 		System.out.println("Data from square 312051 is carried " + DayThree.getDistanceFromOrigin(312051) + " steps!");
 	}
@@ -96,8 +96,8 @@ public class DayThree {
 	// 362 747 806---> ...
 	// What is the first value written that is larger than your puzzle input?
 	// input is 277678
-	public static void executeStandardDay2() {
-		System.out.println("Day Three Part 1");
+	public static void executeStandardPart2() {
+		System.out.println("Day Three Part 2");
 		try {
 			System.out.println("Answer first larger than 277678 is "
 					+ getFirstCumulativeValueLargerThanThisNumber(277678) + ". Hooray!");

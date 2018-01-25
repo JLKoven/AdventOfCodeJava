@@ -184,12 +184,12 @@ public class DayOne {
 		return arrayToReturn;
 	}
 
-	public static void executeStandardDay1() {
+	public static void executeStandardPart1() {
 		System.out.println("Day 1 Part 1");
 		System.out.println("Answer to array part 1 is " + printAnswerDayOne(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
-	public static void executeStandardDay2() {
+	public static void executeStandardPart2() {
 		System.out.println("Day 1 Part 2");
 		System.out.println("Answer to array part 2 is " + printAnswerDayTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
