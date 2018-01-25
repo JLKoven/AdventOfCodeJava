@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DayFour {
 
@@ -8,28 +10,48 @@ public class DayFour {
 		System.out.println("Answer to array part 1 is " + printAnswerDayFour(getStandardInputDayOnePartOne()) + ".");
 	}
 
-
-
 	public static int printAnswerDayFour(List<String> stringList) {
-		int counter=0;
-		for (int i=0; i<stringList.size(); i++){
-			
+		int counter = 0;
+		for (int i = 0; i < stringList.size(); i++) {
+			String[] parts = stringList.get(i).split(" ");
+			if (!findDuplicatesHashMap(parts)) {
+				counter++;
+			}
 		}
 		return counter;
 	}
 
+	private static boolean findDuplicatesHashMap(String[] parts) {
+		boolean boolToReturn = false;
+		Map<String, Integer> dictionary = new HashMap<String, Integer>();
+		for (int i = 0; i < parts.length; i++) {
+			if (dictionary.containsKey(parts[i])) {
+				return true;
+			} else {
+				dictionary.put(parts[i], 1);
+			}
+		}
+
+		return boolToReturn;
+	}
+
 	private static List<String> getStandardInputDayOnePartOne() {
-//		--- Day 4: High-Entropy Passphrases ---
-//		A new system policy has been put in place that requires all accounts to use a passphrase instead of simply a password. A passphrase consists of a series of words (lowercase letters) separated by spaces.
-//
-//		To ensure security, a valid passphrase must contain no duplicate words.
-//
-//		For example:
-//
-//		aa bb cc dd ee is valid.
-//		aa bb cc dd aa is not valid - the word aa appears more than once.
-//		aa bb cc dd aaa is valid - aa and aaa count as different words.
-//		The system's full passphrase list is available as your puzzle input. How many passphrases are valid?
+		// --- Day 4: High-Entropy Passphrases ---
+		// A new system policy has been put in place that requires all accounts
+		// to use a passphrase instead of simply a password. A passphrase
+		// consists of a series of words (lowercase letters) separated by
+		// spaces.
+		//
+		// To ensure security, a valid passphrase must contain no duplicate
+		// words.
+		//
+		// For example:
+		//
+		// aa bb cc dd ee is valid.
+		// aa bb cc dd aa is not valid - the word aa appears more than once.
+		// aa bb cc dd aaa is valid - aa and aaa count as different words.
+		// The system's full passphrase list is available as your puzzle input.
+		// How many passphrases are valid?
 		List<String> defaultInput = new ArrayList<String>();
 		defaultInput.add("vxjtwn vjnxtw sxibvv mmws wjvtxn icawnd rprh");
 		defaultInput.add("fhaa qwy vqbq gsswej lxr yzl wakcige mwjrl");
