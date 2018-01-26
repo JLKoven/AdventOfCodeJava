@@ -3,6 +3,9 @@ import java.util.List;
 
 public class DayFive {
 
+	private static final Integer INTCONSTFORPARTTWO = 3;
+
+
 	public static void executeStandardPart1() {
 //		--- Day 5: A Maze of Twisty Trampolines, All Alike ---
 //		An urgent interrupt arrives from the CPU: it's trapped in a maze of jump instructions, and it would like assistance from any programs with spare cycles to help find the exit.
@@ -31,7 +34,7 @@ public class DayFive {
 //		How many steps does it take to reach the exit?
 		System.out.println("Day 5 Part 1");
 		System.out.println(
-				"Answer to array part 1 is " + printAnswerDayFivePartOne(getStandardInputDayFivePartOne()) + ".");
+				"Answer to array part 1 is " + printAnswerDayFivePartOne(getStandardInputDayFivePartOneAndTwo()) + ".");
 	}
 
 
@@ -58,8 +61,49 @@ public class DayFive {
 		return nextPosition;
 	}
 
+	public static void executeStandardPart2() {
+	//		--- Part Two ---
+	//		Now, the jumps are even stranger: after each jump, if the offset was three or more, instead decrease it by 1. Otherwise, increase it by 1 as before.
+	//
+	//		Using this rule with the above example, the process now takes 10 steps, and the offset values after finding the exit are left as 2 3 2 3 -1.
+	//
+	//		How many steps does it now take to reach the exit?	
+		System.out.println("Day 5 Part 2");
+		System.out.println(
+				"Answer to array part 1 is " + printAnswerDayFivePartTwo(getStandardInputDayFivePartOneAndTwo()) + ".");
+		}
 
-	private static List<Integer> getStandardInputDayFivePartOne() {
+
+	
+	public static int printAnswerDayFivePartTwo(List<Integer> intList) {
+		int counter = 0;
+		int position = 0;
+		//start at instruction 1 
+		while (
+				(position>=0)
+				&&
+				(position<intList.size())
+				){
+			counter++;
+			position = findNextPositionPartTwo(position, intList);
+		}
+		
+		return counter;
+	}
+
+	private static int findNextPositionPartTwo(int position, List<Integer> intList) {
+		int startingPosition=position;
+		int nextPosition=position+intList.get(position);
+		if (intList.get(position)>=INTCONSTFORPARTTWO){
+			intList.set(startingPosition, intList.get(position)-1);
+		} else {
+			intList.set(startingPosition, intList.get(position)+1);
+		}
+		return nextPosition;
+	}
+
+
+	private static List<Integer> getStandardInputDayFivePartOneAndTwo() {
 		List<Integer> defaultInput = new ArrayList<Integer>();
 		defaultInput.add(0);
 		defaultInput.add(0);
@@ -1064,9 +1108,8 @@ public class DayFive {
 		return defaultInput;
 	}
 
-	private static List<Integer> getStandardInputDayFivePartOneAndTwo() {
-		List<Integer> defaultInput = new ArrayList<Integer>();
-		return defaultInput;
-	}
+
+
+
 
 }
