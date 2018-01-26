@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class DayOne {
 
+	public static void executeStandardPart1() {
 	// --- Day 1: Inverse Captcha ---
 	// The night before Christmas, one of Santa's Elves calls you in a panic.
 	// "The printer's broken! We can't print the Naughty or Nice List!" By the
@@ -50,6 +51,10 @@ public class DayOne {
 	// What is the solution to your captcha?
 	// input provided below
 	//
+		System.out.println("Day 1 Part 1");
+		System.out.println("Answer to array part 1 is " + printAnswerDayOne(getStandardInputDayOnePartOneAndTwo()) + ".");
+	}
+
 	public static List<String> getStandardInputDayOnePartOneAndTwo() {
 		List<String> standardInputDayOneAndTwo = new ArrayList<String>();
 		standardInputDayOneAndTwo.add("32941994713271959948248321");
@@ -133,6 +138,7 @@ public class DayOne {
 		return sum;
 	}
 	
+	public static void executeStandardPart2() {
 //	--- Part Two ---
 //	You notice a progress bar that jumps to 50% completion. Apparently, the door isn't yet satisfied, but it did emit a star as encouragement. The instructions change:
 //
@@ -146,6 +152,9 @@ public class DayOne {
 //	123123 produces 12.
 //	12131415 produces 4.
 //	What is the solution to your new captcha?
+		System.out.println("Day 1 Part 2");
+		System.out.println("Answer to array part 2 is " + printAnswerDayTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
+	}
 
 	public static int printAnswerDayTwo(List<String> stringList) {
 		int answer = 0;
@@ -184,14 +193,6 @@ public class DayOne {
 		return arrayToReturn;
 	}
 
-	public static void executeStandardPart1() {
-		System.out.println("Day 1 Part 1");
-		System.out.println("Answer to array part 1 is " + printAnswerDayOne(getStandardInputDayOnePartOneAndTwo()) + ".");
-	}
 
-	public static void executeStandardPart2() {
-		System.out.println("Day 1 Part 2");
-		System.out.println("Answer to array part 2 is " + printAnswerDayTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
-	}
 
 }

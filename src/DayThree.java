@@ -1,5 +1,6 @@
 public class DayThree {
 
+	public static void executeStandardPart1() {
 	// --- Day 3: Spiral Memory ---
 	// You come across an experimental new kind of memory stored on an infinite
 	// two-dimensional grid.
@@ -29,6 +30,9 @@ public class DayThree {
 	// in your puzzle input all the way to the access port?
 	//
 	// input is 312051
+		System.out.println("Day Three Part 1");
+		System.out.println("Data from square 312051 is carried " + DayThree.getDistanceFromOrigin(312051) + " steps!");
+	}
 
 	public static int getDistanceFromOrigin(int stepsFromOrigin) {
 		int answer = 0;
@@ -64,11 +68,8 @@ public class DayThree {
 		return answer;
 	}
 
-	public static void executeStandardPart1() {
-		System.out.println("Day Three Part 1");
-		System.out.println("Data from square 312051 is carried " + DayThree.getDistanceFromOrigin(312051) + " steps!");
-	}
 
+	public static void executeStandardPart2() {
 	// --- Part Two ---
 	// As a stress test on the system, the programs here clear the grid and then
 	// store the value 1 in square 1. Then, in the same allocation order as
@@ -96,7 +97,6 @@ public class DayThree {
 	// 362 747 806---> ...
 	// What is the first value written that is larger than your puzzle input?
 	// input is 277678
-	public static void executeStandardPart2() {
 		System.out.println("Day Three Part 2");
 		try {
 			System.out.println("Answer first larger than 277678 is "

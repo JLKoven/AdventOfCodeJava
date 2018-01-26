@@ -3,6 +3,7 @@ import java.util.List;
 
 public class DayTwo {
 
+	public static void executeStandardPart1() {
 	// --- Day 2: Corruption Checksum ---
 	// As you walk through the door, a glowing humanoid shape yells in your
 	// direction. "You there! Your state appears to be idle. Come help us repair
@@ -31,6 +32,10 @@ public class DayTwo {
 	//
 	//
 	// input listed below
+		System.out.println("Day Two Part 1");
+		System.out.println("Checksum of listOfArrays is" + getStandardInputDayTwoPartOneAndTwo() + ".");
+	}
+
 	public static List<int[]> getStandardInputDayTwoPartOneAndTwo() {
 		int[] sampleRow1 = new int[] { 1236, 741, 557, 1029, 144, 101, 1968, 2159, 1399, 80, 1139, 1167, 1695, 82, 90,
 				2236 };
@@ -106,6 +111,7 @@ public class DayTwo {
 		return sum;
 	}
 
+	public static void executeStandardPart2() {
 	// --- Part Two ---
 	// "Great work; looks like we're on the right track after all. Here's a star
 	// for your effort." However, the program seems a little worried. Can
@@ -133,6 +139,11 @@ public class DayTwo {
 	// In this example, the sum of the results would be 4 + 3 + 2 = 9.
 	//
 	// What is the sum of each row's result in your puzzle input?
+		System.out.println("Day Two Part 2");
+		System.out.print("Sum of even divisions between listOfArrays is ");
+		System.out.print(getStandardInputDayTwoPartOneAndTwo());
+		System.out.print(".");
+	}
 
 	private static int getRowSumDivisionsBruteForce(int[] sampleRow) {
 		int result = 0;
@@ -182,16 +193,6 @@ public class DayTwo {
 		return sum;
 	}
 
-	public static void executeStandardPart1() {
-		System.out.println("Day Two Part 1");
-		System.out.println("Checksum of listOfArrays is" + getStandardInputDayTwoPartOneAndTwo() + ".");
-	}
 
-	public static void executeStandardPart2() {
-		System.out.println("Day Two Part 2");
-		System.out.print("Sum of even divisions between listOfArrays is ");
-		System.out.print(getStandardInputDayTwoPartOneAndTwo());
-		System.out.print(".");
-	}
 
 }
