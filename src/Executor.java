@@ -21,8 +21,8 @@ public class Executor {
 //		DayFour.executeStandardPart1();
 //		DayFour.executeStandardPart2();
 
-//		DayFive.executeStandardPart1();
-//		DayFive.executeStandardPart2();
+		DayFive.executeStandardPart1();
+		DayFive.executeStandardPart2();
 		
 		System.out.println("test");
 		Integer[] newIntArray = {3, 4, 10};
