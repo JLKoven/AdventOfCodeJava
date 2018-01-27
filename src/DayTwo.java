@@ -33,7 +33,7 @@ public class DayTwo {
 	//
 	// input listed below
 		System.out.println("Day Two Part 1");
-		System.out.println("Checksum of listOfArrays is" + getStandardInputDayTwoPartOneAndTwo() + ".");
+		System.out.println("Checksum of listOfArrays is " + getListRowSum(getStandardInputDayTwoPartOneAndTwo()) + ".");
 	}
 
 	public static List<int[]> getStandardInputDayTwoPartOneAndTwo() {
@@ -141,7 +141,7 @@ public class DayTwo {
 	// What is the sum of each row's result in your puzzle input?
 		System.out.println("Day Two Part 2");
 		System.out.print("Sum of even divisions between listOfArrays is ");
-		System.out.print(getStandardInputDayTwoPartOneAndTwo());
+		System.out.print(getListRowSumDivisions(getStandardInputDayTwoPartOneAndTwo()));
 		System.out.print(".");
 	}
 
@@ -157,16 +157,16 @@ public class DayTwo {
 
 						if ((double) sampleRow[i] % (double) sampleRow[v] == 0) {
 							result = sampleRow[i] / sampleRow[v];
-							System.out.println("Found a result! sampleRow[i] is " + sampleRow[i]
-									+ " and sampleRow[v] is " + sampleRow[v] + ".");
+//							System.out.println("Found a result! sampleRow[i] is " + sampleRow[i]
+//									+ " and sampleRow[v] is " + sampleRow[v] + ".");
 							foundResult = true;
 							i = sampleRow.length;
 							v = sampleRow.length;
 							break;
 						} else if ((double) sampleRow[v] % (double) sampleRow[i] == 0) {
 							result = sampleRow[v] / sampleRow[i];
-							System.out.println("Found a result! sampleRow[i] is " + sampleRow[i]
-									+ " and sampleRow[v] is " + sampleRow[v] + ".");
+//							System.out.println("Found a result! sampleRow[i] is " + sampleRow[i]
+//									+ " and sampleRow[v] is " + sampleRow[v] + ".");
 							foundResult = true;
 							i = sampleRow.length;
 							v = sampleRow.length;
