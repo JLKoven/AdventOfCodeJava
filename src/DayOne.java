@@ -52,7 +52,7 @@ public class DayOne {
 	// input provided below
 	//
 		System.out.println("Day 1 Part 1");
-		System.out.println("Answer to array part 1 is " + printAnswerDayOne(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to array part 1 is " + printAnswerPartOne(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
 	public static List<String> getStandardInputDayOnePartOneAndTwo() {
@@ -123,7 +123,7 @@ public class DayOne {
 		return printAnswerGeneric(input, input.charAt(input.length() - 1));
 	}
 
-	public static int printAnswerDayOne(List<String> stringList) {
+	public static int printAnswerPartOne(List<String> stringList) {
 		int sum = 0;
 		for (int i = 0; i < stringList.size(); i++) {
 			if (i != 0) {
@@ -153,10 +153,10 @@ public class DayOne {
 //	12131415 produces 4.
 //	What is the solution to your new captcha?
 		System.out.println("Day 1 Part 2");
-		System.out.println("Answer to array part 2 is " + printAnswerDayTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to array part 2 is " + printAnswerPartTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
-	public static int printAnswerDayTwo(List<String> stringList) {
+	public static int printAnswerPartTwo(List<String> stringList) {
 		int answer = 0;
 		CircularArray circularArray = streamInStringList(stringList);
 		for (int i = 0; i < (circularArray.getArrayAsList().size() / 2); i++) {
