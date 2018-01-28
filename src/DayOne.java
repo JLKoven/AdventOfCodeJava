@@ -134,7 +134,7 @@ public class DayOne {
 						.charAt(stringList.get(stringList.size() - 1).length() - 1)));
 			}
 		}
-		System.out.println(sum);
+//		System.out.println(sum);
 		return sum;
 	}
 	
