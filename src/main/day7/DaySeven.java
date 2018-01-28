@@ -6,7 +6,6 @@ public class DaySeven {
 
 	public static String printAnswerPartOne(DiscTower outputTower) {
 		String stringToReturn = "";
-		// TODO Auto-generated method stub
 		return stringToReturn ;
 	}
 
@@ -18,15 +17,12 @@ public class DaySeven {
 			DiscForTower newDisc = new DiscForTower();	
 			String[] sourceParts = source.split(" ");
 			newDisc.setName(sourceParts[0]);
-			System.out.println("sourceParts[1] is "+sourceParts[1]+".");
-			System.out.println("GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1]) is "+GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])+".");
-			System.out.println("Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])) is "+Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1]))+".");
 //			newDisc.setValue(Integer.getInteger(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
 			newDisc.setValue(Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
 			if (parts.length>1){
 				String results = parts[1]; 
 				String[] resultsParts = results.split(", ");
-				resultsParts[0] = GeneralFunction.removeNonNumericLeaveDashAndDot(resultsParts[0]);
+				resultsParts[0] = GeneralFunction.removeWhitespace(resultsParts[0]);
 				List<String> listOfNames = newDisc.getNamesOfDescendants();
 				for (int v=0; v<resultsParts.length; v++){
 					listOfNames.add(resultsParts[v]);

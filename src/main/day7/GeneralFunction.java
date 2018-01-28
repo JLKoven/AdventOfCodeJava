@@ -37,5 +37,10 @@ public class GeneralFunction {
 		String outputString = inputString.replaceAll("[^\\d.-]", "");;
 		return outputString;
 	}
+	
+	public static String removeWhitespace(String inputString) {
+		String outputString = inputString.replaceAll(" ", "");;
+		return outputString;
+	}
 
 }
