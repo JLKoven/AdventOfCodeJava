@@ -70,7 +70,7 @@ public class DayFour {
 				"Answer to array part 1 is " + printAnswerDayFourPartTwo(getStandardInputDayFourPartOneAndTwo()) + ".");
 	}
 
-	private static int printAnswerDayFourPartTwo(List<String> stringList) {
+	public static int printAnswerDayFourPartTwo(List<String> stringList) {
 		int counter = 0;
 		for (int i = 0; i < stringList.size(); i++) {
 			String[] parts = stringList.get(i).split(" ");
