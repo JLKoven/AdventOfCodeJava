@@ -1,7 +1,10 @@
+package test.day3;
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
+
+import main.day3.DayThree;
 
 public class TestDayThree {
 

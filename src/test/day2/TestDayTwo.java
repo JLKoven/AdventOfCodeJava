@@ -1,9 +1,12 @@
+package test.day2;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import main.day2.DayTwo;
 
 public class TestDayTwo {
 

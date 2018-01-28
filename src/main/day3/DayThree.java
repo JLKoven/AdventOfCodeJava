@@ -1,3 +1,4 @@
+package main.day3;
 public class DayThree {
 
 	public static void executeStandardPart1() {

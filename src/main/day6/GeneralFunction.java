@@ -1,3 +1,4 @@
+package main.day6;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,13 @@ public class GeneralFunction {
 			System.out.print(" ");
 		}
 		
+	}
+
+
+
+	public static String removeNonNumericLeaveDashAndDot(String inputString) {
+		String outputString = inputString.replaceAll("[^\\d.-]", "");;
+		return outputString;
 	}
 
 }

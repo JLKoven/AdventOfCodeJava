@@ -1,3 +1,4 @@
+package main.day7;
 import java.util.List;
 
 public class DiscTower {
