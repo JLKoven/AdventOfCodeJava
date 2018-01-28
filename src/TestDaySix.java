@@ -17,7 +17,7 @@ public class TestDaySix {
 		array.add(0);
 		assertEquals(
 				DaySix.printAnswerPartOne(array), 5);
-		System.out.println("Success on Day5.testPartOneTest1!");
+		System.out.println("Success on Day6.testPartOneTest1!");
 	}
 	
 	@Test
