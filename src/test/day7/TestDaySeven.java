@@ -32,18 +32,7 @@ public class TestDaySeven {
 		List<DiscForTower> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
 		DiscTower outputTower = new DiscTower();
 		outputTower = DiscTower.formNewTowerFrom(inputList);
-		for (int i=0; i<inputList.size(); i++){
-			System.out.println(i);
-			System.out.println("Printing out discname as "+inputList.get(i).getName()+".");
-			System.out.println("Printing out discvalue as "+inputList.get(i).getValue()+".");
-			if (inputList.get(i).getNamesOfDescendants().size()>0){
-				for (String name : inputList.get(i).getNamesOfDescendants()){
-					System.out.print(name);
-					System.out.print(" ");
-				}
-			}
-			System.out.println("");
-		}
+
 		assertEquals(
 //				DaySeven.printAnswerPartOne(outputTower),"tknk");
 				"tknk","tknk");
