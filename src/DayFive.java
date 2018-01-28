@@ -34,7 +34,7 @@ public class DayFive {
 //		How many steps does it take to reach the exit?
 		System.out.println("Day 5 Part 1");
 		System.out.println(
-				"Answer to array part 1 is " + printAnswerDayFivePartOne(getStandardInputDayFivePartOneAndTwo()) + ".");
+				"Answer to part 1 is " + printAnswerDayFivePartOne(getStandardInputDayFivePartOneAndTwo()) + ".");
 	}
 
 
@@ -70,7 +70,7 @@ public class DayFive {
 	//		How many steps does it now take to reach the exit?	
 		System.out.println("Day 5 Part 2");
 		System.out.println(
-				"Answer to array part 1 is " + printAnswerDayFivePartTwo(getStandardInputDayFivePartOneAndTwo()) + ".");
+				"Answer to part 2 is " + printAnswerDayFivePartTwo(getStandardInputDayFivePartOneAndTwo()) + ".");
 		}
 
 

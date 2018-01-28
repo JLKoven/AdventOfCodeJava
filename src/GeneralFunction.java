@@ -22,4 +22,12 @@ public class GeneralFunction {
 		return newList;
 	}
 
+	public static void systemPrintArrayList(List<Integer> array) {
+		for (Integer integer : array){
+			System.out.print(integer);
+			System.out.print(" ");
+		}
+		
+	}
+
 }

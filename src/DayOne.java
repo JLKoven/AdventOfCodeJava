@@ -52,7 +52,7 @@ public class DayOne {
 	// input provided below
 	//
 		System.out.println("Day 1 Part 1");
-		System.out.println("Answer to array part 1 is " + printAnswerPartOne(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to part 1 is " + printAnswerPartOne(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
 	public static List<String> getStandardInputDayOnePartOneAndTwo() {
@@ -153,7 +153,7 @@ public class DayOne {
 //	12131415 produces 4.
 //	What is the solution to your new captcha?
 		System.out.println("Day 1 Part 2");
-		System.out.println("Answer to array part 2 is " + printAnswerPartTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
 	public static int printAnswerPartTwo(List<String> stringList) {
