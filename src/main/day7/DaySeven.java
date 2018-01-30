@@ -117,7 +117,7 @@ public class DaySeven {
 				stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
 			}
 			Integer initialValue = outputTower.getBase().getValue();
-			System.out.println("The sumValue of "+disc.getName()+" is: "+
+			System.out.println("The sum direct value of "+disc.getName()+"'s children is: "+
 			disc.directValueOfChildren(
 					outputTower.getDictionary()
 					//, initialValue
@@ -1220,7 +1220,12 @@ public class DaySeven {
 		defaultInput.add("spdhhoe (167) -> chwjiub, kvdkwy");
 		defaultInput.add("hhmwlo (56)");
 		defaultInput.add("icgwppo (84)");
+		
+		//please bundle these?
 		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
+		DiscTower.createNetworkFromStringValues(listForTower);
+		//please bundle these?
+		
 		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 		return outputTower;
 	}

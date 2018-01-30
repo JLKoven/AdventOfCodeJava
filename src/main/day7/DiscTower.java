@@ -1,4 +1,5 @@
 package main.day7;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,16 +26,7 @@ public class DiscTower {
 			}
 		}
 		
-		for (String name : dictionary.keySet()){
-			if (!visited.contains(
-					name
-					)){
-				outputTower.setBase(dictionary.get(
-						name
-						));
-				break;
-			}
-		}
+
 		
 //		for (int i=0; i<inputList.size(); i++){
 //			if (!visited.contains(
@@ -47,6 +39,26 @@ public class DiscTower {
 //			}
 //		}
 		outputTower.setDictionary(dictionary);
+		
+		for (DiscForTower disc : inputList){
+			List<DiscForTower> nodesToSet = new ArrayList<DiscForTower>();
+			for (String name : disc.getNamesOfDescendants()){
+				nodesToSet.add(dictionary.get(name));
+			}
+			disc.setDescendants(nodesToSet);
+		}
+		
+		for (String name : dictionary.keySet()){
+			if (!visited.contains(
+					name
+					)){
+				outputTower.setBase(dictionary.get(
+						name
+						));
+				break;
+			}
+		}
+		
 		return outputTower;
 	}
 
@@ -78,6 +90,13 @@ public class DiscTower {
 
 	public void setDictionary(Map<String, DiscForTower> dictionary) {
 		this.dictionary = dictionary;
+	}
+
+	public static void createNetworkFromStringValues(List<DiscForTower> towerList) {
+		for (DiscForTower disc : towerList){
+			
+		}
+		
 	}
 
 }

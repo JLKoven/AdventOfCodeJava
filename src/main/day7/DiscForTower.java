@@ -10,7 +10,7 @@ public class DiscForTower {
 	private String name;
 	private Integer value;
 	private List<String> namesOfDescendants = new ArrayList<String>();
-//	private List<DiscForTower> descendants = new ArrayList<DiscForTower>();
+	private List<DiscForTower> descendants = new ArrayList<DiscForTower>();//could be a Set instead of a list, I dunno
 	
 	public String getName() {
 		return name;
@@ -30,12 +30,12 @@ public class DiscForTower {
 	public void setNamesOfDescendants(List<String> namesOfDescendants) {
 		this.namesOfDescendants = namesOfDescendants;
 	}
-//	public List<DiscForTower> getDescendants() {
-//		return descendants;
-//	}
-//	public void setDescendants(List<DiscForTower> descendants) {
-//		this.descendants = descendants;
-//	}
+	public List<DiscForTower> getDescendants() {
+		return descendants;
+	}
+	public void setDescendants(List<DiscForTower> descendants) {
+		this.descendants = descendants;
+	}
 	
 	public Integer directValueOfChildren(Map<String, DiscForTower> dictionary
 //			, Stack<DiscForTower> stackOfChildren
