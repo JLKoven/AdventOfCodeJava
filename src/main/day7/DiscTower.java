@@ -1,11 +1,78 @@
 package main.day7;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DiscTower {
+	
+	private DiscForTower base;	
 
 	public static DiscTower formNewTowerFrom(List<DiscForTower> inputList) {
 		DiscTower outputTower = new DiscTower();
-		return outputTower ;
+		
+		Map<String, DiscForTower> dictionary = createDictionary(inputList);
+		
+//		Set<DiscForTower> visited = new HashSet<DiscForTower>();
+		Set<String> visited = new HashSet<String>();
+		for (int i=0; i<inputList.size(); i++){
+			if (!inputList.get(i).getNamesOfDescendants().isEmpty()){
+				for (String name : inputList.get(i).getNamesOfDescendants()){
+					visited.add(name);
+				}
+			}
+		}
+		
+		for (String name : visited){
+			System.out.println(name+" is in visited");
+		}
+		
+		for (String name : dictionary.keySet()){
+			if (!visited.contains(
+					name
+					)){
+				outputTower.setBase(dictionary.get(
+						name
+						));
+				break;
+			}
+		}
+		
+//		for (int i=0; i<inputList.size(); i++){
+//			if (!visited.contains(
+//					
+//					)){
+//				outputTower.setBase(dictionary.get(
+//						inputList.get(i).getName()
+//						));
+//				break;
+//			}
+//		}
+		
+		return outputTower;
+	}
+
+	private static Map<String, DiscForTower> createDictionary(List<DiscForTower> inputList) {
+		Map<String, DiscForTower> dictionary = new HashMap<String, DiscForTower>();
+		for (DiscForTower disc : inputList){
+			dictionary.put(disc.getName(), disc);
+		}
+		return dictionary;
+	}
+
+//	private static DiscForTower getDiscWithThisName(String name) {
+//		DiscForTower disc = new DiscForTower();
+//		// TODO Auto-generated method stub
+//		return disc;
+//	}
+
+	public DiscForTower getBase() {
+		return base;
+	}
+
+	public void setBase(DiscForTower base) {
+		this.base = base;
 	}
 
 }

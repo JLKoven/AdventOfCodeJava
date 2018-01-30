@@ -34,8 +34,8 @@ public class TestDaySeven {
 		outputTower = DiscTower.formNewTowerFrom(inputList);
 
 		assertEquals(
-//				DaySeven.printAnswerPartOne(outputTower),"tknk");
-				"tknk","tknk");
+				DaySeven.printAnswerPartOne(outputTower),"tknk");
+//				"tknk","tknk");
 
 //				DaySeven.printAnswerPartOne(inputDiscs), outputTower);
 		System.out.println("Success on Day7.testPartOneTest1!");
