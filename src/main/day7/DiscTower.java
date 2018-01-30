@@ -8,6 +8,7 @@ import java.util.Set;
 public class DiscTower {
 	
 	private DiscForTower base;	
+	private Map<String, DiscForTower> dictionary;// = createDictionary(inputList);
 
 	public static DiscTower formNewTowerFrom(List<DiscForTower> inputList) {
 		DiscTower outputTower = new DiscTower();
@@ -22,10 +23,6 @@ public class DiscTower {
 					visited.add(name);
 				}
 			}
-		}
-		
-		for (String name : visited){
-			System.out.println(name+" is in visited");
 		}
 		
 		for (String name : dictionary.keySet()){
@@ -49,7 +46,7 @@ public class DiscTower {
 //				break;
 //			}
 //		}
-		
+		outputTower.setDictionary(dictionary);
 		return outputTower;
 	}
 
@@ -73,6 +70,14 @@ public class DiscTower {
 
 	public void setBase(DiscForTower base) {
 		this.base = base;
+	}
+
+	public Map<String, DiscForTower> getDictionary() {
+		return dictionary;
+	}
+
+	public void setDictionary(Map<String, DiscForTower> dictionary) {
+		this.dictionary = dictionary;
 	}
 
 }

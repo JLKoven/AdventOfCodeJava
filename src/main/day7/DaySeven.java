@@ -1,6 +1,8 @@
 package main.day7;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+
 import main.GeneralFunction;
 
 
@@ -88,6 +90,40 @@ public class DaySeven {
 		return resultingList ;
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public static void executeHybrid() {
+//		System.out.println("Answer to part 1 is " + printHybrid(getStandardInputDaySeven()) + ".");
+		List<String> stringInput = new ArrayList<String>();
+		stringInput.add("pbga (66)");
+		stringInput.add("xhth (57)");
+		stringInput.add("ebii (61)");
+		stringInput.add("havc (66)");
+		stringInput.add("ktlj (57)");
+		stringInput.add("fwft (72) -> ktlj, cntj, xhth");
+		stringInput.add("qoyq (66)");
+		stringInput.add("padx (45) -> pbga, havc, qoyq");
+		stringInput.add("tknk (41) -> ugml, padx, fwft");
+		stringInput.add("jptl (61)");
+		stringInput.add("ugml (68) -> gyxo, ebii, jptl");
+		stringInput.add("gyxo (61)");
+		stringInput.add("cntj (57)");
+		List<DiscForTower> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
+		DiscTower outputTower = new DiscTower();
+		outputTower = DiscTower.formNewTowerFrom(inputList);
+		for (DiscForTower disc : inputList){
+			Stack<DiscForTower> stackOfChildren = new Stack();
+			for (String childDiscForTower : outputTower.getBase().getNamesOfDescendants()){
+				stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
+			}
+			Integer initialValue = outputTower.getBase().getValue();
+			System.out.println("The sumValue of "+disc.getName()+" is: "+
+			disc.directValueOfChildren(
+					outputTower.getDictionary()
+					//, initialValue
+					//, stackOfChildren 
+					)+".");
+		}
 	}
 
 	private static DiscTower getStandardInputDaySeven() {
@@ -1188,5 +1224,9 @@ public class DaySeven {
 		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 		return outputTower;
 	}
+
+
+
+
 
 }
