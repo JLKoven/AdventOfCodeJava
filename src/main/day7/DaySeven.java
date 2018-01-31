@@ -1,99 +1,118 @@
 package main.day7;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import main.GeneralFunction;
 
-
 public class DaySeven {
-	
+
 	public static void executeStandardPart1() {
-//		Wandering further through the circuits of the computer, you come upon a tower of programs that have gotten themselves into a bit of trouble. A recursive algorithm has gotten out of hand, and now they're balanced precariously in a large tower.
-//
-//		One program at the bottom supports the entire tower. It's holding a large disc, and on the disc are balanced several more sub-towers. At the bottom of these sub-towers, standing on the bottom disc, are other programs, each holding their own disc, and so on. At the very tops of these sub-sub-sub-...-towers, many programs stand simply keeping the disc below them balanced but with no disc of their own.
-//
-//		You offer to help, but first you need to understand the structure of these towers. You ask each program to yell out their name, their weight, and (if they're holding a disc) the names of the programs immediately above them balancing on that disc. You write this information down (your puzzle input). Unfortunately, in their panic, they don't do this in an orderly fashion; by the time you're done, you're not sure which program gave which information.
-//
-//		For example, if your list is the following:
-//
-//		pbga (66)
-//		xhth (57)
-//		ebii (61)
-//		havc (66)
-//		ktlj (57)
-//		fwft (72) -> ktlj, cntj, xhth
-//		qoyq (66)
-//		padx (45) -> pbga, havc, qoyq
-//		tknk (41) -> ugml, padx, fwft
-//		jptl (61)
-//		ugml (68) -> gyxo, ebii, jptl
-//		gyxo (61)
-//		cntj (57)
-//		...then you would be able to recreate the structure of the towers that looks like this:
-//
-//		                gyxo
-//		              /     
-//		         ugml - ebii
-//		       /      \     
-//		      |         jptl
-//		      |        
-//		      |         pbga
-//		     /        /
-//		tknk --- padx - havc
-//		     \        \
-//		      |         qoyq
-//		      |             
-//		      |         ktlj
-//		       \      /     
-//		         fwft - cntj
-//		              \     
-//		                xhth
-//		In this example, tknk is at the bottom of the tower (the bottom program), and is holding up ugml, padx, and fwft. Those programs are, in turn, holding up other programs; in this example, none of those programs are holding up any other programs, and are all the tops of their own towers. (The actual tower balancing in front of you is much larger.)
-//
-//		Before you're ready to help them, you need to make sure your information is correct. What is the name of the bottom program?
+		// Wandering further through the circuits of the computer, you come upon
+		// a tower of programs that have gotten themselves into a bit of
+		// trouble. A recursive algorithm has gotten out of hand, and now
+		// they're balanced precariously in a large tower.
+		//
+		// One program at the bottom supports the entire tower. It's holding a
+		// large disc, and on the disc are balanced several more sub-towers. At
+		// the bottom of these sub-towers, standing on the bottom disc, are
+		// other programs, each holding their own disc, and so on. At the very
+		// tops of these sub-sub-sub-...-towers, many programs stand simply
+		// keeping the disc below them balanced but with no disc of their own.
+		//
+		// You offer to help, but first you need to understand the structure of
+		// these towers. You ask each program to yell out their name, their
+		// weight, and (if they're holding a disc) the names of the programs
+		// immediately above them balancing on that disc. You write this
+		// information down (your puzzle input). Unfortunately, in their panic,
+		// they don't do this in an orderly fashion; by the time you're done,
+		// you're not sure which program gave which information.
+		//
+		// For example, if your list is the following:
+		//
+		// pbga (66)
+		// xhth (57)
+		// ebii (61)
+		// havc (66)
+		// ktlj (57)
+		// fwft (72) -> ktlj, cntj, xhth
+		// qoyq (66)
+		// padx (45) -> pbga, havc, qoyq
+		// tknk (41) -> ugml, padx, fwft
+		// jptl (61)
+		// ugml (68) -> gyxo, ebii, jptl
+		// gyxo (61)
+		// cntj (57)
+		// ...then you would be able to recreate the structure of the towers
+		// that looks like this:
+		//
+		// gyxo
+		// /
+		// ugml - ebii
+		// / \
+		// | jptl
+		// |
+		// | pbga
+		// / /
+		// tknk --- padx - havc
+		// \ \
+		// | qoyq
+		// |
+		// | ktlj
+		// \ /
+		// fwft - cntj
+		// \
+		// xhth
+		// In this example, tknk is at the bottom of the tower (the bottom
+		// program), and is holding up ugml, padx, and fwft. Those programs are,
+		// in turn, holding up other programs; in this example, none of those
+		// programs are holding up any other programs, and are all the tops of
+		// their own towers. (The actual tower balancing in front of you is much
+		// larger.)
+		//
+		// Before you're ready to help them, you need to make sure your
+		// information is correct. What is the name of the bottom program?
 		System.out.println("Answer to part 1 is " + printAnswerPartOne(getStandardInputDaySeven()) + ".");
-		
+
 	}
-
-
 
 	public static String printAnswerPartOne(DiscTower outputTower) {
 		String stringToReturn = outputTower.getBase().getName();
-		return stringToReturn ;
+		return stringToReturn;
 	}
 
 	public static List<DiscForTower> generateListOfDiscsFromStringInput(List<String> stringInput) {
 		List<DiscForTower> resultingList = new ArrayList<DiscForTower>();
-		for (int i=0; i<stringInput.size(); i++){
+		for (int i = 0; i < stringInput.size(); i++) {
 			String[] parts = stringInput.get(i).split("->");
-			String source = parts[0]; 
-			DiscForTower newDisc = new DiscForTower();	
+			String source = parts[0];
+			DiscForTower newDisc = new DiscForTower();
 			String[] sourceParts = source.split(" ");
 			newDisc.setName(sourceParts[0]);
-//			newDisc.setValue(Integer.getInteger(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
+			// newDisc.setValue(Integer.getInteger(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
 			newDisc.setValue(Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
-			if (parts.length>1){
-				String results = parts[1]; 
+			if (parts.length > 1) {
+				String results = parts[1];
 				String[] resultsParts = results.split(", ");
 				resultsParts[0] = GeneralFunction.removeWhitespace(resultsParts[0]);
 				List<String> listOfNames = newDisc.getNamesOfDescendants();
-				for (int v=0; v<resultsParts.length; v++){
+				for (int v = 0; v < resultsParts.length; v++) {
 					listOfNames.add(resultsParts[v]);
 				}
 				newDisc.setNamesOfDescendants(listOfNames);
 			}
 			resultingList.add(newDisc);
-			
-			
+
 		}
-		return resultingList ;
+		return resultingList;
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public static void executeHybrid() {
-//		System.out.println("Answer to part 1 is " + printHybrid(getStandardInputDaySeven()) + ".");
+		// System.out.println("Answer to part 1 is " +
+		// printHybrid(getStandardInputDaySeven()) + ".");
 		List<String> stringInput = new ArrayList<String>();
 		stringInput.add("pbga (66)");
 		stringInput.add("xhth (57)");
@@ -111,24 +130,79 @@ public class DaySeven {
 		List<DiscForTower> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
 		DiscTower outputTower = new DiscTower();
 		outputTower = DiscTower.formNewTowerFrom(inputList);
-		for (DiscForTower disc : inputList){
-			System.out.println("The value of all children of "+disc.getName()+" plus this value is "+disc.getSumValue()+".");
-//			Stack<DiscForTower> stackOfChildren = new Stack();
-//			for (String childDiscForTower : outputTower.getBase().getNamesOfDescendants()){
-//				stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
-//			}
-//			Integer initialValue = outputTower.getBase().getValue();
-//			System.out.println("The sum direct value of "+disc.getName()+"'s children is: "+
-//			disc.directValueOfChildren(
-//					outputTower.getDictionary()
-//					//, initialValue
-//					//, stackOfChildren 
-//					)+".");
+		for (DiscForTower disc : inputList) {
+			System.out.println(
+					"The value of all children of " + disc.getName() + " is " + disc.sumValueOfChildren() + ".");
+			if (disc.isUnbalanced()) {
+				// int discrepancy = ;
+				System.out.println(
+						disc.getName() + " is unbalanced, the discrepancy is " + disc.getDiscrepancyValue() + ".");// +disc.sumValueOfChildren()+".");
+				// DiscForTower getDiscrepantDisc = disc.getUnbalancedDisc();
+			}
+
+			// Stack<DiscForTower> stackOfChildren = new Stack();
+			// for (String childDiscForTower :
+			// outputTower.getBase().getNamesOfDescendants()){
+			// stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
+			// }
+			// Integer initialValue = outputTower.getBase().getValue();
+			// System.out.println("The sum direct value of "+disc.getName()+"'s
+			// children is: "+
+			// disc.directValueOfChildren(
+			// outputTower.getDictionary()
+			// //, initialValue
+			// //, stackOfChildren
+			// )+".");
 		}
 	}
 
-	private static DiscTower getStandardInputDaySeven() {
+	public static void executeStandardPart2() {
+		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputString()) + ".");
+
+	}
+
+	private static Integer printAnswerPartTwo(List<String> defaultInput) {
+		Integer intToReturn = 0;
 		
+
+		// please bundle these?
+		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
+		DiscTower.createNetworkFromStringValues(listForTower);
+		// please bundle these?
+
+		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
+
+		for (DiscForTower disc : listForTower) {
+			if (disc.isUnbalanced()) {
+				System.out.println(
+						disc.getName() + " with weight "+disc.getValue()+" is unbalanced, the discrepancy is " + disc.getDiscrepancyValue() + ".");// +disc.sumValueOfChildren()+".");
+				intToReturn = disc.getDiscrepancyValue();
+				for (DiscForTower child : disc.getDescendants()){
+					  System.out.println("Sum value of "+child.getName()+" is "+child.getSumValue()+", weight is "+child.getValue()+".");
+				}
+			}
+
+
+		}
+
+		
+		return intToReturn;
+	}
+
+	private static DiscTower getStandardInputDaySeven() {
+
+		List<String> defaultInput = getStandardInputString();
+
+		// please bundle these?
+		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
+		DiscTower.createNetworkFromStringValues(listForTower);
+		// please bundle these?
+
+		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
+		return outputTower;
+	}
+
+	private static List<String> getStandardInputString() {
 		List<String> defaultInput = new ArrayList<String>();
 		defaultInput.add("yjmbbu (75)");
 		defaultInput.add("zdhvqrl (40) -> fpbsu, fwpfjjd, viqhfi");
@@ -1221,18 +1295,7 @@ public class DaySeven {
 		defaultInput.add("spdhhoe (167) -> chwjiub, kvdkwy");
 		defaultInput.add("hhmwlo (56)");
 		defaultInput.add("icgwppo (84)");
-		
-		//please bundle these?
-		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
-		DiscTower.createNetworkFromStringValues(listForTower);
-		//please bundle these?
-		
-		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
-		return outputTower;
+		return defaultInput;
 	}
-
-
-
-
 
 }

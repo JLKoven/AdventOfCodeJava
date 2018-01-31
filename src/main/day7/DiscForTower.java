@@ -72,5 +72,61 @@ public class DiscForTower {
 		}
 		return sumValue;
 	}
+	public Integer sumValueOfChildren(
+//			, Stack<DiscForTower> stackOfChildren
+//			, Integer sumValue
+			){
+		Integer sumValue =0;
+		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
+		for (DiscForTower descendant : getDescendants()){
+			stackOfChildren.push(descendant);
+		}
+		while (!(stackOfChildren.isEmpty())){
+			sumValue = sumValue + stackOfChildren.peek().getValue();
+			DiscForTower currentNode = stackOfChildren.pop();
+			for (DiscForTower descendant : currentNode.getDescendants()){
+				stackOfChildren.push(descendant);
+			}
+		}
+		return sumValue;
+	}
+	public boolean isUnbalanced() {
+		boolean boolToReturn = false;
+		if (!getDescendants().isEmpty()){
+			int firstVal = getDescendants().get(0).getSumValue();
+			for (int i=0; i<getDescendants().size(); i++){
+				if (firstVal != getDescendants().get(i).getSumValue()){
+					boolToReturn = true;
+				}
+			}
+		}
+		return boolToReturn;
+	}
+
+	public int getDiscrepancyValue() {
+		int intToReturn=0;
+		if (!getDescendants().isEmpty()){
+			int firstVal = getDescendants().get(0).getSumValue();
+			for (int i=0; i<getDescendants().size(); i++){
+				if (firstVal != getDescendants().get(i).getSumValue()){
+					intToReturn = firstVal - getDescendants().get(i).getSumValue();
+				}
+			}
+		}
+		return intToReturn;
+	}
+	
+//	public DiscForTower getUnbalancedDisc() {
+//		
+//		if (!getDescendants().isEmpty()){
+//			int firstVal = getDescendants().get(0).getSumValue();
+//			for (int i=0; i<getDescendants().size(); i++){
+//				if (firstVal != getDescendants().get(i).getSumValue()){
+//					boolToReturn = true;
+//				}
+//			}
+//		}
+//		return discToReturn;
+//	}
 
 }

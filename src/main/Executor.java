@@ -39,8 +39,8 @@ public class Executor {
 //		DaySix.executeStandardPart2();
 		
 //		DaySeven.executeStandardPart1();
-		DaySeven.executeHybrid();
-//		DaySeven.executeStandardPart2();
+//		DaySeven.executeHybrid();
+		DaySeven.executeStandardPart2();
 
 	}
 
