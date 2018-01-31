@@ -57,5 +57,20 @@ public class DiscForTower {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
+	public Integer getSumValue() {
+		Integer sumValue = getValue();
+		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
+		for (DiscForTower descendant : getDescendants()){
+			stackOfChildren.push(descendant);
+		}
+		while (!(stackOfChildren.isEmpty())){
+			sumValue = sumValue + stackOfChildren.peek().getValue();
+			DiscForTower currentNode = stackOfChildren.pop();
+			for (DiscForTower descendant : currentNode.getDescendants()){
+				stackOfChildren.push(descendant);
+			}
+		}
+		return sumValue;
+	}
 
 }

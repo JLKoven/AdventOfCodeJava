@@ -112,17 +112,18 @@ public class DaySeven {
 		DiscTower outputTower = new DiscTower();
 		outputTower = DiscTower.formNewTowerFrom(inputList);
 		for (DiscForTower disc : inputList){
-			Stack<DiscForTower> stackOfChildren = new Stack();
-			for (String childDiscForTower : outputTower.getBase().getNamesOfDescendants()){
-				stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
-			}
-			Integer initialValue = outputTower.getBase().getValue();
-			System.out.println("The sum direct value of "+disc.getName()+"'s children is: "+
-			disc.directValueOfChildren(
-					outputTower.getDictionary()
-					//, initialValue
-					//, stackOfChildren 
-					)+".");
+			System.out.println("The value of all children of "+disc.getName()+" plus this value is "+disc.getSumValue()+".");
+//			Stack<DiscForTower> stackOfChildren = new Stack();
+//			for (String childDiscForTower : outputTower.getBase().getNamesOfDescendants()){
+//				stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
+//			}
+//			Integer initialValue = outputTower.getBase().getValue();
+//			System.out.println("The sum direct value of "+disc.getName()+"'s children is: "+
+//			disc.directValueOfChildren(
+//					outputTower.getDictionary()
+//					//, initialValue
+//					//, stackOfChildren 
+//					)+".");
 		}
 	}
 
