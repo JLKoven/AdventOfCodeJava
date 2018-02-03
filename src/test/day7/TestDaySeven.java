@@ -35,23 +35,30 @@ public class TestDaySeven {
 
 		assertEquals(
 				DaySeven.printAnswerPartOne(outputTower),"tknk");
-//				"tknk","tknk");
-
-//				DaySeven.printAnswerPartOne(inputDiscs), outputTower);
 		System.out.println("Success on Day7.testPartOneTest1!");
 	}
 	
-//	@Test
-//	public void testPartOneTest2() {
-//
-//		List<Integer> array = new ArrayList<Integer>();
-//		array.add(0);
-//		array.add(2);
-//		array.add(7);
-//		array.add(0);
-//		assertEquals(
-//				DaySeven.printAnswerPartTwo(array), 4);
-//		System.out.println("Success on Day7.testPartTwoTest1!");
-//	}
+	@Test
+	public void testPartOneTest2() {
+
+		List<String> stringInput = new ArrayList<String>();
+		stringInput.add("pbga (66)");
+		stringInput.add("xhth (57)");
+		stringInput.add("ebii (61)");
+		stringInput.add("havc (66)");
+		stringInput.add("ktlj (57)");
+		stringInput.add("fwft (72) -> ktlj, cntj, xhth");
+		stringInput.add("qoyq (66)");
+		stringInput.add("padx (45) -> pbga, havc, qoyq");
+		stringInput.add("tknk (41) -> ugml, padx, fwft");
+		stringInput.add("jptl (61)");
+		stringInput.add("ugml (68) -> gyxo, ebii, jptl");
+		stringInput.add("gyxo (61)");
+		stringInput.add("cntj (57)");
+
+		assertEquals(
+				DaySeven.printAnswerPartTwo(stringInput)==60,true);
+		System.out.println("Success on Day7.testPartOneTest2!");
+	}
 
 }
