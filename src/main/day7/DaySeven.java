@@ -90,7 +90,6 @@ public class DaySeven {
 			DiscForTower newDisc = new DiscForTower();
 			String[] sourceParts = source.split(" ");
 			newDisc.setName(sourceParts[0]);
-			// newDisc.setValue(Integer.getInteger(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
 			newDisc.setValue(Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
 			if (parts.length > 1) {
 				String results = parts[1];
@@ -106,7 +105,6 @@ public class DaySeven {
 
 		}
 		return resultingList;
-		// TODO Auto-generated method stub
 
 	}
 
@@ -120,24 +118,21 @@ public class DaySeven {
 		Integer intToReturn = 0;
 		
 
-		// please bundle these?
+		List<DiscForTower> listForTower = new ArrayList<DiscForTower>();
+		DiscTower outputTower = new DiscTower();
+//		processTower(defaultInput, listForTower, outputTower);
 		
-		List<DiscForTower> listForTower = 								
+		// please bundle these?		
+		listForTower = 								
 				generateListOfDiscsFromStringInput(defaultInput);
 		DiscTower.createNetworkFromStringValues(listForTower);
-		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
+		outputTower = DiscTower.formNewTowerFrom(listForTower);
 		// please bundle these?
 
 
 		for (DiscForTower disc : listForTower) {
 			
 			if (disc.isUnbalanced()) {
-				System.out.println("woo");
-				//
-				
-				System.out.println(
-						disc.getName() + " with weight "+disc.getValue()+" is unbalanced, the discrepancy is " + disc.getDiscrepancyValue() + ".");// +disc.sumValueOfChildren()+".");
-				System.out.println("The discrepant disc is "+disc.getDiscrepantDisc().getName());
 				intToReturn = 
 						
 						(disc.getStandardValueOfChildren()
@@ -156,6 +151,13 @@ public class DaySeven {
 		System.out.println(intToReturn);
 		return intToReturn;
 	}
+
+//	private static void processTower(List<String> defaultInput, List<DiscForTower> listForTower, DiscTower outputTower) {
+//		listForTower = 								
+//				generateListOfDiscsFromStringInput(defaultInput);
+//		DiscTower.createNetworkFromStringValues(listForTower);
+//		outputTower = DiscTower.formNewTowerFrom(listForTower);	
+//		}
 
 	private static DiscTower getStandardInputDaySeven() {
 

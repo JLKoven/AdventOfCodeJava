@@ -9,14 +9,13 @@ import java.util.Set;
 public class DiscTower {
 	
 	private DiscForTower base;	
-	private Map<String, DiscForTower> dictionary;// = createDictionary(inputList);
+	private Map<String, DiscForTower> dictionary;
 
 	public static DiscTower formNewTowerFrom(List<DiscForTower> inputList) {
 		DiscTower outputTower = new DiscTower();
 		
 		Map<String, DiscForTower> dictionary = createDictionary(inputList);
 		
-//		Set<DiscForTower> visited = new HashSet<DiscForTower>();
 		Set<String> visited = new HashSet<String>();
 		for (int i=0; i<inputList.size(); i++){
 			if (!inputList.get(i).getNamesOfDescendants().isEmpty()){
@@ -26,18 +25,6 @@ public class DiscTower {
 			}
 		}
 		
-
-		
-//		for (int i=0; i<inputList.size(); i++){
-//			if (!visited.contains(
-//					
-//					)){
-//				outputTower.setBase(dictionary.get(
-//						inputList.get(i).getName()
-//						));
-//				break;
-//			}
-//		}
 		outputTower.setDictionary(dictionary);
 		
 		for (DiscForTower disc : inputList){
@@ -70,11 +57,6 @@ public class DiscTower {
 		return dictionary;
 	}
 
-//	private static DiscForTower getDiscWithThisName(String name) {
-//		DiscForTower disc = new DiscForTower();
-//		// TODO Auto-generated method stub
-//		return disc;
-//	}
 
 	public DiscForTower getBase() {
 		return base;

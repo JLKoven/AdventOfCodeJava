@@ -55,11 +55,8 @@ public class DiscForTower {
 	}
 
 	public Integer directValueOfChildren(Map<String, DiscForTower> dictionary
-	// , Stack<DiscForTower> stackOfChildren
-	// , Integer sumValue
 	) {
-		Integer sumValue = 0;// getValue();
-		// System.out.println("Value for me is currently "+sumValue+"");
+		Integer sumValue = 0;
 		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
 		for (String name : getNamesOfDescendants()) {
 			stackOfChildren.push(dictionary.get(name));
@@ -71,11 +68,6 @@ public class DiscForTower {
 
 	}
 
-	// public String sumValueOfChildren(Map<String, DiscForTower> dictionary,
-	// Stack<DiscForTower> stackOfChildren) {
-	// // TODO Auto-generated method stub
-	// return null;
-	// }
 	public Integer getSumValue() {
 		Integer sumValue = getValue();
 		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
@@ -93,8 +85,6 @@ public class DiscForTower {
 	}
 
 	public Integer sumValueOfChildren(
-	// , Stack<DiscForTower> stackOfChildren
-	// , Integer sumValue
 	) {
 		Integer sumValue = 0;
 		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
@@ -162,28 +152,14 @@ public class DiscForTower {
 	public DiscForTower getDiscrepantDisc() {
 		DiscForTower discToReturn = new DiscForTower();
 
-		System.out.println(getStandardValueOfChildren()+" is the standard weight for "+getName()+"!");
 		if (!getDescendants().isEmpty()) {
 			for (int i = 0; i < getDescendants().size(); i++) {
 				if (!getStandardValueOfChildren().equals(getDescendants().get(i).getSumValue())){
-					System.out.println(getDescendants().get(i).getName()+" is discrepant! it's weight is "+getDescendants().get(i).getSumValue()+". It's individual value is "+getDescendants().get(i).getValue()+".");
 					discToReturn = getDescendants().get(i);
-				} else {
-					System.out.println(getDescendants().get(i).getName()+" is NOT discrepant! it's weight is "+getDescendants().get(i).getSumValue()+"");
-				}
+					break;
+				} 
 				
-				/*
-				System.out.println("  The standard value of children for this disc("+getDescendants().get(i).getName()+") is "+getDescendants().get(i).getStandardValueOfChildren()+".");
-				if (getDescendants().get(i).getSumValue() != getDescendants().get(i).getStandardValueOfChildren())
-				{
-					System.out.println("    "+getDescendants().get(i).getName()+" is discrepant, it has sumValue of "+getDescendants().get(i).getSumValue()+" instead of "+getDescendants().get(i).getStandardValueOfChildren()+"!!");
-					discToReturn = getDescendants().get(i);
-				}
-				// if (firstVal != getDescendants().get(i).getSumValue()){
-				// intToReturn = firstVal -
-				// getDescendants().get(i).getSumValue();
-				// DiscForTower discToReturn = ;
-				 */
+
 				 
 			}
 		}
@@ -191,17 +167,5 @@ public class DiscForTower {
 		return discToReturn;
 	}
 
-	// public DiscForTower getUnbalancedDisc() {
-	//
-	// if (!getDescendants().isEmpty()){
-	// int firstVal = getDescendants().get(0).getSumValue();
-	// for (int i=0; i<getDescendants().size(); i++){
-	// if (firstVal != getDescendants().get(i).getSumValue()){
-	// boolToReturn = true;
-	// }
-	// }
-	// }
-	// return discToReturn;
-	// }
 
 }
