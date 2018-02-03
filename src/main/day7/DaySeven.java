@@ -110,82 +110,50 @@ public class DaySeven {
 
 	}
 
-	public static void executeHybrid() {
-		// System.out.println("Answer to part 1 is " +
-		// printHybrid(getStandardInputDaySeven()) + ".");
-		List<String> stringInput = new ArrayList<String>();
-		stringInput.add("pbga (66)");
-		stringInput.add("xhth (57)");
-		stringInput.add("ebii (61)");
-		stringInput.add("havc (66)");
-		stringInput.add("ktlj (57)");
-		stringInput.add("fwft (72) -> ktlj, cntj, xhth");
-		stringInput.add("qoyq (66)");
-		stringInput.add("padx (45) -> pbga, havc, qoyq");
-		stringInput.add("tknk (41) -> ugml, padx, fwft");
-		stringInput.add("jptl (61)");
-		stringInput.add("ugml (68) -> gyxo, ebii, jptl");
-		stringInput.add("gyxo (61)");
-		stringInput.add("cntj (57)");
-		List<DiscForTower> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
-		DiscTower outputTower = new DiscTower();
-		outputTower = DiscTower.formNewTowerFrom(inputList);
-		for (DiscForTower disc : inputList) {
-			System.out.println(
-					"The value of all children of " + disc.getName() + " is " + disc.sumValueOfChildren() + ".");
-			if (disc.isUnbalanced()) {
-				// int discrepancy = ;
-				System.out.println(
-						disc.getName() + " is unbalanced, the discrepancy is " + disc.getDiscrepancyValue() + ".");// +disc.sumValueOfChildren()+".");
-				// DiscForTower getDiscrepantDisc = disc.getUnbalancedDisc();
-			}
-
-			// Stack<DiscForTower> stackOfChildren = new Stack();
-			// for (String childDiscForTower :
-			// outputTower.getBase().getNamesOfDescendants()){
-			// stackOfChildren.push(outputTower.getDictionary().get(childDiscForTower));
-			// }
-			// Integer initialValue = outputTower.getBase().getValue();
-			// System.out.println("The sum direct value of "+disc.getName()+"'s
-			// children is: "+
-			// disc.directValueOfChildren(
-			// outputTower.getDictionary()
-			// //, initialValue
-			// //, stackOfChildren
-			// )+".");
-		}
-	}
 
 	public static void executeStandardPart2() {
 		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputString()) + ".");
 
 	}
 
-	private static Integer printAnswerPartTwo(List<String> defaultInput) {
+	public static Integer printAnswerPartTwo(List<String> defaultInput) {
 		Integer intToReturn = 0;
 		
 
 		// please bundle these?
-		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
+		
+		List<DiscForTower> listForTower = 								
+				generateListOfDiscsFromStringInput(defaultInput);
 		DiscTower.createNetworkFromStringValues(listForTower);
+		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 		// please bundle these?
 
-		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 
 		for (DiscForTower disc : listForTower) {
+			
 			if (disc.isUnbalanced()) {
+				System.out.println("woo");
+				//
+				
 				System.out.println(
 						disc.getName() + " with weight "+disc.getValue()+" is unbalanced, the discrepancy is " + disc.getDiscrepancyValue() + ".");// +disc.sumValueOfChildren()+".");
-				intToReturn = disc.getDiscrepancyValue();
-				for (DiscForTower child : disc.getDescendants()){
-					  System.out.println("Sum value of "+child.getName()+" is "+child.getSumValue()+", weight is "+child.getValue()+".");
-				}
+				System.out.println("The discrepant disc is "+disc.getDiscrepantDisc().getName());
+				intToReturn = 
+						
+						(disc.getStandardValueOfChildren()
+								> disc.getDiscrepantDisc().getSumValue()
+								)
+						
+						? disc.getDiscrepantDisc().getValue()+Math.abs(disc.getDiscrepancyValue()) : disc.getDiscrepantDisc().getValue()-Math.abs(disc.getDiscrepancyValue());
+				
+				break;
+
 			}
 
 
 		}
 
-		
+		System.out.println(intToReturn);
 		return intToReturn;
 	}
 
@@ -196,9 +164,9 @@ public class DaySeven {
 		// please bundle these?
 		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
 		DiscTower.createNetworkFromStringValues(listForTower);
+		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 		// please bundle these?
 
-		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
 		return outputTower;
 	}
 
