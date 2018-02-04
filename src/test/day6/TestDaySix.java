@@ -11,7 +11,7 @@ import main.day6.DaySix;
 public class TestDaySix {
 
 	@Test
-	public void testPartOneTest1() {
+	public void testPartOneTestImperative1() {
 
 		List<Integer> array = new ArrayList<Integer>();
 		array.add(0);
@@ -24,7 +24,7 @@ public class TestDaySix {
 	}
 	
 	@Test
-	public void testPartOneTest2() {
+	public void testPartOneTestImperative2() {
 
 		List<Integer> array = new ArrayList<Integer>();
 		array.add(0);

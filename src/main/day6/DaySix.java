@@ -61,6 +61,21 @@ public class DaySix {
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix()) + ".");
 
 	}
+	
+	public static void executeStandardPart2() {
+//		--- Part Two ---
+//		Out of curiosity, the debugger would also like to know the size of the loop: starting from a state that has already been seen, how many block redistribution cycles must be performed before that same state is seen again?
+//
+//		In the example above, 2 4 1 2 is seen again after four cycles, and so the answer in that example would be 4.
+//
+//		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix()) + ".");
+
+	}
+	
+	
+	//Imperative
+
 
 	public static int getAnswerPartOneImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
@@ -167,16 +182,7 @@ public class DaySix {
 
 
 
-	public static void executeStandardPart2() {
-//		--- Part Two ---
-//		Out of curiosity, the debugger would also like to know the size of the loop: starting from a state that has already been seen, how many block redistribution cycles must be performed before that same state is seen again?
-//
-//		In the example above, 2 4 1 2 is seen again after four cycles, and so the answer in that example would be 4.
-//
-//		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix()) + ".");
 
-	}
 	
 	private static List<Integer> getStandardInputDaySix() {
 		List<Integer> array = new ArrayList<Integer>();

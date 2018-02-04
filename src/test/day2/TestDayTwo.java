@@ -11,7 +11,7 @@ import main.day2.DayTwo;
 public class TestDayTwo {
 
 	@Test
-	public void testPartOneTest1() {
+	public void testPartOneTestImperative1() {
 		List<int[]> var1 = new ArrayList<>();
 		int[] arrayA = {5,1,9,5};
 		var1.add(arrayA);
@@ -23,7 +23,7 @@ public class TestDayTwo {
 		System.out.println("Success on Day2.testPartOneTest1!");
 	}
 	@Test
-	public void testPartTwoTest1() {
+	public void testPartTwoTestImperative1() {
 		List<int[]> var2 = new ArrayList<>();
 		int[] arrayA = {5,9,2,8};
 		var2.add(arrayA);

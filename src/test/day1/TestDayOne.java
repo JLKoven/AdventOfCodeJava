@@ -12,14 +12,14 @@ public class TestDayOne {
 	
 
 	@Test
-	public void testPartOneTest1() {
+	public void testPartOneTestImperative1() {
 		List<String> var1 = new ArrayList<String>();
 		var1.add("1122");
 		assertEquals(DayOne.getAnswerPartOneImperative(var1),3);
 		System.out.println("Success on Day1.testPartOneTest1!");
 	}
 	@Test
-	public void testPartOneTest2() {
+	public void testPartOneTestImperative2() {
 		List<String> var2 = new ArrayList<String>();
 		var2.add("1111");
 		assertEquals(DayOne.getAnswerPartOneImperative(var2),4);

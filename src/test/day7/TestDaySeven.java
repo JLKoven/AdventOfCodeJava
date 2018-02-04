@@ -13,7 +13,7 @@ import main.day7.DiscTowerImperative;
 public class TestDaySeven {
 
 	@Test
-	public void testPartOneTest1() {
+	public void testPartOneTestImperative1() {
 
 		List<String> stringInput = new ArrayList<String>();
 		stringInput.add("pbga (66)");
@@ -39,7 +39,7 @@ public class TestDaySeven {
 	}
 	
 	@Test
-	public void testPartOneTest2() {
+	public void testPartOneTestImperative2() {
 
 		List<String> stringInput = new ArrayList<String>();
 		stringInput.add("pbga (66)");

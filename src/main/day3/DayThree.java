@@ -34,42 +34,7 @@ public class DayThree {
 		System.out.println("Day Three Part 1");
 		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(312051) + " steps!");
 	}
-
-	public static int getAnswerPartOneImperative(int stepsFromOrigin) {
-		int answer = 0;
-		SpiralGridImperative grid = new SpiralGridImperative();
-		for (int i = 0; i < stepsFromOrigin; i++) {
-			grid.addCellToGridInitial();
-		}
-		SpiralGridCellImperative lastCell = grid.getLastCell();
-		answer = answer + Math.abs(lastCell.getXCoord());
-		answer = answer + Math.abs(lastCell.getYCoord());
-		return answer;
-	}
-
-	public static int getCumulativeValueOfThisCell(int index) {
-		int answer = 0;
-		SpiralGridImperative grid = new SpiralGridImperative();
-		for (int i = 0; i < index; i++) {
-			grid.addCellToGridInitial();
-		}
-		SpiralGridCellImperative lastCell = grid.getLastCell();
-		return lastCell.getCellCumulativeValue();
-	}
-
-	public static int getAnswerPartTwoImperative(int input) {
-		int answer = 0;
-		int i = 0;
-		SpiralGridImperative grid = new SpiralGridImperative();
-		while (input > answer) {
-			grid.addCellToGridInitial();
-			SpiralGridCellImperative lastCell = grid.getLastCell();
-			answer = lastCell.getCellCumulativeValue();
-		}
-		return answer;
-	}
-
-
+	
 	public static void executeStandardPart2() {
 	// --- Part Two ---
 	// As a stress test on the system, the programs here clear the grid and then
@@ -107,5 +72,46 @@ public class DayThree {
 		}
 
 	}
+	
+	
+	
+	//Imperative
+
+	public static int getAnswerPartOneImperative(int stepsFromOrigin) {
+		int answer = 0;
+		SpiralGridImperative grid = new SpiralGridImperative();
+		for (int i = 0; i < stepsFromOrigin; i++) {
+			grid.addCellToGridInitial();
+		}
+		SpiralGridCellImperative lastCell = grid.getLastCell();
+		answer = answer + Math.abs(lastCell.getXCoord());
+		answer = answer + Math.abs(lastCell.getYCoord());
+		return answer;
+	}
+
+	public static int getCumulativeValueOfThisCell(int index) {
+		int answer = 0;
+		SpiralGridImperative grid = new SpiralGridImperative();
+		for (int i = 0; i < index; i++) {
+			grid.addCellToGridInitial();
+		}
+		SpiralGridCellImperative lastCell = grid.getLastCell();
+		return lastCell.getCellCumulativeValue();
+	}
+
+	public static int getAnswerPartTwoImperative(int input) {
+		int answer = 0;
+		int i = 0;
+		SpiralGridImperative grid = new SpiralGridImperative();
+		while (input > answer) {
+			grid.addCellToGridInitial();
+			SpiralGridCellImperative lastCell = grid.getLastCell();
+			answer = lastCell.getCellCumulativeValue();
+		}
+		return answer;
+	}
+
+
+
 
 }

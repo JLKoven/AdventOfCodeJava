@@ -36,33 +36,7 @@ public class DayTwo {
 		System.out.println("Day Two Part 1");
 		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(getStandardInputDayTwoPartOneAndTwo()) + ".");
 	}
-
-
-	// part 1
-
-	private static int getRowSum(int[] sampleRow) {
-		int sum = 0;
-		int lowest = sampleRow[0];
-		int highest = sampleRow[0];
-		for (int i = 0; i < sampleRow.length; i++) {
-			if (sampleRow[i] > highest) {
-				highest = sampleRow[i];
-			}
-			if (sampleRow[i] < lowest) {
-				lowest = sampleRow[i];
-			}
-		}
-		return highest - lowest;
-	}
-
-	public static int getAnswerPartOneImperative(List<int[]> listOfArrays) {
-		int sum = 0;
-		for (int i = 0; i < listOfArrays.size(); i++) {
-			sum = sum + getRowSum(listOfArrays.get(i));
-		}
-		return sum;
-	}
-
+	
 	public static void executeStandardPart2() {
 	// --- Part Two ---
 	// "Great work; looks like we're on the right track after all. Here's a star
@@ -96,7 +70,46 @@ public class DayTwo {
 		System.out.print(getAnswerPartTwoImperative(getStandardInputDayTwoPartOneAndTwo()));
 		System.out.print(".");
 	}
+	
+	
+	//Imperative
 
+
+
+	// part 1
+
+	private static int getRowSum(int[] sampleRow) {
+		int sum = 0;
+		int lowest = sampleRow[0];
+		int highest = sampleRow[0];
+		for (int i = 0; i < sampleRow.length; i++) {
+			if (sampleRow[i] > highest) {
+				highest = sampleRow[i];
+			}
+			if (sampleRow[i] < lowest) {
+				lowest = sampleRow[i];
+			}
+		}
+		return highest - lowest;
+	}
+
+	public static int getAnswerPartOneImperative(List<int[]> listOfArrays) {
+		int sum = 0;
+		for (int i = 0; i < listOfArrays.size(); i++) {
+			sum = sum + getRowSum(listOfArrays.get(i));
+		}
+		return sum;
+	}
+
+
+	public static int getAnswerPartTwoImperative(List<int[]> listOfArrays) {
+		int sum = 0;
+		for (int i = 0; i < listOfArrays.size(); i++) {
+			sum = sum + getRowSumDivisionsBruteForce(listOfArrays.get(i));
+		}
+		return sum;
+	}
+	
 	private static int getRowSumDivisionsBruteForce(int[] sampleRow) {
 		int result = 0;
 		boolean foundResult = false;
@@ -137,13 +150,7 @@ public class DayTwo {
 		return result;
 	}
 
-	public static int getAnswerPartTwoImperative(List<int[]> listOfArrays) {
-		int sum = 0;
-		for (int i = 0; i < listOfArrays.size(); i++) {
-			sum = sum + getRowSumDivisionsBruteForce(listOfArrays.get(i));
-		}
-		return sum;
-	}
+
 
 	public static List<int[]> getStandardInputDayTwoPartOneAndTwo() {
 		int[] sampleRow1 = new int[] { 1236, 741, 557, 1029, 144, 101, 1968, 2159, 1399, 80, 1139, 1167, 1695, 82, 90,
