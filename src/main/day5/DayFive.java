@@ -35,11 +35,11 @@ public class DayFive {
 //		How many steps does it take to reach the exit?
 		System.out.println("Day 5 Part 1");
 		System.out.println(
-				"Answer to part 1 is " + printAnswerDayFivePartOne(getStandardInputDayFivePartOneAndTwo()) + ".");
+				"Answer to part 1 is " + getAnswerDayFivePartOneImperative(getStandardInputDayFivePartOneAndTwo()) + ".");
 	}
 
 
-	public static int printAnswerDayFivePartOne(List<Integer> intList) {
+	public static int getAnswerDayFivePartOneImperative(List<Integer> intList) {
 		int counter = 0;
 		int position = 0;
 		//start at instruction 1 
@@ -71,12 +71,12 @@ public class DayFive {
 	//		How many steps does it now take to reach the exit?	
 		System.out.println("Day 5 Part 2");
 		System.out.println(
-				"Answer to part 2 is " + printAnswerDayFivePartTwo(getStandardInputDayFivePartOneAndTwo()) + ".");
+				"Answer to part 2 is " + getAnswerDayFivePartTwoImperative(getStandardInputDayFivePartOneAndTwo()) + ".");
 		}
 
 
 	
-	public static int printAnswerDayFivePartTwo(List<Integer> intList) {
+	public static int getAnswerDayFivePartTwoImperative(List<Integer> intList) {
 		int counter = 0;
 		int position = 0;
 		//start at instruction 1 

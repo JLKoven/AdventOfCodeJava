@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.Test;
 
 import main.day7.DaySeven;
-import main.day7.DiscForTower;
-import main.day7.DiscTower;
+import main.day7.DiscForTowerImperative;
+import main.day7.DiscTowerImperative;
 
 public class TestDaySeven {
 
@@ -29,12 +29,12 @@ public class TestDaySeven {
 		stringInput.add("ugml (68) -> gyxo, ebii, jptl");
 		stringInput.add("gyxo (61)");
 		stringInput.add("cntj (57)");
-		List<DiscForTower> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
-		DiscTower outputTower = new DiscTower();
-		outputTower = DiscTower.formNewTowerFrom(inputList);
+		List<DiscForTowerImperative> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
+		DiscTowerImperative outputTower = new DiscTowerImperative();
+		outputTower = DiscTowerImperative.formNewTowerFrom(inputList);
 
 		assertEquals(
-				DaySeven.printAnswerPartOne(outputTower),"tknk");
+				DaySeven.getAnswerPartOneImperative(outputTower),"tknk");
 		System.out.println("Success on Day7.testPartOneTest1!");
 	}
 	
@@ -57,7 +57,7 @@ public class TestDaySeven {
 		stringInput.add("cntj (57)");
 
 		assertEquals(
-				DaySeven.printAnswerPartTwo(stringInput)==60,true);
+				DaySeven.getAnswerPartTwoImperative(stringInput)==60,true);
 		System.out.println("Success on Day7.testPartOneTest2!");
 	}
 

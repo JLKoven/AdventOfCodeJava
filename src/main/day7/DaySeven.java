@@ -73,21 +73,21 @@ public class DaySeven {
 		//
 		// Before you're ready to help them, you need to make sure your
 		// information is correct. What is the name of the bottom program?
-		System.out.println("Answer to part 1 is " + printAnswerPartOne(getStandardInputDaySeven()) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySeven()) + ".");
 
 	}
 
-	public static String printAnswerPartOne(DiscTower outputTower) {
+	public static String getAnswerPartOneImperative(DiscTowerImperative outputTower) {
 		String stringToReturn = outputTower.getBase().getName();
 		return stringToReturn;
 	}
 
-	public static List<DiscForTower> generateListOfDiscsFromStringInput(List<String> stringInput) {
-		List<DiscForTower> resultingList = new ArrayList<DiscForTower>();
+	public static List<DiscForTowerImperative> generateListOfDiscsFromStringInput(List<String> stringInput) {
+		List<DiscForTowerImperative> resultingList = new ArrayList<DiscForTowerImperative>();
 		for (int i = 0; i < stringInput.size(); i++) {
 			String[] parts = stringInput.get(i).split("->");
 			String source = parts[0];
-			DiscForTower newDisc = new DiscForTower();
+			DiscForTowerImperative newDisc = new DiscForTowerImperative();
 			String[] sourceParts = source.split(" ");
 			newDisc.setName(sourceParts[0]);
 			newDisc.setValue(Integer.parseInt(GeneralFunction.removeNonNumericLeaveDashAndDot(sourceParts[1])));
@@ -110,27 +110,27 @@ public class DaySeven {
 
 
 	public static void executeStandardPart2() {
-		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputString()) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputString()) + ".");
 
 	}
 
-	public static Integer printAnswerPartTwo(List<String> defaultInput) {
+	public static Integer getAnswerPartTwoImperative(List<String> defaultInput) {
 		Integer intToReturn = 0;
 		
 
-		List<DiscForTower> listForTower = new ArrayList<DiscForTower>();
-		DiscTower outputTower = new DiscTower();
+		List<DiscForTowerImperative> listForTower = new ArrayList<DiscForTowerImperative>();
+		DiscTowerImperative outputTower = new DiscTowerImperative();
 //		processTower(defaultInput, listForTower, outputTower);
 		
 		// please bundle these?		
 		listForTower = 								
 				generateListOfDiscsFromStringInput(defaultInput);
-		DiscTower.createNetworkFromStringValues(listForTower);
-		outputTower = DiscTower.formNewTowerFrom(listForTower);
+		DiscTowerImperative.createNetworkFromStringValues(listForTower);
+		outputTower = DiscTowerImperative.formNewTowerFrom(listForTower);
 		// please bundle these?
 
 
-		for (DiscForTower disc : listForTower) {
+		for (DiscForTowerImperative disc : listForTower) {
 			
 			if (disc.isUnbalanced()) {
 				intToReturn = 
@@ -159,14 +159,14 @@ public class DaySeven {
 //		outputTower = DiscTower.formNewTowerFrom(listForTower);	
 //		}
 
-	private static DiscTower getStandardInputDaySeven() {
+	private static DiscTowerImperative getStandardInputDaySeven() {
 
 		List<String> defaultInput = getStandardInputString();
 
 		// please bundle these?
-		List<DiscForTower> listForTower = generateListOfDiscsFromStringInput(defaultInput);
-		DiscTower.createNetworkFromStringValues(listForTower);
-		DiscTower outputTower = DiscTower.formNewTowerFrom(listForTower);
+		List<DiscForTowerImperative> listForTower = generateListOfDiscsFromStringInput(defaultInput);
+		DiscTowerImperative.createNetworkFromStringValues(listForTower);
+		DiscTowerImperative outputTower = DiscTowerImperative.formNewTowerFrom(listForTower);
 		// please bundle these?
 
 		return outputTower;

@@ -19,7 +19,7 @@ public class TestDaySix {
 		array.add(7);
 		array.add(0);
 		assertEquals(
-				DaySix.printAnswerPartOne(array), 5);
+				DaySix.getAnswerPartOneImperative(array), 5);
 		System.out.println("Success on Day6.testPartOneTest1!");
 	}
 	
@@ -32,7 +32,7 @@ public class TestDaySix {
 		array.add(7);
 		array.add(0);
 		assertEquals(
-				DaySix.printAnswerPartTwo(array), 4);
+				DaySix.getAnswerPartTwoImperative(array), 4);
 		System.out.println("Success on Day6.testPartTwoTest1!");
 	}
 

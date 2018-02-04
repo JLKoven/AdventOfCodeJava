@@ -58,11 +58,11 @@ public class DaySix {
 		// redistribution cycles must be completed before a configuration is
 		// produced that has been seen before? System.out.println("Day 6 Part
 		// 1");
-		System.out.println("Answer to part 1 is " + printAnswerPartOne(getStandardInputDaySix()) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix()) + ".");
 
 	}
 
-	public static int printAnswerPartOne(List<Integer> standardInputDaySix) {
+	public static int getAnswerPartOneImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
 		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
 		List<Integer> initialConfiguration = GeneralFunction.shallowCopyOfArrayList(standardInputDaySix);
@@ -89,7 +89,7 @@ public class DaySix {
 		return cyclesToBeCompleted;
 	}
 
-	public static int printAnswerPartTwo(List<Integer> standardInputDaySix) {
+	public static int getAnswerPartTwoImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
 		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
 		List<Integer> initialConfiguration = GeneralFunction.shallowCopyOfArrayList(standardInputDaySix);
@@ -165,6 +165,19 @@ public class DaySix {
 		return currentIndexToReturn;
 	}
 
+
+
+	public static void executeStandardPart2() {
+//		--- Part Two ---
+//		Out of curiosity, the debugger would also like to know the size of the loop: starting from a state that has already been seen, how many block redistribution cycles must be performed before that same state is seen again?
+//
+//		In the example above, 2 4 1 2 is seen again after four cycles, and so the answer in that example would be 4.
+//
+//		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix()) + ".");
+
+	}
+	
 	private static List<Integer> getStandardInputDaySix() {
 		List<Integer> array = new ArrayList<Integer>();
 
@@ -191,11 +204,6 @@ public class DaySix {
 		 array.add(15);
 		 array.add(11);
 		return array;
-	}
-
-	public static void executeStandardPart2() {
-		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputDaySix()) + ".");
-
 	}
 
 }

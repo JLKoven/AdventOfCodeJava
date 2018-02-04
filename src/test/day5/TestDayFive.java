@@ -18,7 +18,7 @@ public class TestDayFive {
 		intList.add(0);
 		intList.add(1);
 		intList.add(-3);
-		assertEquals(DayFive.printAnswerDayFivePartOne(intList), 5);
+		assertEquals(DayFive.getAnswerDayFivePartOneImperative(intList), 5);
 		System.out.println("Success on Day5.testPartOneTest1!");
 	}
 	@Test
@@ -29,7 +29,7 @@ public class TestDayFive {
 		intList.add(0);
 		intList.add(1);
 		intList.add(-3);
-		assertEquals(DayFive.printAnswerDayFivePartTwo(intList), 10);
+		assertEquals(DayFive.getAnswerDayFivePartTwoImperative(intList), 10);
 		System.out.println("Success on Day5.testPartTwoTest1!");
 	}
 

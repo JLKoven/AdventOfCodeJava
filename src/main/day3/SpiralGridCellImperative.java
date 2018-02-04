@@ -1,6 +1,6 @@
 package main.day3;
 
-public class SpiralGridCell {
+public class SpiralGridCellImperative {
 
 	private int xCoord;
 	private int yCoord;

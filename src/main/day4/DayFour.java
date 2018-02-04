@@ -26,10 +26,10 @@ public class DayFour {
 		// How many passphrases are valid?
 		System.out.println("Day 4 Part 1");
 		System.out.println(
-				"Answer to part 1 is " + printAnswerDayFourPartOne(getStandardInputDayFourPartOneAndTwo()) + ".");
+				"Answer to part 1 is " + getAnswerDayFourPartOneImperative(getStandardInputDayFourPartOneAndTwo()) + ".");
 	}
 
-	public static int printAnswerDayFourPartOne(List<String> stringList) {
+	public static int getAnswerDayFourPartOneImperative(List<String> stringList) {
 		int counter = 0;
 		for (int i = 0; i < stringList.size(); i++) {
 			String[] parts = stringList.get(i).split(" ");
@@ -68,10 +68,10 @@ public class DayFour {
 //		Under this new system policy, how many passphrases are valid?
 		System.out.println("Day 4 Part 2");
 		System.out.println(
-				"Answer to part 2 is " + printAnswerDayFourPartTwo(getStandardInputDayFourPartOneAndTwo()) + ".");
+				"Answer to part 2 is " + getAnswerDayFourPartTwoImperative(getStandardInputDayFourPartOneAndTwo()) + ".");
 	}
 
-	public static int printAnswerDayFourPartTwo(List<String> stringList) {
+	public static int getAnswerDayFourPartTwoImperative(List<String> stringList) {
 		int counter = 0;
 		for (int i = 0; i < stringList.size(); i++) {
 			String[] parts = stringList.get(i).split(" ");

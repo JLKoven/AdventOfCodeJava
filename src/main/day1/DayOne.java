@@ -53,7 +53,7 @@ public class DayOne {
 	// input provided below
 	//
 		System.out.println("Day 1 Part 1");
-		System.out.println("Answer to part 1 is " + printAnswerPartOne(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
 	public static List<String> getStandardInputDayOnePartOneAndTwo() {
@@ -102,7 +102,7 @@ public class DayOne {
 
 	// part 1
 
-	public static int printAnswerGeneric(String input, Character lastChar) {// ,
+	private static int printAnswerGeneric(String input, Character lastChar) {// ,
 																			// Character
 																			// firstChar)
 																			// {
@@ -120,11 +120,11 @@ public class DayOne {
 		return sum;
 	}
 
-	public static int printAnswerSingleInput(String input) {
+	private static int printAnswerSingleInput(String input) {
 		return printAnswerGeneric(input, input.charAt(input.length() - 1));
 	}
 
-	public static int printAnswerPartOne(List<String> stringList) {
+	public static int getAnswerPartOneImperative(List<String> stringList) {
 		int sum = 0;
 		for (int i = 0; i < stringList.size(); i++) {
 			if (i != 0) {
@@ -154,10 +154,10 @@ public class DayOne {
 //	12131415 produces 4.
 //	What is the solution to your new captcha?
 		System.out.println("Day 1 Part 2");
-		System.out.println("Answer to part 2 is " + printAnswerPartTwo(getStandardInputDayOnePartOneAndTwo()) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDayOnePartOneAndTwo()) + ".");
 	}
 
-	public static int printAnswerPartTwo(List<String> stringList) {
+	public static int getAnswerPartTwoImperative(List<String> stringList) {
 		int answer = 0;
 		CircularArray circularArray = streamInStringList(stringList);
 		for (int i = 0; i < (circularArray.getArrayAsList().size() / 2); i++) {
@@ -168,6 +168,9 @@ public class DayOne {
 		}
 		return answer * 2;
 	}
+	
+
+
 
 	private static CircularArray streamInStringList(List<String> stringList) {
 		CircularArray arrayToReturn = new CircularArray();
@@ -193,6 +196,8 @@ public class DayOne {
 		}
 		return arrayToReturn;
 	}
+
+
 
 
 

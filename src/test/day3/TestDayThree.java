@@ -10,22 +10,22 @@ public class TestDayThree {
 
 	@Test
 	public void testPartOneTest1() {
-		assertEquals(DayThree.getDistanceFromOrigin(1), 0);
+		assertEquals(DayThree.getAnswerPartOneImperative(1), 0);
 		System.out.println("Success on Day3.testPartOneTest1!");
 	}
 	@Test
 	public void testPartOneTest2() {
-		assertEquals(DayThree.getDistanceFromOrigin(12), 3);
+		assertEquals(DayThree.getAnswerPartOneImperative(12), 3);
 		System.out.println("Success on Day3.testPartOneTest2!");
 	}
 	@Test
 	public void testPartOneTest3() {
-		assertEquals(DayThree.getDistanceFromOrigin(23), 2);
+		assertEquals(DayThree.getAnswerPartOneImperative(23), 2);
 		System.out.println("Success on Day3.testPartOneTest3!");
 	}
 	@Test
 	public void testPartOneTest4() {
-		assertEquals(DayThree.getDistanceFromOrigin(1024), 31);
+		assertEquals(DayThree.getAnswerPartOneImperative(1024), 31);
 		System.out.println("Success on Day3.testPartOneTest4!");
 	}
 
@@ -51,7 +51,7 @@ public class TestDayThree {
 	}	
 	@Test
 	public void testPartTwoTest5() {
-		assertEquals(DayThree.getFirstCumulativeValueLargerThanThisNumber(6),10);
+		assertEquals(DayThree.getAnswerPartTwoImperative(6),10);
 		System.out.println("Success on Day3.testPartTwoTest5!");
 	}	
 }

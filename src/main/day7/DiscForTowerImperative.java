@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-public class DiscForTower {
+public class DiscForTowerImperative {
 
 	private String name;
 	private Integer value;
 	private List<String> namesOfDescendants = new ArrayList<String>();
-	private List<DiscForTower> descendants = new ArrayList<DiscForTower>();// could
+	private List<DiscForTowerImperative> descendants = new ArrayList<DiscForTowerImperative>();// could
 																			// be
 																			// a
 																			// Set
@@ -46,18 +46,18 @@ public class DiscForTower {
 		this.namesOfDescendants = namesOfDescendants;
 	}
 
-	public List<DiscForTower> getDescendants() {
+	public List<DiscForTowerImperative> getDescendants() {
 		return descendants;
 	}
 
-	public void setDescendants(List<DiscForTower> descendants) {
+	public void setDescendants(List<DiscForTowerImperative> descendants) {
 		this.descendants = descendants;
 	}
 
-	public Integer directValueOfChildren(Map<String, DiscForTower> dictionary
+	public Integer directValueOfChildren(Map<String, DiscForTowerImperative> dictionary
 	) {
 		Integer sumValue = 0;
-		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
 		for (String name : getNamesOfDescendants()) {
 			stackOfChildren.push(dictionary.get(name));
 		}
@@ -70,14 +70,14 @@ public class DiscForTower {
 
 	public Integer getSumValue() {
 		Integer sumValue = getValue();
-		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
-		for (DiscForTower descendant : getDescendants()) {
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
+		for (DiscForTowerImperative descendant : getDescendants()) {
 			stackOfChildren.push(descendant);
 		}
 		while (!(stackOfChildren.isEmpty())) {
 			sumValue = sumValue + stackOfChildren.peek().getValue();
-			DiscForTower currentNode = stackOfChildren.pop();
-			for (DiscForTower descendant : currentNode.getDescendants()) {
+			DiscForTowerImperative currentNode = stackOfChildren.pop();
+			for (DiscForTowerImperative descendant : currentNode.getDescendants()) {
 				stackOfChildren.push(descendant);
 			}
 		}
@@ -87,14 +87,14 @@ public class DiscForTower {
 	public Integer sumValueOfChildren(
 	) {
 		Integer sumValue = 0;
-		Stack<DiscForTower> stackOfChildren = new Stack<DiscForTower>();
-		for (DiscForTower descendant : getDescendants()) {
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
+		for (DiscForTowerImperative descendant : getDescendants()) {
 			stackOfChildren.push(descendant);
 		}
 		while (!(stackOfChildren.isEmpty())) {
 			sumValue = sumValue + stackOfChildren.peek().getValue();
-			DiscForTower currentNode = stackOfChildren.pop();
-			for (DiscForTower descendant : currentNode.getDescendants()) {
+			DiscForTowerImperative currentNode = stackOfChildren.pop();
+			for (DiscForTowerImperative descendant : currentNode.getDescendants()) {
 				stackOfChildren.push(descendant);
 			}
 		}
@@ -149,8 +149,8 @@ public class DiscForTower {
 		return intToReturn;
 	}
 
-	public DiscForTower getDiscrepantDisc() {
-		DiscForTower discToReturn = new DiscForTower();
+	public DiscForTowerImperative getDiscrepantDisc() {
+		DiscForTowerImperative discToReturn = new DiscForTowerImperative();
 
 		if (!getDescendants().isEmpty()) {
 			for (int i = 0; i < getDescendants().size(); i++) {

@@ -6,27 +6,27 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-public class SpiralGrid {
+public class SpiralGridImperative {
 
 	public static final String RIGHT = "Right";
 	public static final String UP = "Up";
 	public static final String LEFT = "Left";
 	public static final String DOWN = "Down";
 
-	private List<SpiralGridCell> list = new ArrayList<SpiralGridCell>();
+	private List<SpiralGridCellImperative> list = new ArrayList<SpiralGridCellImperative>();
 
 	private int maxX=0;
 	private int maxY=0;
 	private int minX=0;
 	private int minY=0;
 
-	private Map<HashMap<Integer, Integer>, SpiralGridCell> mapOfExisting = new HashMap<HashMap<Integer, Integer>, SpiralGridCell>();
+	private Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapOfExisting = new HashMap<HashMap<Integer, Integer>, SpiralGridCellImperative>();
 
-	public List<SpiralGridCell> getList() {
+	public List<SpiralGridCellImperative> getList() {
 		return list;
 	}
 
-	public void setList(List<SpiralGridCell> list) {
+	public void setList(List<SpiralGridCellImperative> list) {
 		this.list = list;
 	}
 
@@ -63,11 +63,11 @@ public class SpiralGrid {
 		this.minY = minY;
 	}
 
-	public Map<HashMap<Integer, Integer>, SpiralGridCell> getMapOfExisting() {
+	public Map<HashMap<Integer, Integer>, SpiralGridCellImperative> getMapOfExisting() {
 		return mapOfExisting;
 	}
 
-	public void setAlreadyExists(Map<HashMap<Integer, Integer>, SpiralGridCell> alreadyExists) {
+	public void setAlreadyExists(Map<HashMap<Integer, Integer>, SpiralGridCellImperative> alreadyExists) {
 		this.mapOfExisting = alreadyExists;
 	}
 
@@ -83,7 +83,7 @@ public class SpiralGrid {
 
 	public void addCellToGridInitial(){
 
-		SpiralGridCell cell = new SpiralGridCell();
+		SpiralGridCellImperative cell = new SpiralGridCellImperative();
 
 		if (getList().isEmpty()) {
 			cell.setXCoord(0);
@@ -93,7 +93,7 @@ public class SpiralGrid {
 			cell.setNextDirection(RIGHT);
 		} else {
 			if (getMostRecentCell().isPresent()) {
-				SpiralGridCell lastCell = getMostRecentCell().get();
+				SpiralGridCellImperative lastCell = getMostRecentCell().get();
 				cell.setValue(lastCell.getValue() + 1);
 				cell = setDirectionBasedOnPriorDirection(cell, lastCell);
 				cell.setCellCumulativeValue(calculateCumulativeValueBruteForce(cell));
@@ -110,8 +110,8 @@ public class SpiralGrid {
 		getList().add(cell);
 	}
 
-	private void mapPlacementNoIntPair(SpiralGridCell cell) {
-		Map<HashMap<Integer, Integer>, SpiralGridCell> mapToReturn = getMapOfExisting();
+	private void mapPlacementNoIntPair(SpiralGridCellImperative cell) {
+		Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapToReturn = getMapOfExisting();
 		HashMap<Integer, Integer> coordinates = new HashMap<Integer, Integer>();
 		coordinates.put(cell.getXCoord(), cell.getYCoord());
 		if (!mapToReturn.containsKey(coordinates)){
@@ -129,7 +129,7 @@ public class SpiralGrid {
 		
 	}
 
-	private int calculateCumulativeValueBruteForce(SpiralGridCell cell) {
+	private int calculateCumulativeValueBruteForce(SpiralGridCellImperative cell) {
 		int value=0;
 		
 		
@@ -219,7 +219,7 @@ public class SpiralGrid {
 		return value;
 	}
 
-	public SpiralGridCell setDirectionBasedOnPriorDirection(SpiralGridCell cell, SpiralGridCell lastCell)
+	public SpiralGridCellImperative setDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
 			 {// sorry, Dan
 
 		if (RIGHT.equals(lastCell.getNextDirection())) {
@@ -271,11 +271,11 @@ public class SpiralGrid {
 	}
 
 
-	private boolean cellWouldBeOutOfCurrentBounds(SpiralGridCell cell, SpiralGridCell lastCell) {
+	private boolean cellWouldBeOutOfCurrentBounds(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell) {
 		boolean outOfBounds = false;
 
 		// let's get the direction if you would keep going
-		SpiralGridCell futureCell = new SpiralGridCell();// SpiralGridCell
+		SpiralGridCellImperative futureCell = new SpiralGridCellImperative();// SpiralGridCell
 															// futureCell = cell
 															// <---LOL DAN WAS
 															// RIGHT
@@ -311,7 +311,7 @@ public class SpiralGrid {
 		return outOfBounds;
 	}
 
-	private boolean outOfBoundsSubfunction(String nextDirection, SpiralGridCell futureCell){//, double maxDimensionDIRECTION) {
+	private boolean outOfBoundsSubfunction(String nextDirection, SpiralGridCellImperative futureCell){//, double maxDimensionDIRECTION) {
 		boolean booleanToReturn = true;
 		if (RIGHT.equals(nextDirection)){
 			if (futureCell.getXCoord()+0 > getMaxX()+1){
@@ -354,16 +354,16 @@ public class SpiralGrid {
 
 	}
 
-	private Optional<SpiralGridCell> getMostRecentCell() {
-		Optional<SpiralGridCell> answer = Optional.empty();
+	private Optional<SpiralGridCellImperative> getMostRecentCell() {
+		Optional<SpiralGridCellImperative> answer = Optional.empty();
 		if (!list.isEmpty()) {
 			answer = Optional.of(list.get(list.size() - 1));
 		}
 		return answer;
 	}
 
-	public SpiralGridCell getLastCell() {
-		SpiralGridCell lastCell = getList().get((getList().size() - 1));
+	public SpiralGridCellImperative getLastCell() {
+		SpiralGridCellImperative lastCell = getList().get((getList().size() - 1));
 
 		return lastCell;
 	}

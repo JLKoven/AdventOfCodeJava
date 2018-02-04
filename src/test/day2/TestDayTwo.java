@@ -19,7 +19,7 @@ public class TestDayTwo {
 		var1.add(arrayB);
 		int[] arrayC = {2,4,6,8};
 		var1.add(arrayC);
-		assertEquals(DayTwo.getListRowSum(var1),18);
+		assertEquals(DayTwo.getAnswerPartOneImperative(var1),18);
 		System.out.println("Success on Day2.testPartOneTest1!");
 	}
 	@Test
@@ -31,7 +31,7 @@ public class TestDayTwo {
 		var2.add(arrayB);
 		int[] arrayC = {3,8,6,5};
 		var2.add(arrayC);
-		assertEquals(DayTwo.getListRowSumDivisions(var2),9);
+		assertEquals(DayTwo.getAnswerPartTwoImperative(var2),9);
 		System.out.println("Success on Day2.testPartTwoTest1!");
 	}
 

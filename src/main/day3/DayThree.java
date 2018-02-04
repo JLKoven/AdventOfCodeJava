@@ -32,16 +32,16 @@ public class DayThree {
 	//
 	// input is 312051
 		System.out.println("Day Three Part 1");
-		System.out.println("Data from square 312051 is carried " + DayThree.getDistanceFromOrigin(312051) + " steps!");
+		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(312051) + " steps!");
 	}
 
-	public static int getDistanceFromOrigin(int stepsFromOrigin) {
+	public static int getAnswerPartOneImperative(int stepsFromOrigin) {
 		int answer = 0;
-		SpiralGrid grid = new SpiralGrid();
+		SpiralGridImperative grid = new SpiralGridImperative();
 		for (int i = 0; i < stepsFromOrigin; i++) {
 			grid.addCellToGridInitial();
 		}
-		SpiralGridCell lastCell = grid.getLastCell();
+		SpiralGridCellImperative lastCell = grid.getLastCell();
 		answer = answer + Math.abs(lastCell.getXCoord());
 		answer = answer + Math.abs(lastCell.getYCoord());
 		return answer;
@@ -49,21 +49,21 @@ public class DayThree {
 
 	public static int getCumulativeValueOfThisCell(int index) {
 		int answer = 0;
-		SpiralGrid grid = new SpiralGrid();
+		SpiralGridImperative grid = new SpiralGridImperative();
 		for (int i = 0; i < index; i++) {
 			grid.addCellToGridInitial();
 		}
-		SpiralGridCell lastCell = grid.getLastCell();
+		SpiralGridCellImperative lastCell = grid.getLastCell();
 		return lastCell.getCellCumulativeValue();
 	}
 
-	public static int getFirstCumulativeValueLargerThanThisNumber(int input) {
+	public static int getAnswerPartTwoImperative(int input) {
 		int answer = 0;
 		int i = 0;
-		SpiralGrid grid = new SpiralGrid();
+		SpiralGridImperative grid = new SpiralGridImperative();
 		while (input > answer) {
 			grid.addCellToGridInitial();
-			SpiralGridCell lastCell = grid.getLastCell();
+			SpiralGridCellImperative lastCell = grid.getLastCell();
 			answer = lastCell.getCellCumulativeValue();
 		}
 		return answer;
@@ -101,7 +101,7 @@ public class DayThree {
 		System.out.println("Day Three Part 2");
 		try {
 			System.out.println("Answer first larger than 277678 is "
-					+ getFirstCumulativeValueLargerThanThisNumber(277678) + ". Hooray!");
+					+ getAnswerPartTwoImperative(277678) + ". Hooray!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
