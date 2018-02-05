@@ -50,8 +50,7 @@ public class DayFive {
 		System.out.println("Answer to part 1 is "
 				+ getAnswerDayFivePartOneImperative(getStandardInputDayFivePartOneAndTwo()) + ".");
 	}
-	
-	
+
 	public static void executeStandardPart2() {
 		// --- Part Two ---
 		// Now, the jumps are even stranger: after each jump, if the offset was
@@ -89,8 +88,6 @@ public class DayFive {
 		return nextPosition;
 	}
 
-
-
 	public static int getAnswerDayFivePartTwoImperative(List<Integer> intList) {
 		int counter = 0;
 		int position = 0;
@@ -115,9 +112,56 @@ public class DayFive {
 	}
 
 	// Functional
+
 	public static int getAnswerDayFivePartOneFunctional(List<Integer> intList) {
-		// TODO Auto-generated method stub
-		return (Integer) null;
+		int answer = getAnswerPartOne(intList, 0);
+		System.out.println("answer is "+answer+".");
+		return answer;
+	}
+
+	private static int getAnswerPartOne(List<Integer> intList, int position) {
+		System.out.println("position is "+position+".");
+
+		if (position >= intList.size()) {
+			return 0; // this is the counter
+		} else {
+			int p = intList.get(position);
+			int newP = p + 1;
+			intList = update(intList, newP, position);
+			displayList(intList);
+			return 1 + getAnswerPartOne(intList, position + p);
+		}
+	}
+
+	private static void displayList(List<Integer> intList) {
+		System.out.print("List is now: ");
+		for (Integer intvar : intList){
+			System.out.print(intvar+ " ");
+		}
+		System.out.println();
+	}
+
+	public static int getAnswerDayFivePartTwoFunctional(List<Integer> intList) {
+		int answer = getAnswerPartTwo(intList, 0);
+		return answer;
+	}
+
+	private static int getAnswerPartTwo(List<Integer> intList, int position) {
+		if (position >= intList.size()) {
+			return 0; // this is the counter
+		} else {
+			int p = intList.get(position);
+			int newP = (p >= 3) ? p - 1 : p + 1;
+			intList = update(intList, newP, position);
+			
+			return 1 + getAnswerPartTwo(intList, position + p);
+		}
+
+	}
+
+	private static List<Integer> update(List<Integer> intList, int newP, int position) {
+		intList.set(position, newP);
+		return intList;
 	}
 
 	private static List<Integer> getStandardInputDayFivePartOneAndTwo() {
