@@ -80,7 +80,7 @@ public class DaySix {
 	public static int getAnswerPartOneImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
 		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
-		List<Integer> initialConfiguration = GeneralFunction.shallowCopyOfArrayList(standardInputDaySix);
+		List<Integer> initialConfiguration = GeneralFunction.deepCopyOfArrayList(standardInputDaySix);
 		int currentIndex = 0;
 
 		boolean notFoundDuplicate = true;
@@ -89,12 +89,12 @@ public class DaySix {
 			if (!newArray.isEmpty()) {
 				alreadySeen.add(newArray);
 				currentIndex = findCurrentIndex(newArray);
-				newArray = GeneralFunction.shallowCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
+				newArray = GeneralFunction.deepCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
 			} else {
 				alreadySeen.add(initialConfiguration);
 				currentIndex = findCurrentIndex(initialConfiguration);
 				newArray = GeneralFunction
-						.shallowCopyOfArrayList(shiftConfigurationAt(initialConfiguration, currentIndex));
+						.deepCopyOfArrayList(shiftConfigurationAt(initialConfiguration, currentIndex));
 			}
 			cyclesToBeCompleted = cyclesToBeCompleted + 1;
 
@@ -107,7 +107,7 @@ public class DaySix {
 	public static int getAnswerPartTwoImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
 		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
-		List<Integer> initialConfiguration = GeneralFunction.shallowCopyOfArrayList(standardInputDaySix);
+		List<Integer> initialConfiguration = GeneralFunction.deepCopyOfArrayList(standardInputDaySix);
 		int currentIndex = 0;
 
 		boolean notFoundDuplicate = true;
@@ -116,12 +116,12 @@ public class DaySix {
 			if (!newArray.isEmpty()) {
 				alreadySeen.add(newArray);
 				currentIndex = findCurrentIndex(newArray);
-				newArray = GeneralFunction.shallowCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
+				newArray = GeneralFunction.deepCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
 			} else {
 				alreadySeen.add(initialConfiguration);
 				currentIndex = findCurrentIndex(initialConfiguration);
 				newArray = GeneralFunction
-						.shallowCopyOfArrayList(shiftConfigurationAt(initialConfiguration, currentIndex));
+						.deepCopyOfArrayList(shiftConfigurationAt(initialConfiguration, currentIndex));
 			}
 			cyclesToBeCompleted = cyclesToBeCompleted + 1;
 
@@ -129,20 +129,20 @@ public class DaySix {
 		}
 
 		int counterBeforeCycle = 0;
-		List<Integer> fixedArray = GeneralFunction.shallowCopyOfArrayList(newArray);
+		List<Integer> fixedArray = GeneralFunction.deepCopyOfArrayList(newArray);
 		currentIndex = findCurrentIndex(newArray);
-		newArray = GeneralFunction.shallowCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
+		newArray = GeneralFunction.deepCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
 		while (!fixedArray.equals(newArray)) {
 			counterBeforeCycle++;
 			currentIndex = findCurrentIndex(newArray);
-			newArray = GeneralFunction.shallowCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
+			newArray = GeneralFunction.deepCopyOfArrayList(shiftConfigurationAt(newArray, currentIndex));
 		}
 		counterBeforeCycle++;
 		return counterBeforeCycle;
 	}
 
 	private static List<Integer> shiftConfigurationAt(List<Integer> currentConfiguration, int indexToRemoveFrom) {
-		List<Integer> arrayToReturn = GeneralFunction.shallowCopyOfArrayList(currentConfiguration);
+		List<Integer> arrayToReturn = GeneralFunction.deepCopyOfArrayList(currentConfiguration);
 		int currentIndex = indexToRemoveFrom + 1;
 		if (currentIndex >= currentConfiguration.size()) {
 			currentIndex = 0;
