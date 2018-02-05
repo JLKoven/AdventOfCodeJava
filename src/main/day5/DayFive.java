@@ -3,6 +3,8 @@ package main.day5;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.GeneralFunction;
+
 public class DayFive {
 
 	private static final Integer INTCONSTFORPARTTWO = 3;
@@ -160,8 +162,9 @@ public class DayFive {
 	}
 
 	private static List<Integer> update(List<Integer> intList, int newP, int position) {
-		intList.set(position, newP);
-		return intList;
+		List<Integer> intListCopy = GeneralFunction.deepCopyOfArrayList(intList);
+		intListCopy.set(position, newP);		
+		return intListCopy;
 	}
 
 	private static List<Integer> getStandardInputDayFivePartOneAndTwo() {
