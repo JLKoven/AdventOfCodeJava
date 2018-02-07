@@ -1,4 +1,9 @@
 package main.day2;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +39,9 @@ public class DayTwo {
 	//
 	// input listed below
 		System.out.println("Day Two Part 1");
-		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(getStandardInputDayTwoPartOneAndTwo()) + ".");
+        File file = new File("src/main/day2/input.txt");
+        URI uri = file.toURI();
+		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(getStandardInputDayTwoPartOneAndTwo(uri)) + ".");
 	}
 	
 	public static void executeStandardPart2() {
@@ -66,8 +73,10 @@ public class DayTwo {
 	//
 	// What is the sum of each row's result in your puzzle input?
 		System.out.println("Day Two Part 2");
+        File file = new File("src/main/day2/input.txt");
+        URI uri = file.toURI();
 		System.out.print("Sum of even divisions between listOfArrays is ");
-		System.out.print(getAnswerPartTwoImperative(getStandardInputDayTwoPartOneAndTwo()));
+		System.out.print(getAnswerPartTwoImperative(getStandardInputDayTwoPartOneAndTwo(uri)));
 		System.out.print(".");
 	}
 	
@@ -152,7 +161,20 @@ public class DayTwo {
 
 
 
-	public static List<int[]> getStandardInputDayTwoPartOneAndTwo() {
+	public static List<int[]> getStandardInputDayTwoPartOneAndTwo(URI fileName) {
+		List<String> linesAsString = new ArrayList<String>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		List<Integer> lines = new ArrayList();
+//		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));;
+//		return lines;
+		System.out.println("lines is size "+linesAsString.size()+".");
+		System.out.println("lines[0] is "+linesAsString.get(0)+".");
+		//turn array of integers into an 
 		int[] sampleRow1 = new int[] { 1236, 741, 557, 1029, 144, 101, 1968, 2159, 1399, 80, 1139, 1167, 1695, 82, 90,
 				2236 };
 		int[] sampleRow2 = new int[] { 2134, 106, 107, 1025, 584, 619, 191, 496, 80, 352, 351, 2267, 1983, 1973, 97,

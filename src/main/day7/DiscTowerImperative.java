@@ -74,11 +74,5 @@ public class DiscTowerImperative {
 		this.dictionary = dictionary;
 	}
 
-	public static void createNetworkFromStringValues(List<DiscForTowerImperative> towerList) {
-		for (DiscForTowerImperative disc : towerList){
-			
-		}
-		
-	}
 
 }

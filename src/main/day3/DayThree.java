@@ -1,4 +1,14 @@
 package main.day3;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DayThree {
 
 	public static void executeStandardPart1() {
@@ -32,9 +42,13 @@ public class DayThree {
 	//
 	// input is 312051
 		System.out.println("Day Three Part 1");
-		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(312051) + " steps!");
+        File file = new File("src/main/day3/input.txt");
+        URI uri = file.toURI();
+		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(getInput(uri)) + " steps!");
 	}
 	
+
+
 	public static void executeStandardPart2() {
 	// --- Part Two ---
 	// As a stress test on the system, the programs here clear the grid and then
@@ -64,9 +78,11 @@ public class DayThree {
 	// What is the first value written that is larger than your puzzle input?
 	// input is 277678
 		System.out.println("Day Three Part 2");
+        File file = new File("src/main/day3/input.txt");
+        URI uri = file.toURI();
 		try {
 			System.out.println("Answer first larger than 277678 is "
-					+ getAnswerPartTwoImperative(277678) + ". Hooray!");
+					+ getAnswerPartTwoImperative(getInput(uri)) + ". Hooray!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -90,7 +106,6 @@ public class DayThree {
 	}
 
 	public static int getCumulativeValueOfThisCell(int index) {
-		int answer = 0;
 		SpiralGridImperative grid = new SpiralGridImperative();
 		for (int i = 0; i < index; i++) {
 			grid.addCellToGridInitial();
@@ -101,7 +116,6 @@ public class DayThree {
 
 	public static int getAnswerPartTwoImperative(int input) {
 		int answer = 0;
-		int i = 0;
 		SpiralGridImperative grid = new SpiralGridImperative();
 		while (input > answer) {
 			grid.addCellToGridInitial();
@@ -111,6 +125,18 @@ public class DayThree {
 		return answer;
 	}
 
+	private static int getInput(URI fileName) {
+		List<String> linesAsString = new ArrayList<String>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Integer> lines = new ArrayList<Integer>();
+		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));;
+		return lines.get(0);
+	}
 
 
 

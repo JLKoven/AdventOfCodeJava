@@ -1,10 +1,14 @@
 package main.day6;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import main.GeneralFunction;
 
@@ -58,7 +62,9 @@ public class DaySix {
 		// redistribution cycles must be completed before a configuration is
 		// produced that has been seen before? System.out.println("Day 6 Part
 		// 1");
-		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix()) + ".");
+        File file = new File("src/main/day6/input.txt");
+        URI uri = file.toURI();
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix(uri)) + ".");
 
 	}
 	
@@ -69,7 +75,9 @@ public class DaySix {
 //		In the example above, 2 4 1 2 is seen again after four cycles, and so the answer in that example would be 4.
 //
 //		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix()) + ".");
+        File file = new File("src/main/day6/input.txt");
+        URI uri = file.toURI();
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix(uri)) + ".");
 
 	}
 	
@@ -184,32 +192,17 @@ public class DaySix {
 
 
 	
-	private static List<Integer> getStandardInputDaySix() {
-		List<Integer> array = new ArrayList<Integer>();
-
-//		array.add(0);
-//		array.add(2);
-//		array.add(7);
-//		array.add(0);
-
-
-		 array.add(11);
-		 array.add(11);
-		 array.add(13);
-		 array.add(7);
-		 array.add(0);
-		 array.add(15);
-		 array.add(5);
-		 array.add(5);
-		 array.add(4);
-		 array.add(4);
-		 array.add(1);
-		 array.add(1);
-		 array.add(7);
-		 array.add(1);
-		 array.add(15);
-		 array.add(11);
-		return array;
+	private static List<Integer> getStandardInputDaySix(URI fileName) {
+		List<String> linesAsString = new ArrayList<String>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Integer> lines = new ArrayList<Integer>();
+		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));;
+		return lines;
 	}
 
 }
