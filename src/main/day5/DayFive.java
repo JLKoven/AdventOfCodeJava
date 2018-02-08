@@ -139,7 +139,7 @@ public class DayFive {
 		} else {
 			int p = intList.get(position);
 			int newP = p + 1;
-			intList = functionalUpdate(intList, newP, position);
+			intList = GeneralFunction.functionalUpdate(intList, newP, position);
 			displayList(intList);
 			return 1 + getAnswerPartOne(intList, position + p);
 		}
@@ -164,17 +164,11 @@ public class DayFive {
 		} else {
 			int p = intList.get(position);
 			int newP = (p >= 3) ? p - 1 : p + 1;
-			intList = functionalUpdate(intList, newP, position);
+			intList = GeneralFunction.functionalUpdate(intList, newP, position);
 			
 			return 1 + getAnswerPartTwo(intList, position + p);
 		}
 
-	}
-
-	private static List<Integer> functionalUpdate(List<Integer> intList, int newP, int position) {
-		List<Integer> intListCopy = GeneralFunction.deepCopyOfArrayList(intList);
-		intListCopy.set(position, newP);		
-		return intListCopy;
 	}
 
 	private static List<Integer> getStandardInputDayFivePartOneAndTwo(URI fileName) {		
