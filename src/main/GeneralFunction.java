@@ -14,9 +14,6 @@ public class GeneralFunction {
 		return newArray;
 	}
 
-	// ArrayList<Integer> arrayList = new
-	// ArrayList<Integer>(Arrays.asList(array)
-
 	public static List<Integer> deepCopyOfArrayList(List<Integer> arrayToBeCopied) {
 		List<Integer> newList = new ArrayList<Integer>();
 		for (Integer value : arrayToBeCopied) {
@@ -25,13 +22,6 @@ public class GeneralFunction {
 		return newList;
 	}
 
-	public static void systemPrintArrayList(List<Integer> array) {
-		for (Integer integer : array) {
-			System.out.print(integer);
-			System.out.print(" ");
-		}
-
-	}
 
 	public static String removeNonNumericLeaveDashAndDot(String inputString) {
 		String outputString = inputString.replaceAll("[^\\d.-]", "");
