@@ -180,7 +180,7 @@ public class DayFive {
 			e.printStackTrace();
 		}
 		List<Integer> lines = new ArrayList<Integer>();
-		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));;
+		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
 		return lines;
 	}
 	
