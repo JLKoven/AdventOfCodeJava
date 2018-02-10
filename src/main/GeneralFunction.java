@@ -36,7 +36,7 @@ public class GeneralFunction {
 	}
 	
 	public static List<Integer> functionalUpdate(List<Integer> intList, int newP, int position) {
-		List<Integer> intListCopy = GeneralFunction.deepCopyOfArrayList(intList);
+		List<Integer> intListCopy = deepCopyOfArrayList(intList);
 		intListCopy.set(position, newP);		
 		return intListCopy;
 	}
