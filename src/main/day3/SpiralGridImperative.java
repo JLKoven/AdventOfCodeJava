@@ -80,7 +80,7 @@ public class SpiralGridImperative {
 		return answer;
 	}
 
-	public void addCellToGridInitial(){
+	public void addCellToGrid(){
 
 		SpiralGridCellImperative cell = new SpiralGridCellImperative();
 
@@ -283,19 +283,19 @@ public class SpiralGridImperative {
 		if (RIGHT.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 1);
 			futureCell.setYCoord(cell.getYCoord() + 0);
-			outOfBounds = outOfBoundsSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionRIGHT());
+			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionRIGHT());
 		} else if (UP.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 0);
 			futureCell.setYCoord(cell.getYCoord() + 1);
-			outOfBounds = outOfBoundsSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionUP());
+			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionUP());
 		} else if (LEFT.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() - 1);
 			futureCell.setYCoord(cell.getYCoord() + 0);
-			outOfBounds = outOfBoundsSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionLEFT());
+			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionLEFT());
 		} else if (DOWN.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 0);
 			futureCell.setYCoord(cell.getYCoord() - 1);
-			outOfBounds = outOfBoundsSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionDOWN());
+			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionDOWN());
 		} else {
 			Exception error = new Exception();
 			try {
@@ -310,7 +310,7 @@ public class SpiralGridImperative {
 		return outOfBounds;
 	}
 
-	private boolean outOfBoundsSubfunction(String nextDirection, SpiralGridCellImperative futureCell){//, double maxDimensionDIRECTION) {
+	private boolean outOfBoundsDirectionSubfunction(String nextDirection, SpiralGridCellImperative futureCell){//, double maxDimensionDIRECTION) {
 		boolean booleanToReturn = true;
 		if (RIGHT.equals(nextDirection)){
 			if (futureCell.getXCoord()+0 > getMaxX()+1){
@@ -353,7 +353,7 @@ public class SpiralGridImperative {
 
 	}
 
-	private Optional<SpiralGridCellImperative> getMostRecentCell() {
+	public Optional<SpiralGridCellImperative> getMostRecentCell() {
 		Optional<SpiralGridCellImperative> answer = Optional.empty();
 		if (!list.isEmpty()) {
 			answer = Optional.of(list.get(list.size() - 1));
@@ -361,10 +361,13 @@ public class SpiralGridImperative {
 		return answer;
 	}
 
-	public SpiralGridCellImperative getLastCell() {
-		SpiralGridCellImperative lastCell = getList().get((getList().size() - 1));
-
-		return lastCell;
-	}
+//	public Optional<SpiralGridCellImperative> getLastCell() {
+//		Optional<SpiralGridCellImperative> lastCell = Optional.empty();
+//		if (!list.isEmpty()) {
+//			SpiralGridCellImperative lastCell = getList().get((getList().size() - 1));
+//		}
+//
+//		return lastCell;
+//	}
 
 }

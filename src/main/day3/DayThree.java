@@ -97,9 +97,9 @@ public class DayThree {
 		int answer = 0;
 		SpiralGridImperative grid = new SpiralGridImperative();
 		for (int i = 0; i < stepsFromOrigin; i++) {
-			grid.addCellToGridInitial();
+			grid.addCellToGrid();
 		}
-		SpiralGridCellImperative lastCell = grid.getLastCell();
+		SpiralGridCellImperative lastCell = grid.getMostRecentCell().get();
 		answer = answer + Math.abs(lastCell.getXCoord());
 		answer = answer + Math.abs(lastCell.getYCoord());
 		return answer;
@@ -108,9 +108,9 @@ public class DayThree {
 	public static int getCumulativeValueOfThisCell(int index) {
 		SpiralGridImperative grid = new SpiralGridImperative();
 		for (int i = 0; i < index; i++) {
-			grid.addCellToGridInitial();
+			grid.addCellToGrid();
 		}
-		SpiralGridCellImperative lastCell = grid.getLastCell();
+		SpiralGridCellImperative lastCell = grid.getMostRecentCell().get();
 		return lastCell.getCellCumulativeValue();
 	}
 
@@ -118,8 +118,8 @@ public class DayThree {
 		int answer = 0;
 		SpiralGridImperative grid = new SpiralGridImperative();
 		while (input > answer) {
-			grid.addCellToGridInitial();
-			SpiralGridCellImperative lastCell = grid.getLastCell();
+			grid.addCellToGrid();
+			SpiralGridCellImperative lastCell = grid.getMostRecentCell().get();
 			answer = lastCell.getCellCumulativeValue();
 		}
 		return answer;
