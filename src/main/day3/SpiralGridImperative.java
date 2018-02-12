@@ -94,7 +94,7 @@ public class SpiralGridImperative {
 			if (getMostRecentCell().isPresent()) {
 				SpiralGridCellImperative lastCell = getMostRecentCell().get();
 				cell.setValue(lastCell.getValue() + 1);
-				cell = setDirectionBasedOnPriorDirection(cell, lastCell);
+				cell = setPositionAndDirectionBasedOnPriorDirection(cell, lastCell);
 				cell.setCellCumulativeValue(calculateCumulativeValueBruteForce(cell));
 			} else {
 				System.out.println(
@@ -218,7 +218,7 @@ public class SpiralGridImperative {
 		return value;
 	}
 
-	public SpiralGridCellImperative setDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
+	public SpiralGridCellImperative setPositionAndDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
 			 {// sorry, Dan
 
 		if (RIGHT.equals(lastCell.getNextDirection())) {
