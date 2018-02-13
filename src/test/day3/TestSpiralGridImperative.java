@@ -196,42 +196,77 @@ public class TestSpiralGridImperative {
 	}
 
 
+	@Test
+	public void testSetDirectionBasedOnPriorDirection(){
+		SpiralGridImperative grid = new SpiralGridImperative();
+		boolean shouldBeTrue = true;
+		for (int i=0; i<24; i++){
+			grid.addCellToGrid();
+		}
 
-//	@Test
-//	public void testSetDirectionBasedOnPriorDirection() {
-//		assertEquals(0, 0);
-//		System.out.println("Success on Day3.testWARGH!");
-//	}
-////	public SpiralGridCellImperative setDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
-////			 {// sorry, Dan
-////
-////		if (RIGHT.equals(lastCell.getNextDirection())) {
-////			cell.setXCoord(lastCell.getXCoord() + 1);
-////			cell.setYCoord(lastCell.getYCoord() + 0);
-////		} else if (UP.equals(lastCell.getNextDirection())) {
-////			cell.setXCoord(lastCell.getXCoord() + 0);
-////			cell.setYCoord(lastCell.getYCoord() + 1);
-////		} else if (LEFT.equals(lastCell.getNextDirection())) {
-////			cell.setXCoord(lastCell.getXCoord() - 1);
-////			cell.setYCoord(lastCell.getYCoord() + 0);
-////		} else if (DOWN.equals(lastCell.getNextDirection())) {
-////			cell.setXCoord(lastCell.getXCoord() + 0);
-////			cell.setYCoord(lastCell.getYCoord() - 1);
-////		} else {
-////			System.out.println("Something went very wrong here! There is a direction other than the listed constants");
-////		}
-////
-////		if (cellWouldBeOutOfCurrentBounds(cell, lastCell)) {// switch direction
-////			cell.setNextDirection(getNewDirectionFrom(lastCell.getNextDirection()));
-////		} else {// keep old direction
-////			cell.setNextDirection(lastCell.getNextDirection());
-////		}
-////
-////		return cell;
-////
-////	}
-////
+		SpiralGridCellImperative futureCell = new SpiralGridCellImperative();
+		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
+		if (!futureCell.getNextDirection().equals(SpiralGridImperative.RIGHT)
+				||
+				futureCell.getXCoord() != 2
+				||
+				futureCell.getYCoord() != -2
+				){
+			shouldBeTrue = false;
+		}
+		grid.addCellToGrid();
+		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
+		if (!futureCell.getNextDirection().equals(SpiralGridImperative.UP)
+				||
+				futureCell.getXCoord() != 3
+				||
+				futureCell.getYCoord() != -2
+				){
+			shouldBeTrue = false;
+		}
+		for (int i=0; i<6; i++){
+			grid.addCellToGrid();
+		}
+		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
+		if (!futureCell.getNextDirection().equals(SpiralGridImperative.LEFT)
+				||
+				futureCell.getXCoord() != 4
+				||
+				futureCell.getYCoord() != 3
+				){
+			shouldBeTrue = false;
+		}
+		for (int i=0; i<8; i++){
+			grid.addCellToGrid();
+		}
+
+		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
+		if (!futureCell.getNextDirection().equals(SpiralGridImperative.DOWN)
+				||
+				futureCell.getXCoord() != -3
+				||
+				futureCell.getYCoord() != 4
+				){
+			shouldBeTrue = false;
+		}
+		for (int i=0; i<8; i++){
+			grid.addCellToGrid();
+		}
+		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
+		if (!futureCell.getNextDirection().equals(SpiralGridImperative.RIGHT)
+				||
+				futureCell.getXCoord() != -4
+				||
+				futureCell.getYCoord() != -3
+				){
+			shouldBeTrue = false;
+		}
+		assertEquals(shouldBeTrue, true);
+		System.out.println("Success on Day3.testSetDirectionBasedOnPriorDirection!");
+	}
 	
+
+
 
 	
 	@Test
