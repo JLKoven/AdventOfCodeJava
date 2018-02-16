@@ -77,6 +77,7 @@ public class DaySeven {
 		//
 		// Before you're ready to help them, you need to make sure your
 		// information is correct. What is the name of the bottom program?
+		System.out.println("Day 7 Part 1");
         File file = new File("src/main/day7/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySeven(uri)) + ".");
@@ -99,6 +100,7 @@ public class DaySeven {
 //		As you can see, tknk's disc is unbalanced: ugml's stack is heavier than the other two. Even though the nodes above ugml are balanced, ugml itself is too heavy: it needs to be 8 units lighter for its stack to weigh 243 and keep the towers balanced. If this change were made, its weight would be 60.
 //
 //		Given that exactly one program is the wrong weight, what would its weight need to be to balance the entire tower?
+		System.out.println("Day 7 Part 2");
         File file = new File("src/main/day7/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputString(uri)) + ".");

@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public class SpiralGridImperative {
 
-	public static final String RIGHT = "Right";
-	public static final String UP = "Up";
-	public static final String LEFT = "Left";
-	public static final String DOWN = "Down";
+//	public static final String RIGHT = "Right";
+//	public static final String UP = "Up";
+//	public static final String LEFT = "Left";
+//	public static final String DOWN = "Down";
 
 	private List<SpiralGridCellImperative> list = new ArrayList<SpiralGridCellImperative>();
 
@@ -89,7 +89,7 @@ public class SpiralGridImperative {
 			cell.setYCoord(0);
 			cell.setValue(1);
 			cell.setCellCumulativeValue(1);
-			cell.setNextDirection(RIGHT);
+			cell.setNextDirection(DayThree.RIGHT);
 		} else {
 			if (getMostRecentCell().isPresent()) {
 				SpiralGridCellImperative lastCell = getMostRecentCell().get();
@@ -221,16 +221,16 @@ public class SpiralGridImperative {
 	public SpiralGridCellImperative setPositionAndDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
 			 {// sorry, Dan
 
-		if (RIGHT.equals(lastCell.getNextDirection())) {
+		if (DayThree.RIGHT.equals(lastCell.getNextDirection())) {
 			cell.setXCoord(lastCell.getXCoord() + 1);
 			cell.setYCoord(lastCell.getYCoord() + 0);
-		} else if (UP.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.UP.equals(lastCell.getNextDirection())) {
 			cell.setXCoord(lastCell.getXCoord() + 0);
 			cell.setYCoord(lastCell.getYCoord() + 1);
-		} else if (LEFT.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.LEFT.equals(lastCell.getNextDirection())) {
 			cell.setXCoord(lastCell.getXCoord() - 1);
 			cell.setYCoord(lastCell.getYCoord() + 0);
-		} else if (DOWN.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.DOWN.equals(lastCell.getNextDirection())) {
 			cell.setXCoord(lastCell.getXCoord() + 0);
 			cell.setYCoord(lastCell.getYCoord() - 1);
 		} else {
@@ -249,14 +249,14 @@ public class SpiralGridImperative {
 
 	private String getNewDirectionFrom(String priorDirection) {
 		String newDirection = priorDirection;
-		if (RIGHT.equals(priorDirection)) {
-			newDirection = UP;
-		} else if (UP.equals(priorDirection)) {
-			newDirection = LEFT;
-		} else if (LEFT.equals(priorDirection)) {
-			newDirection = DOWN;
-		} else if (DOWN.equals(priorDirection)) {
-			newDirection = RIGHT;
+		if (DayThree.RIGHT.equals(priorDirection)) {
+			newDirection = DayThree.UP;
+		} else if (DayThree.UP.equals(priorDirection)) {
+			newDirection = DayThree.LEFT;
+		} else if (DayThree.LEFT.equals(priorDirection)) {
+			newDirection = DayThree.DOWN;
+		} else if (DayThree.DOWN.equals(priorDirection)) {
+			newDirection = DayThree.RIGHT;
 		} else {
 			Exception error = new Exception();
 			try {
@@ -280,19 +280,19 @@ public class SpiralGridImperative {
 															// RIGHT
 		//not bothering to set values for future cell 
 
-		if (RIGHT.equals(lastCell.getNextDirection())) {
+		if (DayThree.RIGHT.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 1);
 			futureCell.setYCoord(cell.getYCoord() + 0);
 			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionRIGHT());
-		} else if (UP.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.UP.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 0);
 			futureCell.setYCoord(cell.getYCoord() + 1);
 			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionUP());
-		} else if (LEFT.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.LEFT.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() - 1);
 			futureCell.setYCoord(cell.getYCoord() + 0);
 			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionLEFT());
-		} else if (DOWN.equals(lastCell.getNextDirection())) {
+		} else if (DayThree.DOWN.equals(lastCell.getNextDirection())) {
 			futureCell.setXCoord(cell.getXCoord() + 0);
 			futureCell.setYCoord(cell.getYCoord() - 1);
 			outOfBounds = outOfBoundsDirectionSubfunction(lastCell.getNextDirection(), futureCell);//, getMaxDimensionDOWN());
@@ -312,28 +312,28 @@ public class SpiralGridImperative {
 
 	private boolean outOfBoundsDirectionSubfunction(String nextDirection, SpiralGridCellImperative futureCell){//, double maxDimensionDIRECTION) {
 		boolean booleanToReturn = true;
-		if (RIGHT.equals(nextDirection)){
+		if (DayThree.RIGHT.equals(nextDirection)){
 			if (futureCell.getXCoord()+0 > getMaxX()+1){
 				booleanToReturn = true;
 				setMaxX(getMaxX()+1);
 			} else {
 				booleanToReturn = false;
 			}
-		} else if (UP.equals(nextDirection)){
+		} else if (DayThree.UP.equals(nextDirection)){
 			if (futureCell.getYCoord()+0 > getMaxY()+1){
 				booleanToReturn = true;
 				setMaxY(getMaxY()+1);
 			} else {
 				booleanToReturn = false;
 			}
-		} else if (LEFT.equals(nextDirection)){
+		} else if (DayThree.LEFT.equals(nextDirection)){
 			if (futureCell.getXCoord()-0 < getMinX()-1){
 				booleanToReturn = true;
 				setMinX(getMinX()-1);
 			} else {
 				booleanToReturn = false;
 			}
-		} else if (DOWN.equals(nextDirection)){
+		} else if (DayThree.DOWN.equals(nextDirection)){
 			if (futureCell.getYCoord()-0 < getMinY()-1){
 				booleanToReturn = true;
 				setMinY(getMinY()-1);

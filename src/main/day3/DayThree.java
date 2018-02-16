@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DayThree {
+	
+	public static final String RIGHT = "Right";
+	public static final String UP = "Up";
+	public static final String LEFT = "Left";
+	public static final String DOWN = "Down";
 
 	public static void executeStandardPart1() {
 	// --- Day 3: Spiral Memory ---
@@ -45,6 +50,13 @@ public class DayThree {
         File file = new File("src/main/day3/input.txt");
         URI uri = file.toURI();
 		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(getInput(uri)) + " steps!");
+//		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneFunctional(				
+//				0, 0, 
+//				RIGHT, 
+//				0, 0, 0, 0, 
+//				0, 	
+//				getInput(uri)
+//				) + " steps!");
 	}
 	
 
@@ -124,6 +136,86 @@ public class DayThree {
 		}
 		return answer;
 	}
+	
+	// Functional 
+	public static int getAnswerPartOneFunctional(
+			int xCoord, int yCoord, 
+			String currentDirection, 
+			int maxX, int maxY, int minX, int minY, 
+			int currentSteps, 			
+			int stepsFromOrigin
+			) {
+		System.out.println("Current values are "+xCoord+" and "+yCoord+".");
+		if (currentSteps == stepsFromOrigin){
+			return xCoord+yCoord;
+		} else {
+			
+			if (RIGHT.equals(currentDirection)){
+				xCoord++;
+				//we're going to go right
+				//but then, we're going to check against maxX, if yes
+				//switch currentDirection to UP
+				//change maxCoords
+				if (xCoord > maxX){
+					currentDirection = UP;
+					maxX++;
+				}
+				//else, keep it as current
+			} else if (UP.equals(currentDirection)){
+				yCoord++;
+				//we're going to go Up
+				//but then, we're going to check against maxY, if yes
+				//switch currentDirection to LEFT
+				//change maxCoords
+				if (yCoord > maxY){
+					currentDirection = LEFT;
+					maxY++;
+				}
+				//else, keep it as current
+			} else if (LEFT.equals(currentDirection)){
+				xCoord--;
+				//we're going to go Left
+				//but then, we're going to check against minX, if yes
+				//switch currentDirection to DOWN
+				//change maxCoords
+				if (xCoord < minX){
+					currentDirection = DOWN;
+					minX--;
+				}
+				//else, keep it as current
+			} else if (DOWN.equals(currentDirection)){
+				yCoord--;
+				//we're going to go Down
+				//but then, we're going to check against minY, if yes
+				//switch currentDirection to RIGHT
+				//change maxCoords
+				if (yCoord < minY){
+					currentDirection = RIGHT;
+					minY--;
+				}
+				//else, keep it as current
+			} else {
+				Exception error = new Exception();
+				try {
+					throw error;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			currentSteps++;
+			return getAnswerPartOneFunctional(
+					xCoord, yCoord, 
+					currentDirection, 
+					maxX, maxY, minX, minY, 
+					currentSteps, 			
+					stepsFromOrigin
+					);
+			
+		}
+
+	}
+	
 
 	private static int getInput(URI fileName) {
 		List<String> linesAsString = new ArrayList<String>();

@@ -62,6 +62,7 @@ public class DaySix {
 		// redistribution cycles must be completed before a configuration is
 		// produced that has been seen before? System.out.println("Day 6 Part
 		// 1");
+		System.out.println("Day 6 Part 1");
         File file = new File("src/main/day6/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix(uri)) + ".");
@@ -75,6 +76,7 @@ public class DaySix {
 //		In the example above, 2 4 1 2 is seen again after four cycles, and so the answer in that example would be 4.
 //
 //		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
+		System.out.println("Day 6 Part 2");
         File file = new File("src/main/day6/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix(uri)) + ".");
@@ -200,8 +202,13 @@ public class DaySix {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String initialLine = linesAsString.get(0);
+		String[] parts = initialLine.split("\\s+");
 		List<Integer> lines = new ArrayList<Integer>();
-		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
+		for (int i=0; i<parts.length; i++){
+			lines.add(Integer.parseInt(parts[i]));
+		}
+//		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
 		return lines;
 	}
 

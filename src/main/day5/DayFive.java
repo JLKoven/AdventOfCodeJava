@@ -140,17 +140,8 @@ public class DayFive {
 			int p = intList.get(position);
 			int newP = p + 1;
 			intList = GeneralFunction.functionalUpdate(intList, newP, position);
-			displayList(intList);
 			return 1 + getAnswerPartOne(intList, position + p);
 		}
-	}
-
-	private static void displayList(List<Integer> intList) {
-		System.out.print("List is now: ");
-		for (Integer intvar : intList){
-			System.out.print(intvar+ " ");
-		}
-		System.out.println();
 	}
 
 	public static int getAnswerDayFivePartTwoFunctional(List<Integer> intList) {

@@ -94,7 +94,7 @@ public class TestSpiralGridImperative {
 		if (grid.getList().get(0).getCellCumulativeValue() != 1){
 			shouldBeTrue = false;
 		}
-		if (!grid.getList().get(0).getNextDirection().equals(SpiralGridImperative.RIGHT)){
+		if (!grid.getList().get(0).getNextDirection().equals(DayThree.RIGHT)){
 			shouldBeTrue = false;
 		}
 		assertEquals(shouldBeTrue, true);
@@ -120,7 +120,7 @@ public class TestSpiralGridImperative {
 		if (grid.getList().get(grid.getList().size()-1).getCellCumulativeValue() != 880){
 			shouldBeTrue = false;
 		}
-		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(SpiralGridImperative.RIGHT)){
+		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(DayThree.RIGHT)){
 			shouldBeTrue = false;
 		}
 		if (!(grid.getMaxX() == 2)){
@@ -148,7 +148,7 @@ public class TestSpiralGridImperative {
 		if (grid.getList().get(grid.getList().size()-1).getCellCumulativeValue() != 931){
 			shouldBeTrue = false;
 		}
-		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(SpiralGridImperative.RIGHT)){
+		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(DayThree.RIGHT)){
 			shouldBeTrue = false;
 		}
 		if (!(grid.getMaxX() == 2)){
@@ -176,7 +176,7 @@ public class TestSpiralGridImperative {
 		if (grid.getList().get(grid.getList().size()-1).getCellCumulativeValue() != 957){
 			shouldBeTrue = false;
 		}
-		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(SpiralGridImperative.UP)){
+		if (!grid.getList().get(grid.getList().size()-1).getNextDirection().equals(DayThree.UP)){
 			shouldBeTrue = false;
 		}
 		if (!(grid.getMaxX() == 3)){
@@ -206,7 +206,7 @@ public class TestSpiralGridImperative {
 
 		SpiralGridCellImperative futureCell = new SpiralGridCellImperative();
 		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
-		if (!futureCell.getNextDirection().equals(SpiralGridImperative.RIGHT)
+		if (!futureCell.getNextDirection().equals(DayThree.RIGHT)
 				||
 				futureCell.getXCoord() != 2
 				||
@@ -216,7 +216,7 @@ public class TestSpiralGridImperative {
 		}
 		grid.addCellToGrid();
 		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
-		if (!futureCell.getNextDirection().equals(SpiralGridImperative.UP)
+		if (!futureCell.getNextDirection().equals(DayThree.UP)
 				||
 				futureCell.getXCoord() != 3
 				||
@@ -228,7 +228,7 @@ public class TestSpiralGridImperative {
 			grid.addCellToGrid();
 		}
 		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
-		if (!futureCell.getNextDirection().equals(SpiralGridImperative.LEFT)
+		if (!futureCell.getNextDirection().equals(DayThree.LEFT)
 				||
 				futureCell.getXCoord() != 4
 				||
@@ -241,7 +241,7 @@ public class TestSpiralGridImperative {
 		}
 
 		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
-		if (!futureCell.getNextDirection().equals(SpiralGridImperative.DOWN)
+		if (!futureCell.getNextDirection().equals(DayThree.DOWN)
 				||
 				futureCell.getXCoord() != -3
 				||
@@ -253,7 +253,7 @@ public class TestSpiralGridImperative {
 			grid.addCellToGrid();
 		}
 		futureCell = grid.setPositionAndDirectionBasedOnPriorDirection(futureCell, grid.getMostRecentCell().get());
-		if (!futureCell.getNextDirection().equals(SpiralGridImperative.RIGHT)
+		if (!futureCell.getNextDirection().equals(DayThree.RIGHT)
 				||
 				futureCell.getXCoord() != -4
 				||
