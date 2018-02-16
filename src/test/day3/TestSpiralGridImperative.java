@@ -293,10 +293,6 @@ public class TestSpiralGridImperative {
 		assertEquals(shouldBeTrue, true);
 		System.out.println("Success on Day3.testGetMostRecentCell!");
 	}
-//	public SpiralGridCellImperative getLastCell() {
-//		SpiralGridCellImperative lastCell = getList().get((getList().size() - 1));
-//
-//		return lastCell;
-//	}
+
 
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.Test;
 
 import main.GeneralFunction;
-import main.day1.DayOne;
 
 public class TestGeneral {
 
@@ -32,14 +31,6 @@ public class TestGeneral {
 				&& arrayToBeCopied.get(2) == copy.get(2) && arrayToBeCopied!=copy, true);
 		System.out.println("Success on GeneralFunction.testDeepCopyOfArrayList!");
 	}
-	// public static List<Integer> deepCopyOfArrayList(List<Integer>
-	// arrayToBeCopied) {
-	// List<Integer> newList = new ArrayList<Integer>();
-	// for (Integer value : arrayToBeCopied) {
-	// newList.add(value);
-	// }
-	// return newList;
-	// }
 
 	@Test
 	public void testRemoveNonNumericLeaveDashAndDot() {
@@ -47,12 +38,6 @@ public class TestGeneral {
 		assertEquals(GeneralFunction.removeNonNumericLeaveDashAndDot(var1), "-12.3");
 		System.out.println("Success on GeneralFunction.testRemoveNonNumericLeaveDashAndDot!");
 	}
-	// public static String removeNonNumericLeaveDashAndDot(String inputString)
-	// {
-	// String outputString = inputString.replaceAll("[^\\d.-]", "");
-	//
-	// return outputString;
-	// }
 
 	@Test
 	public void testRemoveWhitespace() {
@@ -60,11 +45,6 @@ public class TestGeneral {
 		assertEquals(GeneralFunction.removeNonNumericLeaveDashAndDot(var1), "12312422222");
 		System.out.println("Success on GeneralFunction.testRemoveWhitespace!");
 	}
-	// public static String removeWhitespace(String inputString) {
-	// String outputString = inputString.replaceAll(" ", "");
-	//
-	// return outputString;
-	// }
 
 	@Test
 	public void testFunctionalUpdate() {

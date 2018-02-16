@@ -5,10 +5,11 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import main.GeneralFunction;
 
@@ -205,10 +206,8 @@ public class DaySix {
 		String initialLine = linesAsString.get(0);
 		String[] parts = initialLine.split("\\s+");
 		List<Integer> lines = new ArrayList<Integer>();
-		for (int i=0; i<parts.length; i++){
-			lines.add(Integer.parseInt(parts[i]));
-		}
-//		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
+        Stream<String> stringStream = Arrays.stream(parts);
+        stringStream.forEach(x->lines.add(Integer.parseInt(x)));
 		return lines;
 	}
 
