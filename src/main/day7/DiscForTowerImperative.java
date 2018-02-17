@@ -10,8 +10,8 @@ public class DiscForTowerImperative {
 
 	private String name;
 	private Integer value;
-	private List<String> namesOfDescendants = new ArrayList<String>();
-	private List<DiscForTowerImperative> descendants = new ArrayList<DiscForTowerImperative>();// could
+	private List<String> namesOfDescendants = new ArrayList<>();
+	private List<DiscForTowerImperative> descendants = new ArrayList<>();// could
 																			// be
 																			// a
 																			// Set
@@ -57,7 +57,7 @@ public class DiscForTowerImperative {
 	public Integer directValueOfChildren(Map<String, DiscForTowerImperative> dictionary
 	) {
 		Integer sumValue = 0;
-		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<>();
 		for (String name : getNamesOfDescendants()) {
 			stackOfChildren.push(dictionary.get(name));
 		}
@@ -70,7 +70,7 @@ public class DiscForTowerImperative {
 
 	public Integer getSumValue() {
 		Integer sumValue = getValue();
-		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<>();
 		for (DiscForTowerImperative descendant : getDescendants()) {
 			stackOfChildren.push(descendant);
 		}
@@ -87,7 +87,7 @@ public class DiscForTowerImperative {
 	public Integer sumValueOfChildren(
 	) {
 		Integer sumValue = 0;
-		Stack<DiscForTowerImperative> stackOfChildren = new Stack<DiscForTowerImperative>();
+		Stack<DiscForTowerImperative> stackOfChildren = new Stack<>();
 		for (DiscForTowerImperative descendant : getDescendants()) {
 			stackOfChildren.push(descendant);
 		}
@@ -129,7 +129,7 @@ public class DiscForTowerImperative {
 
 	public Integer getStandardValueOfChildren() {
 		Integer intToReturn = 0;
-		Map<Integer, Integer> standardMapFind = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> standardMapFind = new HashMap<>();
 		if (!getDescendants().isEmpty()) {
 
 			for (int i = 0; i < getDescendants().size(); i++) {
@@ -157,10 +157,7 @@ public class DiscForTowerImperative {
 				if (!getStandardValueOfChildren().equals(getDescendants().get(i).getSumValue())){
 					discToReturn = getDescendants().get(i);
 					break;
-				} 
-				
-
-				 
+				} 				 
 			}
 		}
 

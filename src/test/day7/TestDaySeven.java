@@ -8,14 +8,14 @@ import org.junit.Test;
 
 import main.day7.DaySeven;
 import main.day7.DiscForTowerImperative;
-import main.day7.DiscTowerImperative;
+//import main.day7.DiscTowerImperative;
 
 public class TestDaySeven {
 
 	@Test
 	public void testPartOneTestImperative1() {
 
-		List<String> stringInput = new ArrayList<String>();
+		List<String> stringInput = new ArrayList<>();
 		stringInput.add("pbga (66)");
 		stringInput.add("xhth (57)");
 		stringInput.add("ebii (61)");
@@ -30,18 +30,16 @@ public class TestDaySeven {
 		stringInput.add("gyxo (61)");
 		stringInput.add("cntj (57)");
 		List<DiscForTowerImperative> inputList = DaySeven.generateListOfDiscsFromStringInput(stringInput);
-		DiscTowerImperative outputTower = new DiscTowerImperative();
-		outputTower = DiscTowerImperative.formNewTowerFrom(inputList);
 
 		assertEquals(
-				DaySeven.getAnswerPartOneImperative(outputTower),"tknk");
+				DaySeven.getAnswerPartOneImperative(inputList),"tknk");
 		System.out.println("Success on Day7.testPartOneTest1!");
 	}
 	
 	@Test
 	public void testPartOneTestImperative2() {
 
-		List<String> stringInput = new ArrayList<String>();
+		List<String> stringInput = new ArrayList<>();
 		stringInput.add("pbga (66)");
 		stringInput.add("xhth (57)");
 		stringInput.add("ebii (61)");

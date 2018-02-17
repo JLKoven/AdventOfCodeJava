@@ -12,14 +12,14 @@ public class SpiralGridImperative {
 //	public static final String LEFT = "Left";
 //	public static final String DOWN = "Down";
 
-	private List<SpiralGridCellImperative> list = new ArrayList<SpiralGridCellImperative>();
+	private List<SpiralGridCellImperative> list = new ArrayList<>();
 
 	private int maxX=0;
 	private int maxY=0;
 	private int minX=0;
 	private int minY=0;
 
-	private Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapOfExisting = new HashMap<HashMap<Integer, Integer>, SpiralGridCellImperative>();
+	private Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapOfExisting = new HashMap<>();
 
 	public List<SpiralGridCellImperative> getList() {
 		return list;
@@ -111,7 +111,7 @@ public class SpiralGridImperative {
 
 	private void mapPlacementNoIntPair(SpiralGridCellImperative cell) {
 		Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapToReturn = getMapOfExisting();
-		HashMap<Integer, Integer> coordinates = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> coordinates = new HashMap<>();
 		coordinates.put(cell.getXCoord(), cell.getYCoord());
 		if (!mapToReturn.containsKey(coordinates)){
 			mapToReturn.put(coordinates, cell);
@@ -120,7 +120,6 @@ public class SpiralGridImperative {
 			try {
 				throw error;
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -129,91 +128,64 @@ public class SpiralGridImperative {
 	}
 
 	private int calculateCumulativeValueBruteForce(SpiralGridCellImperative cell) {
-		int value=0;
-		
+		int value=0;		
 		
 		//-1,-1
-		Map<Integer, Integer> innerMapLeftDown = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapLeftDown = new HashMap<>();
 		innerMapLeftDown.put(cell.getXCoord()-1, cell.getYCoord()-1);
 		if (getMapOfExisting().containsKey(innerMapLeftDown)){
 			value = value+getMapOfExisting().get(innerMapLeftDown).getCellCumulativeValue();
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at LeftDown with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at LeftDown!");
-		}
+		} 
 
 		//-1,-0
-		Map<Integer, Integer> innerMapLeftCenter = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapLeftCenter = new HashMap<>();
 		innerMapLeftCenter.put(cell.getXCoord()-1, cell.getYCoord());
 		if (getMapOfExisting().containsKey(innerMapLeftCenter)){
 			value = value+getMapOfExisting().get(innerMapLeftCenter).getCellCumulativeValue();
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at LeftCenter with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at LeftCenter!");
-		}
+		} 
 		
 		//-1,+1
-		Map<Integer, Integer> innerMapLeftUp = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapLeftUp = new HashMap<>();
 		innerMapLeftUp.put(cell.getXCoord()-1, cell.getYCoord()+1);
 		if (getMapOfExisting().containsKey(innerMapLeftUp)){
 			value = value+getMapOfExisting().get(innerMapLeftUp).getCellCumulativeValue();
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at LeftUp with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at LeftUp!");
-		}			
+		} 		
 		
 		//-0,-1
-		Map<Integer, Integer> innerMapCenterDown = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapCenterDown = new HashMap<>();
 		innerMapCenterDown.put(cell.getXCoord(), cell.getYCoord()-1);
 		if (getMapOfExisting().containsKey(innerMapCenterDown)){
 			value = value+getMapOfExisting().get(innerMapCenterDown).getCellCumulativeValue();			
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at Down with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at Down!");
-		}			
+		} 			
 		
 		//-0,+1
-		Map<Integer, Integer> innerMapCenterUp = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapCenterUp = new HashMap<>();
 		innerMapCenterUp.put(cell.getXCoord(), cell.getYCoord()+1);
 		if (getMapOfExisting().containsKey(innerMapCenterUp)){
 			value = value+getMapOfExisting().get(innerMapCenterUp).getCellCumulativeValue();			
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at Up with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at Up!");
-		}			
+		} 			
 
 		//+1,-1
-		Map<Integer, Integer> innerMapRightDown = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapRightDown = new HashMap<>();
 		innerMapRightDown.put(cell.getXCoord()+1, cell.getYCoord()-1);
 		if (getMapOfExisting().containsKey(innerMapRightDown)){
 			value = value+getMapOfExisting().get(innerMapRightDown).getCellCumulativeValue();			
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at DownRight with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at DownRight!");
-		}			
+		} 		
 		
 		//+1,-0
-		Map<Integer, Integer> innerMapRightCenter = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapRightCenter = new HashMap<>();
 		innerMapRightCenter.put(cell.getXCoord()+1, cell.getYCoord());
 		if (getMapOfExisting().containsKey(innerMapRightCenter)){
 			value = value+getMapOfExisting().get(innerMapRightCenter).getCellCumulativeValue();			
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at Right with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at Right!");
-		}			
+		} 		
 		
 		//+1,+1
-		Map<Integer, Integer> innerMapRightUp = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> innerMapRightUp = new HashMap<>();
 		innerMapRightUp.put(cell.getXCoord()+1, cell.getYCoord()+1);
 		if (getMapOfExisting().containsKey(innerMapRightUp)){
 			value = value+getMapOfExisting().get(innerMapRightUp).getCellCumulativeValue();			
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") does seem to have a neighbor at RightUp with value of "+value+"!");
-		} else {
-//			System.out.println("cell at ("+cell.getXCoord()+", "+cell.getYCoord()+") doesn't seem to have a neighbor at RightUp!");
-		}			
+		} 			
 		
-//		System.out.println("");
-
 		
 		return value;
 	}

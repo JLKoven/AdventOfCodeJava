@@ -90,12 +90,12 @@ public class DaySix {
 
 	public static int getAnswerPartOneImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
-		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
+		Set<List<Integer>> alreadySeen = new HashSet<>();
 		List<Integer> initialConfiguration = GeneralFunction.deepCopyOfArrayList(standardInputDaySix);
 		int currentIndex = 0;
 
 		boolean notFoundDuplicate = true;
-		List<Integer> newArray = new ArrayList<Integer>();
+		List<Integer> newArray = new ArrayList<>();
 		while (notFoundDuplicate) {
 			if (!newArray.isEmpty()) {
 				alreadySeen.add(newArray);
@@ -117,12 +117,12 @@ public class DaySix {
 
 	public static int getAnswerPartTwoImperative(List<Integer> standardInputDaySix) {
 		int cyclesToBeCompleted = 0;
-		Set<List<Integer>> alreadySeen = new HashSet<List<Integer>>();
+		Set<List<Integer>> alreadySeen = new HashSet<>();
 		List<Integer> initialConfiguration = GeneralFunction.deepCopyOfArrayList(standardInputDaySix);
 		int currentIndex = 0;
 
 		boolean notFoundDuplicate = true;
-		List<Integer> newArray = new ArrayList<Integer>();
+		List<Integer> newArray = new ArrayList<>();
 		while (notFoundDuplicate) {
 			if (!newArray.isEmpty()) {
 				alreadySeen.add(newArray);
@@ -196,16 +196,15 @@ public class DaySix {
 
 	
 	private static List<Integer> getStandardInputDaySix(URI fileName) {
-		List<String> linesAsString = new ArrayList<String>();
+		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String initialLine = linesAsString.get(0);
 		String[] parts = initialLine.split("\\s+");
-		List<Integer> lines = new ArrayList<Integer>();
+		List<Integer> lines = new ArrayList<>();
         Stream<String> stringStream = Arrays.stream(parts);
         stringStream.forEach(x->lines.add(Integer.parseInt(x)));
 		return lines;

@@ -77,7 +77,7 @@ public class DayTwo {
         URI uri = file.toURI();
 		System.out.print("Sum of even divisions between listOfArrays is ");
 		System.out.print(getAnswerPartTwoImperative(getStandardInputDayTwoPartOneAndTwo(uri)));
-		System.out.print(".");
+		System.out.println(".");
 	}
 	
 	
@@ -162,8 +162,8 @@ public class DayTwo {
 
 
 	public static List<int[]> getStandardInputDayTwoPartOneAndTwo(URI fileName) {
-		List<int[]> listOfArrays = new ArrayList<int[]>();
-		List<String> linesAsString = new ArrayList<String>();
+		List<int[]> listOfArrays = new ArrayList<>();
+		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {

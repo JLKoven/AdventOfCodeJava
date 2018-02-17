@@ -13,7 +13,7 @@ public class TestDaySix {
 	@Test
 	public void testPartOneTestImperative1() {
 
-		List<Integer> array = new ArrayList<Integer>();
+		List<Integer> array = new ArrayList<>();
 		array.add(0);
 		array.add(2);
 		array.add(7);
@@ -26,7 +26,7 @@ public class TestDaySix {
 	@Test
 	public void testPartOneTestImperative2() {
 
-		List<Integer> array = new ArrayList<Integer>();
+		List<Integer> array = new ArrayList<>();
 		array.add(0);
 		array.add(2);
 		array.add(7);

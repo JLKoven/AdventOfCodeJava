@@ -18,7 +18,7 @@ public class Executor {
 		DayTwo.executeStandardPart1();
 		DayTwo.executeStandardPart2();
 
-		DayThree.executeStandardPart1();
+		DayThree.executeStandardPart1();//long runtime
 		DayThree.executeStandardPart2();
 		
 		DayFour.executeStandardPart1();

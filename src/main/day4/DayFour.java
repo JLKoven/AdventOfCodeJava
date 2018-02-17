@@ -73,7 +73,7 @@ public class DayFour {
 
 	private static boolean findDuplicatesHashMap(String[] parts) {
 		boolean boolToReturn = false;
-		Map<String, Integer> dictionary = new HashMap<String, Integer>();
+		Map<String, Integer> dictionary = new HashMap<>();
 		for (int i = 0; i < parts.length; i++) {
 			if (dictionary.containsKey(parts[i])) {
 				return true;
@@ -100,7 +100,7 @@ public class DayFour {
 
 	private static boolean findDuplicatesOfPermutationsHashMap(String[] parts) {
 		boolean boolToReturn = false;
-		Map<String, Integer> dictionary = new HashMap<String, Integer>();
+		Map<String, Integer> dictionary = new HashMap<>();
 		for (int i = 0; i < parts.length; i++) {
 			if (dictionary.containsKey(sortString(parts[i]))) {
 				return true;
@@ -123,11 +123,10 @@ public class DayFour {
 
 	private static List<String> getStandardInputDayFourPartOneAndTwo(URI fileName) {
 		
-		List<String> linesAsString = new ArrayList<String>();
+		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return linesAsString;

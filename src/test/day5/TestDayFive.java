@@ -12,7 +12,7 @@ public class TestDayFive {
 
 	@Test
 	public void testPartOneTestImperative1() {
-		List<Integer> intList = new ArrayList<Integer>();
+		List<Integer> intList = new ArrayList<>();
 		intList.add(0);
 		intList.add(3);
 		intList.add(0);
@@ -23,7 +23,7 @@ public class TestDayFive {
 	}
 	@Test
 	public void testPartTwoTestImperative1() {
-		List<Integer> intList = new ArrayList<Integer>();
+		List<Integer> intList = new ArrayList<>();
 		intList.add(0);
 		intList.add(3);
 		intList.add(0);
@@ -35,7 +35,7 @@ public class TestDayFive {
 	
 	@Test
 	public void testPartOneTestFunctional1() {
-		List<Integer> intList = new ArrayList<Integer>();
+		List<Integer> intList = new ArrayList<>();
 		intList.add(0);
 		intList.add(3);
 		intList.add(0);
@@ -48,7 +48,7 @@ public class TestDayFive {
 
 	@Test
 	public void testPartOneTestFunctional2() {
-		List<Integer> intList = new ArrayList<Integer>();
+		List<Integer> intList = new ArrayList<>();
 		intList.add(0);
 		intList.add(3);
 		intList.add(0);

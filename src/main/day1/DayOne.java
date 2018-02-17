@@ -164,15 +164,11 @@ public class DayOne {
 		for (int v = 0; v < stringList.size(); v++) {
 			String stringToStream = stringList.get(v);
 			for (int c = 0; c < stringToStream.length(); c++) {
-				List<CircularArrayNode> nodeList = new ArrayList<CircularArrayNode>();
+				List<CircularArrayNode> nodeList = new ArrayList<>();
 				if (arrayToReturn.getArrayAsList() != null) {
 					nodeList = arrayToReturn.getArrayAsList();
-				} else {
-					// List<CircularArrayNode> nodeList = new
-					// ArrayList<CircularArrayNode>();
-				}
+				} 
 				CircularArrayNode nodeToAdd = new CircularArrayNode();
-				// nodeToAdd.setIndex(i);
 				Character characterToConvert = stringToStream.charAt(c);
 				nodeToAdd.setValue(Integer.parseInt(characterToConvert.toString()));
 				i++;
@@ -184,11 +180,10 @@ public class DayOne {
 	}
 
 	public static List<String> getStandardInputDayOnePartOneAndTwo(URI fileName) {
-		List<String> linesAsString = new ArrayList<String>();
+		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return linesAsString;

@@ -15,7 +15,7 @@ public class GeneralFunction {
 	}
 
 	public static List<Integer> deepCopyOfArrayList(List<Integer> arrayToBeCopied) {
-		List<Integer> newList = new ArrayList<Integer>();
+		List<Integer> newList = new ArrayList<>();
 		for (Integer value : arrayToBeCopied) {
 			newList.add(value);
 		}

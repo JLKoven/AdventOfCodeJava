@@ -163,14 +163,13 @@ public class DayFive {
 	}
 
 	private static List<Integer> getStandardInputDayFivePartOneAndTwo(URI fileName) {		
-		List<String> linesAsString = new ArrayList<String>();
+		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		List<Integer> lines = new ArrayList<Integer>();
+		List<Integer> lines = new ArrayList<>();
 		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
 		return lines;
 	}
