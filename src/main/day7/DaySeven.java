@@ -133,7 +133,7 @@ public class DaySeven {
 		return stringToReturn ;
 	}
 
-	private static void switchBase(List<DiscForTowerImperative> tower) {
+	public static void switchBase(List<DiscForTowerImperative> tower) {
 
 		Set<String> visited = new HashSet<>();
 		int baseIndex = 0;
