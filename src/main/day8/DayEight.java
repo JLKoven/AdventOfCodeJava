@@ -80,7 +80,13 @@ public class DayEight {
 
 	public static Integer getAnswerPartOneImperative(List<String> input) {
 		// TODO Auto-generated method stub
-		return null;
+		for (int i=0; i<input.size(); i++){
+			String register = getFirstString(input.get(i));
+		}
+		
+		return 1;
+
+//		return null;
 	}
 	
 //	private static Integer getAnswerPartTwoImperative(List<String> standardInputDayEight) {
@@ -90,6 +96,13 @@ public class DayEight {
 	
 	
 	
+	private static String getFirstString(String line) {
+		String[] parts = line.split("\\s+");
+		String first = parts[0];
+		// TODO Auto-generated method stub
+		return first;
+	}
+
 	private static List<String> getStandardInputDayEight(URI fileName) {
 
 		List<String> linesAsString = new ArrayList<>();
