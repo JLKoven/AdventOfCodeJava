@@ -8,13 +8,11 @@ import org.junit.Test;
 
 import main.day7.DaySeven;
 import main.day7.DiscForTowerImperative;
-//import main.day7.DiscTowerImperative;
 
 public class TestDaySeven {
 
 	@Test
 	public void testPartOneTestImperative1() {
-
 		List<String> stringInput = new ArrayList<>();
 		stringInput.add("pbga (66)");
 		stringInput.add("xhth (57)");
