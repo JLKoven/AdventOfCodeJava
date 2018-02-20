@@ -6,7 +6,9 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DayEight {
 	
@@ -80,8 +82,10 @@ public class DayEight {
 
 	public static Integer getAnswerPartOneImperative(List<String> input) {
 		// TODO Auto-generated method stub
+		Map<String, Integer> registers = new HashMap<>();
 		for (int i=0; i<input.size(); i++){
 			String register = getFirstString(input.get(i));
+			registers.put(register, 0);
 		}
 		
 		return 1;
