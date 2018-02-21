@@ -1,12 +1,11 @@
 package main.day1;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import main.GeneralFunction;
 
 public class DayOne {
 
@@ -76,7 +75,7 @@ public class DayOne {
         File file = new File("src/main/day1/input.txt");
         URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDayOnePartOneAndTwo(uri)) + ".");
+				"Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 	}
 
 	public static void executeStandardPart2() {
@@ -105,7 +104,7 @@ public class DayOne {
         File file = new File("src/main/day1/input.txt");
         URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDayOnePartOneAndTwo(uri)) + ".");
+				"Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 	}
 
 	// Imperative
@@ -179,15 +178,6 @@ public class DayOne {
 		return arrayToReturn;
 	}
 
-	public static List<String> getStandardInputDayOnePartOneAndTwo(URI fileName) {
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return linesAsString;
-	
-	}
+
 
 }

@@ -1,13 +1,8 @@
 package main.day5;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import main.GeneralFunction;
 
@@ -58,7 +53,7 @@ public class DayFive {
         File file = new File("src/main/day5/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
-				+ getAnswerDayFivePartOneImperative(getStandardInputDayFivePartOneAndTwo(uri)) + ".");
+				+ getAnswerDayFivePartOneImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
 	}
 
 	public static void executeStandardPart2() {
@@ -76,7 +71,7 @@ public class DayFive {
         File file = new File("src/main/day5/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
-				+ getAnswerDayFivePartTwoImperative(getStandardInputDayFivePartOneAndTwo(uri)) + ".");
+				+ getAnswerDayFivePartTwoImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
 	}
 
 	// Imperative
@@ -162,17 +157,7 @@ public class DayFive {
 
 	}
 
-	private static List<Integer> getStandardInputDayFivePartOneAndTwo(URI fileName) {		
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		List<Integer> lines = new ArrayList<>();
-		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
-		return lines;
-	}
+
 	
 
 }

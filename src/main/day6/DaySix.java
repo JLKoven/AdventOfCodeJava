@@ -1,15 +1,10 @@
 package main.day6;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Stream;
 
 import main.GeneralFunction;
 
@@ -66,7 +61,7 @@ public class DaySix {
 		System.out.println("Day 6 Part 1");
         File file = new File("src/main/day6/input.txt");
         URI uri = file.toURI();
-		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySix(uri)) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfIntegersFromSingleLine(uri)) + ".");
 
 	}
 	
@@ -80,7 +75,7 @@ public class DaySix {
 		System.out.println("Day 6 Part 2");
         File file = new File("src/main/day6/input.txt");
         URI uri = file.toURI();
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDaySix(uri)) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfIntegersFromSingleLine(uri)) + ".");
 
 	}
 	
@@ -195,19 +190,6 @@ public class DaySix {
 
 
 	
-	private static List<Integer> getStandardInputDaySix(URI fileName) {
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		String initialLine = linesAsString.get(0);
-		String[] parts = initialLine.split("\\s+");
-		List<Integer> lines = new ArrayList<>();
-        Stream<String> stringStream = Arrays.stream(parts);
-        stringStream.forEach(x->lines.add(Integer.parseInt(x)));
-		return lines;
-	}
+
 
 }

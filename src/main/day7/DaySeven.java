@@ -1,10 +1,7 @@
 package main.day7;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -121,7 +118,7 @@ public class DaySeven {
 		System.out.println("Day 7 Part 2");
 		File file = new File("src/main/day7/input.txt");
 		URI uri = file.toURI();
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputString(uri)) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
 	}
 
@@ -224,7 +221,7 @@ public class DaySeven {
 
 	private static List<DiscForTowerImperative> getStandardInputDaySeven(URI filename) {
 
-		List<String> defaultInput = getStandardInputString(filename);
+		List<String> defaultInput = GeneralFunction.getStandardInputListOfStrings(filename);
 
 		List<DiscForTowerImperative> listForTower = generateListOfDiscsFromStringInput(defaultInput);
 
@@ -232,16 +229,6 @@ public class DaySeven {
 		return listForTower;
 	}
 
-	private static List<String> getStandardInputString(URI fileName) {
 
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return linesAsString;
-
-	}
 
 }

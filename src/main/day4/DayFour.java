@@ -1,14 +1,12 @@
 package main.day4;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import main.GeneralFunction;
 
 public class DayFour {
 
@@ -33,7 +31,7 @@ public class DayFour {
         File file = new File("src/main/day4/input.txt");
         URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 1 is " + getAnswerDayFourPartOneImperative(getStandardInputDayFourPartOneAndTwo(uri)) + ".");
+				"Answer to part 1 is " + getAnswerDayFourPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 	}
 	
 	
@@ -53,7 +51,7 @@ public class DayFour {
         File file = new File("src/main/day4/input.txt");
         URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 2 is " + getAnswerDayFourPartTwoImperative(getStandardInputDayFourPartOneAndTwo(uri)) + ".");
+				"Answer to part 2 is " + getAnswerDayFourPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 	}
 	
 	
@@ -121,15 +119,6 @@ public class DayFour {
 		return stringToReturn;
 	}
 
-	private static List<String> getStandardInputDayFourPartOneAndTwo(URI fileName) {
-		
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return linesAsString;
-	}
+
 
 }

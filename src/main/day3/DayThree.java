@@ -1,13 +1,9 @@
 package main.day3;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+
+import main.GeneralFunction;
 
 public class DayThree {
 	
@@ -49,7 +45,7 @@ public class DayThree {
 		System.out.println("Day Three Part 1");
         File file = new File("src/main/day3/input.txt");
         URI uri = file.toURI();
-		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(getInput(uri)) + " steps!");
+		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(GeneralFunction.getStandardInputInt(uri)) + " steps!");
 //		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneFunctional(				
 //				0, 0, 
 //				RIGHT, 
@@ -94,7 +90,7 @@ public class DayThree {
         URI uri = file.toURI();
 		try {
 			System.out.println("Answer first larger than 277678 is "
-					+ getAnswerPartTwoImperative(getInput(uri)) + ". Hooray!");
+					+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputInt(uri)) + ". Hooray!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -217,17 +213,7 @@ public class DayThree {
 	}
 	
 
-	private static int getInput(URI fileName) {
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		List<Integer> lines = new ArrayList<>();
-		lines.addAll(linesAsString.stream().map(Integer::valueOf).collect(Collectors.toList()));
-		return lines.get(0);
-	}
+
 
 
 

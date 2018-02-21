@@ -1,11 +1,9 @@
 package main.day2;
 import java.io.File;
-import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
+
+import main.GeneralFunction;
 
 public class DayTwo {
 
@@ -41,7 +39,7 @@ public class DayTwo {
 		System.out.println("Day Two Part 1");
         File file = new File("src/main/day2/input.txt");
         URI uri = file.toURI();
-		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(getStandardInputDayTwoPartOneAndTwo(uri)) + ".");
+		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListsOfIntArrays(uri)) + ".");
 	}
 	
 	public static void executeStandardPart2() {
@@ -76,7 +74,7 @@ public class DayTwo {
         File file = new File("src/main/day2/input.txt");
         URI uri = file.toURI();
 		System.out.print("Sum of even divisions between listOfArrays is ");
-		System.out.print(getAnswerPartTwoImperative(getStandardInputDayTwoPartOneAndTwo(uri)));
+		System.out.print(getAnswerPartTwoImperative(GeneralFunction.getStandardInputListsOfIntArrays(uri)));
 		System.out.println(".");
 	}
 	
@@ -161,25 +159,7 @@ public class DayTwo {
 
 
 
-	public static List<int[]> getStandardInputDayTwoPartOneAndTwo(URI fileName) {
-		List<int[]> listOfArrays = new ArrayList<>();
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		for (String line : linesAsString){
-			String[] parts = line.split("\\s+");
-			int[] sampleRow = new int[parts.length];
-			for (int i=0; i<parts.length; i++){
-				sampleRow[i] = Integer.parseInt(parts[i]);
-			}
-			listOfArrays.add(sampleRow);
-		}
 
-		return listOfArrays;
-	}
 
 
 
