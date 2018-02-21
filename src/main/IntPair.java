@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Objects;
+
 public class IntPair {
 
 	private int xCoord;
@@ -40,9 +42,7 @@ public class IntPair {
 
 	@Override
 	public int hashCode() {
-		int result = 0;
-		result = (int) (xCoord + yCoord / 11);
-		return result;
+		return Objects.hash(xCoord, yCoord);
 	}
 
 }
