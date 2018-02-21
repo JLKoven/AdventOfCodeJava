@@ -58,5 +58,7 @@ public class TestGeneral {
 				&& arrayToBeChanged.get(2) == newArray.get(2) && arrayToBeChanged!=newArray, true);
 		System.out.println("Success on GeneralFunction.testFunctionalUpdate!");
 	}
+	
+	//test inputs
 
 }
