@@ -26,7 +26,7 @@ public class TestDayEight {
 	}
 	
 	@Test
-	public void testPartOneTestImperative2() {
+	public void testPartTwoTestImperative1() {
 		
 		List<String> input = new ArrayList<>();		
 		input.add("b inc 5 if a > 1");
@@ -36,7 +36,7 @@ public class TestDayEight {
 		
 		assertEquals(
 				DayEight.getAnswerPartTwoImperative(input)==10,true);
-		System.out.println("Success on Day8.testPartOneTest2!");
+		System.out.println("Success on Day8.testPartTwoTest1!");
 	}
 
 }
