@@ -56,6 +56,16 @@ public class GeneralFunction {
 		}
 		return linesAsString;
 	}
+	
+	public static String getStandardInputString(URI fileName) {
+		List<String> linesAsString = new ArrayList<>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return linesAsString.get(0);
+	}
 
 	public static List<int[]> getStandardInputListsOfIntArrays(URI fileName) {
 		List<int[]> listOfArrays = new ArrayList<>();

@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import main.GeneralFunction;
+
 public class DayEight {
 
 	public static void executeStandardPart1() {
@@ -46,7 +48,7 @@ public class DayEight {
 		System.out.println("Day 8 Part 1");
 		File file = new File("src/main/day8/input.txt");
 		URI uri = file.toURI();
-		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDayEight(uri)) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
 	}
 
@@ -84,7 +86,7 @@ public class DayEight {
 		System.out.println("Day 8 Part 2");
 		File file = new File("src/main/day8/input.txt");
 		URI uri = file.toURI();
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(getStandardInputDayEight(uri)) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
 	}
 
@@ -237,16 +239,6 @@ public class DayEight {
 		return first;
 	}
 
-	private static List<String> getStandardInputDayEight(URI fileName) {
 
-		List<String> linesAsString = new ArrayList<>();
-		try {
-			linesAsString = Files.readAllLines(Paths.get(fileName));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return linesAsString;
-
-	}
 
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import main.IntPair;
+
 public class SpiralGridImperative {
 
 //	public static final String RIGHT = "Right";
@@ -19,7 +21,7 @@ public class SpiralGridImperative {
 	private int minX=0;
 	private int minY=0;
 
-	private Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapOfExisting = new HashMap<>();
+	private Map<IntPair, SpiralGridCellImperative> mapOfExisting = new HashMap<>();
 
 	public List<SpiralGridCellImperative> getList() {
 		return list;
@@ -62,11 +64,11 @@ public class SpiralGridImperative {
 		this.minY = minY;
 	}
 
-	public Map<HashMap<Integer, Integer>, SpiralGridCellImperative> getMapOfExisting() {
+	public Map<IntPair, SpiralGridCellImperative> getMapOfExisting() {
 		return mapOfExisting;
 	}
 
-	public void setAlreadyExists(Map<HashMap<Integer, Integer>, SpiralGridCellImperative> alreadyExists) {
+	public void setAlreadyExists(Map<IntPair, SpiralGridCellImperative> alreadyExists) {
 		this.mapOfExisting = alreadyExists;
 	}
 
@@ -102,18 +104,20 @@ public class SpiralGridImperative {
 			}
 		}
 		
-		mapPlacementNoIntPair(cell);
+		mapPlacementIntPair(cell);
 
 
 
 		getList().add(cell);
 	}
 
-	private void mapPlacementNoIntPair(SpiralGridCellImperative cell) {
-		Map<HashMap<Integer, Integer>, SpiralGridCellImperative> mapToReturn = getMapOfExisting();
-		HashMap<Integer, Integer> coordinates = new HashMap<>();
-		coordinates.put(cell.getXCoord(), cell.getYCoord());
-		if (!mapToReturn.containsKey(coordinates)){
+	private void mapPlacementIntPair(SpiralGridCellImperative cell) {
+		Map<IntPair, SpiralGridCellImperative> mapToReturn = getMapOfExisting();
+		IntPair coordinates = new IntPair();
+		coordinates.setXCoord(cell.getXCoord());
+		coordinates.setYCoord(cell.getYCoord());
+		
+		if (!mapDoesContainCoordinates(mapToReturn, coordinates)){//, cell)){
 			mapToReturn.put(coordinates, cell);
 		} else {
 			Exception error = new Exception();
@@ -123,71 +127,115 @@ public class SpiralGridImperative {
 				e.printStackTrace();
 			}
 		}
+//		System.out.println("Existing pair print");
+//		for (IntPair pair : mapToReturn.keySet()){
+//			System.out.println("The value at x="+pair.getXCoord()+" and y="+pair.getYCoord()+" is "+mapToReturn.get(pair).getValue()+" with combined value "+mapToReturn.get(pair).getCellCumulativeValue()+".");
+//		}
+//		System.out.println("");
 		setAlreadyExists(mapToReturn);
 		
+	}
+
+	private boolean mapDoesContainCoordinates(Map<IntPair, SpiralGridCellImperative> mapToReturn,
+			IntPair coordinates){//, SpiralGridCellImperative cell) {
+		boolean boolToReturn = false;//we start by assuming the map doesn't have it
+		for (IntPair pairToExamine : mapToReturn.keySet()){
+			if (pairToExamine.equals(coordinates)){
+				boolToReturn = true;
+			}
+		}
+		return boolToReturn;
 	}
 
 	private int calculateCumulativeValueBruteForce(SpiralGridCellImperative cell) {
 		int value=0;		
 		
 		//-1,-1
-		Map<Integer, Integer> innerMapLeftDown = new HashMap<>();
-		innerMapLeftDown.put(cell.getXCoord()-1, cell.getYCoord()-1);
-		if (getMapOfExisting().containsKey(innerMapLeftDown)){
-			value = value+getMapOfExisting().get(innerMapLeftDown).getCellCumulativeValue();
+		IntPair innerMapLeftDown = new IntPair();
+		innerMapLeftDown.setXCoord(cell.getXCoord()-1);
+		innerMapLeftDown.setYCoord(cell.getYCoord()-1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapLeftDown)){
+			IntPair equivalentPair = getEquivalentPair(innerMapLeftDown);
+			System.out.println(getMapOfExisting().get(equivalentPair).getCellCumulativeValue());
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();
 		} 
 
 		//-1,-0
-		Map<Integer, Integer> innerMapLeftCenter = new HashMap<>();
-		innerMapLeftCenter.put(cell.getXCoord()-1, cell.getYCoord());
-		if (getMapOfExisting().containsKey(innerMapLeftCenter)){
-			value = value+getMapOfExisting().get(innerMapLeftCenter).getCellCumulativeValue();
+		IntPair innerMapLeftCenter = new IntPair();
+		innerMapLeftCenter.setXCoord(cell.getXCoord()-1);
+		innerMapLeftCenter.setYCoord(cell.getYCoord()-0);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapLeftCenter)){
+			IntPair equivalentPair = getEquivalentPair(innerMapLeftCenter);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();
 		} 
 		
 		//-1,+1
-		Map<Integer, Integer> innerMapLeftUp = new HashMap<>();
-		innerMapLeftUp.put(cell.getXCoord()-1, cell.getYCoord()+1);
-		if (getMapOfExisting().containsKey(innerMapLeftUp)){
-			value = value+getMapOfExisting().get(innerMapLeftUp).getCellCumulativeValue();
+		IntPair innerMapLeftUp = new IntPair();
+		innerMapLeftUp.setXCoord(cell.getXCoord()-1);
+		innerMapLeftUp.setYCoord(cell.getYCoord()+1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapLeftUp)){
+			IntPair equivalentPair = getEquivalentPair(innerMapLeftUp);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();
 		} 		
 		
 		//-0,-1
-		Map<Integer, Integer> innerMapCenterDown = new HashMap<>();
-		innerMapCenterDown.put(cell.getXCoord(), cell.getYCoord()-1);
-		if (getMapOfExisting().containsKey(innerMapCenterDown)){
-			value = value+getMapOfExisting().get(innerMapCenterDown).getCellCumulativeValue();			
+		IntPair innerMapCenterDown = new IntPair();
+		innerMapCenterDown.setXCoord(cell.getXCoord()+0);
+		innerMapCenterDown.setYCoord(cell.getYCoord()-1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapCenterDown)){
+			IntPair equivalentPair = getEquivalentPair(innerMapCenterDown);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();			
 		} 			
 		
 		//-0,+1
-		Map<Integer, Integer> innerMapCenterUp = new HashMap<>();
-		innerMapCenterUp.put(cell.getXCoord(), cell.getYCoord()+1);
-		if (getMapOfExisting().containsKey(innerMapCenterUp)){
-			value = value+getMapOfExisting().get(innerMapCenterUp).getCellCumulativeValue();			
+		IntPair innerMapCenterUp = new IntPair();
+		innerMapCenterUp.setXCoord(cell.getXCoord()+0);
+		innerMapCenterUp.setYCoord(cell.getYCoord()+1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapCenterUp)){
+			IntPair equivalentPair = getEquivalentPair(innerMapCenterUp);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();			
 		} 			
 
 		//+1,-1
-		Map<Integer, Integer> innerMapRightDown = new HashMap<>();
-		innerMapRightDown.put(cell.getXCoord()+1, cell.getYCoord()-1);
-		if (getMapOfExisting().containsKey(innerMapRightDown)){
-			value = value+getMapOfExisting().get(innerMapRightDown).getCellCumulativeValue();			
+		IntPair innerMapRightDown = new IntPair();
+		innerMapRightDown.setXCoord(cell.getXCoord()+1);
+		innerMapRightDown.setYCoord(cell.getYCoord()-1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapRightDown)){
+			IntPair equivalentPair = getEquivalentPair(innerMapRightDown);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();			
 		} 		
 		
 		//+1,-0
-		Map<Integer, Integer> innerMapRightCenter = new HashMap<>();
-		innerMapRightCenter.put(cell.getXCoord()+1, cell.getYCoord());
-		if (getMapOfExisting().containsKey(innerMapRightCenter)){
-			value = value+getMapOfExisting().get(innerMapRightCenter).getCellCumulativeValue();			
+		IntPair innerMapRightCenter = new IntPair();
+		innerMapRightCenter.setXCoord(cell.getXCoord()+1);
+		innerMapRightCenter.setYCoord(cell.getYCoord()+0);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapRightCenter)){
+			IntPair equivalentPair = getEquivalentPair(innerMapRightCenter);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();			
 		} 		
 		
 		//+1,+1
-		Map<Integer, Integer> innerMapRightUp = new HashMap<>();
-		innerMapRightUp.put(cell.getXCoord()+1, cell.getYCoord()+1);
-		if (getMapOfExisting().containsKey(innerMapRightUp)){
-			value = value+getMapOfExisting().get(innerMapRightUp).getCellCumulativeValue();			
+		IntPair innerMapRightUp = new IntPair();
+		innerMapRightUp.setXCoord(cell.getXCoord()+1);
+		innerMapRightUp.setYCoord(cell.getYCoord()+1);
+		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapRightUp)){
+			IntPair equivalentPair = getEquivalentPair(innerMapRightUp);
+			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();			
 		} 			
 		
 		
 		return value;
+	}
+
+	private IntPair getEquivalentPair(IntPair innerMapLeftDown) {
+		IntPair equivalentPair = innerMapLeftDown;
+		for (IntPair pairToCheck : getMapOfExisting().keySet()){
+			if (equivalentPair.equals(pairToCheck)){
+				equivalentPair = pairToCheck;
+				break;
+			}
+		}
+		return equivalentPair;
 	}
 
 	public SpiralGridCellImperative setPositionAndDirectionBasedOnPriorDirection(SpiralGridCellImperative cell, SpiralGridCellImperative lastCell)
@@ -333,13 +381,6 @@ public class SpiralGridImperative {
 		return answer;
 	}
 
-//	public Optional<SpiralGridCellImperative> getLastCell() {
-//		Optional<SpiralGridCellImperative> lastCell = Optional.empty();
-//		if (!list.isEmpty()) {
-//			SpiralGridCellImperative lastCell = getList().get((getList().size() - 1));
-//		}
-//
-//		return lastCell;
-//	}
+
 
 }
