@@ -62,6 +62,52 @@ public class DayNine {
 		return intToReturn;
 	}
 
+	public static String removeExclamationFromGarbage(String string) {
+		StringBuilder stringToReturn = new StringBuilder(string);
+		boolean insideGarbage=false;
+		int finalLength = stringToReturn.length();
+		for (int i=0; i<finalLength; i++){
+			if (insideGarbage == true){
+				if (stringToReturn.charAt(i) == '!' && i<finalLength-1){
+					stringToReturn.deleteCharAt(i+1);
+					finalLength = finalLength-1;
+					stringToReturn.deleteCharAt(i);
+					finalLength = finalLength-1;
+					i = i-1;
+				} else if (stringToReturn.charAt(i) == '>'){
+					insideGarbage=false;
+				}
+			}
+			if (stringToReturn.charAt(i) == '<'){
+				insideGarbage=true;
+			}
+		}
+		return stringToReturn.toString();
+	}
+
+	public static String removeGarbage(String string) {
+		StringBuilder stringToReturn = new StringBuilder(string);
+		boolean insideGarbage=false;
+		int finalLength = stringToReturn.length();
+		for (int i=0; i<finalLength; i++){
+			if (insideGarbage == true){
+				if (stringToReturn.charAt(i) == '>'){
+					insideGarbage=false;					
+				}
+				stringToReturn.deleteCharAt(i);
+				finalLength = finalLength-1;
+				i = i-1;
+			}
+			if (stringToReturn.charAt(i) == '<'){
+				insideGarbage=true;
+				stringToReturn.deleteCharAt(i);
+				finalLength = finalLength-1;
+				i = i-1;
+			}
+		}
+		return stringToReturn.toString();
+	}
+
 
 
 //	public static void executeStandardPart2() {

@@ -157,13 +157,26 @@ public class TestDayNine {
 		System.out.println("Success on Day9.testPartOneTest16!");
 
 	}
-//	@Test
-//	public void testPartOneTestImperative16() {
-//		assertEquals(
-//				DayNine.getScore("{{<!>},{<!>},{<!>},{<a>}}")==3,true);
-//		System.out.println("Success on Day9.testPartOneTest16!");
-//
-//	}
+	@Test
+	public void testPartOneTestImperativeGarbageSubremoval() {
+		assertEquals(
+				DayNine.removeExclamationFromGarbage(
+						"{{<!>},{<!>},{<!>},{<a>}}")
+				.equals(
+						"{{<},{<},{<},{<a>}}"
+						),true);
+		System.out.println("Success on Day9.testPartOneTest16!");
+	}
+	@Test
+	public void testPartOneTestImperativeGarbageRemoval() {
+		assertEquals(
+				DayNine.removeGarbage(
+						"{{<},{<},{<},{<a>}}")
+				.equals(
+						"{{}}"
+						),true);
+		System.out.println("Success on Day9.testPartOneTest16!");
+	}
 	
 //	@Test
 //	public void testPartOneTestImperative2() {
