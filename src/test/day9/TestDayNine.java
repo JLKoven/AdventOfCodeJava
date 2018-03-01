@@ -60,6 +60,7 @@ public class TestDayNine {
 	}
 	@Test
 	public void testPartOneTestImperative3() {
+		System.out.println(DayNine.getGroupCount("{{},{}}"));
 		assertEquals(
 				DayNine.getGroupCount("{{},{}}")==3,true);
 		System.out.println("Success on Day9.testPartOneTest3!");
