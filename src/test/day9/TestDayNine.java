@@ -60,7 +60,6 @@ public class TestDayNine {
 	}
 	@Test
 	public void testPartOneTestImperative3() {
-		System.out.println(DayNine.getGroupCount("{{},{}}"));
 		assertEquals(
 				DayNine.getGroupCount("{{},{}}")==3,true);
 		System.out.println("Success on Day9.testPartOneTest3!");
@@ -112,6 +111,7 @@ public class TestDayNine {
 	}
 	@Test
 	public void testPartOneTestImperative10() {
+		System.out.println(DayNine.getScore("{{{}}}"));
 		assertEquals(
 				DayNine.getScore("{{{}}}")==6,true);
 		System.out.println("Success on Day9.testPartOneTest10!");
@@ -166,7 +166,7 @@ public class TestDayNine {
 				.equals(
 						"{{<},{<},{<},{<a>}}"
 						),true);
-		System.out.println("Success on Day9.testPartOneTest16!");
+		System.out.println("Success on Day9.testPartOneTestImperativeGarbageSubremoval!");
 	}
 	@Test
 	public void testPartOneTestImperativeGarbageRemoval() {
@@ -176,7 +176,7 @@ public class TestDayNine {
 				.equals(
 						"{{}}"
 						),true);
-		System.out.println("Success on Day9.testPartOneTest16!");
+		System.out.println("Success on Day9.testPartOneTestImperativeGarbageRemoval!");
 	}
 	
 //	@Test
