@@ -111,7 +111,6 @@ public class TestDayNine {
 	}
 	@Test
 	public void testPartOneTestImperative10() {
-		System.out.println(DayNine.getScore("{{{}}}"));
 		assertEquals(
 				DayNine.getScore("{{{}}}")==6,true);
 		System.out.println("Success on Day9.testPartOneTest10!");
@@ -140,7 +139,7 @@ public class TestDayNine {
 	@Test
 	public void testPartOneTestImperative14() {
 		assertEquals(
-				DayNine.getScore("{<a>,<a>,<a>,<a>}")==9,true);
+				DayNine.getScore("{{<ab>},{<ab>},{<ab>},{<ab>}}")==9,true);
 		System.out.println("Success on Day9.testPartOneTest14!");
 
 	}

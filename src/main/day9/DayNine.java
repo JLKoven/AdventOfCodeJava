@@ -109,8 +109,6 @@ public class DayNine {
 		// :)
 		if (("").equals(string)) {
 			return 0;
-		} else if (("{}").equals(string)) {
-			return 1;
 		} else if (string.charAt(0) == '{' && string.charAt(1) == '}') {
 			StringBuilder newString = new StringBuilder(string);
 			newString.deleteCharAt(0);
@@ -127,22 +125,49 @@ public class DayNine {
 	public static int getScore(String string) {
 		string = removeGarbageIncludingExclamation(string);
 
-		return getScoreRecursiveIterative(string, 0, 0);
+		return getScoreRecursive(string, 0);
+	}
+
+	private static Integer getScoreRecursive(String string, Integer howNestedWeCurrentlyAre
+			) {
+		if (string.isEmpty()){
+			return 0;
+		} else {
+			if ('{' == string.charAt(0)){
+				return getScoreRecursive(string.substring(1), howNestedWeCurrentlyAre+1);
+			} else if ('}' == string.charAt(0)) {
+				// string.charAt(0) == '}'
+				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), howNestedWeCurrentlyAre-1);
+			} else {
+				System.out.println("Error at "+string.charAt(0)+".");
+				Exception exception = new Exception();
+				try {
+					throw exception;
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return Integer.MIN_VALUE;
 	}
 
 	public static Integer getScoreRecursiveIterative(String stringRemaining, Integer howNestedWeCurrentlyAre,
 			Integer currentScoreSum) {
 		if (("").equals(stringRemaining)) {
 			return 0;
-		} else if (("{}").equals(stringRemaining)) {
-			return 1;
 		} else if (stringRemaining.charAt(0) == '{' && stringRemaining.charAt(1) == '}') {
-			return 1 + getScoreRecursiveIterative(stringRemaining, howNestedWeCurrentlyAre, currentScoreSum);
+			StringBuilder newString = new StringBuilder(stringRemaining);
+			newString.deleteCharAt(0);
+			newString.deleteCharAt(0);
+			return howNestedWeCurrentlyAre + getScoreRecursiveIterative(newString.toString(), howNestedWeCurrentlyAre, currentScoreSum);
 		} else {
 			currentScoreSum = currentScoreSum + howNestedWeCurrentlyAre;
 			StringBuilder newString = new StringBuilder(stringRemaining);
+			System.out.println("printing newString: "+newString+".");
 			newString.deleteCharAt(findMatchingCloseBracketIndex(newString));
 			newString.deleteCharAt(0);
+			System.out.println("now: "+newString+".");
 			return currentScoreSum
 					+ getScoreRecursiveIterative(newString.toString(), howNestedWeCurrentlyAre + 1, currentScoreSum);
 		}
