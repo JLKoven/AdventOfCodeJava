@@ -34,11 +34,12 @@ public class Executor {
 //		
 //		DaySeven.executeStandardPart1();
 //		DaySeven.executeStandardPart2();
+//		
+//		DayEight.executeStandardPart1();
+//		DayEight.executeStandardPart2();
 		
-		DayEight.executeStandardPart1();
-		DayEight.executeStandardPart2();
-		
-//		DayNine.executeStandardPart1();
+		DayNine.executeStandardPart1();
+		DayNine.executeStandardPart2();
 
 	}
 }
