@@ -5,17 +5,17 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import test.general.TestGeneral;
 import test.general.TestIntPair;
-import test.day1.TestDayOne;
-import test.day2.TestDayTwo;
-import test.day3.TestDayThree;
-import test.day3.TestSpiralGridImperative;
-import test.day4.TestDayFour;
-import test.day5.TestDayFive;
-import test.day6.TestDaySix;
-import test.day7.TestDaySeven;
-import test.day7.TestDiscForTowerImperative;
-import test.day8.TestDayEight;
-import test.day9.TestDayNine;
+import test.day01.TestDayOne;
+import test.day02.TestDayTwo;
+import test.day03.TestDayThree;
+import test.day03.TestSpiralGridImperative;
+import test.day04.TestDayFour;
+import test.day05.TestDayFive;
+import test.day06.TestDaySix;
+import test.day07.TestDaySeven;
+import test.day07.TestDiscForTowerImperative;
+import test.day08.TestDayEight;
+import test.day09.TestDayNine;
 
 @RunWith(Suite.class)
 @SuiteClasses({TestGeneral.class, TestIntPair.class, TestDayOne.class, 

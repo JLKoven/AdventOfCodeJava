@@ -1,14 +1,14 @@
 package main;
 
-import main.day1.DayOne;
-import main.day2.DayTwo;
-import main.day3.DayThree;
-import main.day4.DayFour;
-import main.day5.DayFive;
-import main.day6.DaySix;
-import main.day7.DaySeven;
-import main.day8.DayEight;
-import main.day9.DayNine;
+import main.day01.DayOne;
+import main.day02.DayTwo;
+import main.day03.DayThree;
+import main.day04.DayFour;
+import main.day05.DayFive;
+import main.day06.DaySix;
+import main.day07.DaySeven;
+import main.day08.DayEight;
+import main.day09.DayNine;
 
 public class Executor {
 

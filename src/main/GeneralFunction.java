@@ -125,6 +125,21 @@ public class GeneralFunction {
 		return lines;
 	}
 
+	public static List<Integer> getInputDelimiterComma(URI fileName) {
+		List<String> linesAsString = new ArrayList<>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		String initialLine = linesAsString.get(0);
+		String[] parts = initialLine.split(",");
+		List<Integer> lines = new ArrayList<>();
+        Stream<String> stringStream = Arrays.stream(parts);
+        stringStream.forEach(x->lines.add(Integer.parseInt(x)));
+		return lines;
+	}
+
 
 
 }
