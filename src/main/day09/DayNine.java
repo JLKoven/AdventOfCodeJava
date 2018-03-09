@@ -106,13 +106,11 @@ public class DayNine {
 
 
 	private static Integer getAnswerPartOneImperative(String standardInputString) {
-		// TODO Auto-generated method stub
 		return getScore(standardInputString);
 	}
 	
 	
 	private static Integer getAnswerPartTwoImperative(String standardInputString) {
-		// TODO Auto-generated method stub
 		return getGarbageCount(standardInputString);
 	}
 
@@ -177,33 +175,57 @@ public class DayNine {
 	}
 
 	public static int getScore(String string) {
-		string = removeGarbageIncludingExclamation(string);
+//		string = removeGarbageIncludingExclamation(string);
 
-		return getScoreRecursive(string, 0);
+		return getScoreRecursive(string, false, 0);
 	}
 
-	private static Integer getScoreRecursive(String string, Integer howNestedWeCurrentlyAre
+	private static Integer getScoreRecursive(String string, 
+			boolean areWeInGarbage, 
+			Integer howNestedWeCurrentlyAre
 			) {
 		if (string.isEmpty()){
 			return 0;
 		} else {
-			if ('{' == string.charAt(0)){
-				return getScoreRecursive(string.substring(1), howNestedWeCurrentlyAre+1);
-			} else if ('}' == string.charAt(0)) {
-				// string.charAt(0) == '}'
-				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), howNestedWeCurrentlyAre-1);
+			if (areWeInGarbage){
+				if ('!' == string.charAt(0)) {					
+						//step 1, we're returning the code 
+					return getScoreRecursive(string.substring(2), areWeInGarbage, howNestedWeCurrentlyAre);
+//						System.out.println("wahhhhhhh");
+//						return Integer.MIN_VALUE;//other lines not ncxessary
+////						//
+////						
+////						//wtf is an exception anyway
+////						Exception exception = new Exception();
+////						exception.printStackTrace();
+////						//used when I want to 'return a different value' 
+////						
+//////						try {
+//////							throw exception;
+//////						} catch (Exception e) {
+//////							e.printStackTrace();
+//////						}
+////						//THIS IS NOT HANDLING EXCEPTIONS 
+				} else if ('>' == string.charAt(0)) {
+					return getScoreRecursive(string.substring(1), false, howNestedWeCurrentlyAre);
+				} else {
+					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
+				}
 			} else {
-				System.out.println("Error at "+string.charAt(0)+".");
-				Exception exception = new Exception();
-				try {
-					throw exception;
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if ('{' == string.charAt(0)){
+					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+				} else if ('}' == string.charAt(0)) {
+					// string.charAt(0) == '}'
+					return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
+				} else if ('<' == string.charAt(0)) {
+					return getScoreRecursive(string.substring(1), true, howNestedWeCurrentlyAre);
+				} 
+				
+				else {
+					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
 				}
 			}
 		}
-		return Integer.MIN_VALUE;
 	}
 
 	public static Integer getScoreRecursiveIterative(String stringRemaining, Integer howNestedWeCurrentlyAre,
