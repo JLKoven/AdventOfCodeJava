@@ -220,16 +220,18 @@ public class DayTen {
 
 	private static List<Integer> getDenseHash(List<Integer> sparseHash) {
 		List<Integer> denseHash = new ArrayList<>();
-		for (int i=1; i<17; i++){
-			int lowerBound = (i)-1;
-			int higherBound = (i*16)-1;
+		for (int i=0; i<16; i++){
+			int lowerBound = (i)*16;
+			int higherBound = ((i+1)*16)-1;
 			int denseHashResult = sparseHash.get(lowerBound);
-			for (int ii=lowerBound+1; ii<higherBound; ii++){
+			for (int ii=lowerBound+1; ii<=higherBound; ii++){
 				denseHashResult = denseHashResult ^ sparseHash.get(ii);
 			}
+			
 			denseHash.add(denseHashResult);
 			
 		}
+		
 		return denseHash;
 	}
 	
