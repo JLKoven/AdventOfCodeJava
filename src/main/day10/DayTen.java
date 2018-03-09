@@ -159,7 +159,6 @@ public class DayTen {
 	
 	private static String getAnswerPartTwoImperative(String standardInputString) {
 		String hash = getHash(standardInputString);
-		// TODO Auto-generated method stub
 		return hash;
 	}
 
