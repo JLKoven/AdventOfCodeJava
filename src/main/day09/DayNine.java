@@ -179,26 +179,46 @@ public class DayNine {
 	public static int getScore(String string) {
 		string = removeGarbageIncludingExclamation(string);
 
-		return getScoreRecursiveLambda(string, false, 0).get();
+		return getScoreRecursiveAccumulator(0, string, false, 0);
 	}
 
-	private static TailCall<Integer> getScoreRecursiveLambda(String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
+	private static Integer getScoreRecursiveAccumulator(int currentScore, String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
 		if (string.isEmpty()){
-			return TailCalls.done(howNestedWeCurrentlyAre);
+			return currentScore;
 		} else {
-			if ('{' == string.charAt(0)){
-				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-//				return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+			
+			if ('{' == string.charAt(0)) {
+				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre + 1);
 			} else if ('}' == string.charAt(0)) {
-				return () -> howNestedWeCurrentlyAre+getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-				//THIS ABOVE LINE IS AN ERROR
-//				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
+				// string.charAt(0) == '}'
+				return 
+						getScoreRecursiveAccumulator(currentScore+howNestedWeCurrentlyAre, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre - 1);
 			} 
+
 			else {
-				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
 			}
 		}
+		
 	}
+
+//	private static TailCall<Integer> getScoreRecursiveLambda(String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
+//		if (string.isEmpty()){
+//			return TailCalls.done(howNestedWeCurrentlyAre);
+//		} else {
+//			if ('{' == string.charAt(0)){
+//				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+////				return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+//			} else if ('}' == string.charAt(0)) {
+//				return () -> newVar+getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+//				//THIS ABOVE LINE IS AN ERROR
+////				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
+//			} 
+//			else {
+//				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+//			}
+//		}
+//	}
 	
 	private static Integer getScoreRecursive(String string, 
 			boolean areWeInGarbage, 
