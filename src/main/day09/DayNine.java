@@ -177,28 +177,70 @@ public class DayNine {
 	}
 
 	public static int getScore(String string) {
-		string = removeGarbageIncludingExclamation(string);
+		//string = removeGarbageIncludingExclamation(string);
 
-		return getScoreRecursiveAccumulator(0, string, false, 0);
+		return getScoreRecursiveAccumulator(0, string, false, 0).get();
 	}
 
-	private static Integer getScoreRecursiveAccumulator(int currentScore, String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
+	private static TailCall<Integer> getScoreRecursiveAccumulator(int currentScore, String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
 		if (string.isEmpty()){
-			return currentScore;
+			return TailCalls.done(currentScore);
 		} else {
-			
-			if ('{' == string.charAt(0)) {
-				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre + 1);
-			} else if ('}' == string.charAt(0)) {
-				// string.charAt(0) == '}'
-				return 
-						getScoreRecursiveAccumulator(currentScore+howNestedWeCurrentlyAre, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre - 1);
-			} 
-
-			else {
-				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
+			if (areWeInGarbage){
+				if ('!' == string.charAt(0)) {					
+						//step 1, we're returning the code 
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(2), areWeInGarbage, howNestedWeCurrentlyAre);
+//						System.out.println("wahhhhhhh");
+//						return Integer.MIN_VALUE;//other lines not ncxessary
+////						//
+////						
+////						//wtf is an exception anyway
+////						Exception exception = new Exception();
+////						exception.printStackTrace();
+////						//used when I want to 'return a different value' 
+////						
+//////						try {
+//////							throw exception;
+//////						} catch (Exception e) {
+//////							e.printStackTrace();
+//////						}
+////						//THIS IS NOT HANDLING EXCEPTIONS 
+				} else if ('>' == string.charAt(0)) {
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), false, howNestedWeCurrentlyAre);
+				} else {
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
+				}
+			} else {
+				if ('{' == string.charAt(0)){
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+				} else if ('}' == string.charAt(0)) {
+					// string.charAt(0) == '}'
+					return () -> getScoreRecursiveAccumulator(currentScore+howNestedWeCurrentlyAre, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
+				} else if ('<' == string.charAt(0)) {
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), true, howNestedWeCurrentlyAre);
+				} 
+				
+				else {
+					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
+				}
 			}
 		}
+//		if (string.isEmpty()){
+//			return currentScore;
+//		} else {
+//			
+//			if ('{' == string.charAt(0)) {
+//				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre + 1);
+//			} else if ('}' == string.charAt(0)) {
+//				// string.charAt(0) == '}'
+//				return 
+//						getScoreRecursiveAccumulator(currentScore+howNestedWeCurrentlyAre, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre - 1);
+//			} 
+//
+//			else {
+//				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
+//			}
+//		}
 		
 	}
 
