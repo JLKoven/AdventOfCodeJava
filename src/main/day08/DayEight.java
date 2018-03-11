@@ -216,15 +216,12 @@ public class DayEight {
 			newValue = oldValue - Integer.parseInt(value);
 			registers.put(register, newValue);
 		} else {
+			System.out.println("ERROR ERROR ERROR");
 			System.out.println("whoa, new operation");
 			System.out.println(operation);
-			Exception error = new Exception();
-			try {
-				throw error;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			registers = null;
+			return null;
+
 		}
 		if (newValue > highestRegister){
 			intToReturn = newValue;

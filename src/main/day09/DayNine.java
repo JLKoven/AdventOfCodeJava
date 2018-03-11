@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.URI;
 
 import main.GeneralFunction;
+import main.TailCall;
+import main.TailCalls;
 
 public class DayNine {
 
@@ -76,7 +78,7 @@ public class DayNine {
 		File file = new File("src/main/day09/input.txt");
 		URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputString(uri)) + ".");
+				"Answer to part 1 is " + getAnswerPartOne(GeneralFunction.getStandardInputString(uri)) + ".");
 
 	}
 	
@@ -98,19 +100,19 @@ public class DayNine {
 		File file = new File("src/main/day09/input.txt");
 		URI uri = file.toURI();
 		System.out.println(
-				"Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputString(uri)) + ".");
+				"Answer to part 2 is " + getAnswerPartTwo(GeneralFunction.getStandardInputString(uri)) + ".");
 	
 	 }
 
 
 
 
-	private static Integer getAnswerPartOneImperative(String standardInputString) {
+	private static Integer getAnswerPartOne(String standardInputString) {
 		return getScore(standardInputString);
 	}
 	
 	
-	private static Integer getAnswerPartTwoImperative(String standardInputString) {
+	private static Integer getAnswerPartTwo(String standardInputString) {
 		return getGarbageCount(standardInputString);
 	}
 
@@ -175,11 +177,29 @@ public class DayNine {
 	}
 
 	public static int getScore(String string) {
-//		string = removeGarbageIncludingExclamation(string);
+		string = removeGarbageIncludingExclamation(string);
 
-		return getScoreRecursive(string, false, 0);
+		return getScoreRecursiveLambda(string, false, 0).get();
 	}
 
+	private static TailCall<Integer> getScoreRecursiveLambda(String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
+		if (string.isEmpty()){
+			return TailCalls.done(howNestedWeCurrentlyAre);
+		} else {
+			if ('{' == string.charAt(0)){
+				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+//				return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+			} else if ('}' == string.charAt(0)) {
+				return () -> howNestedWeCurrentlyAre+getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+				//THIS ABOVE LINE IS AN ERROR
+//				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
+			} 
+			else {
+				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
+			}
+		}
+	}
+	
 	private static Integer getScoreRecursive(String string, 
 			boolean areWeInGarbage, 
 			Integer howNestedWeCurrentlyAre

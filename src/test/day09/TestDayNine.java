@@ -12,7 +12,7 @@ import main.day09.DayNine;
 public class TestDayNine {
 	
 	@Test
-	public void testPartOneTestImperative1() {
+	public void testPartOneTest1() {
 		
 		
 		/*
@@ -53,48 +53,48 @@ public class TestDayNine {
 		System.out.println("Success on Day9.testPartOneTest1!");
 	}
 	@Test
-	public void testPartOneTestImperative2() {
+	public void testPartOneTest2() {
 		assertEquals(
 				DayNine.getGroupCount("{{{}}}")==3,true);
 		System.out.println("Success on Day9.testPartOneTest2!");
 	}
 	@Test
-	public void testPartOneTestImperative3() {
+	public void testPartOneTest3() {
 		assertEquals(
 				DayNine.getGroupCount("{{},{}}")==3,true);
 		System.out.println("Success on Day9.testPartOneTest3!");
 
 	}
 	@Test
-	public void testPartOneTestImperative4() {
+	public void testPartOneTest4() {
 		assertEquals(
 				DayNine.getGroupCount("{{{},{},{{}}}}")==6,true);
 		System.out.println("Success on Day9.testPartOneTest4!");
 
 	}
 	@Test
-	public void testPartOneTestImperative5() {
+	public void testPartOneTest5() {
 		assertEquals(
 				DayNine.getGroupCount("{<{},{},{{}}>}")==1,true);
 		System.out.println("Success on Day9.testPartOneTest5!");
 
 	}
 	@Test
-	public void testPartOneTestImperative6() {
+	public void testPartOneTest6() {
 		assertEquals(
 				DayNine.getGroupCount("{<a>,<a>,<a>,<a>}")==1,true);
 		System.out.println("Success on Day9.testPartOneTest6!");
 
 	}
 	@Test
-	public void testPartOneTestImperative7() {
+	public void testPartOneTest7() {
 		assertEquals(
 				DayNine.getGroupCount("{{<a>},{<a>},{<a>},{<a>}}")==5,true);
 		System.out.println("Success on Day9.testPartOneTest7!");
 
 	}
 	@Test
-	public void testPartOneTestImperative8() {
+	public void testPartOneTest8() {
 		assertEquals(
 				DayNine.getGroupCount("{{<!>},{<!>},{<!>},{<a>}}")==2,true);
 		System.out.println("Success on Day9.testPartOneTest8!");
@@ -102,7 +102,7 @@ public class TestDayNine {
 	}
 	
 	@Test
-	public void testPartOneTestImperative9() {
+	public void testPartOneTest9() {
 		
 		
 		assertEquals(
@@ -110,126 +110,126 @@ public class TestDayNine {
 		System.out.println("Success on Day9.testPartOneTest9!");
 	}
 	@Test
-	public void testPartOneTestImperative10() {
+	public void testPartOneTest10() {
 		assertEquals(
 				DayNine.getScore("{{{}}}")==6,true);
 		System.out.println("Success on Day9.testPartOneTest10!");
 	}
 	@Test
-	public void testPartOneTestImperative11() {
+	public void testPartOneTest11() {
 		assertEquals(
 				DayNine.getScore("{{},{}}")==5,true);
 		System.out.println("Success on Day9.testPartOneTest11!");
 
 	}
 	@Test
-	public void testPartOneTestImperative12() {
+	public void testPartOneTest12() {
 		assertEquals(
 				DayNine.getScore("{{{},{},{{}}}}")==16,true);
 		System.out.println("Success on Day9.testPartOneTest12!");
 
 	}
 	@Test
-	public void testPartOneTestImperative13() {
+	public void testPartOneTest13() {
 		assertEquals(
 				DayNine.getScore("{<{},{},{{}}>}")==1,true);
 		System.out.println("Success on Day9.testPartOneTest13!");
 
 	}
 	@Test
-	public void testPartOneTestImperative14() {
+	public void testPartOneTest14() {
 		assertEquals(
 				DayNine.getScore("{{<ab>},{<ab>},{<ab>},{<ab>}}")==9,true);
 		System.out.println("Success on Day9.testPartOneTest14!");
 
 	}
 	@Test
-	public void testPartOneTestImperative15() {
+	public void testPartOneTest15() {
 		assertEquals(
 				DayNine.getScore("{{<a>},{<a>},{<a>},{<a>}}")==9,true);
 		System.out.println("Success on Day9.testPartOneTest15!");
 
 	}
 	@Test
-	public void testPartOneTestImperative16() {
+	public void testPartOneTest16() {
 		assertEquals(
 				DayNine.getScore("{{<!>},{<!>},{<!>},{<a>}}")==3,true);
 		System.out.println("Success on Day9.testPartOneTest16!");
 
 	}
 	@Test
-	public void testPartOneTestImperativeGarbageSubremoval() {
+	public void testPartOneTestGarbageSubremoval() {
 		assertEquals(
 				DayNine.removeExclamationFromGarbage(
 						"{{<!>},{<!>},{<!>},{<a>}}")
 				.equals(
 						"{{<},{<},{<},{<a>}}"
 						),true);
-		System.out.println("Success on Day9.testPartOneTestImperativeGarbageSubremoval!");
+		System.out.println("Success on Day9.testPartOneTestGarbageSubremoval!");
 	}
 	@Test
-	public void testPartOneTestImperativeGarbageRemoval() {
+	public void testPartOneTestGarbageRemoval() {
 		assertEquals(
 				DayNine.removeGarbage(
 						"{{<},{<},{<},{<a>}}")
 				.equals(
 						"{{}}"
 						),true);
-		System.out.println("Success on Day9.testPartOneTestImperativeGarbageRemoval!");
+		System.out.println("Success on Day9.testPartOneTestGarbageRemoval!");
 	}
 	
 	@Test
-	public void testPartTwoTestImperative1() {
+	public void testPartTwoTest1() {
 		assertEquals(
 				DayNine.getGarbageCount("<>")==0,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative1!");
+		System.out.println("Success on Day9.testPartTwoTest1!");
 
 	}
 	@Test
-	public void testPartTwoTestImperative2() {
+	public void testPartTwoTest2() {
 		assertEquals(
 				DayNine.getGarbageCount("<random characters>")==17,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative2!");
+		System.out.println("Success on Day9.testPartTwoTest2!");
 
 	}
 	@Test
 	public void testPartTwoTest3() {
 		assertEquals(
 				DayNine.getGarbageCount("<<<<>")==3,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative3!");
+		System.out.println("Success on Day9.testPartTwoTest3!");
 
 	}
 	@Test
-	public void testPartTwoTestImperative4() {
+	public void testPartTwoTest4() {
 		assertEquals(
 				DayNine.getGarbageCount("<{!>}>")==2,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative4!");
+		System.out.println("Success on Day9.testPartTwoTest4!");
 
 	}
 	@Test
-	public void testPartTwoTestImperative5() {
+	public void testPartTwoTest5() {
 		assertEquals(
 				DayNine.getGarbageCount("<!!>")==0,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative5!");
+		System.out.println("Success on Day9.testPartTwoTest5!");
 
 	}
 	@Test
-	public void testPartTwoTestImperative6() {
+	public void testPartTwoTest6() {
 		assertEquals(
 				DayNine.getGarbageCount("<!!!>>")==0,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative6!");
+		System.out.println("Success on Day9.testPartTwoTest6!");
 
 	}
 	@Test
-	public void testPartTwoTestImperative7() {
+	public void testPartTwoTest7() {
 		assertEquals(
 				DayNine.getGarbageCount("<{o\"i!a,<{i<a>")==10,true);
-		System.out.println("Success on Day9.testPartTwoTestImperative7!");
+		System.out.println("Success on Day9.testPartTwoTest7!");
 
 	}
 	
 //	@Test
-//	public void testPartOneTestImperative2() {
+//	public void testPartOneTest2() {
 //		
 //		List<String> input = new ArrayList<>();		
 //		input.add("b inc 5 if a > 1");
@@ -238,7 +238,7 @@ public class TestDayNine {
 //		input.add("c inc -20 if c == 10");
 //		
 //		assertEquals(
-//				DayEight.getAnswerPartTwoImperative(input)==10,true);
+//				DayEight.getAnswerPartTwo(input)==10,true);
 //		System.out.println("Success on Day8.testPartOneTest2!");
 //	}
 

@@ -191,13 +191,7 @@ public class DayThree {
 				}
 				//else, keep it as current
 			} else {
-				Exception error = new Exception();
-				try {
-					throw error;
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				System.out.println("ERROR ERROR ERROR");
 			}
 			currentSteps++;
 			return getAnswerPartOneFunctional(

@@ -120,12 +120,8 @@ public class SpiralGridImperative {
 		if (!mapDoesContainCoordinates(mapToReturn, coordinates)){//, cell)){
 			mapToReturn.put(coordinates, cell);
 		} else {
-			Exception error = new Exception();
-			try {
-				throw error;
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			System.out.println("ERROR ERROR ERROR");
+			mapToReturn = null;
 		}
 //		System.out.println("Existing pair print");
 //		for (IntPair pair : mapToReturn.keySet()){
@@ -278,13 +274,8 @@ public class SpiralGridImperative {
 		} else if (DayThree.DOWN.equals(priorDirection)) {
 			newDirection = DayThree.RIGHT;
 		} else {
-			Exception error = new Exception();
-			try {
-				throw error;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("ERROR ERROR ERROR");
+			newDirection = null;
 		}
 		return newDirection;
 	}
@@ -361,13 +352,9 @@ public class SpiralGridImperative {
 				booleanToReturn = false;
 			}
 		} else {
-			Exception error = new Exception();
-			try {
-				throw error;
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("ERROR ERROR ERROR");
+//			booleanToReturn = null;
+
 		}
 		return booleanToReturn;
 
