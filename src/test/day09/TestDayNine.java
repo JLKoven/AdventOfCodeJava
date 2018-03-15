@@ -226,18 +226,5 @@ public class TestDayNine {
 
 	}
 	
-//	@Test
-//	public void testPartOneTest2() {
-//		
-//		List<String> input = new ArrayList<>();		
-//		input.add("b inc 5 if a > 1");
-//		input.add("a inc 1 if b < 5");
-//		input.add("c dec -10 if a >= 1");
-//		input.add("c inc -20 if c == 10");
-//		
-//		assertEquals(
-//				DayEight.getAnswerPartTwo(input)==10,true);
-//		System.out.println("Success on Day8.testPartOneTest2!");
-//	}
 
 }
