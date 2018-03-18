@@ -1,6 +1,6 @@
 package main;
 
-public class TailCalls {
+public class TailCallDone {
 	public static <T> TailCall<T> call(final TailCall<T> nextcall) {
 		return nextcall;
 	}

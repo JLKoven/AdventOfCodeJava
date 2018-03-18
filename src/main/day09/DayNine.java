@@ -5,7 +5,7 @@ import java.net.URI;
 
 import main.GeneralFunction;
 import main.TailCall;
-import main.TailCalls;
+import main.TailCallDone;
 
 public class DayNine {
 
@@ -182,7 +182,7 @@ public class DayNine {
 
 	private static TailCall<Integer> getScoreRecursiveAccumulator(int currentScore, String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
 		if (string.isEmpty()){
-			return TailCalls.done(currentScore);
+			return TailCallDone.done(currentScore);
 		} else {
 			if (areWeInGarbage){
 				if ('!' == string.charAt(0)) {					

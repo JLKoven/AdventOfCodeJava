@@ -5,6 +5,8 @@ import java.util.stream.Stream;
 @FunctionalInterface
 public interface TailCall<T> {
     TailCall<T> apply();
+    //if we are implementing TailCall with a lambda, that'll go here 
+
 
     default boolean isComplete() {
         return false;
@@ -15,12 +17,20 @@ public interface TailCall<T> {
     }
 
     default T obtain() {
-        return Stream.iterate(this, TailCall::apply)
-        		.filter(TailCall::isComplete)
+        return Stream.iterate(this, 
+        		TailCall::apply)//I need this otherwise I gotta write way too many kinds of Stream.iterate()s 
+        		.filter(TailCall::isComplete)//also takes a function as an argument!! 
         		.findFirst()
         		.get()
         		.result();
+        //iterate is like integralify(prior,baseCase,x,y);
     }
+
+
+//	static TailCall<T> done(int currentScore) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }
 /*
 public static TailCall<Integer> factorial(int fact, int n) {

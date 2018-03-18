@@ -6,7 +6,7 @@ import java.util.List;
 
 import main.GeneralFunction;
 import main.TailCall;
-import main.TailCalls;
+import main.TailCallDone;
 
 public class DayFive {
 
@@ -132,13 +132,14 @@ public class DayFive {
 
 	private static TailCall<Integer> getAnswerPartOne(Integer value, List<Integer> intList, int position) {
 		if (position >= intList.size()) {
-			return TailCalls.done(value); // this is the counter
+			return TailCallDone.done(value); // this is the counter
 		} else {
 			int p = intList.get(position);
 			int newP = p + 1;
-//			value = value+1;
-//			intList = GeneralFunction.functionalUpdate(intList, newP, position);
-			return () -> getAnswerPartOne(value+1, GeneralFunction.functionalUpdate(intList, newP, position), position + p);
+			int value2 = value+1;
+			List<Integer> intList2 = GeneralFunction.functionalUpdate(intList, newP, position);
+			return () -> getAnswerPartOne(value2, intList2, position + p);
+//			return () -> getAnswerPartOne(value+1, GeneralFunction.functionalUpdate(intList, newP, position), position + p);
 		}
 	}
 
