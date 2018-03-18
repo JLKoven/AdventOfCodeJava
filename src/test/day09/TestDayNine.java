@@ -101,12 +101,12 @@ public class TestDayNine {
 
 	}
 	
-	@Test
-	public void testPartOneTest9() {
-		assertEquals(
-				DayNine.getScore("{}")==1,true);
-		System.out.println("Success on Day9.testPartOneTest9!");
-	}
+//	@Test
+//	public void testPartOneTest9() {
+//		assertEquals(
+//				DayNine.getScore("{}")==1,true);
+//		System.out.println("Success on Day9.testPartOneTest9!");
+//	}
 	@Test
 	public void testPartOneTest10() {
 		assertEquals(

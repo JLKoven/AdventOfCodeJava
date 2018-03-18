@@ -177,9 +177,7 @@ public class DayNine {
 	}
 
 	public static int getScore(String string) {
-		//string = removeGarbageIncludingExclamation(string);
-
-		return getScoreRecursiveAccumulator(0, string, false, 0).get();
+		return getScoreRecursiveAccumulator(0, string, false, 0).obtain();
 	}
 
 	private static TailCall<Integer> getScoreRecursiveAccumulator(int currentScore, String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
@@ -190,21 +188,7 @@ public class DayNine {
 				if ('!' == string.charAt(0)) {					
 						//step 1, we're returning the code 
 					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(2), areWeInGarbage, howNestedWeCurrentlyAre);
-//						System.out.println("wahhhhhhh");
-//						return Integer.MIN_VALUE;//other lines not ncxessary
-////						//
-////						
-////						//wtf is an exception anyway
-////						Exception exception = new Exception();
-////						exception.printStackTrace();
-////						//used when I want to 'return a different value' 
-////						
-//////						try {
-//////							throw exception;
-//////						} catch (Exception e) {
-//////							e.printStackTrace();
-//////						}
-////						//THIS IS NOT HANDLING EXCEPTIONS 
+
 				} else if ('>' == string.charAt(0)) {
 					return () -> getScoreRecursiveAccumulator(currentScore, string.substring(1), false, howNestedWeCurrentlyAre);
 				} else {
@@ -225,111 +209,12 @@ public class DayNine {
 				}
 			}
 		}
-//		if (string.isEmpty()){
-//			return currentScore;
-//		} else {
-//			
-//			if ('{' == string.charAt(0)) {
-//				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre + 1);
-//			} else if ('}' == string.charAt(0)) {
-//				// string.charAt(0) == '}'
-//				return 
-//						getScoreRecursiveAccumulator(currentScore+howNestedWeCurrentlyAre, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre - 1);
-//			} 
-//
-//			else {
-//				return getScoreRecursiveAccumulator(currentScore, string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
-//			}
-//		}
+
 		
 	}
 
-//	private static TailCall<Integer> getScoreRecursiveLambda(String string, boolean areWeInGarbage, int howNestedWeCurrentlyAre) {
-//		if (string.isEmpty()){
-//			return TailCalls.done(howNestedWeCurrentlyAre);
-//		} else {
-//			if ('{' == string.charAt(0)){
-//				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-////				return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-//			} else if ('}' == string.charAt(0)) {
-//				return () -> newVar+getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-//				//THIS ABOVE LINE IS AN ERROR
-////				return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
-//			} 
-//			else {
-//				return () -> getScoreRecursiveLambda(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-//			}
-//		}
-//	}
 	
-	private static Integer getScoreRecursive(String string, 
-			boolean areWeInGarbage, 
-			Integer howNestedWeCurrentlyAre
-			) {
-		if (string.isEmpty()){
-			return 0;
-		} else {
-			if (areWeInGarbage){
-				if ('!' == string.charAt(0)) {					
-						//step 1, we're returning the code 
-					return getScoreRecursive(string.substring(2), areWeInGarbage, howNestedWeCurrentlyAre);
-//						System.out.println("wahhhhhhh");
-//						return Integer.MIN_VALUE;//other lines not ncxessary
-////						//
-////						
-////						//wtf is an exception anyway
-////						Exception exception = new Exception();
-////						exception.printStackTrace();
-////						//used when I want to 'return a different value' 
-////						
-//////						try {
-//////							throw exception;
-//////						} catch (Exception e) {
-//////							e.printStackTrace();
-//////						}
-////						//THIS IS NOT HANDLING EXCEPTIONS 
-				} else if ('>' == string.charAt(0)) {
-					return getScoreRecursive(string.substring(1), false, howNestedWeCurrentlyAre);
-				} else {
-					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
-				}
-			} else {
-				if ('{' == string.charAt(0)){
-					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre+1);
-				} else if ('}' == string.charAt(0)) {
-					// string.charAt(0) == '}'
-					return howNestedWeCurrentlyAre+getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre-1);
-				} else if ('<' == string.charAt(0)) {
-					return getScoreRecursive(string.substring(1), true, howNestedWeCurrentlyAre);
-				} 
-				
-				else {
-					return getScoreRecursive(string.substring(1), areWeInGarbage, howNestedWeCurrentlyAre);
-				}
-			}
-		}
-	}
 
-	public static Integer getScoreRecursiveIterative(String stringRemaining, Integer howNestedWeCurrentlyAre,
-			Integer currentScoreSum) {
-		if (("").equals(stringRemaining)) {
-			return 0;
-		} else if (stringRemaining.charAt(0) == '{' && stringRemaining.charAt(1) == '}') {
-			StringBuilder newString = new StringBuilder(stringRemaining);
-			newString.deleteCharAt(0);
-			newString.deleteCharAt(0);
-			return howNestedWeCurrentlyAre + getScoreRecursiveIterative(newString.toString(), howNestedWeCurrentlyAre, currentScoreSum);
-		} else {
-			currentScoreSum = currentScoreSum + howNestedWeCurrentlyAre;
-			StringBuilder newString = new StringBuilder(stringRemaining);
-			System.out.println("printing newString: "+newString+".");
-			newString.deleteCharAt(findMatchingCloseBracketIndex(newString));
-			newString.deleteCharAt(0);
-			System.out.println("now: "+newString+".");
-			return currentScoreSum
-					+ getScoreRecursiveIterative(newString.toString(), howNestedWeCurrentlyAre + 1, currentScoreSum);
-		}
-	}
 
 	private static int findMatchingCloseBracketIndex(StringBuilder newString) {
 		int countOfLeftBracket = 1;

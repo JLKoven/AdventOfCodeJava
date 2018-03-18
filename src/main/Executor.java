@@ -27,8 +27,8 @@ public class Executor {
 //		DayFour.executeStandardPart1();
 //		DayFour.executeStandardPart2();
 //
-//		DayFive.executeStandardPart1();
-//		DayFive.executeStandardPart2();
+		DayFive.executeStandardPart1();
+		DayFive.executeStandardPart2();
 //		
 //		DaySix.executeStandardPart1();
 //		DaySix.executeStandardPart2();
@@ -39,8 +39,8 @@ public class Executor {
 //		DayEight.executeStandardPart1();
 //		DayEight.executeStandardPart2();
 		
-		DayNine.executeStandardPart1();
-		DayNine.executeStandardPart2();
+//		DayNine.executeStandardPart1();
+//		DayNine.executeStandardPart2();
 
 //		DayTen.executeStandardPart1();
 //		DayTen.executeStandardPart2();

@@ -14,9 +14,12 @@ public interface TailCall<T> {
         throw new Error("not implemented");
     }
 
-    default T get() {
-        return Stream.iterate(this, TailCall::apply).filter(TailCall::isComplete)
-                                                .findFirst().get().result();
+    default T obtain() {
+        return Stream.iterate(this, TailCall::apply)
+        		.filter(TailCall::isComplete)
+        		.findFirst()
+        		.get()
+        		.result();
     }
 }
 /*

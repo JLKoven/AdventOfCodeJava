@@ -41,6 +41,7 @@ public class TestDayFive {
 		intList.add(0);
 		intList.add(1);
 		intList.add(-3);
+//		System.out.println("answer is "+DayFive.getAnswerDayFivePartOneFunctional(intList)+".");
 		assertEquals(DayFive.getAnswerDayFivePartOneFunctional(intList), 5);
 		System.out.println("Success on Day5.testPartOneTest1Functional!");
 	}

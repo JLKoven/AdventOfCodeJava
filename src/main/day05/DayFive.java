@@ -5,6 +5,8 @@ import java.net.URI;
 import java.util.List;
 
 import main.GeneralFunction;
+import main.TailCall;
+import main.TailCalls;
 
 public class DayFive {
 
@@ -52,8 +54,11 @@ public class DayFive {
 		System.out.println("Day 5 Part 1");
         File file = new File("src/main/day05/input.txt");
         URI uri = file.toURI();
+//		System.out.println("Answer to part 1 is "
+//				+ getAnswerDayFivePartOneImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
 		System.out.println("Answer to part 1 is "
-				+ getAnswerDayFivePartOneImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
+				+ getAnswerDayFivePartOneFunctional(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
+		
 	}
 
 	public static void executeStandardPart2() {
@@ -121,21 +126,19 @@ public class DayFive {
 	// Functional
 
 	public static int getAnswerDayFivePartOneFunctional(List<Integer> intList) {
-		int answer = getAnswerPartOne(intList, 0);
-		System.out.println("answer is "+answer+".");
+		int answer = getAnswerPartOne(0, intList, 0).obtain();
 		return answer;
 	}
 
-	private static int getAnswerPartOne(List<Integer> intList, int position) {
-		System.out.println("position is "+position+".");
-
+	private static TailCall<Integer> getAnswerPartOne(Integer value, List<Integer> intList, int position) {
 		if (position >= intList.size()) {
-			return 0; // this is the counter
+			return TailCalls.done(value); // this is the counter
 		} else {
 			int p = intList.get(position);
 			int newP = p + 1;
-			intList = GeneralFunction.functionalUpdate(intList, newP, position);
-			return 1 + getAnswerPartOne(intList, position + p);
+//			value = value+1;
+//			intList = GeneralFunction.functionalUpdate(intList, newP, position);
+			return () -> getAnswerPartOne(value+1, GeneralFunction.functionalUpdate(intList, newP, position), position + p);
 		}
 	}
 
