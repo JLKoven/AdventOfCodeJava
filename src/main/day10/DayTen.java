@@ -86,7 +86,7 @@ public class DayTen {
 		URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 1 is " + 
-		getAnswerPartOneImperative(GeneralFunction.getInputDelimiterComma(uri)) + ".");
+		getAnswerPartOneImperative(GeneralFunction.getInputDelimiterCommaToListInteger(uri)) + ".");
 
 	}
 	

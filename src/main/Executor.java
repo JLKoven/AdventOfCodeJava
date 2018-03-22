@@ -10,6 +10,7 @@ import main.day07.DaySeven;
 import main.day08.DayEight;
 import main.day09.DayNine;
 import main.day10.DayTen;
+import main.day11.DayEleven;
 
 public class Executor {
 
@@ -27,8 +28,8 @@ public class Executor {
 //		DayFour.executeStandardPart1();
 //		DayFour.executeStandardPart2();
 //
-		DayFive.executeStandardPart1();
-		DayFive.executeStandardPart2();
+//		DayFive.executeStandardPart1();
+//		DayFive.executeStandardPart2();
 //		
 //		DaySix.executeStandardPart1();
 //		DaySix.executeStandardPart2();
@@ -44,6 +45,9 @@ public class Executor {
 
 //		DayTen.executeStandardPart1();
 //		DayTen.executeStandardPart2();
+		
+		DayEleven.executeStandardPart1();
+//		DayEleven.executeStandardPart2();
 		
 		
 	}

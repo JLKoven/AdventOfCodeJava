@@ -118,26 +118,6 @@ public class TestDayTen {
 		System.out.println("Success on Day10.testStringToASCIICharArrayAddAddendum!");
 	}
 	
-//	@Test
-//	public void testStringToASCIICharArrayAddAddendum() {
-//		List<Integer> charArray = DayTen.getASCIICharArrayAddAddendum("1,2,3");
-//		
-//		List<Integer> charArrayTest = new ArrayList<>();
-//		charArrayTest.add(49);
-//		charArrayTest.add(44);
-//		charArrayTest.add(50);
-//		charArrayTest.add(44);
-//		charArrayTest.add(51);
-//		charArrayTest.add(17);
-//		charArrayTest.add(31);
-//		charArrayTest.add(73);
-//		charArrayTest.add(47);
-//		charArrayTest.add(23);
-//		
-//		assertEquals(
-//				charArray.equals(charArrayTest),true);
-//		System.out.println("Success on Day10.testStringToASCIICharArrayAddAddendum!");
-//	}
 
 
 }
