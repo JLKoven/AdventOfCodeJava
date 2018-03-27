@@ -89,17 +89,80 @@ public class TestDayEleven {
 		System.out.println("Success on Day11.testPartOneTest4!");
 	}
 	
-//	@Test
-//	public void testPartTwoTestImperative1() {
-////		String value = DayTen.getHash("");
-////		System.out.println("value for p2t1 is "+value+".");
-////		System.out.println("length is "+value.length()+".");
-//		assertEquals(
-//				true
-//				,
-//				true);
-//		System.out.println("Success on Day11.testPartTwoTest1!");
-//		
-//	}
+	@Test
+	public void testPartTwoTestImperative1() {
+		
+		//ne,ne,ne is 3 steps away.
+		
+
+		List<String> input = new ArrayList<>();
+		input.add("ne");
+		input.add("ne");
+		input.add("ne");
+		
+		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==3
+				,
+				true);
+		System.out.println("Success on Day11.testPartTwoTest1!");
+	}
+	
+	@Test
+	public void testPartTwoTestImperative2() {
+		
+		//ne,ne,sw,sw is 0 steps away (back where you started).
+
+		List<String> input = new ArrayList<>();
+		input.add("ne");
+		input.add("ne");
+		input.add("sw");
+		input.add("sw");
+		
+		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==2
+				,
+				true);
+		System.out.println("Success on Day11.testPartTwoTest2!");
+	}
+	
+	@Test
+	public void testPartTwoTestImperative3() {
+		
+		//ne,ne,s,s is 2 steps away (se,se).
+		List<String> input = new ArrayList<>();
+		input.add("ne");
+		input.add("ne");
+		input.add("s");
+		input.add("s");
+
+		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==2
+				,
+				true);
+		System.out.println("Success on Day11.testPartTwoTest3!");
+	}
+	
+	@Test
+	public void testPartTwoTestImperative4() {
+		
+		//se,sw,se,sw,sw is 3 steps away (s,s,sw).
+		List<String> input = new ArrayList<>();
+		input.add("se");
+		input.add("sw");
+		input.add("se");
+		input.add("sw");
+		input.add("sw");
+
+		
+		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==3
+				,
+				true);
+		System.out.println("Success on Day11.testPartTwoTest4!");
+	}
 
 }
