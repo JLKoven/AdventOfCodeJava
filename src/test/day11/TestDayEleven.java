@@ -100,7 +100,7 @@ public class TestDayEleven {
 		input.add("ne");
 		input.add("ne");
 		
-		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		Integer value = DayEleven.getAnswerPartTwoHybrid(input);
 		assertEquals(
 				value==3
 				,
@@ -119,7 +119,7 @@ public class TestDayEleven {
 		input.add("sw");
 		input.add("sw");
 		
-		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		Integer value = DayEleven.getAnswerPartTwoHybrid(input);
 		assertEquals(
 				value==2
 				,
@@ -137,7 +137,7 @@ public class TestDayEleven {
 		input.add("s");
 		input.add("s");
 
-		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		Integer value = DayEleven.getAnswerPartTwoHybrid(input);
 		assertEquals(
 				value==2
 				,
@@ -157,12 +157,32 @@ public class TestDayEleven {
 		input.add("sw");
 
 		
-		Integer value = DayEleven.getAnswerPartTwoImperative(input);
+		Integer value = DayEleven.getAnswerPartTwoHybrid(input);
 		assertEquals(
 				value==3
 				,
 				true);
 		System.out.println("Success on Day11.testPartTwoTest4!");
 	}
+	
+//	@Test
+//	public void testGetOptimalDistance() {
+//		
+//		int correctValues = 0;
+//		value = DayEleven.getOptimalDistance(nsCounter, neswCounter, nwseCounter);
+//		if (){
+//			
+//		}
+//		
+//		assertEquals(
+//				1==correctValues
+//				,
+//				true);
+//		System.out.println("Success on Day11.testPartTwoTest4!");
+//
+//
+//			
+//			
+//	}
 
 }
