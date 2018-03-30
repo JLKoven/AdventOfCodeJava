@@ -311,8 +311,36 @@ public class DayEleven {
 		//1, 2, -5
 		Double overallNSCounterDouble = (double) ((nsCounter*2)+neswCounter+nwseCounter);//-1
 		Double overallEWCounterDouble = (double) (neswCounter-nwseCounter);//7
-		Double overallNSCounterHalf = overallNSCounterDouble * 0.5;//-0.5
-		Double overallEWCounterHalf = overallEWCounterDouble * 0.5;//3.5
+		
+		//hack it! we can get rid of entities on xy axis 
+		if (0==overallNSCounterDouble){//eastwest
+			return (neswCounter + nwseCounter);
+		} else if (0==overallEWCounterDouble){//northsouth
+			return (overallNSCounterDouble).intValue();
+		} else {//4 quadrants to end up in 
+			if (overallNSCounterDouble > 0 && overallEWCounterDouble > 0){//northeast
+				//absolute values
+			} else if (overallNSCounterDouble < 0 && overallEWCounterDouble > 0){//southeast
+				
+			} else if (overallNSCounterDouble < 0 && overallEWCounterDouble < 0){//southwest
+				
+			} else if (overallNSCounterDouble > 0 && overallEWCounterDouble < 0){//northwest
+				
+			} else {//error
+				
+			}
+				
+			
+		}
+		
+		//4 quadrants to end up in 
+		
+		
+		//6 steps to get to where we can 'adjust' 
+		//1 step southeast means we're at -1
+		
+//		Double overallNSCounterHalf = overallNSCounterDouble * 0.5;//-0.5
+//		Double overallEWCounterHalf = overallEWCounterDouble * 0.5;//3.5
 		//3 southeast motions mean now we're at (-1.5,3
 		//3 steps east is 3 northeast, 3 southeast
 		//so now we're at 0,3
