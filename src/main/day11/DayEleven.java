@@ -309,22 +309,78 @@ public class DayEleven {
 	public static int getOptimalDistance(int nsCounter, int neswCounter, int nwseCounter) {
 		
 		//1, 2, -5
-		Double overallNSCounterDouble = (double) ((nsCounter*2)+neswCounter+nwseCounter);//-1
-		Double overallEWCounterDouble = (double) (neswCounter-nwseCounter);//7
+//		Double overallNSCounterDouble = (double) ((nsCounter*2)+neswCounter+nwseCounter);//-1
+//		Double overallEWCounterDouble = (double) (neswCounter-nwseCounter);//7
+		Integer overallNSCounter = ((nsCounter*2)+neswCounter+nwseCounter);//-1
+		Integer overallEWCounter = (neswCounter-nwseCounter);//7
 		
 		//hack it! we can get rid of entities on xy axis 
-		if (0==overallNSCounterDouble){//eastwest
+		if (0==overallNSCounter){//eastwest
 			return (neswCounter + nwseCounter);
-		} else if (0==overallEWCounterDouble){//northsouth
-			return (overallNSCounterDouble).intValue();
-		} else {//4 quadrants to end up in 
-			if (overallNSCounterDouble > 0 && overallEWCounterDouble > 0){//northeast
+		} else if (0==overallEWCounter){//northsouth
+			return (overallNSCounter).intValue();
+		} else {//hack ended. now we know there are 4 quadrants to end up in 
+			if (overallNSCounter > 0 && overallEWCounter > 0){//northeast
+//				//absolute values
+//				Integer absoluteNS = Math.abs(overallNSCounter);
+//				Integer absoluteEW = Math.abs(overallEWCounter);
+//				if ((absoluteNS*2)<absoluteEW){//more EW than NS
+//					
+//				} else if ((absoluteNS*2)>absoluteEW){//more NS than EW
+//					
+//				} else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
+//					//every SE movement generates 1 E movements and -1 N movement
+//					//every NE movement generates 1 E movements and 1 N movement
+//					//every NE+SE movement generates 2 E movements and 0 N movement
+//					//every N movement generates 0 E movement and 2 N movements
+//				} else {
+//					System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
+//					return (Integer) null;
+//				}
+			} else if (overallNSCounter < 0 && overallEWCounter > 0){//southeast
 				//absolute values
-			} else if (overallNSCounterDouble < 0 && overallEWCounterDouble > 0){//southeast
+				Integer absoluteNS = Math.abs(overallNSCounter);
+				Integer absoluteEW = Math.abs(overallEWCounter);
+				if ((absoluteNS*2)<absoluteEW){//more EW than NS
+					//every SE movement adds 1 step and generates 1 E movements and -1 N movement
+					//every NE movement adds 1 step and generates 1 E movements and 1 N movement
+					//every NE+SE movement adds 2 steps and generates 2 E movements and 0 N movement
+					//every S movement adds 1 step and generates 0 E movement and 2 S movements
+					
+					//SORRY DAN
+					Integer stepCounter=0;
+					while (absoluteEW>2){
+						absoluteEW=absoluteEW-2;
+						stepCounter=stepCounter+2;
+					}
+//					while ()
+					
+					
+					if (0==absoluteNS%2){
+						//we'll just go southeast twice to finish things off
+						//??
+						//TODO
+					} else if (0!=absoluteNS%2){
+						//we'll be going east, then adjust southeast
+						//TODO
+					} else {
+						System.out.println("ERROR ODD EVEN ISSUE");
+						return (Integer) null;		
+					}
+				} else if ((absoluteNS*2)>absoluteEW){//more NS than EW
+					
+				} else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
+					//every SE movement generates 1 E movements and -1 N movement
+					//every NE movement generates 1 E movements and 1 N movement
+					//every NE+SE movement generates 2 E movements and 0 N movement
+					//every S movement generates 0 E movement and 2 S movements
+				} else {
+					System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
+					return (Integer) null;
+				}
+			} else if (overallNSCounter < 0 && overallEWCounter < 0){//southwest
 				
-			} else if (overallNSCounterDouble < 0 && overallEWCounterDouble < 0){//southwest
-				
-			} else if (overallNSCounterDouble > 0 && overallEWCounterDouble < 0){//northwest
+			} else if (overallNSCounter > 0 && overallEWCounter < 0){//northwest
 				
 			} else {//error
 				
