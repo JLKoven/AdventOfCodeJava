@@ -154,26 +154,29 @@ public class DayEleven {
 			return TailCall.done(maxDistance);
 		} else {
 			String direction = stringList.get(0);
-			stringList.remove(0);//this is why it is a hybrid function
+			stringList.remove(0);// this is why it is a hybrid function
 			if ("n".equals(direction)) {
 				int newnsCounter = nsCounter + 1;
 				int newneswCounter = neswCounter + 0;
 				int newnwseCounter = neswCounter + 0;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -184,20 +187,23 @@ public class DayEleven {
 				int newneswCounter = neswCounter + 0;
 				int newnwseCounter = neswCounter + 0;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -208,20 +214,23 @@ public class DayEleven {
 				int newneswCounter = neswCounter + 1;
 				int newnwseCounter = neswCounter + 0;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -232,20 +241,23 @@ public class DayEleven {
 				int newneswCounter = neswCounter - 1;
 				int newnwseCounter = neswCounter + 0;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -256,20 +268,23 @@ public class DayEleven {
 				int newneswCounter = neswCounter + 0;
 				int newnwseCounter = neswCounter + 1;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -280,20 +295,23 @@ public class DayEleven {
 				int newneswCounter = neswCounter + 0;
 				int newnwseCounter = neswCounter - 1;
 				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance<currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance,//not sure this does anythng MAKE SURE TO PROPAGATE THIS 
-							stringList,
+				if (newOptimalDistance < currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+																										// sure
+																										// this
+																										// does
+																										// anythng
+																										// MAKE
+																										// SURE
+																										// TO
+																										// PROPAGATE
+																										// THIS
+							stringList, newnsCounter, newneswCounter, newnwseCounter);
+				} else if (newOptimalDistance > currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance>currentDistance) {
-					return () -> getMaxDistanceRecursiveAccumulator(
-							maxDistance + 1, 
-							newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance==currentDistance){
-					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, 
-							newOptimalDistance, 
-							stringList,
+				} else if (newOptimalDistance == currentDistance) {
+					return () -> getMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
 							newnsCounter, newneswCounter, newnwseCounter);
 				} else {
 					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
@@ -307,175 +325,218 @@ public class DayEleven {
 	}
 
 	public static int getOptimalDistance(int nsCounter, int neswCounter, int nwseCounter) {
-		
-		//1, 2, -5
-//		Double overallNSCounterDouble = (double) ((nsCounter*2)+neswCounter+nwseCounter);//-1
-//		Double overallEWCounterDouble = (double) (neswCounter-nwseCounter);//7
-		Integer overallNSCounter = ((nsCounter*2)+neswCounter+nwseCounter);//-1
-		Integer overallEWCounter = (neswCounter-nwseCounter);//7
-		
-		//hack it! we can get rid of entities on xy axis 
-		if (0==overallNSCounter){//eastwest
-			return (neswCounter + nwseCounter);
-		} else if (0==overallEWCounter){//northsouth
-			return (overallNSCounter).intValue();
-		} else {//hack ended. now we know there are 4 quadrants to end up in 
-			if (overallNSCounter > 0 && overallEWCounter > 0){//northeast
-//				//absolute values
-//				Integer absoluteNS = Math.abs(overallNSCounter);
-//				Integer absoluteEW = Math.abs(overallEWCounter);
-//				if ((absoluteNS*2)<absoluteEW){//more EW than NS
-//					
-//				} else if ((absoluteNS*2)>absoluteEW){//more NS than EW
-//					
-//				} else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
-//					//every SE movement generates 1 E movements and -1 N movement
-//					//every NE movement generates 1 E movements and 1 N movement
-//					//every NE+SE movement generates 2 E movements and 0 N movement
-//					//every N movement generates 0 E movement and 2 N movements
-//				} else {
-//					System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
-//					return (Integer) null;
-//				}
-			} else if (overallNSCounter < 0 && overallEWCounter > 0){//southeast
-				//absolute values
-				Integer absoluteNS = Math.abs(overallNSCounter);
-				Integer absoluteEW = Math.abs(overallEWCounter);
-				if ((absoluteNS*2)<absoluteEW){//more EW than NS
-					//every SE movement adds 1 step and generates 1 E movements and -1 N movement
-					//every NE movement adds 1 step and generates 1 E movements and 1 N movement
-					//every NE+SE movement adds 2 steps and generates 2 E movements and 0 N movement
-					//every S movement adds 1 step and generates 0 E movement and 2 S movements
-					
-					//SORRY DAN
-					Integer stepCounter=0;
-					while (absoluteEW>2){
-						absoluteEW=absoluteEW-2;
-						stepCounter=stepCounter+2;
-					}
-//					while ()
-					
-					
-					if (0==absoluteNS%2){
-						//we'll just go southeast twice to finish things off
-						//??
-						//TODO
-					} else if (0!=absoluteNS%2){
-						//we'll be going east, then adjust southeast
-						//TODO
-					} else {
-						System.out.println("ERROR ODD EVEN ISSUE");
-						return (Integer) null;		
-					}
-				} else if ((absoluteNS*2)>absoluteEW){//more NS than EW
-					
-				} else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
-					//every SE movement generates 1 E movements and -1 N movement
-					//every NE movement generates 1 E movements and 1 N movement
-					//every NE+SE movement generates 2 E movements and 0 N movement
-					//every S movement generates 0 E movement and 2 S movements
-				} else {
-					System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
-					return (Integer) null;
-				}
-			} else if (overallNSCounter < 0 && overallEWCounter < 0){//southwest
-				
-			} else if (overallNSCounter > 0 && overallEWCounter < 0){//northwest
-				
-			} else {//error
-				
+
+		// 1, 2, -5
+		// Double overallNSCounterDouble = (double)
+		// ((nsCounter*2)+neswCounter+nwseCounter);//-1
+		// Double overallEWCounterDouble = (double)
+		// (neswCounter-nwseCounter);//7
+		Integer overallNSCounter = ((nsCounter * 2) + neswCounter + nwseCounter);// -1
+		Integer overallEWCounter = (neswCounter - nwseCounter);// 7
+
+		Integer absoluteNS = Math.abs(overallNSCounter);
+		Integer absoluteEW = Math.abs(overallEWCounter);
+
+		if ((absoluteNS * 2) < absoluteEW) {// more EW than NS
+			// every SE movement adds 1 step and generates 1 E movements and -1
+			// N movement
+			// every NE movement adds 1 step and generates 1 E movements and 1 N
+			// movement
+			// every NE+SE movement adds 2 steps and generates 2 E movements and
+			// 0 N movement
+			// every S movement adds 1 step and generates 0 E movement and 2 S
+			// movements
+
+			// SORRY DAN
+			Integer stepCounter = 0;
+			while (absoluteEW > 2) {
+				absoluteEW = absoluteEW - 2;
+				stepCounter = stepCounter + 2;
 			}
-				
-			
+			// while ()
+
+			if (0 == absoluteNS % 2) {
+				// we'll just go southeast twice to finish things off
+				// ??
+				// TODO
+			} else if (0 != absoluteNS % 2) {
+				// we'll be going east, then adjust southeast
+				// TODO
+			} else {
+				System.out.println("ERROR ODD EVEN ISSUE");
+				return (Integer) null;
+			}
+
+			// //hack it! we can get rid of entities on xy axis
+			// if (0==overallNSCounter){//eastwest
+			// return (neswCounter + nwseCounter);
+			// } else if (0==overallEWCounter){//northsouth
+			// return (overallNSCounter).intValue();
+			// } else {//hack ended. now we know there are 4 quadrants to end up
+			// in
+			// if (overallNSCounter > 0 && overallEWCounter > 0){//northeast
+			//// //absolute values
+			//// Integer absoluteNS = Math.abs(overallNSCounter);
+			//// Integer absoluteEW = Math.abs(overallEWCounter);
+			//// if ((absoluteNS*2)<absoluteEW){//more EW than NS
+			////
+			//// } else if ((absoluteNS*2)>absoluteEW){//more NS than EW
+			////
+			//// } else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
+			//// //every SE movement generates 1 E movements and -1 N movement
+			//// //every NE movement generates 1 E movements and 1 N movement
+			//// //every NE+SE movement generates 2 E movements and 0 N movement
+			//// //every N movement generates 0 E movement and 2 N movements
+			//// } else {
+			//// System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
+			//// return (Integer) null;
+			//// }
+			// } else if (overallNSCounter < 0 && overallEWCounter >
+			// 0){//southeast
+			// //absolute values
+			// Integer absoluteNS = Math.abs(overallNSCounter);
+			// Integer absoluteEW = Math.abs(overallEWCounter);
+			//
+			//
+			// if ((absoluteNS*2)<absoluteEW){//more EW than NS
+			// //every SE movement adds 1 step and generates 1 E movements and
+			// -1 N movement
+			// //every NE movement adds 1 step and generates 1 E movements and 1
+			// N movement
+			// //every NE+SE movement adds 2 steps and generates 2 E movements
+			// and 0 N movement
+			// //every S movement adds 1 step and generates 0 E movement and 2 S
+			// movements
+			//
+			// //SORRY DAN
+			// Integer stepCounter=0;
+			// while (absoluteEW>2){
+			// absoluteEW=absoluteEW-2;
+			// stepCounter=stepCounter+2;
+			// }
+			//// while ()
+			//
+			//
+			// if (0==absoluteNS%2){
+			// //we'll just go southeast twice to finish things off
+			// //??
+			// //TODO
+			// } else if (0!=absoluteNS%2){
+			// //we'll be going east, then adjust southeast
+			// //TODO
+			// } else {
+			// System.out.println("ERROR ODD EVEN ISSUE");
+			// return (Integer) null;
+			// }
+			// } else if ((absoluteNS*2)>absoluteEW){//more NS than EW
+			//
+			// } else if ((absoluteNS*2)==absoluteEW){//pure diagonal!
+			// //every SE movement generates 1 E movements and -1 N movement
+			// //every NE movement generates 1 E movements and 1 N movement
+			// //every NE+SE movement generates 2 E movements and 0 N movement
+			// //every S movement generates 0 E movement and 2 S movements
+			// } else {
+			// System.out.println("ERROR ABSOLUTE COMPARISON ISSUE");
+			// return (Integer) null;
+			// }
+			// } else if (overallNSCounter < 0 && overallEWCounter <
+			// 0){//southwest
+			//
+			// } else if (overallNSCounter > 0 && overallEWCounter <
+			// 0){//northwest
+			//
+			// } else {//error
+			//
+			// }
+
 		}
-		
-		//4 quadrants to end up in 
-		
-		
-		//6 steps to get to where we can 'adjust' 
-		//1 step southeast means we're at -1
-		
-//		Double overallNSCounterHalf = overallNSCounterDouble * 0.5;//-0.5
-//		Double overallEWCounterHalf = overallEWCounterDouble * 0.5;//3.5
-		//3 southeast motions mean now we're at (-1.5,3
-		//3 steps east is 3 northeast, 3 southeast
-		//so now we're at 0,3
-		//1 southeast
-		//6+1 = 7 
-		return (6+1);
-		
-		
-//		Double value = (double) (nsCounter+neswCounter+nwseCounter);
-//		// TODO Auto-generated method stub
-//		//find east or west or neither 
-//		Double ewCounter = (double) (neswCounter-nwseCounter);
-//		Double neswCounterAsDouble = (double) neswCounter;
-//		Double nwseCounterAsDouble = (double) nwseCounter;
-////		Double secondnsCounter 
-//		
-////		neswCounter > 0 = "east"
-////		nwseCounter > 0 = "west"
-//		
-//		if (0 == neswCounter-nwseCounter) {
-//			// neither (east or west)
-//			return (Math.abs(nsCounter));
-//
-//		} else if (0 < neswCounter-nwseCounter) {
-//			//east 
-//			
-//			Double nsTilt = (neswCounterAsDouble * 0.5) + (nwseCounterAsDouble * 0.5);
-//			if (0==nsTilt){//east
-//				Double result = (neswCounterAsDouble+nwseCounterAsDouble);
-//				return result.intValue();
-//			} else if (0>nsTilt){//southeast
-//				Double result = (neswCounterAsDouble+nwseCounterAsDouble);
-//				//2, 3, -10
-//				//ns tilt is 1.5-5 = -3.5
-//				//se movements = -0.5 so this would be 7 se movements
-//				return result.intValue();
-//			} else if (0<nsTilt){//northeast
-//				Double result = (neswCounterAsDouble+nwseCounterAsDouble);
-//				return result.intValue();
-//			} else {
-//				System.out.println("ERROR NORTH SOUTH TILT COMPARISON");
-//				return (Integer) null;
-//			}
-//			
-//			//check for NS tilt (*0.5) TODO 
-////			if (nstilt is 0){
-////				
-////			} else if (positive){
-////				
-////			} else if (negative){
-////				
-////			} else {
-////				//error
-////			}
-//
-//		} else if (0 > neswCounter-nwseCounter) {
-//			//west
-//			
-//			//check for NS tilt (*0.5) TODO 
-////			if (nstilt is 0){
-////				
-////			} else if (positive){
-////				
-////			} else if (negative){
-////				
-////			} else {
-////				//error
-////			}
-//			
-//		} else {
-//			System.out.println("ERROR EAST WEST COMPARISON");
-//			ewCounter = null;
-//			return (Integer) null;
-//		}
-//		
-//		
-//		
-//		
-//		return value.intValue();
+
+		// 4 quadrants to end up in
+
+		// 6 steps to get to where we can 'adjust'
+		// 1 step southeast means we're at -1
+
+		// Double overallNSCounterHalf = overallNSCounterDouble * 0.5;//-0.5
+		// Double overallEWCounterHalf = overallEWCounterDouble * 0.5;//3.5
+		// 3 southeast motions mean now we're at (-1.5,3
+		// 3 steps east is 3 northeast, 3 southeast
+		// so now we're at 0,3
+		// 1 southeast
+		// 6+1 = 7
+		return (6 + 1);
+
+		// Double value = (double) (nsCounter+neswCounter+nwseCounter);
+		// // TODO Auto-generated method stub
+		// //find east or west or neither
+		// Double ewCounter = (double) (neswCounter-nwseCounter);
+		// Double neswCounterAsDouble = (double) neswCounter;
+		// Double nwseCounterAsDouble = (double) nwseCounter;
+		//// Double secondnsCounter
+		//
+		//// neswCounter > 0 = "east"
+		//// nwseCounter > 0 = "west"
+		//
+		// if (0 == neswCounter-nwseCounter) {
+		// // neither (east or west)
+		// return (Math.abs(nsCounter));
+		//
+		// } else if (0 < neswCounter-nwseCounter) {
+		// //east
+		//
+		// Double nsTilt = (neswCounterAsDouble * 0.5) + (nwseCounterAsDouble *
+		// 0.5);
+		// if (0==nsTilt){//east
+		// Double result = (neswCounterAsDouble+nwseCounterAsDouble);
+		// return result.intValue();
+		// } else if (0>nsTilt){//southeast
+		// Double result = (neswCounterAsDouble+nwseCounterAsDouble);
+		// //2, 3, -10
+		// //ns tilt is 1.5-5 = -3.5
+		// //se movements = -0.5 so this would be 7 se movements
+		// return result.intValue();
+		// } else if (0<nsTilt){//northeast
+		// Double result = (neswCounterAsDouble+nwseCounterAsDouble);
+		// return result.intValue();
+		// } else {
+		// System.out.println("ERROR NORTH SOUTH TILT COMPARISON");
+		// return (Integer) null;
+		// }
+		//
+		// //check for NS tilt (*0.5) TODO
+		//// if (nstilt is 0){
+		////
+		//// } else if (positive){
+		////
+		//// } else if (negative){
+		////
+		//// } else {
+		//// //error
+		//// }
+		//
+		// } else if (0 > neswCounter-nwseCounter) {
+		// //west
+		//
+		// //check for NS tilt (*0.5) TODO
+		//// if (nstilt is 0){
+		////
+		//// } else if (positive){
+		////
+		//// } else if (negative){
+		////
+		//// } else {
+		//// //error
+		//// }
+		//
+		// } else {
+		// System.out.println("ERROR EAST WEST COMPARISON");
+		// ewCounter = null;
+		// return (Integer) null;
+		// }
+		//
+		//
+		//
+		//
+		// return value.intValue();
 	}
 
 }
