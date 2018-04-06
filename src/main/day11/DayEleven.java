@@ -115,7 +115,7 @@ public class DayEleven {
 		 * south+northeast = southeast, so, this is basically... 330 steps east
 		 * 45 steps southeast 27 steps south 45+27+(330*2) =
 		 */
-		Integer value = 5;
+		Integer value = getOptimalDistance(northSouthCounter, northeastSouthwestCounter, northwestSoutheastCounter);
 		return value;
 	}
 
@@ -342,9 +342,9 @@ public class DayEleven {
 		//7; 5; 6; 1
 
 		//1, 7
-		//11, 5
+		//11, 5 = (S; S; S; SE; SE; SE; SE; SE) =>8
 		//6, 6
-		//19, 1
+		//19, 1 = (S; S; S; S; S; S; S; S; S; SE) => 10
 		
 		//we're going to pretend something is in the southeast 
 		if ((absoluteNS) < absoluteEW) {// more EW than NS
@@ -386,9 +386,19 @@ public class DayEleven {
 //			}
 
 		} else if (((absoluteNS) > absoluteEW)){
-			//11, 5
-			//19, 1
-			return 3;//TODO
+			//11, 5 = (S; S; S; SE; SE; SE; SE; SE) =>8
+			//19, 1 = (S; S; S; S; S; S; S; S; S; SE) => 10
+			Integer stepCounter = 0;
+			while (absoluteNS > absoluteEW) {
+				absoluteNS = absoluteNS - 2;
+				stepCounter = stepCounter + 1;
+			}
+			while (absoluteNS > 0) {
+				absoluteEW = absoluteEW - 1;
+				absoluteNS = absoluteNS - 1;
+				stepCounter = stepCounter + 1;
+			}
+			return stepCounter;
 		} else if (((absoluteNS) == absoluteEW)){
 			//6, 6
 			return absoluteNS;//or EW

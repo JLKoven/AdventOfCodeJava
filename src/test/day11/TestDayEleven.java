@@ -165,24 +165,52 @@ public class TestDayEleven {
 		System.out.println("Success on Day11.testPartTwoTest4!");
 	}
 	
-//	@Test
-//	public void testGetOptimalDistance() {
-//		
-//		int correctValues = 0;
-//		value = DayEleven.getOptimalDistance(nsCounter, neswCounter, nwseCounter);
-//		if (){
-//			
-//		}
-//		
-//		assertEquals(
-//				1==correctValues
-//				,
-//				true);
-//		System.out.println("Success on Day11.testPartTwoTest4!");
-//
-//
-//			
-//			
-//	}
+	@Test
+	public void testGetOptimalDistance() {
+		
+		int correctValues = 0;
+		int[] nsCounter = {1, -3, -1, -4};
+		int[] neswCounter = {2, 0, 1, -5};
+		int[] nwseCounter = {-5, -5, -5, -6};
+		//EX1:  1, 2, -5 = (SE+NW; SE+NW; SE+NW; SE) =>7
+		//EX2:  -3, 0, -5 (S; S; S; SE; SE; SE; SE; SE) =>8
+		//EX3:  -1, 1, -5 (SE; SE; SE; SE; SE; SE) => 6
+		//EX4: -4, -5, -6 = (S; S; S; S; S; S; S; S; S; SE) => 10
+		int value1 = DayEleven.getOptimalDistance(nsCounter[0], neswCounter[0], nwseCounter[0]);
+		int value2 = DayEleven.getOptimalDistance(nsCounter[1], neswCounter[1], nwseCounter[1]);
+		int value3 = DayEleven.getOptimalDistance(nsCounter[2], neswCounter[2], nwseCounter[2]);
+		int value4 = DayEleven.getOptimalDistance(nsCounter[3], neswCounter[3], nwseCounter[3]);
+//		int valueN = DayEleven.getOptimalDistance(nsCounter[N-1], neswCounter[N-1], nwseCounter[N-1]);
+		if (7 == value1){
+			correctValues++;
+		} else {
+			System.out.println("Value 1 is supposed to be 7 and it is calculated as "+value1+".");
+		}
+		if (8 == value2){
+			correctValues++;
+		} else {
+			System.out.println("Value 2 is supposed to be 8 and it is calculated as "+value2+".");
+		}
+		if (6 == value3){
+			correctValues++;
+		} else {
+			System.out.println("Value 3 is supposed to be 6 and it is calculated as "+value3+".");
+		}
+		if (10 == value4){
+			correctValues++;
+		} else {
+			System.out.println("Value 4 is supposed to be 10 and it is calculated as "+value4+".");
+		}
+		
+		assertEquals(
+				4==correctValues
+				,
+				true);
+		System.out.println("Success on Day11.testGetOptimalDistance!");
+
+
+			
+			
+	}
 
 }
