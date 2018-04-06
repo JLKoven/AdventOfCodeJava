@@ -88,9 +88,88 @@ public class TestDayEleven {
 				true);
 		System.out.println("Success on Day11.testPartOneTest4!");
 	}
+
+//	@Test
+//	public void testPartOneTestHybrid1() {
+//		
+//		//ne,ne,ne is 3 steps away.
+//		
+//
+//		List<String> input = new ArrayList<>();
+//		input.add("ne");
+//		input.add("ne");
+//		input.add("ne");
+//		
+//		Integer value = DayEleven.getAnswerPartOneHybrid(input);
+//		assertEquals(
+//				value==3
+//				,
+//				true);
+//		System.out.println("Success on Day11.testPartOneTest1!");
+//	}
+//	
+//	@Test
+//	public void testPartOneTestHybrid2() {
+//		
+//		//ne,ne,sw,sw is 0 steps away (back where you started).
+//
+//		List<String> input = new ArrayList<>();
+//		input.add("ne");
+//		input.add("ne");
+//		input.add("sw");
+//		input.add("sw");
+//		
+//		Integer value = DayEleven.getAnswerPartOneHybrid(input);
+//		System.out.println("value for part 1 hybrid 2 is "+value+" and should be 0.");
+//		assertEquals(
+//				value==0
+//				,
+//				true);
+//		System.out.println("Success on Day11.testPartOneTest2!");
+//	}
+//	
+//	@Test
+//	public void testPartOneTestHybrid3() {
+//		
+//		//ne,ne,s,s is 2 steps away (se,se).
+//		List<String> input = new ArrayList<>();
+//		input.add("ne");
+//		input.add("ne");
+//		input.add("s");
+//		input.add("s");
+//
+//		Integer value = DayEleven.getAnswerPartOneHybrid(input);
+//		System.out.println("value for part 1 hybrid 3 is "+value+" and should be 2.");
+//		assertEquals(
+//				value==2
+//				,
+//				true);
+//		System.out.println("Success on Day11.testPartOneTest3!");
+//	}
+//	
+//	@Test
+//	public void testPartOneTestHybrid4() {
+//		
+//		//se,sw,se,sw,sw is 3 steps away (s,s,sw).
+//		List<String> input = new ArrayList<>();
+//		input.add("se");
+//		input.add("sw");
+//		input.add("se");
+//		input.add("sw");
+//		input.add("sw");
+//
+//		
+//		Integer value = DayEleven.getAnswerPartOneHybrid(input);
+//		assertEquals(
+//				value==3
+//				,
+//				true);
+//		System.out.println("Success on Day11.testPartOneTest4!");
+//	}
+	//under construction!
 	
 	@Test
-	public void testPartTwoTestImperative1() {
+	public void testPartTwoTestHybrid1() {
 		
 		//ne,ne,ne is 3 steps away.
 		
@@ -109,7 +188,7 @@ public class TestDayEleven {
 	}
 	
 	@Test
-	public void testPartTwoTestImperative2() {
+	public void testPartTwoTestHybrid2() {
 		
 		//ne,ne,sw,sw is 0 steps away (back where you started).
 
@@ -128,7 +207,7 @@ public class TestDayEleven {
 	}
 	
 	@Test
-	public void testPartTwoTestImperative3() {
+	public void testPartTwoTestHybrid3() {
 		
 		//ne,ne,s,s is 2 steps away (se,se).
 		List<String> input = new ArrayList<>();
@@ -146,7 +225,7 @@ public class TestDayEleven {
 	}
 	
 	@Test
-	public void testPartTwoTestImperative4() {
+	public void testPartTwoTestHybrid4() {
 		
 		//se,sw,se,sw,sw is 3 steps away (s,s,sw).
 		List<String> input = new ArrayList<>();

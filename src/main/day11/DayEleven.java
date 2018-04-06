@@ -90,9 +90,6 @@ public class DayEleven {
 			}
 		}
 
-		System.out.println("n_s counter is " + northSouthCounter + ".");
-		System.out.println("ne_sw counter is " + northeastSouthwestCounter + ".");
-		System.out.println("nw_se counter is " + northwestSoutheastCounter + ".");
 
 		/*
 		 * n_s counter is -72. ne_sw counter is 375. nw_se counter is -330.
@@ -143,6 +140,190 @@ public class DayEleven {
 	// // TODO Auto-generated method stub
 	// return value;
 	// }
+	
+//	public static Integer getAnswerPartOneHybrid(List<String> inputDelimiterCommaToListString) {
+//		return getCurrentDistanceRecursiveAccumulator(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
+//	}
+//
+//	private static TailCall<Integer> getCurrentDistanceRecursiveAccumulator(int maxDistance, int currentDistance,
+//			List<String> stringList, int nsCounter, int neswCounter, int nwseCounter) {
+//		if (stringList.isEmpty()) {
+//			return TailCall.done(currentDistance);
+//		} else {
+//			String direction = stringList.get(0);
+//			stringList.remove(0);// this is why it is a hybrid function
+//			if ("n".equals(direction)) {
+//				int newnsCounter = nsCounter + 1;
+//				int newneswCounter = neswCounter + 0;
+//				int newnwseCounter = neswCounter + 0;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else if ("s".equals(direction)) {
+//				int newnsCounter = nsCounter - 1;
+//				int newneswCounter = neswCounter + 0;
+//				int newnwseCounter = neswCounter + 0;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else if ("ne".equals(direction)) {
+//				int newnsCounter = nsCounter + 0;
+//				int newneswCounter = neswCounter + 1;
+//				int newnwseCounter = neswCounter + 0;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else if ("sw".equals(direction)) {
+//				int newnsCounter = nsCounter + 0;
+//				int newneswCounter = neswCounter - 1;
+//				int newnwseCounter = neswCounter + 0;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else if ("nw".equals(direction)) {
+//				int newnsCounter = nsCounter + 0;
+//				int newneswCounter = neswCounter + 0;
+//				int newnwseCounter = neswCounter + 1;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else if ("se".equals(direction)) {
+//				int newnsCounter = nsCounter + 0;
+//				int newneswCounter = neswCounter + 0;
+//				int newnwseCounter = neswCounter - 1;
+//				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
+//				if (newOptimalDistance < currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
+//																										// sure
+//																										// this
+//																										// does
+//																										// anythng
+//																										// MAKE
+//																										// SURE
+//																										// TO
+//																										// PROPAGATE
+//																										// THIS
+//							stringList, newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance > currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else if (newOptimalDistance == currentDistance) {
+//					return () -> getCurrentDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
+//							newnsCounter, newneswCounter, newnwseCounter);
+//				} else {
+//					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
+//					return null;
+//				}
+//			} else {
+//				System.out.println("ERROR BAD DIRECTION COMPARISON");
+//				return null;
+//			}
+//		}
+//	}
+	//under construction!
+
+
+
 
 	public static Integer getAnswerPartTwoHybrid(List<String> inputDelimiterCommaToListString) {
 		return getMaxDistanceRecursiveAccumulator(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
