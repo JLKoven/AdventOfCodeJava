@@ -124,7 +124,53 @@ public class DayEleven {
 		File file = new File("src/main/day11/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
-				+ getAnswerPartTwoHybrid(GeneralFunction.getInputDelimiterCommaToListString(uri)) + ".");
+				+ getAnswerPartTwoImperative(GeneralFunction.getInputDelimiterCommaToListString(uri)) + ".");
+	}
+
+	private static Integer getAnswerPartTwoImperative(List<String> inputDelimiterCommaToListString) {
+		Integer northSouthCounter = 0;
+		Integer northeastSouthwestCounter = 0;
+		Integer northwestSoutheastCounter = 0;
+		List<Integer> directionList = new ArrayList<>();
+		directionList.add(northSouthCounter);
+		directionList.add(northeastSouthwestCounter);
+		directionList.add(northwestSoutheastCounter);
+
+		// Stream<String> stringStream =
+		// inputDelimiterCommaToListString.stream();
+		// stringStream.filter(s->
+		// (
+		// "ne".equals(s)
+		// ||
+		// "sw".equals(s)
+		// )
+		// );
+		Integer maxDistance = 0;
+
+		for (String direction : inputDelimiterCommaToListString) {
+			if ("n".equals(direction)) {
+				northSouthCounter++;
+			} else if ("s".equals(direction)) {
+				northSouthCounter--;
+			} else if ("ne".equals(direction)) {
+				northeastSouthwestCounter++;
+			} else if ("sw".equals(direction)) {
+				northeastSouthwestCounter--;
+			} else if ("nw".equals(direction)) {
+				northwestSoutheastCounter++;
+			} else if ("se".equals(direction)) {
+				northwestSoutheastCounter--;
+			} else {
+				System.out.println("ERROR");
+			}
+			System.out.println("ns is "+northSouthCounter+".");
+			System.out.println("nesw is "+northeastSouthwestCounter+".");
+			System.out.println("nwse is "+northwestSoutheastCounter+".");
+			maxDistance = (getOptimalDistance(northSouthCounter, northeastSouthwestCounter, northwestSoutheastCounter)>maxDistance) ? getOptimalDistance(northSouthCounter, northeastSouthwestCounter, northwestSoutheastCounter) : maxDistance;
+			System.out.println(maxDistance);
+			System.out.println();
+		}
+		return maxDistance;
 	}
 
 	// public static Integer getAnswerPartTwoImperative(List<String>
@@ -503,6 +549,7 @@ public class DayEleven {
 				return null;
 			}
 		}
+		//returns 2913 from my input.txt
 	}
 
 	public static int getOptimalDistance(int nsCounter, int neswCounter, int nwseCounter) {
@@ -580,10 +627,12 @@ public class DayEleven {
 				stepCounter = stepCounter + 1;
 			}
 			return stepCounter;
-		} else if (((absoluteNS) == absoluteEW)){
+		} else if (((absoluteNS).equals(absoluteEW))){
 			//6, 6
 			return absoluteNS;//or EW
 		} else {
+			System.out.println(absoluteNS);
+			System.out.println(absoluteEW);
 			System.out.println("ABSOLUTE DIRECTION EVEN ISSUE");
 			return (Integer) null;
 		}
