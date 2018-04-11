@@ -46,7 +46,7 @@ public class Executor {
 //		DayTen.executeStandardPart1();
 //		DayTen.executeStandardPart2();
 		
-//		DayEleven.executeStandardPart1();
+		DayEleven.executeStandardPart1();
 		DayEleven.executeStandardPart2();
 		
 		
