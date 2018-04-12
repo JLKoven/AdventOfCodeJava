@@ -183,11 +183,7 @@ public class DayEleven {
 
 
 	public static Integer getAnswerPartTwoHybrid(List<String> inputDelimiterCommaToListString) {
-		return getAnswerPartTwoImperative(inputDelimiterCommaToListString);//(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
-
-//		return getMaxDistanceRecursiveAccumulator(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
-				
-				//problematicGetMaxDistanceRecursiveAccumulator(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
+		return getMaxDistanceRecursiveAccumulator(0, 0, inputDelimiterCommaToListString, 0, 0, 0).obtain();
 	}
 
 	private static TailCall<Integer> getMaxDistanceRecursiveAccumulator(int maxDistance, int currentDistance,
@@ -198,42 +194,17 @@ public class DayEleven {
 		} else {
 			direction = "empty";
 		}
-		System.out.println(currentDistance+" "+direction+" ");
 		if (stringList.isEmpty()) {
 			return TailCall.done(maxDistance);
 		} else {
-//			String direction = stringList.get(0);
 			stringList.remove(0);// this is why it is a hybrid function
 			int newnsCounter = processDirectionNS(direction, nsCounter);
 			int newneswCounter = processDirectionNESW(direction, neswCounter);
 			int newnwseCounter = processDirectionNWSE(direction, nwseCounter);
-			int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
+			int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
 			return () -> getMaxDistanceRecursiveAccumulator(Math.max(maxDistance, newOptimalDistance), newOptimalDistance, stringList, newnsCounter, newneswCounter, newnwseCounter);
 		}	
 	}
-
-	private static TailCall<Integer> problematicButBetterGetMaxDistanceRecursiveAccumulator(int maxDistance, int currentDistance,
-			List<String> stringList, int nsCounter, int neswCounter, int nwseCounter) {
-		String direction = stringList.get(0);
-		System.out.println(currentDistance+" "+direction+" ");
-		if (stringList.isEmpty()) {
-			return TailCall.done(maxDistance);
-		} else {
-			stringList.remove(0);// this is why it is a hybrid function
-			int newnsCounter = processDirectionNS(direction, nsCounter);
-			int newneswCounter = processDirectionNESW(direction, neswCounter);
-			int newnwseCounter = processDirectionNWSE(direction, nwseCounter);
-			int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
-			if (newOptimalDistance > currentDistance){
-				return () -> problematicButBetterGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-						newnsCounter, newneswCounter, newnwseCounter);
-			} else {
-				return () -> problematicButBetterGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-						newnsCounter, newneswCounter, newnwseCounter);
-			}
-		}
-	}
-
 	private static int processDirectionNWSE(String direction, int nwseCounter) {
 		Integer newValue = nwseCounter;
 		if ("nw".equals(direction)){
@@ -292,183 +263,6 @@ public class DayEleven {
 			System.out.println("ERROR DIRECTION PROBLEM, listed direction is "+direction+".");
 		}
 		return newValue;
-	}
-
-	private static TailCall<Integer> problematicGetMaxDistanceRecursiveAccumulator(int maxDistance, int currentDistance,
-			List<String> stringList, int nsCounter, int neswCounter, int nwseCounter) {
-		if (stringList.isEmpty()) {
-			return TailCall.done(maxDistance);
-		} else {
-			String direction = stringList.get(0);
-			stringList.remove(0);// this is why it is a hybrid function
-			if ("n".equals(direction)) {
-				int newnsCounter = nsCounter + 1;
-				int newneswCounter = neswCounter + 0;
-				int newnwseCounter = neswCounter + 0;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else if ("s".equals(direction)) {
-				int newnsCounter = nsCounter - 1;
-				int newneswCounter = neswCounter + 0;
-				int newnwseCounter = neswCounter + 0;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newneswCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else if ("ne".equals(direction)) {
-				int newnsCounter = nsCounter + 0;
-				int newneswCounter = neswCounter + 1;
-				int newnwseCounter = neswCounter + 0;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else if ("sw".equals(direction)) {
-				int newnsCounter = nsCounter + 0;
-				int newneswCounter = neswCounter - 1;
-				int newnwseCounter = neswCounter + 0;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else if ("nw".equals(direction)) {
-				int newnsCounter = nsCounter + 0;
-				int newneswCounter = neswCounter + 0;
-				int newnwseCounter = neswCounter + 1;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else if ("se".equals(direction)) {
-				int newnsCounter = nsCounter + 0;
-				int newneswCounter = neswCounter + 0;
-				int newnwseCounter = neswCounter - 1;
-				int newOptimalDistance = getOptimalDistance(newnsCounter, newneswCounter, newnwseCounter);
-				if (newOptimalDistance < currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, // not
-																										// sure
-																										// this
-																										// does
-																										// anythng
-																										// MAKE
-																										// SURE
-																										// TO
-																										// PROPAGATE
-																										// THIS
-							stringList, newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance > currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance + 1, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else if (newOptimalDistance == currentDistance) {
-					return () -> problematicGetMaxDistanceRecursiveAccumulator(maxDistance, newOptimalDistance, stringList,
-							newnsCounter, newneswCounter, newnwseCounter);
-				} else {
-					System.out.println("ERROR ERROR ERROR DISTANCE COMPARISON");
-					return null;
-				}
-			} else {
-				System.out.println("ERROR BAD DIRECTION COMPARISON");
-				return null;
-			}
-		}
-		//returns 2913 from my input.txt
 	}
 
 	public static int getOptimalDistance(int nsCounter, int neswCounter, int nwseCounter) {
