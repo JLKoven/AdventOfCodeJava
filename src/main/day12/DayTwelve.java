@@ -1,6 +1,16 @@
 package main.day12;
 
+import java.io.File;
+import java.net.URI;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import main.GeneralFunction;
+import main.GraphNode;
 
 public class DayTwelve {
 
@@ -35,6 +45,10 @@ public class DayTwelve {
 //		Therefore, a total of 6 programs are in this group; all but program 1, which has a pipe that connects it to itself.
 //
 //		How many programs are in the group that contains program ID 0?
+		System.out.println("Day 12 Part 1");
+		File file = new File("src/main/day12/input.txt");
+		URI uri = file.toURI();
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri), 0) + ".");
 				
 	}
 
@@ -43,8 +57,22 @@ public class DayTwelve {
 		
 	}
 
-	public static Integer getAnswerPartOneImperative(List<String> input) {
-		int value = 6;
+	public static Integer getAnswerPartOneImperative(List<String> input, int initialIndex) {
+		
+		Stack<GraphNode> destinationList = new Stack();
+		Set<GraphNode> visitedList = new HashSet<>();
+		//start index initialIndex
+		
+		String stringToProcess = input.get(initialIndex);
+		Pattern pattern = Pattern.compile(stringToProcess);
+		Matcher rightSide = pattern.matcher("[^,]*$");
+		
+//		String leftSide = [^,]*$
+		
+		
+		int value = visitedList.size();
+		
+
 		return value;
 	}
 

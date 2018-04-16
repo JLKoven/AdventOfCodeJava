@@ -26,7 +26,7 @@ public class TestDayTwelve {
 		input.add("5 <-> 6");
 		input.add("6 <-> 4, 5");
 		
-		Integer value = DayTwelve.getAnswerPartOneImperative(input);
+		Integer value = DayTwelve.getAnswerPartOneImperative(input, 0);
 		assertEquals(
 				value==6
 				,
