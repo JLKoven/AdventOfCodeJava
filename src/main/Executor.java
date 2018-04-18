@@ -52,7 +52,6 @@ public class Executor {
 //		
 		DayTwelve.executeStandardPart1();
 //		DayTwelve.executeStandardPart2();		
-//		TestRegex.executeOne();
 		
 		
 		

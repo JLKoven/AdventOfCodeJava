@@ -46,7 +46,7 @@ public class GeneralFunction {
 		intListCopy.set(position, newP);
 		return intListCopy;
 	}
-	
+
 	public static List<String> getStandardInputListOfStrings(URI fileName) {
 		List<String> linesAsString = new ArrayList<>();
 		try {
@@ -56,7 +56,7 @@ public class GeneralFunction {
 		}
 		return linesAsString;
 	}
-	
+
 	public static String getStandardInputString(URI fileName) {
 		List<String> linesAsString = new ArrayList<>();
 		try {
@@ -75,10 +75,10 @@ public class GeneralFunction {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		for (String line : linesAsString){
+		for (String line : linesAsString) {
 			String[] parts = line.split("\\s+");
 			int[] sampleRow = new int[parts.length];
-			for (int i=0; i<parts.length; i++){
+			for (int i = 0; i < parts.length; i++) {
 				sampleRow[i] = Integer.parseInt(parts[i]);
 			}
 			listOfArrays.add(sampleRow);
@@ -98,7 +98,7 @@ public class GeneralFunction {
 		return lines.get(0);
 	}
 
-	public static List<Integer> getStandardInputListOfIntegers(URI fileName) {		
+	public static List<Integer> getStandardInputListOfIntegers(URI fileName) {
 		List<String> linesAsString = new ArrayList<>();
 		try {
 			linesAsString = Files.readAllLines(Paths.get(fileName));
@@ -120,8 +120,8 @@ public class GeneralFunction {
 		String initialLine = linesAsString.get(0);
 		String[] parts = initialLine.split("\\s+");
 		List<Integer> lines = new ArrayList<>();
-        Stream<String> stringStream = Arrays.stream(parts);
-        stringStream.forEach(x->lines.add(Integer.parseInt(x)));
+		Stream<String> stringStream = Arrays.stream(parts);
+		stringStream.forEach(x -> lines.add(Integer.parseInt(x)));
 		return lines;
 	}
 
@@ -135,11 +135,11 @@ public class GeneralFunction {
 		String initialLine = linesAsString.get(0);
 		String[] parts = initialLine.split(",");
 		List<Integer> lines = new ArrayList<>();
-        Stream<String> stringStream = Arrays.stream(parts);
-        stringStream.forEach(x->lines.add(Integer.parseInt(x)));
+		Stream<String> stringStream = Arrays.stream(parts);
+		stringStream.forEach(x -> lines.add(Integer.parseInt(x)));
 		return lines;
 	}
-	
+
 	public static List<String> getInputDelimiterCommaToListString(URI fileName) {
 		List<String> linesAsString = new ArrayList<>();
 		try {
@@ -150,11 +150,19 @@ public class GeneralFunction {
 		String initialLine = linesAsString.get(0);
 		String[] parts = initialLine.split(",");
 		List<String> lines = new ArrayList<>();
-        Stream<String> stringStream = Arrays.stream(parts);
-        stringStream.forEach(x->lines.add(x));
+		Stream<String> stringStream = Arrays.stream(parts);
+		stringStream.forEach(x -> lines.add(x));
 		return lines;
 	}
 
-
+	public static List<Integer> convertStringArrayToIntegerList(String[] nodes) {
+		List<Integer> listToReturn = new ArrayList<>();
+		if (null != nodes) {
+			for (String node : nodes) {
+				listToReturn.add(Integer.parseInt(node.replaceAll("\\s+", "")));
+			}
+		}
+		return listToReturn;
+	}
 
 }
