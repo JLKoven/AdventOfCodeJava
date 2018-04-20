@@ -33,5 +33,9 @@ public class FirewallLayer {
 	public void setDescending(boolean descending) {
 		this.descending = descending;
 	}
+	public void tick() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -181,11 +182,13 @@ public class DayThirteen {
 	public static Integer getAnswerPartOneImperative(List<String> input) {
 		Firewall firewall = createFirewallFromInput(input);
 
-		List<String> firewallSpaces = new ArrayList<>();
+//		List<String> firewallSpaces = new ArrayList<>();
+//		
+//		for (int i=0; i<firewall.getMaxDepth(); i++){
+//			firewallSpaces.add(" ");
+//		}
 		
-		for (int i=0; i<firewall.getMaxDepth(); i++){
-			firewallSpaces.add(" ");
-		}
+		Integer firewallLength = firewall.getMaxDepth();
 		
 		
 		
@@ -202,8 +205,8 @@ public class DayThirteen {
 			Integer inputRange = processRight(layerInformation);
 			newLayer.setFirewallIndex(inputLocation);
 			newLayer.setRange(inputRange);
-			List<FirewallLayer> firewallLayers = firewall.getFirewallLayers();
-			firewallLayers.add(newLayer);
+			Map<Integer, FirewallLayer> firewallLayers = firewall.getFirewallLayers();
+			firewallLayers.put(inputLocation, newLayer);
 			firewall.setFirewallLayers(firewallLayers);
 			if (inputLocation > firewall.getMaxDepth()){
 				firewall.setMaxDepth(inputLocation);
