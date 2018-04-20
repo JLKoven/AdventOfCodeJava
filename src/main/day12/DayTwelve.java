@@ -89,7 +89,6 @@ public class DayTwelve {
 		while (!destinationList.isEmpty()){
 			Integer targetNode = destinationList.pop();
 			String stringToProcess = input.get(targetNode);
-			visitedList.add(targetNode);//might not need this
 			List<Integer> nodesAsIntegers = processRight(stringToProcess);
 			for (Integer node : nodesAsIntegers){
 				if (!visitedList.contains(node)){

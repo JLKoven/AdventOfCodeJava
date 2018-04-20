@@ -2,7 +2,10 @@ package main.day13;
 
 import java.io.File;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import main.GeneralFunction;
 
@@ -176,11 +179,62 @@ public class DayThirteen {
 	}
 
 	public static Integer getAnswerPartOneImperative(List<String> input) {
-		Integer value = null;
-		// TODO Auto-generated method stub
-		return value;
+		Firewall firewall = createFirewallFromInput(input);
+
+		List<String> firewallSpaces = new ArrayList<>();
+		
+		for (int i=0; i<firewall.getMaxDepth(); i++){
+			firewallSpaces.add(" ");
+		}
+		
+		
+		
+		firewall.setValue(6);
+		return firewall.getValue();
 	}
 
+
+	private static Firewall createFirewallFromInput(List<String> input) {
+		Firewall firewall = new Firewall();
+		for (String layerInformation: input){
+			FirewallLayer newLayer = new FirewallLayer();
+			Integer inputLocation = processLeft(layerInformation);
+			Integer inputRange = processRight(layerInformation);
+			newLayer.setFirewallIndex(inputLocation);
+			newLayer.setRange(inputRange);
+			List<FirewallLayer> firewallLayers = firewall.getFirewallLayers();
+			firewallLayers.add(newLayer);
+			firewall.setFirewallLayers(firewallLayers);
+			if (inputLocation > firewall.getMaxDepth()){
+				firewall.setMaxDepth(inputLocation);
+			}
+			
+		}
+		return firewall;
+	}
+
+	private static Integer processLeft(String stringToProcess) {
+		int iend = stringToProcess.indexOf(":"); 
+
+		String subString=null;
+		if (iend != -1){
+			subString= stringToProcess.substring(0 , iend); 
+		}
+		return Integer.parseInt(subString.replaceAll("\\s+", ""));
+	}
+
+	private static Integer processRight(String stringToProcess) {
+		Pattern initialRightPattern = Pattern.compile("[^:]*$");
+		Matcher rightSide = initialRightPattern.matcher(stringToProcess);
+		String result;
+		if (rightSide.find()){
+			result = rightSide.group(0);
+		} else {
+			result = null;
+		}
+		
+		return Integer.parseInt(result.replaceAll("\\s+", ""));
+	}
 
 
 }
