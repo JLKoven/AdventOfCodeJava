@@ -47,13 +47,15 @@ public class Firewall {
 		}
 	}
 	
-	public void tick(){
+	void tick(){
 		Map<Integer, FirewallLayer> fireWall = getFirewallLayers();
-		Collection<FirewallLayer> layers = fireWall.values();
-		for (FirewallLayer layer : layers){
+//		Collection<FirewallLayer> layers = fireWall.values();
+		for (FirewallLayer layer : fireWall.values()){
 			layer.tick();
 		}
 		//do I need to call another set?
+		
+		setFirewallLayers(fireWall);
 	}
 
 

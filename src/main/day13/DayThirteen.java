@@ -190,14 +190,25 @@ public class DayThirteen {
 		
 		Integer firewallLength = firewall.getMaxDepth();
 		
+//		Integer positionOfPacket = 0;
+		for (int positionOfPacket=0; positionOfPacket<firewallLength; positionOfPacket++){
+			//check if the position is there
+			if (firewall.getFirewallLayers().containsKey(positionOfPacket)){
+				if (0==firewall.getFirewallLayers().get(positionOfPacket).getCurrentLocation()){
+					firewall.setValue(firewall.getValue()+(positionOfPacket*firewall.getFirewallLayers().get(positionOfPacket).getRange()));
+				}
+			}
+			firewall.tick();
+			
+		}
 		
 		
-		firewall.setValue(6);
+		
 		return firewall.getValue();
 	}
 
 
-	private static Firewall createFirewallFromInput(List<String> input) {
+	public static Firewall createFirewallFromInput(List<String> input) {
 		Firewall firewall = new Firewall();
 		for (String layerInformation: input){
 			FirewallLayer newLayer = new FirewallLayer();

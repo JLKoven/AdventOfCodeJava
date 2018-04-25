@@ -35,6 +35,24 @@ public class FirewallLayer {
 	}
 	public void tick() {
 		// TODO Auto-generated method stub
+		if (this.descending){
+			//increment change by 1
+			if (this.range==this.currentLocation){
+				setDescending(false);
+				setCurrentLocation(getCurrentLocation()-1);
+			} else {
+				setCurrentLocation(getCurrentLocation()+1);
+			}
+		} else {//not descending
+			//increment change by 1
+			if (0==this.currentLocation){
+				setDescending(true);
+				setCurrentLocation(getCurrentLocation()+1);
+			} else {
+				setCurrentLocation(getCurrentLocation()-1);
+				
+			}
+		}
 		
 	}
 
