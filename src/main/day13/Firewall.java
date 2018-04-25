@@ -55,7 +55,7 @@ public class Firewall {
 		}
 		//do I need to call another set?
 		
-		setFirewallLayers(fireWall);
+//		setFirewallLayers(fireWall);
 	}
 
 

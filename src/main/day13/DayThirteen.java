@@ -191,15 +191,14 @@ public class DayThirteen {
 		Integer firewallLength = firewall.getMaxDepth();
 		
 //		Integer positionOfPacket = 0;
-		for (int positionOfPacket=0; positionOfPacket<firewallLength; positionOfPacket++){
+		for (int positionOfPacket=0; positionOfPacket<=firewallLength; positionOfPacket++){
 			//check if the position is there
 			if (firewall.getFirewallLayers().containsKey(positionOfPacket)){
 				if (0==firewall.getFirewallLayers().get(positionOfPacket).getCurrentLocation()){
-					firewall.setValue(firewall.getValue()+(positionOfPacket*firewall.getFirewallLayers().get(positionOfPacket).getRange()));
-				}
-			}
-			firewall.tick();
-			
+					firewall.setValue(firewall.getValue()+(positionOfPacket*(firewall.getFirewallLayers().get(positionOfPacket).getRange()+1)));
+				} //else {									}
+			} //else {			}
+			firewall.tick();			
 		}
 		
 		
@@ -213,7 +212,7 @@ public class DayThirteen {
 		for (String layerInformation: input){
 			FirewallLayer newLayer = new FirewallLayer();
 			Integer inputLocation = processLeft(layerInformation);
-			Integer inputRange = processRight(layerInformation);
+			Integer inputRange = processRight(layerInformation)-1;
 			newLayer.setFirewallIndex(inputLocation);
 			newLayer.setRange(inputRange);
 			Map<Integer, FirewallLayer> firewallLayers = firewall.getFirewallLayers();
