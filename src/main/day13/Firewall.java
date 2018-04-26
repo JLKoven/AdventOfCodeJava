@@ -1,6 +1,5 @@
 package main.day13;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,14 +47,17 @@ public class Firewall {
 	}
 	
 	void tick(){
-		Map<Integer, FirewallLayer> fireWall = getFirewallLayers();
-//		Collection<FirewallLayer> layers = fireWall.values();
-		for (FirewallLayer layer : fireWall.values()){
+		for (FirewallLayer layer : getFirewallLayers().values()){
 			layer.tick();
 		}
-		//do I need to call another set?
+	}
+
+	public void reset() {
+		for (FirewallLayer layer : getFirewallLayers().values()){
+			layer.setCurrentLocation(0);
+			layer.setDescending(true);
+		}
 		
-//		setFirewallLayers(fireWall);
 	}
 
 

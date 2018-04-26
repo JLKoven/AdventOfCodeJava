@@ -24,9 +24,26 @@ public class TestDayThirteen {
 		input.add("6: 4");
 		
 		Integer value = DayThirteen.getAnswerPartOneImperative(input);
-		System.out.println("value is "+value+".");
 		assertEquals(
 				value==24
+				,
+				true);
+		System.out.println("Success on Day13.testPartOneTest1!");
+	}
+	
+	@Test
+	public void testPartTwoTestImperative1() {
+		
+
+		List<String> input = new ArrayList<>();
+		input.add("0: 3");
+		input.add("1: 2");
+		input.add("4: 4");
+		input.add("6: 4");
+		
+		Integer value = DayThirteen.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==10
 				,
 				true);
 		System.out.println("Success on Day13.testPartOneTest1!");
