@@ -399,10 +399,9 @@ public class DayThirteen {
 		Integer firewallLength = firewall.getMaxDepth();
 		
 		boolean passed = false;
-//		Integer loopCounterValue = 0;
-		Integer loopCounterValue = 1000000;
+		Integer loopCounterValue = 0;
 		
-		while (passed == false && loopCounterValue < 4000000){
+		while (passed == false ){
 			
 			firewall.reset();
 			
@@ -411,7 +410,6 @@ public class DayThirteen {
 			}
 			
 			passed = true;
-//		Integer positionOfPacket = 0;
 			for (int positionOfPacket=0; positionOfPacket<=firewallLength; positionOfPacket++){
 			//check if the position is there
 				if (firewall.getFirewallLayers().containsKey(positionOfPacket)){
@@ -436,7 +434,6 @@ public class DayThirteen {
 		Firewall firewall = createFirewallFromInput(input);
 		Integer firewallLength = firewall.getMaxDepth();
 		Integer secondsElapsed=0;
-		Integer initialLoopCounter=0;
 		boolean passed = false;
 		while (passed == false){
 			passed = true;
@@ -445,16 +442,15 @@ public class DayThirteen {
 				// check if a firewall layer exists there
 				if (firewall.getFirewallLayers().containsKey(positionOfPacket)) {
 					// okay, there's a firewall layer here
-					if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(positionOfPacket+initialLoopCounter)) {
+					if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(positionOfPacket+secondsElapsed)) {
 						passed = false;
 						positionOfPacket = firewallLength + 1;
-						initialLoopCounter++;
+						secondsElapsed++;
 					} // else{}
 				} // else{}
-				secondsElapsed++;
 			}
 		}
-		return initialLoopCounter;
+		return secondsElapsed;
 	}
 
 
