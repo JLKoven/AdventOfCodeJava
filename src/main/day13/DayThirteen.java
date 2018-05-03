@@ -384,8 +384,8 @@ public class DayThirteen {
 		System.out.println("Day 13 Part 2");
 		File file = new File("src/main/day13/input.txt");
 		URI uri = file.toURI();
-//		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
-		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
+		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
+//		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 		
 	}
 
@@ -445,7 +445,7 @@ public class DayThirteen {
 				// check if a firewall layer exists there
 				if (firewall.getFirewallLayers().containsKey(positionOfPacket)) {
 					// okay, there's a firewall layer here
-					if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(secondsElapsed)) {
+					if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(positionOfPacket+initialLoopCounter)) {
 						passed = false;
 						positionOfPacket = firewallLength + 1;
 						initialLoopCounter++;

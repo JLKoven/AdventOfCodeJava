@@ -84,14 +84,14 @@ public class FirewallLayer {
 	public boolean couldBeZeroAtGivenTime(Integer secondsElapsed) {
 		//if range is 1, then, if seconds % range+1 = 0;
 		boolean value = false;
-		System.out.println("secondsElapsed is "+secondsElapsed+", this.getRange() is "+this.getRange()+".");
+//		System.out.println("secondsElapsed is "+secondsElapsed+", this.getRange() is "+this.getRange()+".");
 		if (0 == secondsElapsed % ((this.getRange()*2))){
-			System.out.println("found at time "+secondsElapsed+".");
+//			System.out.println("found at time "+secondsElapsed+".");
 			value = true;
 		} else {
-			System.out.println("not found at time "+secondsElapsed+".");
+//			System.out.println("not found at time "+secondsElapsed+".");
 		}
-		System.out.println(".");
+//		System.out.println(".");
 		return value;
 	}
 	
