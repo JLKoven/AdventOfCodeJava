@@ -174,7 +174,7 @@ public class DayThirteen {
 		System.out.println("Day 13 Part 1");
 		File file = new File("src/main/day13/input.txt");
 		URI uri = file.toURI();
-		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
+		System.out.println("Answer to part 1 is " + getAnswerPartOneImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 		
 		
 	}
@@ -203,6 +203,23 @@ public class DayThirteen {
 		
 		
 		
+		return firewall.getValue();
+	}
+	
+	public static Integer getAnswerPartOneImperativeModular(List<String> input) {
+		Firewall firewall = createFirewallFromInput(input);
+		Integer firewallLength = firewall.getMaxDepth();
+		Integer secondsElapsed=0;
+		for (int positionOfPacket=secondsElapsed; positionOfPacket<firewallLength+1; positionOfPacket++){
+			//check if a firewall layer exists there 
+			if (firewall.getFirewallLayers().containsKey(positionOfPacket)){
+				//okay, there's a firewall layer here
+				if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(secondsElapsed)){
+					firewall.setValue(firewall.getValue()+(positionOfPacket*(firewall.getFirewallLayers().get(positionOfPacket).getRange()+1)));
+				}//else{}								
+			}//else{}			
+			secondsElapsed++;
+		}
 		return firewall.getValue();
 	}
 
@@ -367,9 +384,12 @@ public class DayThirteen {
 		System.out.println("Day 13 Part 2");
 		File file = new File("src/main/day13/input.txt");
 		URI uri = file.toURI();
+//		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 		
 	}
+
+
 
 	public static Integer getAnswerPartTwoImperative(List<String> input) {
 		Firewall firewall = createFirewallFromInput(input);
@@ -379,9 +399,10 @@ public class DayThirteen {
 		Integer firewallLength = firewall.getMaxDepth();
 		
 		boolean passed = false;
-		Integer loopCounterValue = 0;
+//		Integer loopCounterValue = 0;
+		Integer loopCounterValue = 1000000;
 		
-		while (passed == false){
+		while (passed == false && loopCounterValue < 4000000){
 			
 			firewall.reset();
 			
@@ -403,11 +424,37 @@ public class DayThirteen {
 			}
 			if (passed == false){
 				loopCounterValue++;
+				System.out.println(loopCounterValue);
 			}
 		}
 		
 		
 		return loopCounterValue;
+	}
+	
+	public static Integer getAnswerPartTwoImperativeModular(List<String> input) {
+		Firewall firewall = createFirewallFromInput(input);
+		Integer firewallLength = firewall.getMaxDepth();
+		Integer secondsElapsed=0;
+		Integer initialLoopCounter=0;
+		boolean passed = false;
+		while (passed == false){
+			passed = true;
+			
+			for (int positionOfPacket = 0; positionOfPacket < firewallLength + 1; positionOfPacket++) {
+				// check if a firewall layer exists there
+				if (firewall.getFirewallLayers().containsKey(positionOfPacket)) {
+					// okay, there's a firewall layer here
+					if (firewall.getFirewallLayers().get(positionOfPacket).couldBeZeroAtGivenTime(secondsElapsed)) {
+						passed = false;
+						positionOfPacket = firewallLength + 1;
+						initialLoopCounter++;
+					} // else{}
+				} // else{}
+				secondsElapsed++;
+			}
+		}
+		return initialLoopCounter;
 	}
 
 
