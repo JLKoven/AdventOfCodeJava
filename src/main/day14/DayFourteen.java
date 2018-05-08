@@ -83,7 +83,30 @@ public class DayFourteen {
 		
 		return countSquares(hashList);
 	}
+	
+	public static Integer getAnswerPartTwoImperative(String input) {
+		List<String> hashList = createHashList(input);
 
+		
+		return countAreas(hashList);
+	}
+
+
+
+	public static Integer countAreas(List<String> hashList) {
+		
+		Integer numCounter = 0;
+		Integer gridCounter = 0;
+		//hm
+		//while gridCounter isn't equal to hashList.size() * hashList.get(0).length() 
+		//start from top left corner of grid
+		//'scan out' until we find a 1 
+		//'scan out' until we find all instances of adjacent 1s 
+		//'remove' these 1s and increment gridCounter 
+		//
+		
+		return numCounter;
+	}
 
 
 	private static Integer countSquares(List<String> hashList) {
@@ -104,7 +127,7 @@ public class DayFourteen {
 
 
 
-	public static List<String> createHashList(String input) {
+	private static List<String> createHashList(String input) {
 		List<String> hashList = new ArrayList<>();
 		for (int i=0; i<128; i++){
 			String sourceHash = DayTen.getHash(getInputFromInputAndNumber(input, i));
@@ -116,7 +139,7 @@ public class DayFourteen {
 
 
 
-	public static String getBinaryHash(String sourceHash) {
+	private static String getBinaryHash(String sourceHash) {
 		StringBuilder builder = new StringBuilder();
 		for (int i=0; i<sourceHash.length(); i++){
 			builder.append(convertHexToBin(sourceHash.charAt(i)));
@@ -140,5 +163,8 @@ public class DayFourteen {
 		builder.append(Integer.toString(i));
 		return builder.toString();
 	}
+
+
+
 
 }

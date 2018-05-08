@@ -28,26 +28,56 @@ public class TestDayFourteen {
 		System.out.println("Success on Day14.testPartOneTest1!");
 	}
 	
-	
-	/*
 	@Test
-	public void testPartTwoTestImperative1() {
+	public void testPartTwoTestCountAreas() {
 		
 
 		List<String> input = new ArrayList<>();
-		input.add("0: 3");
-		input.add("1: 2");
-		input.add("4: 4");
-		input.add("6: 4");
+		input.add("11010100");
+		input.add("01010101");
+		input.add("00001010");
+		input.add("10101101");
+		input.add("01101000");
+		input.add("11001001");
+		input.add("01000100");
+		input.add("11010110");
 		
-		Integer value = DayFourteen.getAnswerPartTwoImperative(input);
+		/*
+		input.add("11020300");
+		input.add("01020304");
+		input.add("00005060");
+		input.add("70805509");
+		input.add("08805000");
+		input.add("8800500X");
+		input.add("08000E00");
+		input.add("880T0EE0");
+		 */
+
+
+		
+		Integer value = DayFourteen.countAreas(input);
 		assertEquals(
-				value==10
+				value==12
 				,
 				true);
-		System.out.println("Success on Day13.testPartTwoTest1!");
+		System.out.println("Success on Day14.testCountAreas!");
 	}
-	*/
+	
+//	@Test
+//	public void testPartTwoTestImperative2() {
+//		
+//
+//		String input = "flqrgnkx";
+//
+//		
+//		Integer value = DayFourteen.getAnswerPartTwoImperative(input);
+//		assertEquals(
+//				value==1242
+//				,
+//				true);
+//		System.out.println("Success on Day14.testPartOneTest2!");
+//	}
+	
 	
 	/*
 	@Test
