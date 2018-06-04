@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import main.GeneralFunction;
+import main.GraphGrid;
+import main.GraphGridNode;
 import main.day10.DayTen;
 
 public class DayFourteen {
@@ -78,12 +80,16 @@ public class DayFourteen {
 
 
 	public static Integer getAnswerPartOneImperative(String input) {
-		List<String> hashList = createHashList(input);
+		//List<String> hashList = createHashList(input);
+		GraphGrid hashGraphGrid = createHashGraphGrid(input);
 
 		
-		return countSquares(hashList);
+		return countSquares(hashGraphGrid);
 	}
 	
+
+
+
 	public static Integer getAnswerPartTwoImperative(String input) {
 		List<String> hashList = createHashList(input);
 
@@ -124,6 +130,33 @@ public class DayFourteen {
 		}
 		return value;
 	}
+	
+	private static Integer countSquares(GraphGrid<Character> hashGraphGrid) {
+		int value=0;
+		for ( GraphGridNode<Character> node : hashGraphGrid.getGraphGridSet()){
+			if ('1' == node.getData()){
+				value++;
+			} else if ('0' == node.getData()){
+				
+			} else {
+				System.out.println("ERROR item is "+node.getData()+".");
+			}
+		}
+/*
+		for (int i=0; i<hashList.size(); i++){
+			for (int v=0; v<hashList.get(i).length(); v++){
+				if ('1' == hashList.get(i).charAt(v)){
+					value++;
+				} else if ('0' == hashList.get(i).charAt(v)){
+					
+				} else {
+					System.out.println("ERROR item is "+hashList.get(i).charAt(v)+".");
+				}
+			}
+		}
+		*/
+		return value;
+	}
 
 
 
@@ -135,6 +168,18 @@ public class DayFourteen {
 			hashList.add(newHash);
 		}
 		return hashList;
+	}
+	
+	private static GraphGrid createHashGraphGrid(String input) {
+		GraphGrid hashGraphGrid = new GraphGrid<Character>();
+		for (int i=0; i<128; i++){
+			String sourceHash = DayTen.getHash(getInputFromInputAndNumber(input, i));
+			String newHash = getBinaryHash(sourceHash);
+			for (int v=0; v<newHash.length(); v++){
+				hashGraphGrid.addNode(newHash.charAt(v), i, v);
+			}
+		}
+		return hashGraphGrid ;
 	}
 
 
