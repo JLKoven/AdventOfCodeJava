@@ -133,7 +133,7 @@ public class DayFourteen {
 	
 	private static Integer countSquares(GraphGrid<Character> hashGraphGrid) {
 		int value=0;
-		for ( GraphGridNode<Character> node : hashGraphGrid.getGraphGridSet()){
+		for ( GraphGridNode<Character> node : hashGraphGrid.getGraphGridMap().values()){
 			if ('1' == node.getData()){
 				value++;
 			} else if ('0' == node.getData()){

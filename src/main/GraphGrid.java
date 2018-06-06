@@ -1,33 +1,41 @@
 package main;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class GraphGrid<T> {
 	
 
-	private Set<GraphGridNode<T>> graphGrid = new HashSet(); 
+	private Map<IntPair, GraphGridNode<T>> graphGrid = new HashMap(); 
 	
-	public Set<GraphGridNode<T>> getGraphGridSet() {
+	public Map<IntPair, GraphGridNode<T>> getGraphGridMap() {
 		return graphGrid;
 	}
 
-	public void setGraphGrid(Set<GraphGridNode<T>> graphGrid) {
+	public void setGraphGrid(Map<IntPair, GraphGridNode<T>> graphGrid) {
 		this.graphGrid = graphGrid;
 	}
 
 
 	public void addNode(T valueAt, int i, int v) {
 		GraphGridNode<T> nodeToAdd = new GraphGridNode();
-		Set<GraphGridNode<T>> setToAddTo = getGraphGridSet();
-		nodeToAdd.setNodeID(setToAddTo.size()+1);
+		Map<IntPair, GraphGridNode<T>> mapToAddTo = getGraphGridMap();
+		nodeToAdd.setNodeID(mapToAddTo.size()+1);
 		nodeToAdd.setData(valueAt);
 		nodeToAdd.setyCoord(i);
 		nodeToAdd.setxCoord(v);
 		nodeToAdd.setVisited(false);
 //		nodeToAdd.setNeighbors(neighborSet);
-		setToAddTo.add(nodeToAdd);
-		setGraphGrid(setToAddTo);
+		
+		//intpair
+		IntPair newIntPair = new IntPair();
+		newIntPair.setYCoord(i);
+		newIntPair.setXCoord(v);
+		
+		mapToAddTo.put(newIntPair, nodeToAdd);
+		setGraphGrid(mapToAddTo);
 	}
 
 //	public static void addNode(T valueAt, int i, int v) {
