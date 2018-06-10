@@ -50,6 +50,14 @@ public class GraphGridNode<T> {
 	public void setNeighbors(Set<GraphGridNode> neighbors) {
 		this.neighbors = neighbors;
 	}
+	
+	public void setValidNeighbors(GraphGridNode<Character> node, GraphGrid<Character> hashGraphGrid) {
+		//check if north neighbor exists. If it does, add it 
+		//check if east neighbor exists. If it does, add it
+		//check if south neighbor exists. If it does, add it		
+		//check if west neighbor exists. If it does, add it
+		
+	}
 
 
 }

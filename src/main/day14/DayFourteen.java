@@ -3,11 +3,14 @@ package main.day14;
 import java.io.File;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import main.GeneralFunction;
 import main.GraphGrid;
 import main.GraphGridNode;
+import main.IntPair;
 import main.day10.DayTen;
 
 public class DayFourteen {
@@ -171,13 +174,66 @@ public class DayFourteen {
 	}
 	
 	private static GraphGrid createHashGraphGrid(String input) {
-		GraphGrid hashGraphGrid = new GraphGrid<Character>();
+		GraphGrid<Character> hashGraphGrid = new GraphGrid<Character>();
 		for (int i=0; i<128; i++){
 			String sourceHash = DayTen.getHash(getInputFromInputAndNumber(input, i));
 			String newHash = getBinaryHash(sourceHash);
 			for (int v=0; v<newHash.length(); v++){
 				hashGraphGrid.addNode(newHash.charAt(v), i, v);
 			}
+		}
+		for (GraphGridNode<Character> node : hashGraphGrid.getGraphGridMap().values()){
+			//			node.setValidNeighbors(node, hashGraphGrid);
+			Set<GraphGridNode> newSet = new HashSet();
+			IntPair coordinates = new IntPair();
+			coordinates.setYCoord(node.getyCoord());
+			coordinates.setXCoord(node.getxCoord());
+			//check if north neighbor exists. If it does, add it 
+			if (0 < node.getyCoord()){				
+				IntPair coordinatesNorth = new IntPair();
+				coordinatesNorth.setYCoord(node.getyCoord()-1);
+				coordinatesNorth.setXCoord(node.getxCoord());
+				GraphGridNode northNeighbor = hashGraphGrid.getGraphGridMap()
+						.get(coordinatesNorth);
+				newSet.add(northNeighbor);
+			}
+			//check if east neighbor exists. If it does, add it
+			if (127 > node.getxCoord()){				
+				IntPair coordinatesEast = new IntPair();
+				coordinatesEast.setYCoord(node.getyCoord());
+				coordinatesEast.setXCoord(node.getxCoord()+1);
+				GraphGridNode eastNeighbor = hashGraphGrid.getGraphGridMap()
+						.get(coordinatesEast);
+				newSet.add(eastNeighbor);
+			}
+			//check if south neighbor exists. If it does, add it	
+			if (127 > node.getyCoord()){				
+				IntPair coordinatesSouth = new IntPair();
+				coordinatesSouth.setYCoord(node.getyCoord()+1);
+				coordinatesSouth.setXCoord(node.getxCoord());
+				GraphGridNode southNeighbor = hashGraphGrid.getGraphGridMap()
+						.get(coordinatesSouth);
+				newSet.add(southNeighbor);
+			}
+			//check if west neighbor exists. If it does, add it
+			if (0 < node.getxCoord()){				
+				IntPair coordinatesWest = new IntPair();
+				coordinatesWest.setYCoord(node.getyCoord());
+				coordinatesWest.setXCoord(node.getxCoord()-1);
+				GraphGridNode westNeighbor = hashGraphGrid.getGraphGridMap()
+						.get(coordinatesWest);
+				newSet.add(westNeighbor);
+			}
+			node.setNeighbors(newSet);		
+//			System.out.println("Node id is "+node.getNodeID()+".");
+//			System.out.println("Node y is "+node.getyCoord()+".");
+//			System.out.println("Node x is "+node.getxCoord()+".");
+//			System.out.println("Node neighbor set size is "+node.getNeighbors().size()+".");
+//			for (GraphGridNode neighbor : node.getNeighbors()){
+//				System.out.println("neighbor's ID is "+neighbor.getNodeID()+".");
+//			}
+//			System.out.println("");
+
 		}
 		return hashGraphGrid ;
 	}
