@@ -51,7 +51,7 @@ public class DayFourteen {
 	}
 	
 	
-	/*
+	
 	public static void executeStandardPart2() {
 //		--- Part Two ---
 //		Now, all the defragmenter needs to know is the number of regions. A region is a group of used squares that are all adjacent, not including diagonals. Every used square is in exactly one region: lone used squares form their own isolated regions, while several adjacent squares all count as a single region.
@@ -79,7 +79,7 @@ public class DayFourteen {
 		
 	}
 
-*/
+
 
 
 	public static Integer getAnswerPartOneImperative(String input) {
@@ -94,27 +94,42 @@ public class DayFourteen {
 
 
 	public static Integer getAnswerPartTwoImperative(String input) {
-		List<String> hashList = createHashList(input);
+		GraphGrid hashGraphGrid = createHashGraphGrid(input);
 
 		
-		return countAreas(hashList);
+		return countAreas(hashGraphGrid);
 	}
 
 
 
-	public static Integer countAreas(List<String> hashList) {
+	public static Integer countAreas(GraphGrid hashGraphGrid) {
 		
-		Integer numCounter = 0;
+		Integer areaCounter = 0;
 		Integer gridCounter = 0;
-		//hm
-		//while gridCounter isn't equal to hashList.size() * hashList.get(0).length() 
-		//start from top left corner of grid
-		//'scan out' until we find a 1 
-		//'scan out' until we find all instances of adjacent 1s 
-		//'remove' these 1s and increment gridCounter 
-		//
+//		while visitedCounter < 128*128
+		Integer visitedCounter = 0;//less than 16384
+		while (visitedCounter < 16384){
+			//
+//			go through graph for a 1 or 0. 
+			GraphGridNode initialGrid = hashGraphGrid.getANode();
+			
+			Character value = (Character) initialGrid.getData();
+//			if ('1' == (char) initialGrid.getData()){
+//				
+//			} 
+
+			//Okay. Start looking for all of its neighbors 
+			//and add these to a set if they are also 1 
+			//(and 'unvisited'), toggle THIS to 'visited'. 
+
+			
+	//
+//			delete all of these nodes in this set :) 
+	//
+//			increment 'areafinder' by 1 if the node was 1
+		}
 		
-		return numCounter;
+		return areaCounter;
 	}
 
 

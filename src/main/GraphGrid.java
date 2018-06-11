@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -36,6 +37,16 @@ public class GraphGrid<T> {
 		
 		mapToAddTo.put(newIntPair, nodeToAdd);
 		setGraphGrid(mapToAddTo);
+	}
+
+	public GraphGridNode getANode() {
+		if (graphGrid.isEmpty()){
+			System.out.println("ERROR THIS SHOULD NOT HAPPEN");
+			return null;
+		} else {
+			Collection<GraphGridNode<T>> values = graphGrid.values();
+			return values.iterator().next();
+		}
 	}
 
 //	public static void addNode(T valueAt, int i, int v) {
