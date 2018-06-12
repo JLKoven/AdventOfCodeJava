@@ -49,6 +49,27 @@ public class GraphGrid<T> {
 		}
 	}
 
+	public Set<GraphGridNode<Character>> getAllContiguousNodesofSameCharValue(GraphGridNode<Character> initialGridNode, Set<GraphGridNode<Character>> existingSet) {		
+		initialGridNode.setVisited(true);
+		existingSet.add(initialGridNode);
+		Set<GraphGridNode> neighbors = initialGridNode.getNeighbors();
+		for (GraphGridNode<Character> neighborCandidate : neighbors){
+			if (
+					(initialGridNode.getData().equals(neighborCandidate.getData()))
+					&&
+					(false == neighborCandidate.isVisited())
+					){
+				existingSet = getAllContiguousNodesofSameCharValue(neighborCandidate, existingSet);
+			}
+		}
+		return existingSet;
+	}
+
+	public void deleteThisNodeAndNodeFromNeighbors(GraphGridNode<Character> contiguousNode) {
+		// TODO Auto-generated method stub
+		
+	}
+
 //	public static void addNode(T valueAt, int i, int v) {
 // this would be making a change for ALL GRAPHGRIDS, not just a given graphgrid doing this 
 //		

@@ -111,9 +111,19 @@ public class DayFourteen {
 		while (visitedCounter < 16384){
 			//
 //			go through graph for a 1 or 0. 
-			GraphGridNode initialGrid = hashGraphGrid.getANode();
+			GraphGridNode initialGridNode = hashGraphGrid.getANode();
+			Set<GraphGridNode<Character>> initialSet = new HashSet();
+			Set<GraphGridNode<Character>> contiguousSameValueNodes = hashGraphGrid.getAllContiguousNodesofSameCharValue(initialGridNode, initialSet );
+			visitedCounter = visitedCounter+contiguousSameValueNodes.size();
+			if (0==contiguousSameValueNodes.size()){
+				visitedCounter = 16384;
+				System.out.println("ERROR SET HAS NO SIZE");
+			}
+			for (GraphGridNode<Character> contiguousNode : contiguousSameValueNodes){
+				hashGraphGrid.deleteThisNodeAndNodeFromNeighbors(contiguousNode);
+			}
 			
-			Character value = (Character) initialGrid.getData();
+			Character value = (Character) initialGridNode.getData();
 //			if ('1' == (char) initialGrid.getData()){
 //				
 //			} 
