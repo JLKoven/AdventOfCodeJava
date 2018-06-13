@@ -119,11 +119,14 @@ public class DayFourteen {
 				visitedCounter = 16384;
 				System.out.println("ERROR SET HAS NO SIZE");
 			}
+			Character value = (Character) initialGridNode.getData();
+			if ('1' == (char) value){
+				areaCounter++;
+			}
 			for (GraphGridNode<Character> contiguousNode : contiguousSameValueNodes){
-				hashGraphGrid.deleteThisNodeAndNodeFromNeighbors(contiguousNode);
+				hashGraphGrid.deleteThisNodeAndNodeFromNeighbors(hashGraphGrid, contiguousNode);
 			}
 			
-			Character value = (Character) initialGridNode.getData();
 //			if ('1' == (char) initialGrid.getData()){
 //				
 //			} 

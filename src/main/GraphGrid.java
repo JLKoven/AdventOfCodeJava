@@ -65,8 +65,21 @@ public class GraphGrid<T> {
 		return existingSet;
 	}
 
-	public void deleteThisNodeAndNodeFromNeighbors(GraphGridNode<Character> contiguousNode) {
-		// TODO Auto-generated method stub
+	public void deleteThisNodeAndNodeFromNeighbors(GraphGrid graph, 
+			GraphGridNode<Character> contiguousNode) {
+		Set<GraphGridNode> setToDeleteFrom = contiguousNode.getNeighbors();
+		for (GraphGridNode<Character> neighbor : setToDeleteFrom){
+			Set<GraphGridNode> neighborSet = neighbor.getNeighbors();
+			neighborSet.remove(contiguousNode);
+			neighbor.setNeighbors(neighborSet);
+		}
+		
+		Map map = graph.getGraphGridMap();
+		IntPair coordOfNodeToDelete = new IntPair();
+		coordOfNodeToDelete.setYCoord(contiguousNode.getyCoord());
+		coordOfNodeToDelete.setXCoord(contiguousNode.getxCoord());
+		map.remove(coordOfNodeToDelete, map.get(coordOfNodeToDelete));
+		graph.setGraphGrid(map);
 		
 	}
 
