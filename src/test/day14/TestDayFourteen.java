@@ -64,20 +64,20 @@ public class TestDayFourteen {
 		System.out.println("Success on Day14.testCountAreas!");
 	}
 	
-//	@Test
-//	public void testPartTwoTestImperative2() {
-//		
-//
-//		String input = "flqrgnkx";
-//
-//		
-//		Integer value = DayFourteen.getAnswerPartTwoImperative(input);
-//		assertEquals(
-//				value==1242
-//				,
-//				true);
-//		System.out.println("Success on Day14.testPartOneTest2!");
-//	}
+	@Test
+	public void testPartTwoTestImperative2() {
+		
+
+		String input = "flqrgnkx";
+
+		
+		Integer value = DayFourteen.getAnswerPartTwoImperative(input);
+		assertEquals(
+				value==1242
+				,
+				true);
+		System.out.println("Success on Day14.testPartOneTest2!");
+	}
 	
 	
 	/*

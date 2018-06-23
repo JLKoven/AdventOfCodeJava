@@ -165,4 +165,24 @@ public class GeneralFunction {
 		return listToReturn;
 	}
 
+	public static List<Long> getIntListFromStringList(URI fileName) {
+		
+		List<String> linesAsString = new ArrayList<>();
+		try {
+			linesAsString = Files.readAllLines(Paths.get(fileName));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		List<Long> listInteger = new ArrayList<>();
+		for (int i=0; i<linesAsString.size(); i++){
+			String str = linesAsString.get(i);
+			str = str.replaceAll("[^\\d]", "");
+			listInteger.add((long) Integer.parseInt(str));
+		}
+		
+		
+		return listInteger ;
+	}
+
 }

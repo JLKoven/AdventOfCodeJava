@@ -21,6 +21,7 @@ import test.day11.TestDayEleven;
 import test.day12.TestDayTwelve;
 import test.day13.TestDayThirteen;
 import test.day14.TestDayFourteen;
+import test.day15.TestDayFifteen;
 
 @RunWith(Suite.class)
 @SuiteClasses({TestGeneral.class, TestIntPair.class, TestDayOne.class, 
@@ -29,7 +30,7 @@ import test.day14.TestDayFourteen;
 	TestDaySeven.class, TestDiscForTowerImperative.class, 
 	TestDayEight.class, TestDayNine.class, TestDayTen.class,
 	TestDayEleven.class, TestDayTwelve.class, TestDayThirteen.class, 
-	TestDayFourteen.class
+	TestDayFourteen.class, TestDayFifteen.class
 	})
 public class AllTests {
 

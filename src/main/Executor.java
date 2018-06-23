@@ -14,6 +14,7 @@ import main.day11.DayEleven;
 import main.day12.DayTwelve;
 import main.day13.DayThirteen;
 import main.day14.DayFourteen;
+import main.day15.DayFifteen;
 
 public class Executor {
 
@@ -61,7 +62,8 @@ public class Executor {
 //		DayFourteen.executeStandardPart1();
 //		DayFourteen.executeStandardPart2();
 		
-		
+		DayFifteen.executeStandardPart1();
+//		DayFifteen.executeStandardPart2();		
 		
 		
 	}
