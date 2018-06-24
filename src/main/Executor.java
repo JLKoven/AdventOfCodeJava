@@ -16,6 +16,7 @@ import main.day13.DayThirteen;
 import main.day14.DayFourteen;
 import main.day15.DayFifteen;
 import main.day16.DaySixteen;
+import main.day17.DaySeventeen;
 
 public class Executor {
 
@@ -66,9 +67,35 @@ public class Executor {
 //		DayFifteen.executeStandardPart1();
 //		DayFifteen.executeStandardPart2();		
 //		
-		DaySixteen.executeStandardPart1();
-		DaySixteen.executeStandardPart2();
-		
+//		DaySixteen.executeStandardPart1();
+//		DaySixteen.executeStandardPart2();
+//		
+		DaySeventeen.executeStandardPart1();
+//		DaySeventeen.executeStandardPart2();		
+//		
+//		DayEighteen.executeStandardPart1();
+//		DayEighteen.executeStandardPart2();
+//		
+//		DayNineteen.executeStandardPart1();
+//		DayNineteen.executeStandardPart2();
+//		
+//		DayTwenty.executeStandardPart1();
+//		DayTwenty.executeStandardPart2();
+//		
+//		DayTwentyOne.executeStandardPart1();
+//		DayTwentyOne.executeStandardPart2();
+//		
+//		DayTwentyTwo.executeStandardPart1();
+//		DayTwentyTwo.executeStandardPart2();
+//		
+//		DayTwentyThree.executeStandardPart1();
+//		DayTwentyThree.executeStandardPart2();
+//		
+//		DayTwentyFour.executeStandardPart1();
+//		DayTwentyFour.executeStandardPart2();
+//		
+//		DayTwentyFive.executeStandardPart1();
+//		DayTwentyFive.executeStandardPart2();
 		
 	}
 }
