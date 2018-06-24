@@ -92,10 +92,12 @@ public class DaySeventeen {
 	public static Integer getAnswerPartTwoImperative(Integer standardInputInt) {
         Integer currentIndex = 0;
         Integer valueAtOne = -1;
-        for (int i = 1; i <= 50000000; i++) {
-        	currentIndex = (standardInputInt + currentIndex) % i + 1;
-            if (currentIndex == 1)
-            	valueAtOne = i;
+        for (int currentSizeOfVirtualList = 1; currentSizeOfVirtualList <= 50000000; currentSizeOfVirtualList++) {
+        	currentIndex = (standardInputInt + currentIndex) % currentSizeOfVirtualList;
+            if (currentIndex == 0){
+            	valueAtOne = currentSizeOfVirtualList;
+            }
+            currentIndex++;
         }
 		return valueAtOne;
 	}
