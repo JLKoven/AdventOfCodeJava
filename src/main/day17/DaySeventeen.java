@@ -90,90 +90,15 @@ public class DaySeventeen {
 	}
 	
 	public static Integer getAnswerPartTwoImperative(Integer standardInputInt) {
-//		Integer lastValueAfterLastIndex=-1;
-		Integer insertCount = 4;
-		Integer valueAtOne = -1;
-		Integer currentSizeOfList = 1;
-		Integer currentIndex = 0;
-		VirtualSpinCycle virtualSpinCycle = new VirtualSpinCycle();
-		virtualSpinCycle.setLastValueAfterLastIndex(-1);
-		virtualSpinCycle.setInsertCount(4);
-		virtualSpinCycle.setValueAtOne(-1);
-		virtualSpinCycle.setCurrentSizeOfList(1);
-		virtualSpinCycle.setCurrentIndex(0);
-		virtualSpinCycle.setStepCounter(standardInputInt);
-		virtualSpinCycle = updateVirtualSpinCycle(virtualSpinCycle);//, standardInputInt, insertCount, valueAtOne, currentSizeOfList, currentIndex);
-//		values = spinCycleVirtualList(values, insertCount, standardInputInt, currentIndex);
-//		lastValueAfterLastIndex = values.get(1);					
-		return virtualSpinCycle.getValueAtOne();
+        Integer currentIndex = 0;
+        Integer valueAtOne = -1;
+        for (int i = 1; i <= 50000000; i++) {
+        	currentIndex = (standardInputInt + currentIndex) % i + 1;
+            if (currentIndex == 1)
+            	valueAtOne = i;
+        }
+		return valueAtOne;
 	}
-
-//	private static VirtualSpinCycle updateVirtualSpinCycle(VirtualSpinCycle virtualSpinCycle) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
-	private static VirtualSpinCycle updateVirtualSpinCycle(
-			VirtualSpinCycle virtualSpinCycle
-			//, 
-//			Integer stepCounter, 
-//			Integer insertCount, 
-//			Integer valueAtOne, 
-//			Integer currentSizeOfList,
-//			Integer currentIndex) {
-			){
-//		stepCounter = stepCounter % values.size();
-		virtualSpinCycle.setStepCounter( 
-				virtualSpinCycle.getStepCounter() % virtualSpinCycle.getCurrentSizeOfList());
-
-		for (int i=0; i<virtualSpinCycle.getStepCounter(); i++){
-			if (
-					virtualSpinCycle.getCurrentSizeOfList().equals(virtualSpinCycle.getCurrentIndex()+1)
-					){
-				virtualSpinCycle.setCurrentIndex(0);
-			} else {
-				virtualSpinCycle.setCurrentIndex(
-						virtualSpinCycle.getCurrentIndex()+1
-						);
-			}			
-		}
-
-//		if (values.size() == (currentIndex+1)){
-//			values.add(values.size());						
-//		} else {
-//			values.add(currentIndex+1, values.size());;						
-//		}
-		if (virtualSpinCycle.getCurrentSizeOfList().equals(virtualSpinCycle.getCurrentIndex()+1)){
-			//add to list
-			if(virtualSpinCycle.getCurrentIndex().equals(0)){
-				virtualSpinCycle.setValueAtOne(virtualSpinCycle.getCurrentSizeOfList());
-			}
-			virtualSpinCycle.setCurrentSizeOfList(
-				virtualSpinCycle.getCurrentSizeOfList()+1	
-					);
-		} else {
-			//add to list
-			if(virtualSpinCycle.getCurrentIndex().equals(0)){
-				virtualSpinCycle.setValueAtOne(virtualSpinCycle.getCurrentSizeOfList());
-			}
-			virtualSpinCycle.setCurrentSizeOfList(
-				virtualSpinCycle.getCurrentSizeOfList()+1	
-					);
-		}
-		
-		virtualSpinCycle.setCurrentIndex(
-				virtualSpinCycle.getCurrentIndex()+1
-				); 
-//
-//		return currentIndex;
-		return virtualSpinCycle;
-		
-		
-	}
-
-
-
-
 
 	public static List<Integer> spinCycle(List<Integer> values, int insertCount, int stepCounter, int currentIndex) {
 		List<Integer> returnedList = values;
