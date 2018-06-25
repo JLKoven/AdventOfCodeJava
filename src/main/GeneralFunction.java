@@ -182,7 +182,7 @@ public class GeneralFunction {
 		}
 		
 		
-		return listInteger ;
+		return listInteger;
 	}
 
 }

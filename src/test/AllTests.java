@@ -24,7 +24,7 @@ import test.day14.TestDayFourteen;
 import test.day15.TestDayFifteen;
 import test.day16.TestDaySixteen;
 import test.day17.TestDaySeventeen;
-//import test.day18.TestDayEighteen;
+import test.day18.TestDayEighteen;
 //import test.day19.TestDayNineteen;
 //import test.day20.TestDayTwenty;
 //import test.day21.TestDayTwentyOne;
@@ -41,7 +41,7 @@ import test.day17.TestDaySeventeen;
 	TestDayEight.class, TestDayNine.class, TestDayTen.class,
 	TestDayEleven.class, TestDayTwelve.class, TestDayThirteen.class, 
 	TestDayFourteen.class, TestDayFifteen.class, TestDaySixteen.class, 
-	TestDaySeventeen.class
+	TestDaySeventeen.class, TestDayEighteen.class
 	})
 public class AllTests {
 
