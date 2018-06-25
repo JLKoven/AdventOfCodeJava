@@ -38,7 +38,7 @@ public class TestDayFifteen {
 
 		
 		Integer value = DayFifteen.getAnswerPartTwoImperative(start);
-		System.out.println("Value is "+value);
+//		System.out.println("Value is "+value);
 		assertEquals(
 				value==309
 				,

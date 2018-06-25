@@ -42,7 +42,7 @@ public class TestDayThirteen {
 		input.add("6: 4");
 		
 		Integer value = DayThirteen.getAnswerPartOneImperativeModular(input);
-		System.out.println(value);
+//		System.out.println(value);
 		assertEquals(
 				value==24
 				,
@@ -79,7 +79,7 @@ public class TestDayThirteen {
 		input.add("6: 4");
 		
 		Integer value = DayThirteen.getAnswerPartTwoImperativeModular(input);
-		System.out.print("value is "+value+".");
+//		System.out.print("value is "+value+".");
 		assertEquals(
 				value==10
 				,

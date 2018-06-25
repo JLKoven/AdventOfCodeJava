@@ -422,7 +422,7 @@ public class DayThirteen {
 			}
 			if (passed == false){
 				loopCounterValue++;
-				System.out.println(loopCounterValue);
+				//System.out.println(loopCounterValue);
 			}
 		}
 		

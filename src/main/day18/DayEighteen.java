@@ -59,8 +59,10 @@ public class DayEighteen {
 
 	public static Integer getAnswerPartOneImperative(List<String> tabletInstructions) {
 		Map<Character, Integer> registerSound = new HashMap<>();
+		registerSound = initializeInstructions(tabletInstructions);
 		boolean terminated = false;
 		int currentIndex = 0;
+		Integer lastPlayedSound = 0;
 		while (!terminated) {
 			/*
 			currentIndex = processInstruction(tabletInstructions, registerSound, terminated, currentIndex);
@@ -68,6 +70,24 @@ public class DayEighteen {
 			//get string to process
 			String stringToProcess = tabletInstructions.get(currentIndex);
 			//figure out what it wants to do 
+			String[] processInstructions = stringToProcess.split("\\s+");			
+			if ("snd".equals(processInstructions[0])){
+				
+			} else if ("set".equals(processInstructions[0])){
+				
+			} else if ("add".equals(processInstructions[0])){
+				
+			} else if ("mul".equals(processInstructions[0])){
+				
+			} else if ("mod".equals(processInstructions[0])){
+				
+			} else if ("rcv".equals(processInstructions[0])){
+				
+			} else if ("jgz".equals(processInstructions[0])){
+				
+			} else {
+				System.out.println("ERROR UNRECOGNIZED TABLET INSTRUCTION");
+			}
 			//do the stuff! 
 			//where are we going now? 
 
@@ -75,6 +95,15 @@ public class DayEighteen {
 
 		return null;
 
+	}
+
+	private static Map<Character, Integer> initializeInstructions(List<String> tabletInstructions) {
+		Map<Character, Integer> registerSound = new HashMap<>();
+		for (String instruction: tabletInstructions){
+			String[] instructionSet = instruction.split("\\s+");			
+			registerSound.put(instructionSet[1].charAt(0), 0);
+		}
+		return registerSound;
 	}
 
 //	private static void processInstruction(List<String> tabletInstructions, 

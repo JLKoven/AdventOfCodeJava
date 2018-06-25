@@ -41,7 +41,8 @@ import test.day18.TestDayEighteen;
 	TestDayEight.class, TestDayNine.class, TestDayTen.class,
 	TestDayEleven.class, TestDayTwelve.class, TestDayThirteen.class, 
 	TestDayFourteen.class, TestDayFifteen.class, TestDaySixteen.class, 
-	TestDaySeventeen.class, TestDayEighteen.class
+	TestDaySeventeen.class
+	//, TestDayEighteen.class
 	})
 public class AllTests {
 

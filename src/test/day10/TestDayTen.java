@@ -43,8 +43,8 @@ public class TestDayTen {
 	@Test
 	public void testPartTwoTestImperative1() {
 		String value = DayTen.getHash("");
-		System.out.println("value for p2t1 is "+value+".");
-		System.out.println("length is "+value.length()+".");
+//		System.out.println("value for p2t1 is "+value+".");
+//		System.out.println("length is "+value.length()+".");
 		assertEquals(
 				"a2582a3a0e66e6e86e3812dcb672a272".equals(value),true);
 		System.out.println("Success on Day10.testPartTwoTest1!");
@@ -54,8 +54,8 @@ public class TestDayTen {
 	@Test
 	public void testPartTwoTestImperative2() {
 		String value = DayTen.getHash("AoC 2017");
-		System.out.println("value for p2t2 is "+value+".");
-		System.out.println("length is "+value.length()+".");
+//		System.out.println("value for p2t2 is "+value+".");
+//		System.out.println("length is "+value.length()+".");
 		assertEquals(
 				"33efeb34ea91902bb2f59c9920caa6cd".equals(value),true);
 		System.out.println("Success on Day10.testPartTwoTest2!");
@@ -64,8 +64,8 @@ public class TestDayTen {
 	@Test
 	public void testPartTwoTestImperative3() {
 		String value = DayTen.getHash("1,2,3");
-		System.out.println("value for p2t3 is "+value+".");
-		System.out.println("length is "+value.length()+".");
+//		System.out.println("value for p2t3 is "+value+".");
+//		System.out.println("length is "+value.length()+".");
 		assertEquals(
 				"3efbe78a8d82f29979031a4aa0b16a9d".equals(value),true);
 		System.out.println("Success on Day10.testPartTwoTest3!");
@@ -74,8 +74,8 @@ public class TestDayTen {
 	@Test
 	public void testPartTwoTestImperative4() {
 		String value = DayTen.getHash("1,2,4");
-		System.out.println("value for p2t4 is "+value+".");
-		System.out.println("length is "+value.length()+".");
+//		System.out.println("value for p2t4 is "+value+".");
+//		System.out.println("length is "+value.length()+".");
 		assertEquals(
 				"63960835bcdc130f0b66d7ff4f6a5a8e".equals(value),true);
 		System.out.println("Success on Day10.testPartTwoTest4!");

@@ -152,7 +152,7 @@ public class SpiralGridImperative {
 		innerMapLeftDown.setYCoord(cell.getYCoord()-1);
 		if (mapDoesContainCoordinates(getMapOfExisting(), innerMapLeftDown)){
 			IntPair equivalentPair = getEquivalentPair(innerMapLeftDown);
-			System.out.println(getMapOfExisting().get(equivalentPair).getCellCumulativeValue());
+//			System.out.println(getMapOfExisting().get(equivalentPair).getCellCumulativeValue());
 			value = value+getMapOfExisting().get(equivalentPair).getCellCumulativeValue();
 		} 
 
