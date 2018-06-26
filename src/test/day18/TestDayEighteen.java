@@ -2,6 +2,7 @@ package test.day18;
 
 import static org.junit.Assert.assertEquals;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,10 +28,9 @@ public class TestDayEighteen {
 		tabletInstructions.add("jgz a -2");
 
 		
-		Integer value = DayEighteen.getAnswerPartOneImperative(tabletInstructions);
-		System.out.println("Sound is "+value+".");
+		BigInteger value = DayEighteen.getAnswerPartOneImperative(tabletInstructions);
 		assertEquals(
-				value==4
+				value.equals(BigInteger.valueOf(4))
 				,
 				true);
 		System.out.println("Success on Day18.testPartOneTest1!");

@@ -1,6 +1,7 @@
 package main.day18;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.net.URI;
 import java.util.HashMap;
 import java.util.List;
@@ -57,12 +58,12 @@ public class DayEighteen {
 
 	}
 
-	public static Integer getAnswerPartOneImperative(List<String> tabletInstructions) {
-		Map<Character, Integer> registerSound = new HashMap<>();
+	public static BigInteger getAnswerPartOneImperative(List<String> tabletInstructions) {
+		Map<Character, BigInteger> registerSound = new HashMap<>();
 		registerSound = initializeInstructions(tabletInstructions);
 		boolean terminated = false;
 		int currentIndex = 0;
-		Integer lastPlayedSound = 0;
+		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
 		while (!terminated) {
 			/*
 			currentIndex = processInstruction(tabletInstructions, registerSound, terminated, currentIndex);
@@ -72,19 +73,75 @@ public class DayEighteen {
 			//figure out what it wants to do 
 			String[] processInstructions = stringToProcess.split("\\s+");			
 			if ("snd".equals(processInstructions[0])){
-				
+				lastPlayedSound = registerSound.get(processInstructions[1].charAt(0));
+				currentIndex++;
 			} else if ("set".equals(processInstructions[0])){
-				
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				registerSound.put(processInstructions[1].charAt(0), value);
+				currentIndex++;
 			} else if ("add".equals(processInstructions[0])){
-				
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.add(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
 			} else if ("mul".equals(processInstructions[0])){
-				
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.multiply(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
 			} else if ("mod".equals(processInstructions[0])){
-				
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.mod(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
 			} else if ("rcv".equals(processInstructions[0])){
-				
+				if (!(BigInteger.valueOf(0).equals(registerSound.get(processInstructions[1].charAt(0))))){
+					terminated = true;
+				} else {
+					currentIndex++;
+				}
 			} else if ("jgz".equals(processInstructions[0])){
-				
+				if (
+						1 == registerSound.get(processInstructions[1].charAt(0)).compareTo(BigInteger.valueOf(0))
+						){
+					BigInteger value = BigInteger.valueOf(0);
+					if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+						value = registerSound.get(processInstructions[2].charAt(0));
+					} else {
+						value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+					}
+					Integer jumpOffSet = value.intValueExact();//DANGEROUS
+					if (jumpOffSet > 1){
+						currentIndex = currentIndex + jumpOffSet - 1;
+					} else {
+						currentIndex = currentIndex + jumpOffSet;
+					}
+				} else {
+					currentIndex++;
+				}					
 			} else {
 				System.out.println("ERROR UNRECOGNIZED TABLET INSTRUCTION");
 			}
@@ -93,15 +150,16 @@ public class DayEighteen {
 
 		}
 
-		return null;
+		return lastPlayedSound;
 
 	}
+	
 
-	private static Map<Character, Integer> initializeInstructions(List<String> tabletInstructions) {
-		Map<Character, Integer> registerSound = new HashMap<>();
+	private static Map<Character, BigInteger> initializeInstructions(List<String> tabletInstructions) {
+		Map<Character, BigInteger> registerSound = new HashMap<>();
 		for (String instruction: tabletInstructions){
 			String[] instructionSet = instruction.split("\\s+");			
-			registerSound.put(instructionSet[1].charAt(0), 0);
+			registerSound.put(instructionSet[1].charAt(0), BigInteger.valueOf(0));
 		}
 		return registerSound;
 	}
