@@ -3,7 +3,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import test.general.TestGeneral;
+import test.general.TestGeneralFunction;
 import test.general.TestIntPair;
 import test.day01.TestDayOne;
 import test.day02.TestDayTwo;
@@ -34,7 +34,7 @@ import test.day18.TestDayEighteen;
 //import test.day25.TestDayTwentyFive;
 
 @RunWith(Suite.class)
-@SuiteClasses({TestGeneral.class, TestIntPair.class, TestDayOne.class, 
+@SuiteClasses({TestGeneralFunction.class, TestIntPair.class, TestDayOne.class, 
 	TestDayTwo.class, TestDayThree.class, TestSpiralGridImperative.class, 
 	TestDayFour.class, TestDayFive.class, TestDaySix.class, 
 	TestDaySeven.class, TestDiscForTowerImperative.class, 

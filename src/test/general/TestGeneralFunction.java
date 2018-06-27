@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import main.GeneralFunction;
 
-public class TestGeneral {
+public class TestGeneralFunction {
 
 	@Test
 	public void testDeepCopyOfArray() {
