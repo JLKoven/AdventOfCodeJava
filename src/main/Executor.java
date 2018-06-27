@@ -74,7 +74,7 @@ public class Executor {
 //		DaySeventeen.executeStandardPart1();
 //		DaySeventeen.executeStandardPart2();		
 //		
-//		DayEighteen.executeStandardPart1();
+		DayEighteen.executeStandardPart1();
 //		DayEighteen.executeStandardPart2();
 //		
 //		DayNineteen.executeStandardPart1();
@@ -97,6 +97,7 @@ public class Executor {
 //		
 //		DayTwentyFive.executeStandardPart1();
 //		DayTwentyFive.executeStandardPart2();
-				
+		
+		
 	}
 }

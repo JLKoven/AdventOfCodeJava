@@ -5,6 +5,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 import test.general.TestGeneralFunction;
 import test.general.TestIntPair;
+import test.general.TestMathFunction;
 import test.day01.TestDayOne;
 import test.day02.TestDayTwo;
 import test.day03.TestDayThree;
@@ -34,15 +35,17 @@ import test.day18.TestDayEighteen;
 //import test.day25.TestDayTwentyFive;
 
 @RunWith(Suite.class)
-@SuiteClasses({TestGeneralFunction.class, TestIntPair.class, TestDayOne.class, 
+@SuiteClasses({TestGeneralFunction.class, TestIntPair.class, 
+	TestMathFunction.class,
+	TestDayOne.class, 
 	TestDayTwo.class, TestDayThree.class, TestSpiralGridImperative.class, 
 	TestDayFour.class, TestDayFive.class, TestDaySix.class, 
 	TestDaySeven.class, TestDiscForTowerImperative.class, 
 	TestDayEight.class, TestDayNine.class, TestDayTen.class,
 	TestDayEleven.class, TestDayTwelve.class, TestDayThirteen.class, 
 	TestDayFourteen.class, TestDayFifteen.class, TestDaySixteen.class, 
-	TestDaySeventeen.class
-	//, TestDayEighteen.class
+	TestDaySeventeen.class, 
+	TestDayEighteen.class
 	})
 public class AllTests {
 
