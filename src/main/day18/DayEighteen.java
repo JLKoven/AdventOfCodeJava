@@ -57,6 +57,43 @@ public class DayEighteen {
 				+ getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
 	}
+	
+	public static void executeStandardPart2(){
+//		--- Part Two ---
+//		As you congratulate yourself for a job well done, you notice that the documentation has been on the back of the tablet this entire time. While you actually got most of the instructions correct, there are a few key differences. This assembly code isn't about sound at all - it's meant to be run twice at the same time.
+//
+//		Each running copy of the program has its own set of registers and follows the code independently - in fact, the programs don't even necessarily run at the same speed. To coordinate, they use the send (snd) and receive (rcv) instructions:
+//
+//		snd X sends the value of X to the other program. These values wait in a queue until that program is ready to receive them. Each program has its own message queue, so a program can never receive a message it sent.
+//		rcv X receives the next value and stores it in register X. If no values are in the queue, the program waits for a value to be sent to it. Programs do not continue to the next instruction until they have received a value. Values are received in the order they are sent.
+//		Each program also has its own program ID (one 0 and the other 1); the register p should begin with this value.
+//
+//		For example:
+//
+//		snd 1
+//		snd 2
+//		snd p
+//		rcv a
+//		rcv b
+//		rcv c
+//		rcv d
+//		Both programs begin by sending three values to the other. Program 0 sends 1, 2, 0; program 1 sends 1, 2, 1. Then, each program receives a value (both 1) and stores it in a, receives another value (both 2) and stores it in b, and then each receives the program ID of the other program (program 0 receives 1; program 1 receives 0) and stores it in c. Each program now sees a different value in its own copy of register c.
+//
+//		Finally, both programs try to rcv a fourth time, but no data is waiting for either of them, and they reach a deadlock. When this happens, both programs terminate.
+//
+//		It should be noted that it would be equally valid for the programs to run at different speeds; for example, program 0 might have sent all three values and then stopped at the first rcv before program 1 executed even its first instruction.
+//
+//		Once both of your programs have terminated (regardless of what caused them to do so), how many times did program 1 send a value?
+			
+		
+		System.out.println("Day 18 Part 2");
+		File file = new File("src/main/day18/input.txt");
+		URI uri = file.toURI();
+		System.out.println("Answer to part 2 is "
+				+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
+	}
+
+
 
 	public static BigInteger getAnswerPartOneImperative(List<String> tabletInstructions) {
 		Map<Character, BigInteger> registerSound = new HashMap<>();
@@ -147,11 +184,133 @@ public class DayEighteen {
 			}
 			//do the stuff! 
 			//where are we going now? 
-
 		}
-
 		return lastPlayedSound;
 
+	}
+	
+	public static Integer getAnswerPartTwoImperative(List<String> tabletInstructions) {
+		Map<Character, BigInteger> registerSound = new HashMap<>();
+		registerSound = initializeInstructions(tabletInstructions);
+//		boolean terminated = false;
+		int currentIndex = 0;
+//		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
+		Integer messagesSentByOne = 0;
+		Integer instructionsSize = tabletInstructions.size();
+		DuetProgram programOne = new DuetProgram();
+		DuetProgram programTwo = new DuetProgram();
+		while (
+				(
+						programOne.isDone()
+				)
+				&&
+				(
+						programTwo.isDone()
+				)
+				)
+				{
+			
+			//program 0 processes instructions until it can't go further 
+			//  (it hits a receive or its length equals the array of instructions) 
+			// every time it hits a send, increase the queue of instructions for the other (1) by one 
+			// check if it is done
+			// mark it as waiting
+			//switch to program 1 
+			//program 1 processes instructions until it can't go any further 
+			//  (it hits a receive or its length equals the array of instructions) 
+			// every time it hits a send, increase the queue of instructions for the other (0) by one 
+			// check if it is done
+			// mark it as waiting
+			
+			
+			
+			/*
+			currentIndex = processInstruction(tabletInstructions, registerSound, terminated, currentIndex);
+			*/
+			//get string to process
+			String stringToProcess = tabletInstructions.get(currentIndex);
+			//figure out what it wants to do 
+			String[] processInstructions = stringToProcess.split("\\s+");			
+			if ("snd".equals(processInstructions[0])){
+				//NEW FUNCTION
+				//lastPlayedSound = registerSound.get(processInstructions[1].charAt(0));
+				currentIndex++;
+			} else if ("set".equals(processInstructions[0])){
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				registerSound.put(processInstructions[1].charAt(0), value);
+				currentIndex++;
+			} else if ("add".equals(processInstructions[0])){
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.add(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
+			} else if ("mul".equals(processInstructions[0])){
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.multiply(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
+			} else if ("mod".equals(processInstructions[0])){
+				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
+				BigInteger value = BigInteger.valueOf(0);
+				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+					value = registerSound.get(processInstructions[2].charAt(0));
+				} else {
+					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+				}
+				BigInteger newValue = oldValue.mod(value);
+				registerSound.put(processInstructions[1].charAt(0), newValue );
+				currentIndex++;
+			} else if ("rcv".equals(processInstructions[0])){
+				//NEW FUNCTION 
+//				if (!(BigInteger.valueOf(0).equals(registerSound.get(processInstructions[1].charAt(0))))){
+//					terminated = true;
+//				} else {
+//					currentIndex++;
+//				}
+				currentIndex++;
+			} else if ("jgz".equals(processInstructions[0])){
+				if (
+						1 == registerSound.get(processInstructions[1].charAt(0)).compareTo(BigInteger.valueOf(0))
+						){
+					BigInteger value = BigInteger.valueOf(0);
+					if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
+						value = registerSound.get(processInstructions[2].charAt(0));
+					} else {
+						value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
+					}
+					Integer jumpOffSet = value.intValueExact();//DANGEROUS
+					if (jumpOffSet > 1){
+						currentIndex = currentIndex + jumpOffSet - 1;
+					} else {
+						currentIndex = currentIndex + jumpOffSet;
+					}
+				} else {
+					currentIndex++;
+				}					
+			} else {
+				System.out.println("ERROR UNRECOGNIZED TABLET INSTRUCTION");
+			}
+			//do the stuff! 
+			//where are we going now? 
+		}
+		return messagesSentByOne;
 	}
 	
 
