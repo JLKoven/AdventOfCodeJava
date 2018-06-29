@@ -50,6 +50,7 @@ public class TestDayEighteen {
 
 		
 		Integer value = DayEighteen.getAnswerPartTwoImperative(tabletInstructions);
+		
 		assertEquals(
 				value.equals(3)
 				,

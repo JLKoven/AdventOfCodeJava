@@ -190,8 +190,6 @@ public class DayEighteen {
 	}
 	
 	public static Integer getAnswerPartTwoImperative(List<String> tabletInstructions) {
-		Map<Character, BigInteger> registerSound = new HashMap<>();
-		//registerSound = initializeInstructions(tabletInstructions);
 //		boolean terminated = false;
 		int currentIndex = 0;
 //		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
@@ -202,6 +200,12 @@ public class DayEighteen {
 		DuetProgram currentProgram = programZero;
 		programOne.setDuetPartner(programZero);
 		programZero.setDuetPartner(programOne);
+		Map<Character, BigInteger> registerSoundZero = new HashMap<>();
+		Map<Character, BigInteger> registerSoundOne = new HashMap<>();
+		registerSoundZero = initializeInstructions(tabletInstructions);
+		registerSoundOne = initializeInstructions(tabletInstructions);
+		programZero.setRegisterSound(registerSoundZero);
+		programOne.setRegisterSound(registerSoundOne);
 		while (
 				(
 						programZero.isDone()
