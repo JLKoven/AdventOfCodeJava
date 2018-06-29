@@ -190,6 +190,7 @@ public class DayEighteen {
 	}
 	
 	public static Integer getAnswerPartTwoImperative(List<String> tabletInstructions) {
+		//doesn't work
 //		boolean terminated = false;
 		int currentIndex = 0;
 //		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
