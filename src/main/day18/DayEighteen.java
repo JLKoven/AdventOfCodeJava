@@ -191,22 +191,26 @@ public class DayEighteen {
 	
 	public static Integer getAnswerPartTwoImperative(List<String> tabletInstructions) {
 		Map<Character, BigInteger> registerSound = new HashMap<>();
-		registerSound = initializeInstructions(tabletInstructions);
+		//registerSound = initializeInstructions(tabletInstructions);
 //		boolean terminated = false;
 		int currentIndex = 0;
 //		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
 		Integer messagesSentByOne = 0;
 		Integer instructionsSize = tabletInstructions.size();
+		DuetProgram programZero = new DuetProgram();
 		DuetProgram programOne = new DuetProgram();
-		DuetProgram programTwo = new DuetProgram();
+		DuetProgram currentProgram = programZero;
+		programOne.setDuetPartner(programZero);
+		programZero.setDuetPartner(programOne);
 		while (
 				(
-						programOne.isDone()
+						programZero.isDone()
 				)
 				&&
 				(
-						programTwo.isDone()
+						programOne.isDone()
 				)
+
 				)
 				{
 			
@@ -222,95 +226,22 @@ public class DayEighteen {
 			// check if it is done
 			// mark it as waiting
 			
+			while (
+					(!(currentProgram.isWaiting()))
+				&&
+				(!currentProgram.isDone())
+			){
+				//process a step
+				currentProgram.processStep(tabletInstructions);
+			} 
+			
+			currentProgram = currentProgram.getDuetPartner();
 			
 			
-			/*
-			currentIndex = processInstruction(tabletInstructions, registerSound, terminated, currentIndex);
-			*/
-			//get string to process
-			String stringToProcess = tabletInstructions.get(currentIndex);
-			//figure out what it wants to do 
-			String[] processInstructions = stringToProcess.split("\\s+");			
-			if ("snd".equals(processInstructions[0])){
-				//NEW FUNCTION
-				//lastPlayedSound = registerSound.get(processInstructions[1].charAt(0));
-				currentIndex++;
-			} else if ("set".equals(processInstructions[0])){
-				BigInteger value = BigInteger.valueOf(0);
-				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
-					value = registerSound.get(processInstructions[2].charAt(0));
-				} else {
-					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
-				}
-				registerSound.put(processInstructions[1].charAt(0), value);
-				currentIndex++;
-			} else if ("add".equals(processInstructions[0])){
-				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
-				BigInteger value = BigInteger.valueOf(0);
-				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
-					value = registerSound.get(processInstructions[2].charAt(0));
-				} else {
-					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
-				}
-				BigInteger newValue = oldValue.add(value);
-				registerSound.put(processInstructions[1].charAt(0), newValue );
-				currentIndex++;
-			} else if ("mul".equals(processInstructions[0])){
-				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
-				BigInteger value = BigInteger.valueOf(0);
-				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
-					value = registerSound.get(processInstructions[2].charAt(0));
-				} else {
-					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
-				}
-				BigInteger newValue = oldValue.multiply(value);
-				registerSound.put(processInstructions[1].charAt(0), newValue );
-				currentIndex++;
-			} else if ("mod".equals(processInstructions[0])){
-				BigInteger oldValue = registerSound.get(processInstructions[1].charAt(0));
-				BigInteger value = BigInteger.valueOf(0);
-				if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
-					value = registerSound.get(processInstructions[2].charAt(0));
-				} else {
-					value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
-				}
-				BigInteger newValue = oldValue.mod(value);
-				registerSound.put(processInstructions[1].charAt(0), newValue );
-				currentIndex++;
-			} else if ("rcv".equals(processInstructions[0])){
-				//NEW FUNCTION 
-//				if (!(BigInteger.valueOf(0).equals(registerSound.get(processInstructions[1].charAt(0))))){
-//					terminated = true;
-//				} else {
-//					currentIndex++;
-//				}
-				currentIndex++;
-			} else if ("jgz".equals(processInstructions[0])){
-				if (
-						1 == registerSound.get(processInstructions[1].charAt(0)).compareTo(BigInteger.valueOf(0))
-						){
-					BigInteger value = BigInteger.valueOf(0);
-					if (processInstructions[2].matches(".*[a-zA-Z]+.*")){
-						value = registerSound.get(processInstructions[2].charAt(0));
-					} else {
-						value = BigInteger.valueOf(Integer.parseInt(processInstructions[2]));
-					}
-					Integer jumpOffSet = value.intValueExact();//DANGEROUS
-					if (jumpOffSet > 1){
-						currentIndex = currentIndex + jumpOffSet - 1;
-					} else {
-						currentIndex = currentIndex + jumpOffSet;
-					}
-				} else {
-					currentIndex++;
-				}					
-			} else {
-				System.out.println("ERROR UNRECOGNIZED TABLET INSTRUCTION");
-			}
-			//do the stuff! 
-			//where are we going now? 
+			
+			
 		}
-		return messagesSentByOne;
+		return programOne.getMessagesSent();
 	}
 	
 
