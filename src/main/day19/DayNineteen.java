@@ -2,10 +2,8 @@ package main.day19;
 
 import java.io.File;
 import java.net.URI;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import main.GeneralFunction;
 import main.GraphGrid;
@@ -50,10 +48,142 @@ public class DayNineteen {
 	public static String getAnswerPartOneImperative(List<String> gridLayout) {
 		GraphGrid<Character> grid = initializePuzzleGraph(gridLayout);
 		
-		IntPair findStartingCoordinates = findStartingCoordinates(gridLayout.get(0));
+		IntPair currentCoordinates = findStartingCoordinates(gridLayout.get(0));
 		
 		StringBuilder collectedString = new StringBuilder();
+		boolean finishedMaze = false;
+//		Character nextChar = new Character('|');
+		String currentDirection = "DOWN";
+		while (!finishedMaze ){
+			currentDirection = processStep(currentDirection, currentCoordinates, 
+					currentDirection, collectedString, grid,
+					grid.getGraphGridMap().get(currentCoordinates));
+			
+		}
+		
 		return collectedString.toString();
+	}
+
+	private static String processStep(String priorDirection, 
+			IntPair currentCoordinates, String currentDirection, 
+			StringBuilder collectedString, GraphGrid<Character> grid, 
+			GraphGridNode<Character> graphGridNode) {
+		int currentX =  currentCoordinates.getXCoord();
+		int currentY =  currentCoordinates.getYCoord();
+		System.out.println("Processing step at x("+currentX+") and y("+currentY+").");
+		IntPair newCoordinates = currentCoordinates;//ready for mutation 
+		switch (graphGridNode.getData()){
+			case '|': 
+			//herp
+				if ("DOWN".equals(currentDirection)){
+					currentY = currentY-1;					
+				} else if ("UP".equals(currentDirection)){
+					currentY = currentY+1;
+				} else {
+					System.out.println("Error! Direction fail!");
+				}
+				newCoordinates.setXCoord(currentX);
+				newCoordinates.setYCoord(currentY);
+				currentCoordinates = newCoordinates;
+				break;
+			case '-': 
+			//herp
+				if ("LEFT".equals(currentDirection)){
+					currentX = currentX-1;					
+				} else if ("RIGHT".equals(currentDirection)){
+					currentX = currentX+1;
+				} else {
+					System.out.println("Error! Direction fail!");
+				}
+				newCoordinates.setXCoord(currentX);
+				newCoordinates.setYCoord(currentY);
+				currentCoordinates = newCoordinates;
+				break;
+			case '+': 
+			//herp
+				if ("DOWN".equals(currentDirection)){
+					//look in the other three directions 
+					//find the first location in Grid which doesn't have a nonblank character 
+					if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} 
+				} else if ("UP".equals(currentDirection)){
+					//look in the other three directions 
+					//find the first location in Grid which doesn't have a nonblank character 
+					if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} 
+				} else if ("LEFT".equals(currentDirection)){
+					//look in the other three directions 
+					//find the first location in Grid which doesn't have a nonblank character 
+					if ("UP" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} 
+				} else if ("RIGHT".equals(currentDirection)){
+					//look in the other three directions 
+					//find the first location in Grid which doesn't have a nonblank character 
+					if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+						//that's the new direction, set it
+						//set coordinates accordingly 
+					} 
+				}
+				break;
+			default: 
+				collectedString.append(graphGridNode.getData());
+				if ("DOWN".equals(currentDirection)){
+					currentY = currentY-1;					
+				} else if ("UP".equals(currentDirection)){
+					currentY = currentY+1;
+				} else if ("LEFT".equals(currentDirection)){
+					currentX = currentX-1;					
+				} else if ("RIGHT".equals(currentDirection)){
+					currentX = currentX+1;
+				}
+				newCoordinates.setXCoord(currentX);
+				newCoordinates.setYCoord(currentY);
+				currentCoordinates = newCoordinates;
+				break;
+		}
+		/*
+|
+-
++
+else
+		 */
+		return priorDirection;
+		
+	}
+
+	private static String coordinatesNonblankAtDirectionOtherThan(String string, IntPair currentCoordinates, GraphGrid<Character> grid) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static IntPair findStartingCoordinates(String string) {
