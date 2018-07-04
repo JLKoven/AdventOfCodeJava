@@ -1,4 +1,4 @@
-package main.day01;
+package main.year2017.day01;
 
 public class CircularArrayNode {
 	

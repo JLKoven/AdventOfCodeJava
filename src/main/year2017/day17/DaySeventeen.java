@@ -1,4 +1,4 @@
-package main.day17;
+package main.year2017.day17;
 
 import java.io.File;
 import java.net.URI;

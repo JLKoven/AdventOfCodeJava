@@ -1,4 +1,4 @@
-package main.day18;
+package main.year2017.day18;
 
 import java.math.BigInteger;
 import java.util.HashMap;

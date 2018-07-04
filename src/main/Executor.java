@@ -1,24 +1,24 @@
 package main;
 
-import main.day01.DayOne;
-import main.day02.DayTwo;
-import main.day03.DayThree;
-import main.day04.DayFour;
-import main.day05.DayFive;
-import main.day06.DaySix;
-import main.day07.DaySeven;
-import main.day08.DayEight;
-import main.day09.DayNine;
-import main.day10.DayTen;
-import main.day11.DayEleven;
-import main.day12.DayTwelve;
-import main.day13.DayThirteen;
-import main.day14.DayFourteen;
-import main.day15.DayFifteen;
-import main.day16.DaySixteen;
-import main.day17.DaySeventeen;
-import main.day18.DayEighteen;
-import main.day19.DayNineteen;
+import main.year2017.day01.DayOne;
+import main.year2017.day02.DayTwo;
+import main.year2017.day03.DayThree;
+import main.year2017.day04.DayFour;
+import main.year2017.day05.DayFive;
+import main.year2017.day06.DaySix;
+import main.year2017.day07.DaySeven;
+import main.year2017.day08.DayEight;
+import main.year2017.day09.DayNine;
+import main.year2017.day10.DayTen;
+import main.year2017.day11.DayEleven;
+import main.year2017.day12.DayTwelve;
+import main.year2017.day13.DayThirteen;
+import main.year2017.day14.DayFourteen;
+import main.year2017.day15.DayFifteen;
+import main.year2017.day16.DaySixteen;
+import main.year2017.day17.DaySeventeen;
+import main.year2017.day18.DayEighteen;
+import main.year2017.day19.DayNineteen;
 
 public class Executor {
 

@@ -1,4 +1,4 @@
-package main.day18;
+package main.year2017.day18;
 
 import java.io.File;
 import java.math.BigInteger;

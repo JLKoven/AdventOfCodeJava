@@ -1,4 +1,4 @@
-package main.day14;
+package main.year2017.day14;
 
 import java.io.File;
 import java.net.URI;
@@ -11,7 +11,7 @@ import main.GeneralFunction;
 import main.GraphGrid;
 import main.GraphGridNode;
 import main.IntPair;
-import main.day10.DayTen;
+import main.year2017.day10.DayTen;
 
 public class DayFourteen {
 	
