@@ -28,7 +28,7 @@ public class DayFour {
 		// The system's full passphrase list is available as your puzzle input.
 		// How many passphrases are valid?
 		System.out.println("Day 4 Part 1");
-        File file = new File("src/main/day04/input.txt");
+        File file = new File("src/main/year2017/day04/input.txt");
         URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 1 is " + getAnswerDayFourPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
@@ -48,7 +48,7 @@ public class DayFour {
 //		oiii ioii iioi iiio is not valid - any of these words can be rearranged to form any other word.
 //		Under this new system policy, how many passphrases are valid?
 		System.out.println("Day 4 Part 2");
-        File file = new File("src/main/day04/input.txt");
+        File file = new File("src/main/year2017/day04/input.txt");
         URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 2 is " + getAnswerDayFourPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");

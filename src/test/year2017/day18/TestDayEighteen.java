@@ -36,44 +36,28 @@ public class TestDayEighteen {
 		System.out.println("Success on Day18.testPartOneTest1!");
 	}
 	
-	@Test
-	public void testPartTwoTestImperative1() {
-		
-		List<String> tabletInstructions = new ArrayList<>();
-		tabletInstructions.add("snd 1");
-		tabletInstructions.add("snd 2");
-		tabletInstructions.add("snd p");
-		tabletInstructions.add("rcv a");
-		tabletInstructions.add("rcv b");
-		tabletInstructions.add("rcv c");
-		tabletInstructions.add("rcv d");
-
-		
-		Integer value = DayEighteen.getAnswerPartTwoImperative(tabletInstructions);
-		
-		assertEquals(
-				value.equals(3)
-				,
-				true);
-		System.out.println("Success on Day18.testPartOneTest2!");
-	}
-	
 //	@Test
 //	public void testPartTwoTestImperative1() {
 //		
-//
-//		List<Long> start = new ArrayList<>();
-//		start.add((long) 65);
-//		start.add((long) 8921);
+//		List<String> tabletInstructions = new ArrayList<>();
+//		tabletInstructions.add("snd 1");
+//		tabletInstructions.add("snd 2");
+//		tabletInstructions.add("snd p");
+//		tabletInstructions.add("rcv a");
+//		tabletInstructions.add("rcv b");
+//		tabletInstructions.add("rcv c");
+//		tabletInstructions.add("rcv d");
 //
 //		
-//		Integer value = DaySeventeen.getAnswerPartTwoImperative(start);
-//		System.out.println("Value is "+value);
+//		Integer value = DayEighteen.getAnswerPartTwoImperative(tabletInstructions);
+//		
 //		assertEquals(
-//				value==309
+//				value.equals(3)
 //				,
 //				true);
-//		System.out.println("Success on Day17.testPartTwoTest1!");
+//		System.out.println("Success on Day18.testPartOneTest2!");
 //	}
+	
+
 
 }

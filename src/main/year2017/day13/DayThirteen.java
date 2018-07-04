@@ -172,7 +172,7 @@ public class DayThirteen {
 //
 //		Given the details of the firewall you've recorded, if you leave immediately, what is the severity of your whole trip?
 		System.out.println("Day 13 Part 1");
-		File file = new File("src/main/day13/input.txt");
+		File file = new File("src/main/year2017/day13/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 		
@@ -382,7 +382,7 @@ public class DayThirteen {
 //	What is the fewest number of picoseconds that you need to delay the packet to pass through the firewall without being caught?
 	
 		System.out.println("Day 13 Part 2");
-		File file = new File("src/main/day13/input.txt");
+		File file = new File("src/main/year2017/day13/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperativeModular(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 //		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");

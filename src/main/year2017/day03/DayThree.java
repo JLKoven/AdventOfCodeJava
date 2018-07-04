@@ -43,7 +43,7 @@ public class DayThree {
 	//
 	// input is 312051
 		System.out.println("Day Three Part 1");
-        File file = new File("src/main/day03/input.txt");
+        File file = new File("src/main/year2017/day03/input.txt");
         URI uri = file.toURI();
 		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneImperative(GeneralFunction.getStandardInputInt(uri)) + " steps!");
 //		System.out.println("Data from square 312051 is carried " + DayThree.getAnswerPartOneFunctional(				
@@ -86,7 +86,7 @@ public class DayThree {
 	// What is the first value written that is larger than your puzzle input?
 	// input is 277678
 		System.out.println("Day Three Part 2");
-        File file = new File("src/main/day03/input.txt");
+        File file = new File("src/main/year2017/day03/input.txt");
         URI uri = file.toURI();
 		try {
 			System.out.println("Answer first larger than 277678 is "

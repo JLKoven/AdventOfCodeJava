@@ -51,7 +51,7 @@ public class DayEighteen {
 //		What is the value of the recovered frequency (the value of the most recently played sound) the first time a rcv instruction is executed with a non-zero value?
 
 		System.out.println("Day 18 Part 1");
-		File file = new File("src/main/day18/input.txt");
+		File file = new File("src/main/year2017/day18/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
@@ -87,7 +87,7 @@ public class DayEighteen {
 			
 		
 		System.out.println("Day 18 Part 2");
-		File file = new File("src/main/day18/input.txt");
+		File file = new File("src/main/year2017/day18/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");

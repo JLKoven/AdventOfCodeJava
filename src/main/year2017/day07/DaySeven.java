@@ -79,7 +79,7 @@ public class DaySeven {
 		// Before you're ready to help them, you need to make sure your
 		// information is correct. What is the name of the bottom program?
 		System.out.println("Day 7 Part 1");
-		File file = new File("src/main/day07/input.txt");
+		File file = new File("src/main/year2017/day07/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(getStandardInputDaySeven(uri)) + ".");
 
@@ -116,7 +116,7 @@ public class DaySeven {
 		// Given that exactly one program is the wrong weight, what would its
 		// weight need to be to balance the entire tower?
 		System.out.println("Day 7 Part 2");
-		File file = new File("src/main/day07/input.txt");
+		File file = new File("src/main/year2017/day07/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 

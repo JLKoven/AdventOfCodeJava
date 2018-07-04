@@ -41,7 +41,7 @@ public class DaySeventeen {
 //		What is the value after 2017 in your completed circular buffer?
 		
 		System.out.println("Day 17 Part 1");
-		File file = new File("src/main/day17/input.txt");
+		File file = new File("src/main/year2017/day17/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getStandardInputInt(uri)) + ".");
@@ -61,7 +61,7 @@ public class DaySeventeen {
 //		What is the value after 0 the moment 50000000 is inserted?
 		
 		System.out.println("Day 17 Part 2");
-		File file = new File("src/main/day17/input.txt");
+		File file = new File("src/main/year2017/day17/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputInt(uri)) + ".");

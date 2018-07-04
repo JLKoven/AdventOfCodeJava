@@ -38,10 +38,44 @@ public class DayNineteen {
 //		The little packet looks up at you, hoping you can help it find the way. What letters will it see (in the order it would see them) if it follows the path? (The routing diagram is very wide; make sure you view it without line wrapping.)
 
 		System.out.println("Day 19 Part 1");
-		File file = new File("src/main/day19/input.txt");
+		File file = new File("src/main/year2017/day19/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
+
+	}
+	
+	public static void executeStandardPart2() {
+//		--- Day 19: A Series of Tubes ---
+//		The packet is curious how many steps it needs to go.
+//
+//		For example, using the same routing diagram from the example above...
+//
+//		     |          
+//		     |  +--+    
+//		     A  |  C    
+//		 F---|--|-E---+ 
+//		     |  |  |  D 
+//		     +B-+  +--+ 
+//
+//		...the packet would go:
+//
+//		6 steps down (including the first line at the top of the diagram).
+//		3 steps right.
+//		4 steps up.
+//		3 steps right.
+//		4 steps down.
+//		3 steps right.
+//		2 steps up.
+//		13 steps left (including the F it stops on).
+//		This would result in a total of 38 steps.
+//
+//		How many steps does the packet need to go?
+		System.out.println("Day 19 Part 2");
+		File file = new File("src/main/year2017/day19/input.txt");
+		URI uri = file.toURI();
+		System.out.println("Answer to part 1 is "
+				+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
 	}
 
@@ -446,6 +480,201 @@ else
 		
 		grid.setGraphGrid(innerMap);
 		return grid;
+	}
+
+	public static Integer getAnswerPartTwoImperative(List<String> gridLayout) {
+		Integer stepsCounted=0;
+
+		GraphGrid<Character> grid = initializePuzzleGraph(gridLayout);
+		
+		IntPair currentCoordinates = findStartingCoordinates(gridLayout.get(0));
+		
+		StringBuilder collectedString = new StringBuilder();
+		boolean finishedMaze = false;
+//		Character nextChar = new Character('|');
+		String currentDirection = "DOWN";
+		while (!finishedMaze){
+			/*
+			currentDirection = processStep(currentDirection, currentCoordinates, 
+					currentDirection, collectedString, grid,
+					grid.getGraphGridMap().get(currentCoordinates));
+					*/
+			stepsCounted++;
+			int currentX =  currentCoordinates.getXCoord();
+			int currentY =  currentCoordinates.getYCoord();
+//			System.out.print("Processing step at x("+currentX+") and y("+currentY+"), ");
+//			System.out.println("with character "+grid.getGraphGridMap().get(currentCoordinates).getData()+".");
+
+//			IntPair newCoordinates = currentCoordinates;//ready for mutation 
+			IntPair newCoordinates = new IntPair();//ready for mutation 
+			newCoordinates.setYCoord(currentY);
+			newCoordinates.setXCoord(currentX);
+
+			switch (grid.getGraphGridMap().get(currentCoordinates).getData()){
+				case '|': 
+				//herp
+					if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				case '-': 
+				//herp
+					if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				case '+': 
+				//herp
+					if ("DOWN".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "LEFT";
+							//set coordinates accordingly 
+							currentX = currentX-1;											
+//						} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "UP";
+//							//set coordinates accordingly 
+//							currentY = currentY-1;
+						} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "RIGHT";
+							//set coordinates accordingly 
+							currentX = currentX+1;
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("UP".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "RIGHT";
+							//set coordinates accordingly 
+							currentX = currentX+1;
+//						} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "DOWN";
+//							//set coordinates accordingly 
+//							currentY = currentY+1;					
+						} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "LEFT";
+							//set coordinates accordingly 
+							currentX = currentX-1;					
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("LEFT".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("UP" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "UP";
+							//set coordinates accordingly 
+							currentY = currentY-1;
+//						} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "RIGHT";
+//							//set coordinates accordingly 
+//							currentX = currentX+1;
+						} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "DOWN";
+							//set coordinates accordingly 
+							currentY = currentY+1;					
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("RIGHT".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "DOWN";
+							//set coordinates accordingly 
+							currentY = currentY+1;					
+//						} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "LEFT";
+//							//set coordinates accordingly 
+//							currentX = currentX-1;					
+						} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "UP";
+							//set coordinates accordingly 
+							currentY = currentY-1;
+						} else {
+							System.out.println("wait. what?");
+						}
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				default: 
+					collectedString.append(grid.getGraphGridMap().get(currentCoordinates).getData());
+					
+					//test for break
+					
+					if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+			}
+			
+
+			if (!grid.getGraphGridMap().containsKey(currentCoordinates)){
+				finishedMaze = true;
+			}
+			if (' '==grid.getGraphGridMap().get(currentCoordinates).getData()){
+				finishedMaze = true;
+			}
+//			System.out.println("now to parse character "+grid.getGraphGridMap().get(currentCoordinates).getData()+".");
+
+			
+//			if(weAreAtEdgeOfMaze(currentDirection, currentCoordinates, grid)){
+//				System.out.println("at edge of maze");
+//				finishedMaze = true;
+//			}
+		}
+		
+		return stepsCounted;
 	}
 
 

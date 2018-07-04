@@ -37,7 +37,7 @@ public class DayTwo {
 	//
 	// input listed below
 		System.out.println("Day Two Part 1");
-        File file = new File("src/main/day02/input.txt");
+        File file = new File("src/main/year2017/day02/input.txt");
         URI uri = file.toURI();
 		System.out.println("Checksum of listOfArrays is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListsOfIntArrays(uri)) + ".");
 	}
@@ -71,7 +71,7 @@ public class DayTwo {
 	//
 	// What is the sum of each row's result in your puzzle input?
 		System.out.println("Day Two Part 2");
-        File file = new File("src/main/day02/input.txt");
+        File file = new File("src/main/year2017/day02/input.txt");
         URI uri = file.toURI();
 		System.out.print("Sum of even divisions between listOfArrays is ");
 		System.out.print(getAnswerPartTwoImperative(GeneralFunction.getStandardInputListsOfIntArrays(uri)));

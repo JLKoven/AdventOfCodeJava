@@ -45,7 +45,7 @@ public class DayEleven {
 		// ne,ne,s,s is 2 steps away (se,se).
 		// se,sw,se,sw,sw is 3 steps away (s,s,sw).
 		System.out.println("Day 11 Part 1");
-		File file = new File("src/main/day11/input.txt");
+		File file = new File("src/main/year2017/day11/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getInputDelimiterCommaToListString(uri)) + ".");
@@ -121,7 +121,7 @@ public class DayEleven {
 		// How many steps away is the furthest he ever got from his starting
 		// position?
 		System.out.println("Day 11 Part 2");
-		File file = new File("src/main/day11/input.txt");
+		File file = new File("src/main/year2017/day11/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerPartTwoHybrid(GeneralFunction.getInputDelimiterCommaToListString(uri)) + ".");

@@ -74,7 +74,7 @@ public class DayNine {
 		// {{<a!>},{<a!>},{<a!>},{<ab>}}, score of 1 + 2 = 3.
 		// What is the total score for all groups in your input?
 		System.out.println("Day 9 Part 1");
-		File file = new File("src/main/day09/input.txt");
+		File file = new File("src/main/year2017/day09/input.txt");
 		URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 1 is " + getAnswerPartOne(GeneralFunction.getStandardInputString(uri)) + ".");
@@ -96,7 +96,7 @@ public class DayNine {
 //		<{o"i!a,<{i<a>, 10 characters.
 //		How many non-canceled characters are within the garbage in your puzzle input?
 		System.out.println("Day 9 Part 2");
-		File file = new File("src/main/day09/input.txt");
+		File file = new File("src/main/year2017/day09/input.txt");
 		URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 2 is " + getAnswerPartTwo(GeneralFunction.getStandardInputString(uri)) + ".");

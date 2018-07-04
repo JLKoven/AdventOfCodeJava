@@ -51,7 +51,7 @@ public class DayFive {
 		//
 		// How many steps does it take to reach the exit?
 		System.out.println("Day 5 Part 1");
-        File file = new File("src/main/day05/input.txt");
+        File file = new File("src/main/year2017/day05/input.txt");
         URI uri = file.toURI();
 //		System.out.println("Answer to part 1 is "
 //				+ getAnswerDayFivePartOneImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");
@@ -72,7 +72,7 @@ public class DayFive {
 		//
 		// How many steps does it now take to reach the exit?
 		System.out.println("Day 5 Part 2");
-        File file = new File("src/main/day05/input.txt");
+        File file = new File("src/main/year2017/day05/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerDayFivePartTwoImperative(GeneralFunction.getStandardInputListOfIntegers(uri)) + ".");

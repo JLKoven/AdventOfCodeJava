@@ -51,7 +51,7 @@ After 40 million pairs, what is the judge's final count?
 		 */
 
 		System.out.println("Day 15 Part 1");
-		File file = new File("src/main/day15/input.txt");
+		File file = new File("src/main/year2017/day15/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getIntListFromStringList(uri)) + ".");
@@ -108,7 +108,7 @@ After 5 million pairs, but using this new generator logic, what is the judge's f
 		 */
 		
 		System.out.println("Day 15 Part 2");
-		File file = new File("src/main/day15/input.txt");
+		File file = new File("src/main/year2017/day15/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerPartTwoImperative(GeneralFunction.getIntListFromStringList(uri)) + ".");

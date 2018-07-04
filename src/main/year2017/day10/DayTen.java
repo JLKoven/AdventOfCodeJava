@@ -82,7 +82,7 @@ public class DayTen {
 		// Once this process is complete, what is the result of multiplying the
 		// first two numbers in the list?
 		System.out.println("Day 10 Part 1");
-		File file = new File("src/main/day10/input.txt");
+		File file = new File("src/main/year2017/day10/input.txt");
 		URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 1 is " + 
@@ -134,7 +134,7 @@ public class DayTen {
 //		 1,2,4 becomes 63960835bcdc130f0b66d7ff4f6a5a8e.
 //		 Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input? Ignore any leading or trailing whitespace you might encounter.
 	 System.out.println("Day 10 Part 2");
-	 File file = new File("src/main/day10/input.txt");
+	 File file = new File("src/main/year2017/day10/input.txt");
 	 URI uri = file.toURI();
 	 System.out.println(
 	 "Answer to part 2 is " +

@@ -59,7 +59,7 @@ public class DaySix {
 		// produced that has been seen before? System.out.println("Day 6 Part
 		// 1");
 		System.out.println("Day 6 Part 1");
-        File file = new File("src/main/day06/input.txt");
+        File file = new File("src/main/year2017/day06/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfIntegersFromSingleLine(uri)) + ".");
 
@@ -73,7 +73,7 @@ public class DaySix {
 //
 //		How many cycles are in the infinite loop that arises from the configuration in your puzzle input?
 		System.out.println("Day 6 Part 2");
-        File file = new File("src/main/day06/input.txt");
+        File file = new File("src/main/year2017/day06/input.txt");
         URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfIntegersFromSingleLine(uri)) + ".");
 

@@ -72,7 +72,7 @@ public class DayOne {
 		// input provided below
 		//
 		System.out.println("Day 1 Part 1");
-        File file = new File("src/main/day01/input.txt");
+        File file = new File("src/main/year2017/day01/input.txt");
         URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
@@ -101,7 +101,7 @@ public class DayOne {
 		// 12131415 produces 4.
 		// What is the solution to your new captcha?
 		System.out.println("Day 1 Part 2");
-        File file = new File("src/main/day01/input.txt");
+        File file = new File("src/main/year2017/day01/input.txt");
         URI uri = file.toURI();
 		System.out.println(
 				"Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");

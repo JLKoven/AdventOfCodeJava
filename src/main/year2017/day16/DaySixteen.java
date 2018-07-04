@@ -31,7 +31,7 @@ You watch the dance for a while and record their dance moves (your puzzle input)
 		 */
 		
 		System.out.println("Day 16 Part 1");
-		File file = new File("src/main/day16/input.txt");
+		File file = new File("src/main/year2017/day16/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is "
 				+ getAnswerPartOneImperative(GeneralFunction.getStandardInputString(uri)) + ".");
@@ -54,7 +54,7 @@ You watch the dance for a while and record their dance moves (your puzzle input)
 //		In what order are the programs standing after their billion dances?//		 */
 		
 		System.out.println("Day 16 Part 2");
-		File file = new File("src/main/day16/input.txt");
+		File file = new File("src/main/year2017/day16/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is "
 				+ getAnswerPartTwoImperative(GeneralFunction.getStandardInputString(uri)) + ".");

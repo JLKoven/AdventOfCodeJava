@@ -43,7 +43,7 @@ public class DayFourteen {
 //
 //		Given your actual key string, how many squares are used?
 		System.out.println("Day 14 Part 1");
-		File file = new File("src/main/day14/input.txt");
+		File file = new File("src/main/year2017/day14/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputString(uri)) + ".");
 		
@@ -72,7 +72,7 @@ public class DayFourteen {
 //
 //		How many regions are present given your key string?
 		System.out.println("Day 14 Part 2");
-		File file = new File("src/main/day14/input.txt");
+		File file = new File("src/main/year2017/day14/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputString(uri)) + ".");
 		

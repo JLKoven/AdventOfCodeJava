@@ -46,7 +46,7 @@ public class DayEight {
 		// What is the largest value in any register after completing the
 		// instructions in your puzzle input?
 		System.out.println("Day 8 Part 1");
-		File file = new File("src/main/day08/input.txt");
+		File file = new File("src/main/year2017/day08/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 1 is " + getAnswerPartOneImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
@@ -84,7 +84,7 @@ public class DayEight {
 		// What is the largest value in any register after completing the
 		// instructions in your puzzle input?
 		System.out.println("Day 8 Part 2");
-		File file = new File("src/main/day08/input.txt");
+		File file = new File("src/main/year2017/day08/input.txt");
 		URI uri = file.toURI();
 		System.out.println("Answer to part 2 is " + getAnswerPartTwoImperative(GeneralFunction.getStandardInputListOfStrings(uri)) + ".");
 
