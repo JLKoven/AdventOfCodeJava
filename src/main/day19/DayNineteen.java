@@ -55,18 +55,191 @@ public class DayNineteen {
 //		Character nextChar = new Character('|');
 		String currentDirection = "DOWN";
 		while (!finishedMaze){
+			/*
 			currentDirection = processStep(currentDirection, currentCoordinates, 
 					currentDirection, collectedString, grid,
 					grid.getGraphGridMap().get(currentCoordinates));
-			if(weAreAtEdgeOfMaze(currentDirection, currentCoordinates, grid)){
+					*/
+			
+			int currentX =  currentCoordinates.getXCoord();
+			int currentY =  currentCoordinates.getYCoord();
+//			System.out.print("Processing step at x("+currentX+") and y("+currentY+"), ");
+//			System.out.println("with character "+grid.getGraphGridMap().get(currentCoordinates).getData()+".");
+
+//			IntPair newCoordinates = currentCoordinates;//ready for mutation 
+			IntPair newCoordinates = new IntPair();//ready for mutation 
+			newCoordinates.setYCoord(currentY);
+			newCoordinates.setXCoord(currentX);
+
+			switch (grid.getGraphGridMap().get(currentCoordinates).getData()){
+				case '|': 
+				//herp
+					if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				case '-': 
+				//herp
+					if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				case '+': 
+				//herp
+					if ("DOWN".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "LEFT";
+							//set coordinates accordingly 
+							currentX = currentX-1;											
+//						} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "UP";
+//							//set coordinates accordingly 
+//							currentY = currentY-1;
+						} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "RIGHT";
+							//set coordinates accordingly 
+							currentX = currentX+1;
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("UP".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "RIGHT";
+							//set coordinates accordingly 
+							currentX = currentX+1;
+//						} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "DOWN";
+//							//set coordinates accordingly 
+//							currentY = currentY+1;					
+						} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "LEFT";
+							//set coordinates accordingly 
+							currentX = currentX-1;					
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("LEFT".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("UP" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "UP";
+							//set coordinates accordingly 
+							currentY = currentY-1;
+//						} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "RIGHT";
+//							//set coordinates accordingly 
+//							currentX = currentX+1;
+						} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "DOWN";
+							//set coordinates accordingly 
+							currentY = currentY+1;					
+						} else {
+							System.out.println("wait. what?");
+						}
+					} else if ("RIGHT".equals(currentDirection)){
+						//look in the other three directions 
+						//find the first location in Grid which doesn't have a nonblank character 
+						if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "DOWN";
+							//set coordinates accordingly 
+							currentY = currentY+1;					
+//						} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+//							//that's the new direction, set it
+//							currentDirection = "LEFT";
+//							//set coordinates accordingly 
+//							currentX = currentX-1;					
+						} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
+							//that's the new direction, set it
+							currentDirection = "UP";
+							//set coordinates accordingly 
+							currentY = currentY-1;
+						} else {
+							System.out.println("wait. what?");
+						}
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+				default: 
+					collectedString.append(grid.getGraphGridMap().get(currentCoordinates).getData());
+					
+					//test for break
+					
+					if ("DOWN".equals(currentDirection)){
+						currentY = currentY+1;					
+					} else if ("UP".equals(currentDirection)){
+						currentY = currentY-1;
+					} else if ("LEFT".equals(currentDirection)){
+						currentX = currentX-1;					
+					} else if ("RIGHT".equals(currentDirection)){
+						currentX = currentX+1;
+					} else {
+						System.out.println("errorneous direction found with "+currentDirection+".");
+					}
+					newCoordinates.setXCoord(currentX);
+					newCoordinates.setYCoord(currentY);
+					currentCoordinates = newCoordinates;
+					break;
+			}
+			
+
+			if (!grid.getGraphGridMap().containsKey(currentCoordinates)){
 				finishedMaze = true;
 			}
+			if (' '==grid.getGraphGridMap().get(currentCoordinates).getData()){
+				finishedMaze = true;
+			}
+//			System.out.println("now to parse character "+grid.getGraphGridMap().get(currentCoordinates).getData()+".");
+
+			
+//			if(weAreAtEdgeOfMaze(currentDirection, currentCoordinates, grid)){
+//				System.out.println("at edge of maze");
+//				finishedMaze = true;
+//			}
 		}
 		
 		return collectedString.toString();
 	}
 
 	private static boolean weAreAtEdgeOfMaze(String currentDirection, IntPair currentCoordinates, GraphGrid<Character> grid) {
+		System.out.println("current direction is "+currentDirection+".");
 		int baseX = currentCoordinates.getXCoord();
 		int baseY = currentCoordinates.getYCoord();
 		int upY = baseY-1;
@@ -88,25 +261,25 @@ public class DayNineteen {
 		
 		if ("LEFT" == currentDirection){
 			if (!grid.getGraphGridMap().containsKey(leftCoord)){
-				return false;
-			}
+				return true;
+			} 
 		} else if ("UP" == currentDirection){
 			if (!grid.getGraphGridMap().containsKey(upCoord)){
-				return false;
+				return true;
 			}
 			
 		} else if ("RIGHT" == currentDirection){
 			if (!grid.getGraphGridMap().containsKey(rightCoord)){
-				return false;
+				return true;
 			}
 			
 		} else if ("DOWN" == currentDirection){
 			if (!grid.getGraphGridMap().containsKey(downCoord)){
-				return false;
+				return true;
 			}
 			
 		} else {
-			System.out.println("error weird direction found with "+currentDirection+".");
+			System.out.println("errorneous direction found with "+currentDirection+".");
 		}
 		return false;
 	}
@@ -115,141 +288,7 @@ public class DayNineteen {
 			IntPair currentCoordinates, String currentDirection, 
 			StringBuilder collectedString, GraphGrid<Character> grid, 
 			GraphGridNode<Character> graphGridNode) {
-		int currentX =  currentCoordinates.getXCoord();
-		int currentY =  currentCoordinates.getYCoord();
-		System.out.println("Processing step at x("+currentX+") and y("+currentY+"), with character "+graphGridNode.getData()+".");
 
-//		IntPair newCoordinates = currentCoordinates;//ready for mutation 
-		IntPair newCoordinates = new IntPair();//ready for mutation 
-		newCoordinates.setYCoord(currentY);
-		newCoordinates.setXCoord(currentX);
-
-		switch (graphGridNode.getData()){
-			case '|': 
-			//herp
-				if ("DOWN".equals(currentDirection)){
-					currentY = currentY-1;					
-				} else if ("UP".equals(currentDirection)){
-					currentY = currentY+1;
-				} else {
-					System.out.println("Error! Direction fail!");
-				}
-				newCoordinates.setXCoord(currentX);
-				newCoordinates.setYCoord(currentY);
-				currentCoordinates = newCoordinates;
-				break;
-			case '-': 
-			//herp
-				if ("LEFT".equals(currentDirection)){
-					currentX = currentX-1;					
-				} else if ("RIGHT".equals(currentDirection)){
-					currentX = currentX+1;
-				} else {
-					System.out.println("Error! Direction fail!");
-				}
-				newCoordinates.setXCoord(currentX);
-				newCoordinates.setYCoord(currentY);
-				currentCoordinates = newCoordinates;
-				break;
-			case '+': 
-			//herp
-				if ("DOWN".equals(currentDirection)){
-					//look in the other three directions 
-					//find the first location in Grid which doesn't have a nonblank character 
-					if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "LEFT";
-						//set coordinates accordingly 
-						currentX = currentX-1;											
-					} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "UP";
-						//set coordinates accordingly 
-						currentY = currentY+1;
-					} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("DOWN", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "RIGHT";
-						//set coordinates accordingly 
-						currentX = currentX+1;
-					} 
-				} else if ("UP".equals(currentDirection)){
-					//look in the other three directions 
-					//find the first location in Grid which doesn't have a nonblank character 
-					if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "RIGHT";
-						//set coordinates accordingly 
-						currentX = currentX+1;
-					} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "DOWN";
-						//set coordinates accordingly 
-						currentY = currentY-1;					
-					} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("UP", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "LEFT";
-						//set coordinates accordingly 
-						currentX = currentX-1;					
-					} 
-				} else if ("LEFT".equals(currentDirection)){
-					//look in the other three directions 
-					//find the first location in Grid which doesn't have a nonblank character 
-					if ("UP" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "UP";
-						//set coordinates accordingly 
-						currentY = currentY+1;
-					} else if ("RIGHT" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "RIGHT";
-						//set coordinates accordingly 
-						currentX = currentX+1;
-					} else if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("LEFT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "DOWN";
-						//set coordinates accordingly 
-						currentY = currentY-1;					
-					} 
-				} else if ("RIGHT".equals(currentDirection)){
-					//look in the other three directions 
-					//find the first location in Grid which doesn't have a nonblank character 
-					if ("DOWN" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "DOWN";
-						//set coordinates accordingly 
-						currentY = currentY-1;					
-					} else if ("LEFT" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "LEFT";
-						//set coordinates accordingly 
-						currentX = currentX-1;					
-					} else if ("UP" == (coordinatesNonblankAtDirectionOtherThan("RIGHT", currentCoordinates, grid))){
-						//that's the new direction, set it
-						currentDirection = "UP";
-						//set coordinates accordingly 
-						currentY = currentY+1;
-					} 
-				}
-				newCoordinates.setXCoord(currentX);
-				newCoordinates.setYCoord(currentY);
-				currentCoordinates = newCoordinates;
-				break;
-			default: 
-				collectedString.append(graphGridNode.getData());
-				if ("DOWN".equals(currentDirection)){
-					currentY = currentY-1;					
-				} else if ("UP".equals(currentDirection)){
-					currentY = currentY+1;
-				} else if ("LEFT".equals(currentDirection)){
-					currentX = currentX-1;					
-				} else if ("RIGHT".equals(currentDirection)){
-					currentX = currentX+1;
-				}
-				newCoordinates.setXCoord(currentX);
-				newCoordinates.setYCoord(currentY);
-				currentCoordinates = newCoordinates;
-				break;
-		}
 		/*
 |
 -
@@ -282,19 +321,19 @@ else
 		
 		
 		if ("LEFT".equals(initialDirection)){
-			//check 3 other directions 
+			//check 2 other directions 
 			//check up
 			if (grid.getGraphGridMap().containsKey(upCoord)){
 				if (' '!=grid.getGraphGridMap().get(upCoord).getData()){
 					return "UP";
 				}
 			}
-			//check right
-			if (grid.getGraphGridMap().containsKey(rightCoord)){
-				if (' '!=grid.getGraphGridMap().get(rightCoord).getData()){
-					return "RIGHT";
-				}
-			}
+//			//check right
+//			if (grid.getGraphGridMap().containsKey(rightCoord)){
+//				if (' '!=grid.getGraphGridMap().get(rightCoord).getData()){
+//					return "RIGHT";
+//				}
+//			}
 			//check down 
 			if (grid.getGraphGridMap().containsKey(downCoord)){
 				if (' '!=grid.getGraphGridMap().get(downCoord).getData()){
@@ -302,19 +341,19 @@ else
 				}
 			}
 		} else if ("UP".equals(initialDirection)){
-			//check 3 other directions 
+			//check 2 other directions 
 			//check right
 			if (grid.getGraphGridMap().containsKey(rightCoord)){
 				if (' '!=grid.getGraphGridMap().get(rightCoord).getData()){
 					return "RIGHT";
 				}
 			}
-			//check down 
-			if (grid.getGraphGridMap().containsKey(downCoord)){
-				if (' '!=grid.getGraphGridMap().get(downCoord).getData()){
-					return "DOWN";
-				}
-			}
+//			//check down 
+//			if (grid.getGraphGridMap().containsKey(downCoord)){
+//				if (' '!=grid.getGraphGridMap().get(downCoord).getData()){
+//					return "DOWN";
+//				}
+//			}
 			//check left 
 			if (grid.getGraphGridMap().containsKey(leftCoord)){
 				if (' '!=grid.getGraphGridMap().get(leftCoord).getData()){
@@ -322,7 +361,7 @@ else
 				}
 			}
 		} else if ("RIGHT".equals(initialDirection)){
-			//check 3 other directions 
+			//check 2 other directions 
 			//check up
 			if (grid.getGraphGridMap().containsKey(upCoord)){
 				if (' '!=grid.getGraphGridMap().get(upCoord).getData()){
@@ -335,21 +374,21 @@ else
 					return "DOWN";
 				}
 			}
-			//check left 
-			if (grid.getGraphGridMap().containsKey(leftCoord)){
-				if (' '!=grid.getGraphGridMap().get(leftCoord).getData()){
-					return "LEFT";
-				}
-			}
+//			//check left 
+//			if (grid.getGraphGridMap().containsKey(leftCoord)){
+//				if (' '!=grid.getGraphGridMap().get(leftCoord).getData()){
+//					return "LEFT";
+//				}
+//			}
 		} else if ("DOWN".equals(initialDirection)){
-			//check 3 other directions 
+			//check 2 other directions 
 			//check up
-			if (grid.getGraphGridMap().containsKey(upCoord)){
-				if (' '!=grid.getGraphGridMap().get(upCoord).getData()){
-					return "UP";
-				}
-			}
-			//check right
+//			if (grid.getGraphGridMap().containsKey(upCoord)){
+//				if (' '!=grid.getGraphGridMap().get(upCoord).getData()){
+//					return "UP";
+//				}
+//			}
+//			//check right
 			if (grid.getGraphGridMap().containsKey(rightCoord)){
 				if (' '!=grid.getGraphGridMap().get(rightCoord).getData()){
 					return "RIGHT";
