@@ -1,4 +1,4 @@
-package test.day07;
+package test.year2017.day07;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.day07.DaySeven;
-import main.day07.DiscForTowerImperative;
+import main.year2017.day07.DaySeven;
+import main.year2017.day07.DiscForTowerImperative;
 
 public class TestDaySeven {
 

@@ -1,4 +1,4 @@
-package test.day15;
+package test.year2017.day15;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.day15.DayFifteen;
+import main.year2017.day15.DayFifteen;
 
 public class TestDayFifteen {
 	

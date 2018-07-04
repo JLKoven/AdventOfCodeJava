@@ -1,10 +1,10 @@
-package test.day03;
+package test.year2017.day03;
 import static org.junit.Assert.*;
 
 
 import org.junit.Test;
 
-import main.day03.DayThree;
+import main.year2017.day03.DayThree;
 
 public class TestDayThree {
 

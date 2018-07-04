@@ -1,4 +1,4 @@
-package main.day13;
+package main.year2017.day13;
 
 import java.util.HashMap;
 import java.util.Map;

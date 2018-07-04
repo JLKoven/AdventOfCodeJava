@@ -1,4 +1,4 @@
-package test.day03;
+package test.year2017.day03;
 
 import static org.junit.Assert.*;
 
@@ -8,9 +8,9 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import main.day03.DayThree;
-import main.day03.SpiralGridCellImperative;
-import main.day03.SpiralGridImperative;
+import main.year2017.day03.DayThree;
+import main.year2017.day03.SpiralGridCellImperative;
+import main.year2017.day03.SpiralGridImperative;
 
 public class TestSpiralGridImperative {
 	

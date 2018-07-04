@@ -1,4 +1,4 @@
-package test.day06;
+package test.year2017.day06;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.day06.DaySix;
+import main.year2017.day06.DaySix;
 
 public class TestDaySix {
 

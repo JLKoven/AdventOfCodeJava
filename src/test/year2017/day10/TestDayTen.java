@@ -1,4 +1,4 @@
-package test.day10;
+package test.year2017.day10;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.junit.Test;
 
-import main.day10.DayTen;
-import main.day10.HashStructure;
+import main.year2017.day10.DayTen;
+import main.year2017.day10.HashStructure;
 
 public class TestDayTen {
 
