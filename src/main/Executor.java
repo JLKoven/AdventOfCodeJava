@@ -19,6 +19,7 @@ import main.year2017.day16.DaySixteen;
 import main.year2017.day17.DaySeventeen;
 import main.year2017.day18.DayEighteen;
 import main.year2017.day19.DayNineteen;
+import main.year2017.day20.DayTwenty;
 
 public class Executor {
 
@@ -79,9 +80,9 @@ public class Executor {
 //		DayEighteen.executeStandardPart2(); not yet implemented
 //		
 //		DayNineteen.executeStandardPart1();
-		DayNineteen.executeStandardPart2();
-//		
-//		DayTwenty.executeStandardPart1();
+//		DayNineteen.executeStandardPart2();
+		
+		DayTwenty.executeStandardPart1();
 //		DayTwenty.executeStandardPart2();
 //		
 //		DayTwentyOne.executeStandardPart1();

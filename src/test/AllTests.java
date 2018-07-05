@@ -27,6 +27,7 @@ import test.year2017.day16.TestDaySixteen;
 import test.year2017.day17.TestDaySeventeen;
 import test.year2017.day18.TestDayEighteen;
 import test.year2017.day19.TestDayNineteen;
+import test.year2017.day20.TestDayTwenty;
 
 @RunWith(Suite.class)
 @SuiteClasses({TestGeneralFunction.class, TestIntPair.class, 
