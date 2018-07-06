@@ -29,7 +29,6 @@ p=<-1846,-1539,-1147>, v=<88,145,67>, a=<6,-5,2>		 */
 //				p=< 2,0,0>, v=<-2,0,0>, a=<-2,0,0>                      (1)   (0)
 
 		Integer particleID = DayTwenty.getAnswerPartOneImperative(particleSetInitialization);
-		System.out.println("found "+particleID+".");
 		assertEquals(particleID.equals(0), true);
 		System.out.println("Success on Day20.testPartOneTest1!");
 	}

@@ -58,6 +58,8 @@ public class DayTwenty {
 			if (-1 == particleList.get(i).getManhattanAccelerationFromOrigin().compareTo(min)){
 				particleID = i;
 				min = particleList.get(i).getManhattanAccelerationFromOrigin();
+			} else if (0 == particleList.get(i).getManhattanAccelerationFromOrigin().compareTo(min)){
+				//TODO
 			}
 		}
 		return particleID;
@@ -78,14 +80,14 @@ public class DayTwenty {
 			String initialVelocity = positionVelocityAcceleration[1];
 			initialVelocity = initialVelocity.substring(3);
 			initialVelocity = initialVelocity.substring(0, initialVelocity.length()-2);
-			String[] velocitySet = initialPosition.split("\\,");
+			String[] velocitySet = initialVelocity.split("\\,");
 			particle.setCurrentXCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[0])));
 			particle.setCurrentYCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[1])));
 			particle.setCurrentZCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[2])));
 			String initialAcceleration = positionVelocityAcceleration[2];
 			initialAcceleration = initialAcceleration.substring(3);
 			initialAcceleration = initialAcceleration.substring(0, initialAcceleration.length()-1);
-			String[] accelerationSet = initialPosition.split("\\,");
+			String[] accelerationSet = initialAcceleration.split("\\,");
 			particle.setCurrentXCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[0])));
 			particle.setCurrentYCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[1])));
 			particle.setCurrentZCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[2])));
