@@ -25,7 +25,7 @@ public class TestDayNineteen {
 		String value = DayNineteen.getAnswerPartOneImperative(gridLayout);
 //		System.out.println("found "+value+".");
 		assertEquals(value.equals("ABCDEF"), true);
-		System.out.println("Success on Day18.testPartOneTest1!");
+		System.out.println("Success on Day19.testPartOneTest1!");
 	}
 
 	 @Test
@@ -45,7 +45,7 @@ public class TestDayNineteen {
 	 value.equals(38)
 	 ,
 	 true);
-	 System.out.println("Success on Day18.testPartOneTest2!");
+	 System.out.println("Success on Day19.testPartOneTest2!");
 	 }
 
 }

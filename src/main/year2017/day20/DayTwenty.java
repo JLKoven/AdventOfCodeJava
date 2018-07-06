@@ -52,12 +52,12 @@ public class DayTwenty {
 
 	public static Integer getAnswerPartOneImperative(List<String> particleSetInitialization) {
 		List<Particle> particleList = getParticleListFrom(particleSetInitialization);
-		BigInteger max = BigInteger.valueOf(0);
-		int particleID = -1;
+		BigInteger min = particleList.get(0).getManhattanAccelerationFromOrigin();
+		int particleID = 0;
 		for (int i=0; i<particleList.size(); i++){
-			if (1 == particleList.get(i).getDistanceFromOrigin().compareTo(max)){
+			if (-1 == particleList.get(i).getManhattanAccelerationFromOrigin().compareTo(min)){
 				particleID = i;
-				max = particleList.get(i).getDistanceFromOrigin();
+				min = particleList.get(i).getManhattanAccelerationFromOrigin();
 			}
 		}
 		return particleID;
@@ -66,9 +66,31 @@ public class DayTwenty {
 	private static List<Particle> getParticleListFrom(List<String> particleSetInitialization) {
 		List<Particle> particleList = new ArrayList<>();
 		for (String particleSetString : particleSetInitialization){
-			//parse string to particle
+			Particle particle = new Particle();
+			String[] positionVelocityAcceleration = particleSetString.split("\\s+");
+			String initialPosition = positionVelocityAcceleration[0];
+			initialPosition = initialPosition.substring(3);
+			initialPosition = initialPosition.substring(0, initialPosition.length()-2);
+			String[] positionSet = initialPosition.split("\\,");
+			particle.setCurrentXCoordPosition(BigInteger.valueOf(Integer.parseInt(positionSet[0])));
+			particle.setCurrentYCoordPosition(BigInteger.valueOf(Integer.parseInt(positionSet[1])));
+			particle.setCurrentZCoordPosition(BigInteger.valueOf(Integer.parseInt(positionSet[2])));
+			String initialVelocity = positionVelocityAcceleration[1];
+			initialVelocity = initialVelocity.substring(3);
+			initialVelocity = initialVelocity.substring(0, initialVelocity.length()-2);
+			String[] velocitySet = initialPosition.split("\\,");
+			particle.setCurrentXCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[0])));
+			particle.setCurrentYCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[1])));
+			particle.setCurrentZCoordVelocity(BigInteger.valueOf(Integer.parseInt(velocitySet[2])));
+			String initialAcceleration = positionVelocityAcceleration[2];
+			initialAcceleration = initialAcceleration.substring(3);
+			initialAcceleration = initialAcceleration.substring(0, initialAcceleration.length()-1);
+			String[] accelerationSet = initialPosition.split("\\,");
+			particle.setCurrentXCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[0])));
+			particle.setCurrentYCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[1])));
+			particle.setCurrentZCoordAcceleration(BigInteger.valueOf(Integer.parseInt(accelerationSet[2])));
+			particleList.add(particle);
 		}
 		return particleList;
 	}
-
 }

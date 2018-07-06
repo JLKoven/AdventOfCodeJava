@@ -70,9 +70,26 @@ public class Particle {
 	}
 	
 	
-	public BigInteger getDistanceFromOrigin() {
-		// TODO Auto-generated method stub
-		return BigInteger.valueOf(0);
+	public BigInteger getManhattanDistanceFromOrigin() {
+		return (getCurrentXCoordPosition().abs()).add(
+				(
+						(getCurrentYCoordPosition().abs()).add(
+								(getCurrentZCoordPosition().abs())
+								)
+						)
+				);
+				//BigInteger.valueOf(1)+;
+	}
+	
+	public BigInteger getManhattanAccelerationFromOrigin() {
+		return (getCurrentXCoordAcceleration().abs()).add(
+				(
+						(getCurrentYCoordAcceleration().abs()).add(
+								(getCurrentZCoordAcceleration().abs())
+								)
+						)
+				);
+				//BigInteger.valueOf(1)+;
 	}
 
 	
