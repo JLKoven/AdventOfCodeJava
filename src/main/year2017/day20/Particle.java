@@ -91,6 +91,21 @@ public class Particle {
 				);
 				//BigInteger.valueOf(1)+;
 	}
+	
+	public void tick() {
+		//Increase the X velocity by the X acceleration.
+		currentXCoordVelocity = currentXCoordVelocity.add(currentXCoordAcceleration);
+		//Increase the Y velocity by the Y acceleration.
+		currentYCoordVelocity = currentYCoordVelocity.add(currentYCoordAcceleration);
+		//Increase the Z velocity by the Z acceleration.
+		currentZCoordVelocity = currentZCoordVelocity.add(currentZCoordAcceleration);
+		//Increase the X position by the X velocity.
+		currentXCoordPosition = currentXCoordPosition.add(currentXCoordVelocity);
+		//Increase the Y position by the Y velocity.
+		currentYCoordPosition = currentYCoordPosition.add(currentYCoordVelocity);
+		//Increase the Z position by the Z velocity.
+		currentZCoordPosition = currentZCoordPosition.add(currentZCoordVelocity);
+	}
 
 	
 //	int currentXCoordPosition = 0;
