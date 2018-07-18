@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 //import java.util.HashSet;
@@ -12,6 +13,8 @@ import java.util.List;
 //import java.util.Set;
 import java.util.Map;
 import java.util.Set;
+
+import javax.print.attribute.SetOfIntegerSyntax;
 
 import main.BigIntTriad;
 import main.GeneralFunction;
@@ -114,18 +117,18 @@ public class DayTwenty {
 
 	private static Integer getAnswerPartTwoImperative(List<String> particleSetInitialization) {
 		List<Particle> particleList = getParticleListFrom(particleSetInitialization);
-		int listCount = particleList.size();
-		for (int i=0; i<10000; i++){//HACKY
+		for (int i=0; i<2000; i++){//HACKY
 			particleList = collisionCheck(particleList);
 			for (Particle particle : particleList){
 				particle.tick();
 			}
 		}
-		return listCount;
+		return particleList.size();
 	}
 
 	private static List<Particle> collisionCheck(List<Particle> particleList) {
-		Set<Particle> listOfParticlesToDelete = new HashSet();
+		//Set<Particle> listOfParticlesToDelete = new HashSet<>();
+		Set<Integer> setOfIDsToDelete = new HashSet<>();
 		for (int i=0; i<particleList.size(); i++) {
 			for (int v=i+1; v<particleList.size(); v++){
 				if (
@@ -134,23 +137,40 @@ public class DayTwenty {
 &&						(particleList.get(i).getCurrentZCoordPosition().equals(particleList.get(v).getCurrentZCoordPosition()))
 								){
 					System.out.println("Found a collision at "+i+" and "+v+".");
-					listOfParticlesToDelete.add(particleList.get(i));
-					listOfParticlesToDelete.add(particleList.get(v));
+					setOfIDsToDelete.add(i);
+					setOfIDsToDelete.add(v);
+//					listOfParticlesToDelete.add(particleList.get(i));
+//					listOfParticlesToDelete.add(particleList.get(v));
 				}
 			}
 		}
-		List<Particle> newParticleList = new ArrayList<>();
-		for (int i=0; i<particleList.size(); i++) {
-//			if (!listOfParticlesToDelete.contains(particleList.get(i))){
+		List<Integer> arrayListOfIDsToDelete = new ArrayList<>();
+		for (Integer idNum : setOfIDsToDelete){
+			arrayListOfIDsToDelete.add(idNum);
+		}
+		
+		Collections.sort(arrayListOfIDsToDelete);
+		System.out.println("particleList.size() is "+particleList.size()+".");
+		for (int i=arrayListOfIDsToDelete.size()-1; i>0; i--){
+			System.out.println("deleting at "+arrayListOfIDsToDelete.get(i)+".");
+//			particleList.remove(arrayListOfIDsToDelete.get(i));
+			particleList.remove(particleList.get(arrayListOfIDsToDelete.get(i)));
+		}
+		System.out.println("particleList.size() is now "+particleList.size()+".");
+		
+		return particleList;
+//		List<Particle> newParticleList = new ArrayList<>();
+//		for (int i=0; i<particleList.size(); i++) {
+////			if (!listOfParticlesToDelete.contains(particleList.get(i))){
+////				newParticleList.add(particleList.get(i));
+////			}
+//			boolean flaggedForDelete = false;
+//			
+//			if (flaggedForDelete){
 //				newParticleList.add(particleList.get(i));
 //			}
-			boolean flaggedForDelete = false;
-			
-			if (flaggedForDelete){
-				newParticleList.add(particleList.get(i));
-			}
-		}
-		return newParticleList;
+//		}
+//		return newParticleList;
 	}
 
 	private static List<Particle> collisionCheckDoesNotWork(List<Particle> particleList) {
