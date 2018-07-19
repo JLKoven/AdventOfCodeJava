@@ -118,7 +118,7 @@ public class DayTwenty {
 	private static Integer getAnswerPartTwoImperative(List<String> particleSetInitialization) {
 		List<Particle> particleList = getParticleListFrom(particleSetInitialization);
 		for (int i=0; i<2000; i++){//HACKY
-			particleList = collisionCheck(particleList);
+			particleList = collisionCheckDoesNotWorkEither(particleList);
 			for (Particle particle : particleList){
 				particle.tick();
 			}
@@ -126,7 +126,7 @@ public class DayTwenty {
 		return particleList.size();
 	}
 
-	private static List<Particle> collisionCheck(List<Particle> particleList) {
+	private static List<Particle> collisionCheckDoesNotWorkEither(List<Particle> particleList) {
 		//Set<Particle> listOfParticlesToDelete = new HashSet<>();
 		Set<Integer> setOfIDsToDelete = new HashSet<>();
 		for (int i=0; i<particleList.size(); i++) {
