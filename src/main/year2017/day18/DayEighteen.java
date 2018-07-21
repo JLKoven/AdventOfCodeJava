@@ -203,8 +203,8 @@ public class DayEighteen {
 		programZero.setDuetPartner(programOne);
 //		Map<Character, BigInteger> registerSoundZero = initializeAZHashMap(BigInteger.valueOf(0));
 //		Map<Character, BigInteger> registerSoundOne = initializeAZHashMap(BigInteger.valueOf(1));
-		Map<Character, BigInteger> registerSoundZero = initializeInstructions(tabletInstructions, BigInteger.valueOf(0));
-		Map<Character, BigInteger> registerSoundOne = initializeInstructions(tabletInstructions, BigInteger.valueOf(1));
+		BigInteger[] registerSoundZero = initializeInstructions(tabletInstructions, BigInteger.valueOf(0));
+		BigInteger[] registerSoundOne = initializeInstructions(tabletInstructions, BigInteger.valueOf(1));
 		programZero.setRegisterSound(registerSoundZero);
 		programOne.setRegisterSound(registerSoundOne);
 		programZero.setTabletInstructions(tabletInstructions);
@@ -280,14 +280,16 @@ public class DayEighteen {
 	   
 	
 
-	private static Map<Character, BigInteger> initializeInstructions(List<String> tabletInstructions,
+	private static BigInteger[] initializeInstructions(List<String> tabletInstructions,
 			BigInteger valueOf) {
-		Map<Character, BigInteger> registerSound = new HashMap<>();
-		for (String instruction: tabletInstructions){
-			String[] instructionSet = instruction.split("\\s+");			
-			registerSound.put(instructionSet[1].charAt(0), valueOf);
-		}
-		return registerSound;	}
+        BigInteger[] registers = new BigInteger[26];
+        for(int i = 0; i < registers.length; i++) {
+            registers[i] = BigInteger.ZERO;
+        }
+        registers['p' - 'a'] = valueOf;
+        return registers;
+	}
+		
 
 //	private static Map<Character, BigInteger> initializeAZHashMap(BigInteger valueOf) {
 //		Map<Character, BigInteger> mapToReturn = new HashMap<>();
