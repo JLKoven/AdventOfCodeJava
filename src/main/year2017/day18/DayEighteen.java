@@ -207,16 +207,16 @@ public class DayEighteen {
 		registerSoundOne = initializeInstructions(tabletInstructions);
 		programZero.setRegisterSound(registerSoundZero);
 		programOne.setRegisterSound(registerSoundOne);
+		programZero.setTabletInstructions(tabletInstructions);
+		programOne.setTabletInstructions(tabletInstructions);
 		while (
-				(
+				!((
 						programZero.isDone()
-				)
-				&&
-				(
+						&&
 						programOne.isDone()
-				)
-
-				)
+				)||
+						(programZero.isWaiting() && programOne.isWaiting())))
+				
 				{
 			
 			//program 0 processes instructions until it can't go further 
@@ -231,18 +231,28 @@ public class DayEighteen {
 			// check if it is done
 			// mark it as waiting
 			
-			while (
-					(!(currentProgram.isWaiting()))
-				&&
-				(!currentProgram.isDone())
-			){
-				//process a step
-				currentProgram.processStep(tabletInstructions);
-			} 
+//			while (
+//					(!(currentProgram.isWaiting()))
+//				&&
+//				(!currentProgram.isDone())
+//			){
+//				//process a step
+//				currentProgram.processStep(tabletInstructions);
+//			} 
+//			
+//			currentProgram = currentProgram.getDuetPartner();
 			
-			currentProgram = currentProgram.getDuetPartner();
+			while (!programZero.isDone() && !programZero.isWaiting()){
+//				programZero.processStep(tabletInstructions);
+				programZero.processStep();
+				System.out.println("processing program zero");
+			}
 			
-			
+			while (!programOne.isDone() && !programOne.isWaiting()){
+//				programOne.processStep(tabletInstructions);
+				programOne.processStep();
+				System.out.println("processing program one");
+			}
 			
 			
 		}
