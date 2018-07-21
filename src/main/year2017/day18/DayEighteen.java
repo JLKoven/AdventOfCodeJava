@@ -201,10 +201,10 @@ public class DayEighteen {
 		DuetProgram currentProgram = programZero;
 		programOne.setDuetPartner(programZero);
 		programZero.setDuetPartner(programOne);
-		Map<Character, BigInteger> registerSoundZero = new HashMap<>();
-		Map<Character, BigInteger> registerSoundOne = new HashMap<>();
-		registerSoundZero = initializeInstructions(tabletInstructions);
-		registerSoundOne = initializeInstructions(tabletInstructions);
+//		Map<Character, BigInteger> registerSoundZero = initializeAZHashMap(BigInteger.valueOf(0));
+//		Map<Character, BigInteger> registerSoundOne = initializeAZHashMap(BigInteger.valueOf(1));
+		Map<Character, BigInteger> registerSoundZero = initializeInstructions(tabletInstructions, BigInteger.valueOf(0));
+		Map<Character, BigInteger> registerSoundOne = initializeInstructions(tabletInstructions, BigInteger.valueOf(1));
 		programZero.setRegisterSound(registerSoundZero);
 		programOne.setRegisterSound(registerSoundOne);
 		programZero.setTabletInstructions(tabletInstructions);
@@ -245,20 +245,70 @@ public class DayEighteen {
 			while (!programZero.isDone() && !programZero.isWaiting()){
 //				programZero.processStep(tabletInstructions);
 				programZero.processStep();
-				System.out.println("processing program zero");
+//				System.out.println("processing program zero");
 			}
 			
 			while (!programOne.isDone() && !programOne.isWaiting()){
 //				programOne.processStep(tabletInstructions);
 				programOne.processStep();
-				System.out.println("processing program one");
+//				System.out.println("processing program one");
 			}
 			
 			
 		}
 		return programOne.getMessagesSent();
+		
+		//	    final DuetProgram programZero = new DuetProgram(tabletInstructions, 0);
+//	    final DuetProgram programOne = new DuetProgram(tabletInstructions, 1);
+//
+//	    programZero.setDuetPartner(programOne);
+//	    programOne.setDuetPartner(programZero);
+//
+//	    while(!((programZero.isDone() && programOne.isDone()) || 
+//	    		(programZero.isWaiting() && programOne.isWaiting()))) {
+//	        while(!programZero.isDone() && !programZero.isWaiting()) {
+////	            programZero.processInstructions();
+//	        }
+//
+//	        while(!programOne.isDone() && !programOne.isWaiting()) {
+////	            programOne.processInstructions();
+//	        }
+//	    }
+//
+//	    return programOne.getMessagesSent();
 	}
+	   
 	
+
+	private static Map<Character, BigInteger> initializeInstructions(List<String> tabletInstructions,
+			BigInteger valueOf) {
+		Map<Character, BigInteger> registerSound = new HashMap<>();
+		for (String instruction: tabletInstructions){
+			String[] instructionSet = instruction.split("\\s+");			
+			registerSound.put(instructionSet[1].charAt(0), valueOf);
+		}
+		return registerSound;	}
+
+//	private static Map<Character, BigInteger> initializeAZHashMap(BigInteger valueOf) {
+//		Map<Character, BigInteger> mapToReturn = new HashMap<>();
+//		mapToReturn.put('a', valueOf);
+//		mapToReturn.put('b', valueOf);
+//		mapToReturn.put('c', valueOf);
+//		mapToReturn.put('d', valueOf);
+//		mapToReturn.put('e', valueOf);
+//		mapToReturn.put('f', valueOf);
+//		mapToReturn.put('g', valueOf);
+//		mapToReturn.put('h', valueOf);
+//		mapToReturn.put('i', valueOf);
+//		mapToReturn.put('j', valueOf);
+//		mapToReturn.put('k', valueOf);
+//		mapToReturn.put('l', valueOf);
+//		mapToReturn.put('m', valueOf);
+//		mapToReturn.put('n', valueOf);
+//		mapToReturn.put('o', valueOf);
+//		mapToReturn.put('p', valueOf);
+//		return mapToReturn;
+//	}
 
 	private static Map<Character, BigInteger> initializeInstructions(List<String> tabletInstructions) {
 		Map<Character, BigInteger> registerSound = new HashMap<>();

@@ -30,6 +30,22 @@ public class DuetProgram {
 
 	// Private queue
 
+	/*
+	public DuetProgram(List<String> instructions, int id) {
+	       this.tabletInstructions = instructions;
+	        currentIndex = 0;
+	        messagesSent = 0;
+	        instructionQueue = new ArrayDeque<>();
+*/
+/*	        registers = new BigInteger[26];
+	        for(int i = 0; i < registers.length; i++) {
+	            registers[i] = BigInteger.ZERO;
+	        }
+	        registers['p' - 'a'] = BigInteger.valueOf(id);
+	        */
+//	}
+
+
 	public List<String> getTabletInstructions() {
 		return tabletInstructions;
 	}
