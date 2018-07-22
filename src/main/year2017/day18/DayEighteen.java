@@ -190,21 +190,14 @@ public class DayEighteen {
 	}
 	
 	public static Integer getAnswerPartTwoImperative(List<String> tabletInstructions) {
-		//doesn't work
-//		boolean terminated = false;
-		int currentIndex = 0;
-//		BigInteger lastPlayedSound =  BigInteger.valueOf(0);
-		Integer messagesSentByOne = 0;
-		Integer instructionsSize = tabletInstructions.size();
 		DuetProgram programZero = new DuetProgram();
 		DuetProgram programOne = new DuetProgram();
-		DuetProgram currentProgram = programZero;
 		programOne.setDuetPartner(programZero);
 		programZero.setDuetPartner(programOne);
-//		Map<Character, BigInteger> registerSoundZero = initializeAZHashMap(BigInteger.valueOf(0));
-//		Map<Character, BigInteger> registerSoundOne = initializeAZHashMap(BigInteger.valueOf(1));
-		BigInteger[] registerSoundZero = initializeInstructions(tabletInstructions, BigInteger.valueOf(0));
-		BigInteger[] registerSoundOne = initializeInstructions(tabletInstructions, BigInteger.valueOf(1));
+		Map<Character, BigInteger> registerSoundZero = initializeAZHashMap(BigInteger.valueOf(0));
+		Map<Character, BigInteger> registerSoundOne = initializeAZHashMap(BigInteger.valueOf(1));
+//		BigInteger[] registerSoundZero = initializeInstructions(tabletInstructions, BigInteger.valueOf(0));
+//		BigInteger[] registerSoundOne = initializeInstructions(tabletInstructions, BigInteger.valueOf(1));
 		programZero.setRegisterSound(registerSoundZero);
 		programOne.setRegisterSound(registerSoundOne);
 		programZero.setTabletInstructions(tabletInstructions);
@@ -280,37 +273,39 @@ public class DayEighteen {
 	   
 	
 
+
+
 	private static BigInteger[] initializeInstructions(List<String> tabletInstructions,
 			BigInteger valueOf) {
-        BigInteger[] registers = new BigInteger[26];
+        BigInteger[] registers = new BigInteger[16];
         for(int i = 0; i < registers.length; i++) {
-            registers[i] = BigInteger.ZERO;
+            registers[i] = valueOf;
         }
-        registers['p' - 'a'] = valueOf;
+//        registers['p' - 'a'] = valueOf;
         return registers;
 	}
 		
 
-//	private static Map<Character, BigInteger> initializeAZHashMap(BigInteger valueOf) {
-//		Map<Character, BigInteger> mapToReturn = new HashMap<>();
-//		mapToReturn.put('a', valueOf);
-//		mapToReturn.put('b', valueOf);
-//		mapToReturn.put('c', valueOf);
-//		mapToReturn.put('d', valueOf);
-//		mapToReturn.put('e', valueOf);
-//		mapToReturn.put('f', valueOf);
-//		mapToReturn.put('g', valueOf);
-//		mapToReturn.put('h', valueOf);
-//		mapToReturn.put('i', valueOf);
-//		mapToReturn.put('j', valueOf);
-//		mapToReturn.put('k', valueOf);
-//		mapToReturn.put('l', valueOf);
-//		mapToReturn.put('m', valueOf);
-//		mapToReturn.put('n', valueOf);
-//		mapToReturn.put('o', valueOf);
-//		mapToReturn.put('p', valueOf);
-//		return mapToReturn;
-//	}
+	private static Map<Character, BigInteger> initializeAZHashMap(BigInteger valueOf) {
+		Map<Character, BigInteger> mapToReturn = new HashMap<>();
+		mapToReturn.put('a', valueOf);
+		mapToReturn.put('b', valueOf);
+		mapToReturn.put('c', valueOf);
+		mapToReturn.put('d', valueOf);
+		mapToReturn.put('e', valueOf);
+		mapToReturn.put('f', valueOf);
+		mapToReturn.put('g', valueOf);
+		mapToReturn.put('h', valueOf);
+		mapToReturn.put('i', valueOf);
+		mapToReturn.put('j', valueOf);
+		mapToReturn.put('k', valueOf);
+		mapToReturn.put('l', valueOf);
+		mapToReturn.put('m', valueOf);
+		mapToReturn.put('n', valueOf);
+		mapToReturn.put('o', valueOf);
+		mapToReturn.put('p', valueOf);
+		return mapToReturn;
+	}
 
 	private static Map<Character, BigInteger> initializeInstructions(List<String> tabletInstructions) {
 		Map<Character, BigInteger> registerSound = new HashMap<>();
