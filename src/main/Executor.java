@@ -102,6 +102,6 @@ public class Executor {
 //		DayTwentyFive.executeStandardPart1();
 //		DayTwentyFive.executeStandardPart2();
 		
-		
+
 	}
 }
