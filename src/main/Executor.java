@@ -79,7 +79,7 @@ public class Executor {
 //		DaySeventeen.executeStandardPart2();		
 //		
 //		DayEighteen.executeStandardPart1();
-		DayEighteen.executeStandardPart2(); //not yet implemented
+//		DayEighteen.executeStandardPart2();
 //		
 //		DayNineteen.executeStandardPart1();
 //		DayNineteen.executeStandardPart2();
